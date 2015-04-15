@@ -3,7 +3,7 @@
 #$ -m e
 #$ -l mem_free=10G,h_vmem=20G
 #$ -pe local 10
-#$ -N shula-fullCov
+#$ -N fullCov-shula
 echo "**** Job starts ****"
 date
 
@@ -12,7 +12,7 @@ mkdir -p logs
 # Generate HTML
 Rscript import-data.R
 
-mv shula-fullCov.* logs/
+mv fullCov-shula.* logs/
 
 echo "**** Job ends ****"
 date
