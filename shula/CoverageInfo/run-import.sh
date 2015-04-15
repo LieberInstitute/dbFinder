@@ -7,8 +7,12 @@
 echo "**** Job starts ****"
 date
 
+mkdir -p logs
+
 # Generate HTML
 Rscript import-data.R
+
+mv shula-fullCov.* logs/
 
 echo "**** Job ends ****"
 date
