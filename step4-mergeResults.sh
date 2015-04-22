@@ -21,7 +21,7 @@ cat > ${ROOTDIR}/.${sname}.sh <<EOF
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=100G,h_vmem=200G,h_fsize=10G
+#$ -l mem_free=10G,h_vmem=50G,h_fsize=10G
 #$ -N ${sname}
 #$ -hold_jid derA-${EXPERIMENT}.${PREFIX}.chr*
 
