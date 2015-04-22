@@ -70,7 +70,9 @@ myFilt <- function(chr, rawData, cutoff) {
 }
 
 message(paste(Sys.time(), 'Filtering and saving the data with cutoff', 0))
-filteredCov <- bpmapply(myFilt, names(fullCov), fullCov, BPPARAM = SnowParam(workers = 10), MoreArgs = list(cutoff = 0))
+filteredCov <- bpmapply(myFilt, names(fullCov), fullCov, BPPARAM = SnowParam(workers = 10), MoreArgs = list(cutoff = 5))
+
+source('check-filter.R')
 
 ## Reproducibility
 proc.time()
