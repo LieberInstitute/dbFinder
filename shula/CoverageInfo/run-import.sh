@@ -1,7 +1,7 @@
 #!/bin/bash	
 #$ -cwd
 #$ -m e
-#$ -l mem_free=10G,h_vmem=20G
+#$ -l mem_free=2G,h_vmem=4G
 #$ -pe local 10
 #$ -N fullCov-shula
 echo "**** Job starts ****"
