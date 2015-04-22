@@ -19,7 +19,7 @@ if (!is.null(opt$help)) {
 ## Check experiment input
 stopifnot(opt$experiment %in% c('shula'))
 
-chrs <- paste0('chr', c(1:22, 'X', 'Y'))
+chrs <- paste0('chr', c(1:22, 'X', 'Y', 'M'))
 study <- opt$experiment
 run <- opt$run
 
@@ -75,11 +75,11 @@ print(df)
 
 ## Make plot
 pdf(file.path(study, 'derAnalysis', run, paste0('permuteTime-', study, '-', run, '.pdf')))
-ggplot(df, aes(x = chr, y = mean, color = nRound)) + geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.1) + geom_line() + geom_point() + ylab('Time per permutation (minutes)\nMean +- SE') + xlab('Chromosome') + ggtitle(paste('Time info for', study, run)) + scale_y_continuous(breaks=seq(0, ceiling(max(df$mean + df$se, na.rm = TRUE)), 1))
+ggplot(df, aes(x = chr, y = mean, color = nRound)) + geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.1) + geom_line() + geom_point() + ylab('Time per permutation (minutes)\nMean +- SE') + xlab('Chromosome') + ggtitle(paste('Time info for', study, run)) # + scale_y_continuous(breaks=seq(0, ceiling(max(df$mean + df$se, na.rm = TRUE)), 1))
 dev.off()
 
 print('Expected total number of days per chr and days remaining')
-days <- data.frame(chr = chrnum, total = round(df$mean * 1001 / 60 / 24, 1), remaining = round(df$mean * (1001 - df$n - 2 ) / 60 / 24, 1))
+days <- data.frame(chr = chrnum, total = round(df$mean * 101 / 60 / 24, 1), remaining = round(df$mean * (101 - df$n - 2 ) / 60 / 24, 1))
 rownames(days) <- NULL
 print(days)
 
