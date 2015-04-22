@@ -69,8 +69,8 @@ myFilt <- function(chr, rawData, cutoff) {
 	return(invisible(NULL))
 }
 
-message(paste(Sys.time(), 'Filtering and saving the data with cutoff', 0))
-filteredCov <- bpmapply(myFilt, names(fullCov), fullCov, BPPARAM = SnowParam(workers = 10), MoreArgs = list(cutoff = 5))
+message(paste(Sys.time(), 'Filtering and saving the data with cutoff', 2))
+filteredCov <- bpmapply(myFilt, names(fullCov), fullCov, BPPARAM = SnowParam(workers = 10), MoreArgs = list(cutoff = 2))
 
 source('check-filter.R')
 

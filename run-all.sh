@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Usage
-# sh run-all.sh shula run1-v1.0.10 TRUE
+# sh run-all.sh shula run2-v1.0.10 TRUE
 
 # Define variables
 EXPERIMENT=$1

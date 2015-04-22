@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Usage
-# sh step5-derfinderReport.sh shula run1-v1.0.10
+# sh step5-derfinderReport.sh shula run2-v1.0.10
 
 # Define variables
 EXPERIMENT=$1

@@ -19,7 +19,7 @@ if [[ "${EXPERIMENT}" == "shula" ]]
 then
     DATADIR=/dcs01/ajaffe/ChIPseq/Shulha2013/BED
     PATTERN='c'
-    CUTOFF=5
+    CUTOFF=2
 else
     echo "Specify a valid experiment: shula"
 fi
