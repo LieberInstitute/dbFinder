@@ -64,7 +64,6 @@ if(opt$experiment == 'shula') {
 
     ## Load the information table
     pd <- read.csv('/home/epi/ajaffe/Lieber/Projects/ChIP-Seq/chip_phenotype.csv')
-     load("/home/epi/ajaffe/Lieber/Projects/RNAseq/UCSD_samples/UCSD_stemcell_pheno.rda")
     pd$Sample <- gsub('http://zlab.umassmed.edu/zlab/publications/ShulhaPLOSGen2013/|p.zip', '', pd$Filename)
     ## This also works:
     # gsub('put', '', gsub('-', 'N', tolower(pd$Sample.ID)))
