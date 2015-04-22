@@ -30,8 +30,7 @@ if (!is.null(opt$help)) {
 stopifnot(opt$experiment %in% c('shula'))
 
 ## Format chromosome name appropriately
-opt$chr <- mapSeqlevels(opt$chr, 'UCSC')
-if(opt$chr == 'M') opt$chr <- 'chrM'
+if(opt$chr == 'M') opt$chr <- 'chrM' else opt$chr <- mapSeqlevels(opt$chr, 'UCSC')
 
 
 message('Loading Rdata file with the output from loadCoverage()')
