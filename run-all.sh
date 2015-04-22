@@ -25,15 +25,15 @@ sh step3-analyzeChr.sh ${EXPERIMENT} ${PREFIX}
 sh step4-mergeResults.sh ${EXPERIMENT} ${PREFIX}
 sh step5-derfinderReport.sh ${EXPERIMENT} ${PREFIX}
 
-if [[ $SKIP6 == "FALSE" ]]
-then  
+#if [[ $SKIP6 == "FALSE" ]]
+#then  
 #    sh step6-regionMatrix.sh ${EXPERIMENT}
-fi
+#fi
 #sh step7-regMatVsDERs.sh ${EXPERIMENT} ${PREFIX}
 
-if [[ $SKIP8 == "FALSE" ]]
-then  
+#if [[ $SKIP8 == "FALSE" ]]
+#then  
 #    sh step8-coverageToExon.sh ${EXPERIMENT}
-fi
+#fi
 
 #sh step9-summaryInfo.sh ${EXPERIMENT} ${PREFIX}
