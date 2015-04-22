@@ -5,6 +5,7 @@ library('getopt')
 spec <- matrix(c(
 	'experiment', 'e', 1, 'character', 'Experiment',
 	'run', 'r', 1, 'character', 'run name',
+    'npermute', 'n', 1, 'integer', 'Number of permutations',
 	'help' , 'h', 0, 'logical', 'Display help'
 ), byrow=TRUE, ncol=5)
 opt <- getopt(spec)
@@ -19,7 +20,7 @@ if (!is.null(opt$help)) {
 ## Check experiment input
 stopifnot(opt$experiment %in% c('shula'))
 
-chrs <- paste0('chr', c(1:22, 'X', 'Y', 'M'))
+chrs <- paste0('chr', c(1:22, 'X', 'Y'))
 study <- opt$experiment
 run <- opt$run
 
@@ -57,7 +58,7 @@ if(!file.exists(file.path(study, 'derAnalysis', run, 'nChunks.Rdata'))) {
 }
 
 if(study == 'shula') {
-    nCores <- rep(1, 25)
+    nCores <- rep(1, 24)
 }
 names(nCores) <- chrs
 
@@ -78,8 +79,14 @@ pdf(file.path(study, 'derAnalysis', run, paste0('permuteTime-', study, '-', run,
 ggplot(df, aes(x = chr, y = mean, color = nRound)) + geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.1) + geom_line() + geom_point() + ylab('Time per permutation (minutes)\nMean +- SE') + xlab('Chromosome') + ggtitle(paste('Time info for', study, run)) # + scale_y_continuous(breaks=seq(0, ceiling(max(df$mean + df$se, na.rm = TRUE)), 1))
 dev.off()
 
+
+print('Expected total number of hours per chr and hours remaining')
+hours <- data.frame(chr = chrnum, total = round(df$mean * (opt$npermute + 1) / 60, 1), remaining = round(df$mean * (opt$npermute + 1 - df$n - 2 ) / 60, 1))
+rownames(hours) <- NULL
+print(hours)
+
 print('Expected total number of days per chr and days remaining')
-days <- data.frame(chr = chrnum, total = round(df$mean * 101 / 60 / 24, 1), remaining = round(df$mean * (101 - df$n - 2 ) / 60 / 24, 1))
+days <- data.frame(chr = chrnum, total = round(df$mean * (opt$npermute + 1) / 60 / 24, 1), remaining = round(df$mean * (opt$npermute + 1 - df$n - 2 ) / 60 / 24, 1))
 rownames(days) <- NULL
 print(days)
 
