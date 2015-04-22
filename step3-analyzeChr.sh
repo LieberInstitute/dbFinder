@@ -21,40 +21,11 @@ for chrnum in ${CHRNUMS}
 do
 	echo "Creating script for chromosome ${chrnum}"
     
-    if [[ ${EXPERIMENT} == "stem" ]]
+    if [[ ${EXPERIMENT} == "shula" ]]
     then
         CORES=8
-    elif [[ "${EXPERIMENT}" == "brainspan" ]]
-    then
-        if [[ ${chrnum} == "Y" ]]
-        then
-        	CORES=2
-        elif [[ ${chrnum} == "1" ]]
-        then
-            CORES=40
-        elif [[ ${chrnum} == "2" ]]
-        then
-            CORES=32
-        elif [[ ${chrnum} == "3" ]]
-        then
-            CORES=27
-        elif [[ ${chrnum} == "19" ]]
-        then
-            CORES=29
-        else
-        	CORES=20
-        fi
-    elif [[ "${EXPERIMENT}" == "snyder" ]]
-    then
-        CORES=4
-    elif [[ "${EXPERIMENT}" == "hippo" ]]
-    then
-        CORES=2
-    elif [[ "${EXPERIMENT}" == "simulation" ]]
-    then
-        CORES=1
     else
-        echo "Specify a valid experiment: stem, brainspan, snyder, hippo or simulation"
+        echo "Specify a valid experiment: shula"
     fi
     
 	chr="chr${chrnum}"
