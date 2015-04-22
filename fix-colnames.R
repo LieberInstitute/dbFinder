@@ -1,8 +1,8 @@
 ## Fix some names before running the report
 
 library("GenomicRanges")
-load("fullRegions.Rdata")
-load("groupInfo.Rdata")
+load(file.path(prefix, "fullRegions.Rdata"))
+load(file.path(prefix, "groupInfo.Rdata"))
 
 colnames(values(fullRegions))
 
@@ -14,6 +14,6 @@ colnames(values(fullRegions))[i] <- paste("log2FoldChange", levels(groupInfo)[2:
 
 colnames(values(fullRegions))
 
-save(fullRegions, file="fullRegions.Rdata")
+save(fullRegions, file=file.path(prefix, "fullRegions.Rdata"))
 
 ## Note: this might no longer be needed with the BioC version of derfinder, but we'll leave it here just in case.
