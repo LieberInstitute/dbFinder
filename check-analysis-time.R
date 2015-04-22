@@ -20,7 +20,7 @@ if (!is.null(opt$help)) {
 ## Check experiment input
 stopifnot(opt$experiment %in% c('shula'))
 
-chrs <- paste0('chr', c(1:22, 'X', 'Y'))
+chrs <- paste0('chr', c(1:22, 'X', 'Y', 'M'))
 study <- opt$experiment
 run <- opt$run
 
@@ -58,7 +58,7 @@ if(!file.exists(file.path(study, 'derAnalysis', run, 'nChunks.Rdata'))) {
 }
 
 if(study == 'shula') {
-    nCores <- rep(1, 24)
+    nCores <- rep(1, 25)
 }
 names(nCores) <- chrs
 
