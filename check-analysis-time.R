@@ -17,7 +17,7 @@ if (!is.null(opt$help)) {
 }
 
 ## Check experiment input
-stopifnot(opt$experiment %in% c('stem', 'brainspan', 'snyder', 'hippo', 'simulation'))
+stopifnot(opt$experiment %in% c('shula'))
 
 chrs <- paste0('chr', c(1:22, 'X', 'Y'))
 study <- opt$experiment
@@ -56,14 +56,8 @@ if(!file.exists(file.path(study, 'derAnalysis', run, 'nChunks.Rdata'))) {
     load(file.path(study, 'derAnalysis', run, 'nChunks.Rdata'))
 }
 
-if(study == 'stem') {
-    nCores <- rep(8, 24)
-} else if (study == 'brainspan') {
-    nCores <- c(40, 32, 27, rep(20, 15), 29, rep(20, 4), 2)
-} else if (study == 'snyder') {
-    nCores <- rep(4, 24)
-} else if (study == 'hippo') {
-    nCores <- rep(2, 24)
+if(study == 'shula') {
+    nCores <- rep(1, 24)
 }
 names(nCores) <- chrs
 

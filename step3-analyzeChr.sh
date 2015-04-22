@@ -23,7 +23,7 @@ do
     
     if [[ ${EXPERIMENT} == "shula" ]]
     then
-        CORES=8
+        CORES=1
     else
         echo "Specify a valid experiment: shula"
     fi
