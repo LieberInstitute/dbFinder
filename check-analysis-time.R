@@ -57,7 +57,7 @@ if(!file.exists(file.path(study, 'derAnalysis', run, 'nChunks.Rdata'))) {
 }
 
 if(study == 'shula') {
-    nCores <- rep(1, 24)
+    nCores <- rep(1, 25)
 }
 names(nCores) <- chrs
 
