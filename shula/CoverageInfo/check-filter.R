@@ -20,5 +20,6 @@ filtered
 
 ## Total percent remaining
 sum(as.numeric(filtered$Remaining)) / sum(as.numeric(filtered$Total)) * 100
+filtered$Remaining / 1e6
 
 save(filtered, file = 'filtered.Rdata')
