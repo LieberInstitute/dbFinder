@@ -49,7 +49,7 @@ buildModels <- function(fullCov, testvars, colsubset = NULL) {
 
     	## Get the adjustments
     	sampleDepths <- sampleDepth(collapsedFull = collapsedFull, probs = 1,
-            nonzero = TRUE, scalefac = 32, center = FALSE)
+            nonzero = TRUE, scalefac = 1, center = FALSE)
     	save(sampleDepths, file="sampleDepths.Rdata")
     }
     ## Build the models

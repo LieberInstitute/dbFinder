@@ -60,7 +60,7 @@ if(opt$experiment == 'shula') {
         cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 2,
         nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
         groupInfo = groupInfo, mc.cores = opt$mcores,
-        lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'))    
+        lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'), scalefac = 1)    
 }
 
 
