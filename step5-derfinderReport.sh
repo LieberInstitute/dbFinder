@@ -22,7 +22,7 @@ cat > ${ROOTDIR}/.${sname}.sh <<EOF
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=10G,h_vmem=50G,h_fsize=10G
+#$ -l mem_free=50G,h_vmem=150G,h_fsize=10G
 #$ -N ${sname}
 #$ -hold_jid derM-${EXPERIMENT}.${PREFIX}
 
