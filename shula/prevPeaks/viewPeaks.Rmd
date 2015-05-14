@@ -37,7 +37,7 @@ table(countOverlaps(neunPeaks.pad) - 1)
 
 # Plots
 
-Region coverage plots for Neun+ peaks separated by direction. Plots have 10% padding (5% on each end).
+Region coverage plots for Neun+ peaks separated by direction: top 100 regions ordered by log ratio for each direction. Plots have 10% padding (5% on each end).
 
 ## Up
 
@@ -54,7 +54,7 @@ annoNear <- annotateNearest(neunPeaks.pad[idx], 'hg19')
 annoReg <- annotateRegions(neunPeaks.pad[idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
 
 ## Plots
-plotRegionCoverage(neunPeaks.pad[idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, seq_len(sum(idx)))
+plotRegionCoverage(neunPeaks.pad[idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, head(order(abs(neunPeaks.pad$LogRatio[idx]), decreasing = TRUE), n = 100))
 ```
 
 
@@ -71,7 +71,7 @@ annoNear <- annotateNearest(neunPeaks.pad[!idx], 'hg19')
 annoReg <- annotateRegions(neunPeaks.pad[!idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
 
 ## Plots
-plotRegionCoverage(neunPeaks.pad[!idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, seq_len(sum(!idx)))
+plotRegionCoverage(neunPeaks.pad[!idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, head(order(abs(neunPeaks.pad$LogRatio[!idx]), decreasing = TRUE), n = 100))
 ```
 
 # Reproducibility
