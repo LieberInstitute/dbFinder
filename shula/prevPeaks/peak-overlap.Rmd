@@ -1,0 +1,178 @@
+---
+output:
+  knitrBootstrap::bootstrap_document:
+    theme.chooser: TRUE
+    highlight.chooser: TRUE
+  
+---
+
+
+Overlap with Neun+ peaks
+================
+
+
+Do differentially bound peaks found via `derfinder` overlap the published list of Neun+ peaks?
+
+# Setup
+
+```{r}
+library('GenomicRanges')
+library('devtools')
+load('neunPeaks.Rdata')
+runs <- paste0('run', 1:4, '-v1.0.10')
+ders <- lapply(runs, function(path) { 
+    load(file.path('..', 'derAnalysis', path, 'fullRegions.Rdata'))
+    return(fullRegions)
+})
+names(ders) <- runs
+```
+
+
+# Overlap: derfinder to peaks
+
+Basic overlap info
+
+```{r}
+ov <- lapply(ders, function(run) {
+    countOverlaps(run, neunPeaks)
+})
+ov.up <- lapply(ders, function(run) {
+    countOverlaps(run, neunPeaks[neunPeaks$Direction == 'Up'])
+})
+ov.down <- lapply(ders, function(run) {
+    countOverlaps(run, neunPeaks[neunPeaks$Direction == 'Down'])
+})
+
+## Does a DER overlap more than one peak?
+lapply(ov, table)
+#lapply(ov.up, table)
+#lapply(ov.down, table)
+```
+
+The next subsections show the percent of candidate DERs overlapping known Neun+ peaks. First using all the peaks, next broken down by direction of the peak.
+
+## All
+
+```{r}
+perc <- function(x) { sum(x > 0) / length(x) * 100 }
+
+
+## Percent of candidate DERs overlapping known Neun+ peaks
+sapply(ov, perc)
+
+## Percent of significant DERs overlapping known Neun+ peaks
+mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov)
+mapply(function(der, over) { perc(over[der$qvalues < 0.05 ])}, ders, ov)
+```
+
+
+## Up
+
+```{r}
+## Percent of candidate DERs overlapping known Neun+ peaks (Up only)
+sapply(ov.up, perc)
+
+## Percent of significant DERs overlapping known Neun+ peaks (Up only)
+mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.up)
+mapply(function(der, over) { perc(over[der$qvalues < 0.05 ])}, ders, ov.up)
+```
+
+## Down
+
+```{r}
+## Percent of candidate DERs overlapping known Neun+ peaks (Down only)
+sapply(ov.down, perc)
+
+## Percent of significant DERs overlapping known Neun+ peaks (Down only)
+mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.down)
+mapply(function(der, over) { perc(over[der$qvalues < 0.05 ])}, ders, ov.down)
+```
+
+
+# Overlap: Neun+ to derfinder
+
+Do Neun+ peaks overlap regions found by the `derfinder` runs?
+
+
+## All
+
+```{r}
+## Reverse direction: percent Neun+ peaks overlapping DERs, then Up only, then Down only
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks, der))
+})
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Up'], der))
+})
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Down'], der))
+})
+```
+
+
+## FWER
+
+```{r}
+## Percent Neun+ peaks overlapping signicicant DERs (FWER), then Up only, then Down only
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks, der[der$fwer < 0.05 ]))
+})
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Up'], der[der$fwer < 0.05 ]))
+})
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Down'], der[der$fwer < 0.05 ]))
+})
+```
+
+
+## FDR
+
+```{r}
+## Percent Neun+ peaks overlapping signicicant DERs (FDR), then Up only, then Down only
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks, der[der$fwer < 0.05 ]))
+})
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Up'], der[der$fwer < 0.05 ]))
+})
+
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Down'], der[der$fwer < 0.05 ]))
+})
+```
+
+
+# derfinder summary
+
+Brief summary of number of regions found by `derfinder` and width distribution for the significant ones.
+
+```{r}
+## Length (in bp) summary of DERs
+lapply(ders, function(der) { summary(width(der[der$fwer < 0.05 ]))})
+lapply(ders, function(der) { summary(width(der[der$qvalues < 0.05 ]))})
+
+## Number of significant DERs at 0.05
+sapply(ders, function(der) { sum(der$fwer < 0.05) })
+sapply(ders, function(der) { sum(der$qvalues < 0.05) })
+
+## Total number of candidate DERs
+sapply(ders, length)
+
+## Percent of significant DERs at 0.05
+sapply(ders, function(der) { sum(der$fwer < 0.05) }) / sapply(ders, length) * 100
+sapply(ders, function(der) { sum(der$qvalues < 0.05) }) / sapply(ders, length) * 100
+```
+
+
+
+# Reproducibility
+
+```{r}
+## Reproducibility info
+options(width = 120)
+session_info()
+Sys.time()
+```
+
+
