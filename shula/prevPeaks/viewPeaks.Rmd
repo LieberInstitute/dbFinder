@@ -1,0 +1,66 @@
+---
+output:
+  knitrBootstrap::bootstrap_document:
+    theme.chooser: TRUE
+    highlight.chooser: TRUE
+---
+
+Visualize Neun+ peaks
+=====================
+
+
+# Setup
+
+```{r}
+library('GenomicRanges')
+library('derfinder')
+library('derfinderPlot')
+library('bumphunter')
+library('TxDb.Hsapiens.UCSC.hg19.knownGene')
+library('devtools')
+
+## Load data
+load('/dcs01/ajaffe/Brain/derRuns/derfinderExample/derGenomicState/GenomicState.Hsapiens.UCSC.hg19.knownGene.Rdata')
+load('neunPeaks.Rdata')
+load(file.path('..', 'CoverageInfo', 'fullCov.Rdata'))
+load(file.path('..', 'derAnalysis', 'run4-v1.0.10', 'groupInfo.Rdata'))
+
+## Add padding to peaks
+neunPeaks.pad <- resize(neunPeaks, round(width(neunPeaks) * 1.1, 0), fix = 'center')
+## A small fraction overlaps
+table(countOverlaps(neunPeaks.pad) - 1)
+
+## Get region coverage
+regionCov <- getRegionCoverage(fullCov, neunPeaks.pad)
+
+## Nearest annotation
+annoNear <- annotateNearest(neunPeaks.pad, 'hg19')
+
+## Genomic states
+annoReg <- annotateRegions(neunPeaks.pad, GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
+```
+
+# Plot
+
+## Up
+
+```{r}
+idx <- neunPeaks.pad$Direction == 'Up'
+plotRegionCoverage(neunPeaks.pad[idx], regionCov[idx], groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, seq_len(sum(idx)))
+```
+
+
+## Down
+
+```{r}
+plotRegionCoverage(neunPeaks.pad[!idx], regionCov[!idx], groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, seq_len(sum(!idx)))
+```
+
+# Reproducibility
+
+```{r}
+## Reproducibility info
+options(width = 120)
+session_info()
+Sys.time()
+```
