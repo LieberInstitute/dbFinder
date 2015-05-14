@@ -24,36 +24,54 @@ load('/dcs01/ajaffe/Brain/derRuns/derfinderExample/derGenomicState/GenomicState.
 load('neunPeaks.Rdata')
 load(file.path('..', 'CoverageInfo', 'fullCov.Rdata'))
 load(file.path('..', 'derAnalysis', 'run4-v1.0.10', 'groupInfo.Rdata'))
+load(file.path('..', 'derAnalysis', 'run4-v1.0.10', 'colsubset.Rdata'))
+
+## Keep only samples used
+fullCov <- lapply(fullCov, function(x) { x[, colsubset]})
 
 ## Add padding to peaks
 neunPeaks.pad <- resize(neunPeaks, round(width(neunPeaks) * 1.1, 0), fix = 'center')
 ## A small fraction overlaps
 table(countOverlaps(neunPeaks.pad) - 1)
-
-## Get region coverage
-regionCov <- getRegionCoverage(fullCov, neunPeaks.pad)
-
-## Nearest annotation
-annoNear <- annotateNearest(neunPeaks.pad, 'hg19')
-
-## Genomic states
-annoReg <- annotateRegions(neunPeaks.pad, GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
 ```
 
-# Plot
+# Plots
+
+Region coverage plots for Neun+ peaks separated by direction. Plots have 10% padding (5% on each end).
 
 ## Up
 
 ```{r}
 idx <- neunPeaks.pad$Direction == 'Up'
-plotRegionCoverage(neunPeaks.pad[idx], regionCov[idx], groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, seq_len(sum(idx)))
+
+## Get region coverage
+regionCov <- getRegionCoverage(fullCov, neunPeaks.pad[idx])
+
+## Nearest annotation
+annoNear <- annotateNearest(neunPeaks.pad[idx], 'hg19')
+
+## Genomic states
+annoReg <- annotateRegions(neunPeaks.pad[idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
+
+## Plots
+plotRegionCoverage(neunPeaks.pad[idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, seq_len(sum(idx)))
 ```
 
 
 ## Down
 
 ```{r}
-plotRegionCoverage(neunPeaks.pad[!idx], regionCov[!idx], groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, seq_len(sum(!idx)))
+## Get region coverage
+regionCov <- getRegionCoverage(fullCov, neunPeaks.pad[!idx])
+
+## Nearest annotation
+annoNear <- annotateNearest(neunPeaks.pad[!idx], 'hg19')
+
+## Genomic states
+annoReg <- annotateRegions(neunPeaks.pad[!idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
+
+## Plots
+plotRegionCoverage(neunPeaks.pad[!idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, seq_len(sum(!idx)))
 ```
 
 # Reproducibility
