@@ -54,7 +54,9 @@ annoNear <- annotateNearest(neunPeaks.pad[idx], 'hg19')
 annoReg <- annotateRegions(neunPeaks.pad[idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
 
 ## Plots
+pdf('neunPeaks_up_top100.pdf')
 plotRegionCoverage(neunPeaks.pad[idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, head(order(abs(neunPeaks.pad$LogRatio[idx]), decreasing = TRUE), n = 100))
+dev.off()
 ```
 
 
@@ -71,7 +73,9 @@ annoNear <- annotateNearest(neunPeaks.pad[!idx], 'hg19')
 annoReg <- annotateRegions(neunPeaks.pad[!idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
 
 ## Plots
+pdf('neunPeaks_down_top100.pdf')
 plotRegionCoverage(neunPeaks.pad[!idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, head(order(abs(neunPeaks.pad$LogRatio[!idx]), decreasing = TRUE), n = 100))
+dev.off()
 ```
 
 # Reproducibility
