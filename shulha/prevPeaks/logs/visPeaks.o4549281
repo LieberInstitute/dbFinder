@@ -1,0 +1,26 @@
+**** Job starts ****
+Thu May 14 22:30:35 EDT 2015
+  |                                                                         |                                                                 |   0%  |                                                                         |........                                                         |  12%
+  ordinary text without R code
+
+  |                                                                         |................                                                 |  25%
+label: unnamed-chunk-1
+  |                                                                         |........................                                         |  38%
+  ordinary text without R code
+
+  |                                                                         |................................                                 |  50%
+label: unnamed-chunk-2
+  |                                                                         |.........................................                        |  62%
+  ordinary text without R code
+
+  |                                                                         |.................................................                |  75%
+label: unnamed-chunk-3
+  |                                                                         |.........................................................        |  88%
+  ordinary text without R code
+
+  |                                                                         |.................................................................| 100%
+label: unnamed-chunk-4
+
+/jhpce/shared/jhpce/core/JHPCE_tools/1.0/bin/pandoc viewPeaks.utf8.md --to html --from markdown-hard_line_breaks+superscript+tex_math_dollars+raw_html+markdown_in_html_blocks-implicit_figures --output viewPeaks.html -H /scratch/temp/4549281.1.shared.q/RtmpgWRoTN/knitr_bootstrap_full.html 
+**** Job ends ****
+Thu May 14 22:38:32 EDT 2015
