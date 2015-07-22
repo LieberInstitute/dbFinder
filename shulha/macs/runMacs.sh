@@ -15,7 +15,7 @@ do
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=5G,h_vmem=15G,h_fsize=10G
+#$ -l mem_free=1G,h_vmem=3G,h_fsize=10G
 #$ -N ${sname}
 
 echo "**** Job starts ****"
