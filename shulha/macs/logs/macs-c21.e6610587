@@ -1,0 +1,80 @@
+INFO  @ Wed, 22 Jul 2015 16:29:56: 
+# Command line: callpeak -t /dcs01/ajaffe/ChIPseq/Shulha2013/BED/c21 -c /dcs01/ajaffe/ChIPseq/Shulha2013/BED/c28in --tsize 36 --bw 230 -n c21_macs_out
+# ARGUMENTS LIST:
+# name = c21_macs_out
+# format = AUTO
+# ChIP-seq file = ['/dcs01/ajaffe/ChIPseq/Shulha2013/BED/c21']
+# control file = ['/dcs01/ajaffe/ChIPseq/Shulha2013/BED/c28in']
+# effective genome size = 2.70e+09
+# band width = 230
+# model fold = [5, 50]
+# qvalue cutoff = 5.00e-02
+# Larger dataset will be scaled towards smaller dataset.
+# Range for calculating regional lambda is: 1000 bps and 10000 bps
+# Broad region calling is off
+ 
+INFO  @ Wed, 22 Jul 2015 16:29:56: #1 read tag files... 
+INFO  @ Wed, 22 Jul 2015 16:29:56: #1 read treatment tags... 
+INFO  @ Wed, 22 Jul 2015 16:29:56: Detected format is: BED 
+INFO  @ Wed, 22 Jul 2015 16:29:59:  1000000 
+INFO  @ Wed, 22 Jul 2015 16:30:02:  2000000 
+INFO  @ Wed, 22 Jul 2015 16:30:06:  3000000 
+INFO  @ Wed, 22 Jul 2015 16:30:09:  4000000 
+INFO  @ Wed, 22 Jul 2015 16:30:12:  5000000 
+INFO  @ Wed, 22 Jul 2015 16:30:15:  6000000 
+INFO  @ Wed, 22 Jul 2015 16:30:18:  7000000 
+INFO  @ Wed, 22 Jul 2015 16:30:22:  8000000 
+INFO  @ Wed, 22 Jul 2015 16:30:25:  9000000 
+INFO  @ Wed, 22 Jul 2015 16:30:28:  10000000 
+INFO  @ Wed, 22 Jul 2015 16:30:31:  11000000 
+INFO  @ Wed, 22 Jul 2015 16:30:35:  12000000 
+INFO  @ Wed, 22 Jul 2015 16:30:40:  13000000 
+INFO  @ Wed, 22 Jul 2015 16:30:45:  14000000 
+INFO  @ Wed, 22 Jul 2015 16:30:50:  15000000 
+INFO  @ Wed, 22 Jul 2015 16:30:55:  16000000 
+INFO  @ Wed, 22 Jul 2015 16:31:00:  17000000 
+INFO  @ Wed, 22 Jul 2015 16:31:04:  18000000 
+INFO  @ Wed, 22 Jul 2015 16:31:08:  19000000 
+INFO  @ Wed, 22 Jul 2015 16:31:14: #1.2 read input tags... 
+INFO  @ Wed, 22 Jul 2015 16:31:14: Detected format is: BED 
+INFO  @ Wed, 22 Jul 2015 16:31:18:  1000000 
+INFO  @ Wed, 22 Jul 2015 16:31:22:  2000000 
+INFO  @ Wed, 22 Jul 2015 16:31:26:  3000000 
+INFO  @ Wed, 22 Jul 2015 16:31:30:  4000000 
+INFO  @ Wed, 22 Jul 2015 16:31:34:  5000000 
+INFO  @ Wed, 22 Jul 2015 16:31:38:  6000000 
+INFO  @ Wed, 22 Jul 2015 16:31:42:  7000000 
+INFO  @ Wed, 22 Jul 2015 16:31:46:  8000000 
+INFO  @ Wed, 22 Jul 2015 16:31:50:  9000000 
+INFO  @ Wed, 22 Jul 2015 16:31:54:  10000000 
+INFO  @ Wed, 22 Jul 2015 16:31:58:  11000000 
+INFO  @ Wed, 22 Jul 2015 16:32:02:  12000000 
+INFO  @ Wed, 22 Jul 2015 16:32:05: #1 tag size is determined as 36 bps 
+INFO  @ Wed, 22 Jul 2015 16:32:05: #1 tag size = 36 
+INFO  @ Wed, 22 Jul 2015 16:32:05: #1  total tags in treatment: 19968758 
+INFO  @ Wed, 22 Jul 2015 16:32:05: #1 user defined the maximum tags... 
+INFO  @ Wed, 22 Jul 2015 16:32:05: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
+INFO  @ Wed, 22 Jul 2015 16:32:10: #1  tags after filtering in treatment: 14535188 
+INFO  @ Wed, 22 Jul 2015 16:32:10: #1  Redundant rate of treatment: 0.27 
+INFO  @ Wed, 22 Jul 2015 16:32:10: #1  total tags in control: 12246790 
+INFO  @ Wed, 22 Jul 2015 16:32:10: #1 user defined the maximum tags... 
+INFO  @ Wed, 22 Jul 2015 16:32:10: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
+INFO  @ Wed, 22 Jul 2015 16:32:14: #1  tags after filtering in control: 12083506 
+INFO  @ Wed, 22 Jul 2015 16:32:14: #1  Redundant rate of control: 0.01 
+INFO  @ Wed, 22 Jul 2015 16:32:14: #1 finished! 
+INFO  @ Wed, 22 Jul 2015 16:32:14: #2 Build Peak Model... 
+INFO  @ Wed, 22 Jul 2015 16:32:25: #2 number of paired peaks: 56674 
+INFO  @ Wed, 22 Jul 2015 16:32:25: start model_add_line... 
+INFO  @ Wed, 22 Jul 2015 16:34:01: start X-correlation... 
+INFO  @ Wed, 22 Jul 2015 16:34:01: end of X-cor 
+INFO  @ Wed, 22 Jul 2015 16:34:01: #2 finished! 
+INFO  @ Wed, 22 Jul 2015 16:34:01: #2 predicted fragment length is 113 bps 
+INFO  @ Wed, 22 Jul 2015 16:34:01: #2 alternative fragment length(s) may be 113 bps 
+INFO  @ Wed, 22 Jul 2015 16:34:01: #2.2 Generate R script for model : c21_macs_out_model.r 
+INFO  @ Wed, 22 Jul 2015 16:34:01: #3 Call peaks... 
+INFO  @ Wed, 22 Jul 2015 16:34:01: #3 Pre-compute pvalue-qvalue table... 
+INFO  @ Wed, 22 Jul 2015 16:39:57: #3 Call peaks for each chromosome... 
+INFO  @ Wed, 22 Jul 2015 16:45:32: #4 Write output xls file... c21_macs_out_peaks.xls 
+INFO  @ Wed, 22 Jul 2015 16:45:33: #4 Write peak in narrowPeak format file... c21_macs_out_peaks.narrowPeak 
+INFO  @ Wed, 22 Jul 2015 16:45:33: #4 Write summits bed file... c21_macs_out_summits.bed 
+INFO  @ Wed, 22 Jul 2015 16:45:34: Done! 

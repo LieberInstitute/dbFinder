@@ -1,0 +1,62 @@
+INFO  @ Wed, 22 Jul 2015 16:29:55: 
+# Command line: callpeak -t /dcs01/ajaffe/ChIPseq/Shulha2013/BED/c5 -c /dcs01/ajaffe/ChIPseq/Shulha2013/BED/c28in --tsize 36 --bw 230 -n c5_macs_out
+# ARGUMENTS LIST:
+# name = c5_macs_out
+# format = AUTO
+# ChIP-seq file = ['/dcs01/ajaffe/ChIPseq/Shulha2013/BED/c5']
+# control file = ['/dcs01/ajaffe/ChIPseq/Shulha2013/BED/c28in']
+# effective genome size = 2.70e+09
+# band width = 230
+# model fold = [5, 50]
+# qvalue cutoff = 5.00e-02
+# Larger dataset will be scaled towards smaller dataset.
+# Range for calculating regional lambda is: 1000 bps and 10000 bps
+# Broad region calling is off
+ 
+INFO  @ Wed, 22 Jul 2015 16:29:55: #1 read tag files... 
+INFO  @ Wed, 22 Jul 2015 16:29:55: #1 read treatment tags... 
+INFO  @ Wed, 22 Jul 2015 16:29:56: Detected format is: BED 
+INFO  @ Wed, 22 Jul 2015 16:30:00:  1000000 
+INFO  @ Wed, 22 Jul 2015 16:30:02: #1.2 read input tags... 
+INFO  @ Wed, 22 Jul 2015 16:30:02: Detected format is: BED 
+INFO  @ Wed, 22 Jul 2015 16:30:07:  1000000 
+INFO  @ Wed, 22 Jul 2015 16:30:11:  2000000 
+INFO  @ Wed, 22 Jul 2015 16:30:15:  3000000 
+INFO  @ Wed, 22 Jul 2015 16:30:19:  4000000 
+INFO  @ Wed, 22 Jul 2015 16:30:23:  5000000 
+INFO  @ Wed, 22 Jul 2015 16:30:27:  6000000 
+INFO  @ Wed, 22 Jul 2015 16:30:32:  7000000 
+INFO  @ Wed, 22 Jul 2015 16:30:36:  8000000 
+INFO  @ Wed, 22 Jul 2015 16:30:40:  9000000 
+INFO  @ Wed, 22 Jul 2015 16:30:44:  10000000 
+INFO  @ Wed, 22 Jul 2015 16:30:48:  11000000 
+INFO  @ Wed, 22 Jul 2015 16:30:52:  12000000 
+INFO  @ Wed, 22 Jul 2015 16:30:55: #1 tag size is determined as 36 bps 
+INFO  @ Wed, 22 Jul 2015 16:30:55: #1 tag size = 36 
+INFO  @ Wed, 22 Jul 2015 16:30:55: #1  total tags in treatment: 1507944 
+INFO  @ Wed, 22 Jul 2015 16:30:55: #1 user defined the maximum tags... 
+INFO  @ Wed, 22 Jul 2015 16:30:55: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
+INFO  @ Wed, 22 Jul 2015 16:30:56: #1  tags after filtering in treatment: 1264142 
+INFO  @ Wed, 22 Jul 2015 16:30:56: #1  Redundant rate of treatment: 0.16 
+INFO  @ Wed, 22 Jul 2015 16:30:56: #1  total tags in control: 12246790 
+INFO  @ Wed, 22 Jul 2015 16:30:56: #1 user defined the maximum tags... 
+INFO  @ Wed, 22 Jul 2015 16:30:56: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
+INFO  @ Wed, 22 Jul 2015 16:31:01: #1  tags after filtering in control: 12083506 
+INFO  @ Wed, 22 Jul 2015 16:31:01: #1  Redundant rate of control: 0.01 
+INFO  @ Wed, 22 Jul 2015 16:31:01: #1 finished! 
+INFO  @ Wed, 22 Jul 2015 16:31:01: #2 Build Peak Model... 
+INFO  @ Wed, 22 Jul 2015 16:31:05: #2 number of paired peaks: 14535 
+INFO  @ Wed, 22 Jul 2015 16:31:05: start model_add_line... 
+INFO  @ Wed, 22 Jul 2015 16:31:07: start X-correlation... 
+INFO  @ Wed, 22 Jul 2015 16:31:07: end of X-cor 
+INFO  @ Wed, 22 Jul 2015 16:31:07: #2 finished! 
+INFO  @ Wed, 22 Jul 2015 16:31:07: #2 predicted fragment length is 104 bps 
+INFO  @ Wed, 22 Jul 2015 16:31:07: #2 alternative fragment length(s) may be 104,221 bps 
+INFO  @ Wed, 22 Jul 2015 16:31:07: #2.2 Generate R script for model : c5_macs_out_model.r 
+INFO  @ Wed, 22 Jul 2015 16:31:07: #3 Call peaks... 
+INFO  @ Wed, 22 Jul 2015 16:31:07: #3 Pre-compute pvalue-qvalue table... 
+INFO  @ Wed, 22 Jul 2015 16:37:36: #3 Call peaks for each chromosome... 
+INFO  @ Wed, 22 Jul 2015 16:41:38: #4 Write output xls file... c5_macs_out_peaks.xls 
+INFO  @ Wed, 22 Jul 2015 16:41:39: #4 Write peak in narrowPeak format file... c5_macs_out_peaks.narrowPeak 
+INFO  @ Wed, 22 Jul 2015 16:41:39: #4 Write summits bed file... c5_macs_out_summits.bed 
+INFO  @ Wed, 22 Jul 2015 16:41:40: Done! 
