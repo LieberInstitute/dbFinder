@@ -27,7 +27,7 @@ if (!is.null(opt$help)) {
 }
 
 ## Check experiment input
-stopifnot(opt$experiment %in% c('shula'))
+stopifnot(opt$experiment %in% c('shulha'))
 
 ## Format chromosome name appropriately
 if(opt$chr == 'M') opt$chr <- 'chrM' else opt$chr <- mapSeqlevels(opt$chr, 'UCSC')
@@ -55,7 +55,7 @@ if(file.exists('colsubset.Rdata')) {
 
 
 ## Run the analysis
-if(opt$experiment == 'shula') {
+if(opt$experiment == 'shulha') {
     analyzeChr(chr = opt$chr, coverageInfo = covData, models = models, 
         cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 2,
         nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,

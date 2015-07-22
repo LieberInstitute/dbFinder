@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Usage
-# sh step4-mergeResults.sh shula run4-v1.0.10
+# sh step4-mergeResults.sh shulha run4-v1.0.10
 
 # Define variables
 EXPERIMENT=$1

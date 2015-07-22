@@ -23,7 +23,7 @@ if (!is.null(opt$help)) {
 }
 
 ## Check experiment input
-stopifnot(opt$experiment %in% c('shula'))
+stopifnot(opt$experiment %in% c('shulha'))
 
 if(opt$experiment != 'brainspan') {
     ## Load the coverage information
@@ -60,7 +60,7 @@ buildModels <- function(fullCov, testvars, colsubset = NULL) {
 }
 
 
-if(opt$experiment == 'shula') {
+if(opt$experiment == 'shulha') {
 
     ## Load the information table
     pd <- read.csv('/home/epi/ajaffe/Lieber/Projects/ChIP-Seq/chip_phenotype.csv')

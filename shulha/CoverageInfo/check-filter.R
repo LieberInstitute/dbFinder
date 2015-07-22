@@ -1,4 +1,4 @@
-setwd('/dcs01/ajaffe/Brain/derRuns/derChIP/shula/CoverageInfo')
+setwd('/dcs01/ajaffe/Brain/derRuns/derChIP/shulha/CoverageInfo')
 
 library('GenomicRanges')
 chrs <- paste0('chr', c(1:22, 'X', 'Y', 'M'))

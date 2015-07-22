@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Usage
-# sh step3-analyzeChr.sh shula run4-v1.0.10
+# sh step3-analyzeChr.sh shulha run4-v1.0.10
 
 # Define variables
 EXPERIMENT=$1
@@ -21,11 +21,11 @@ for chrnum in ${CHRNUMS}
 do
 	echo "Creating script for chromosome ${chrnum}"
     
-    if [[ ${EXPERIMENT} == "shula" ]]
+    if [[ ${EXPERIMENT} == "shulha" ]]
     then
         CORES=2
     else
-        echo "Specify a valid experiment: shula"
+        echo "Specify a valid experiment: shulha"
     fi
     
 	chr="chr${chrnum}"

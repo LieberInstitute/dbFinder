@@ -2,7 +2,7 @@
 
 
 ## Usage
-# sh step1-fullCoverage.sh shula
+# sh step1-fullCoverage.sh shulha
 
 
 # Define variables
@@ -15,13 +15,13 @@ ROOTDIR=/dcs01/ajaffe/Brain/derRuns/derChIP
 MAINDIR=${ROOTDIR}/${EXPERIMENT}
 WDIR=${MAINDIR}/CoverageInfo
 
-if [[ "${EXPERIMENT}" == "shula" ]]
+if [[ "${EXPERIMENT}" == "shulha" ]]
 then
     DATADIR=/dcs01/ajaffe/ChIPseq/Shulha2013/BED
     PATTERN='c'
     CUTOFF=2
 else
-    echo "Specify a valid experiment: shula"
+    echo "Specify a valid experiment: shulha"
 fi
 
 

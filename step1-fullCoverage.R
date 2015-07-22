@@ -35,7 +35,7 @@ if(opt$datadir == '/dcs01/ajaffe/ChIPseq/Shulha2013/BED') {
     beds <- dir(opt$datadir, pattern = opt$pattern, full.names = TRUE)
     names(beds) <- dir(opt$datadir, pattern = 'c')
     
-    stop('Use shula/CoverageInfo/run-import.sh instead')
+    stop('Use shulha/CoverageInfo/run-import.sh instead')
 }
 
 
