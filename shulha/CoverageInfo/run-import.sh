@@ -1,7 +1,7 @@
 #!/bin/bash	
 #$ -cwd
 #$ -m e
-#$ -l mem_free=2G,h_vmem=4G
+#$ -l mem_free=3G,h_vmem=4G
 #$ -pe local 10
 #$ -N fullCov-shula
 echo "**** Job starts ****"
@@ -10,6 +10,7 @@ date
 mkdir -p logs
 
 # Generate HTML
+module load R/3.3
 Rscript import-data.R
 
 mv fullCov-shula.* logs/

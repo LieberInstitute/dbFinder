@@ -11,7 +11,7 @@ SHORT="fullCov-${EXPERIMENT}"
 CORES=10
 
 # Directories
-ROOTDIR=/dcs01/ajaffe/Brain/derRuns/derChIP
+ROOTDIR=/dcl01/lieber/ajaffe/derRuns/derChIP
 MAINDIR=${ROOTDIR}/${EXPERIMENT}
 WDIR=${MAINDIR}/CoverageInfo
 
@@ -32,7 +32,7 @@ cat > ${ROOTDIR}/.${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=10G,h_vmem=40G,h_fsize=40G
+#$ -l mem_free=10G,h_vmem=15G,h_fsize=40G
 #$ -N ${SHORT}
 #$ -pe local ${CORES}
 
@@ -44,7 +44,7 @@ mkdir -p ${WDIR}/logs
 
 # Load the data, save the coverage without filtering, then save each file separately
 cd ${WDIR}
-module load R/3.1.x
+module load R/3.3
 Rscript ${ROOTDIR}/step1-fullCoverage.R -d "${DATADIR}" -p "${PATTERN}" -c "${CUTOFF}" -m ${CORES}
 
 ## Move log files into the logs directory

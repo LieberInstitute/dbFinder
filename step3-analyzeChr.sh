@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Usage
-# sh step3-analyzeChr.sh shulha run4-v1.0.10
+# sh step3-analyzeChr.sh shulha run5-v1.5.33
 
 # Define variables
 EXPERIMENT=$1
@@ -9,7 +9,7 @@ SHORT="derA-${EXPERIMENT}"
 PREFIX=$2
 
 # Directories
-ROOTDIR=/dcs01/ajaffe/Brain/derRuns/derChIP
+ROOTDIR=/dcl01/lieber/ajaffe/derRuns/derChIP
 MAINDIR=${ROOTDIR}/${EXPERIMENT}
 WDIR=${MAINDIR}/derAnalysis
 DATADIR=${MAINDIR}/CoverageInfo
@@ -35,7 +35,7 @@ do
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=2G,h_vmem=10G,h_fsize=10G,h=!compute-04[3-5]*
+#$ -l mem_free=8G,h_vmem=10G,h_fsize=10G,h=!compute-04[3-5]*
 #$ -N ${sname}
 #$ -pe local ${CORES}
 #$ -hold_jid derMod-${EXPERIMENT}.${PREFIX}
@@ -50,7 +50,7 @@ mkdir -p ${WDIR}/${outdir}/logs
 
 # run analyzeChr()
 cd ${WDIR}/${PREFIX}/
-module load R/3.1.x
+module load R/3.3
 Rscript ${ROOTDIR}/step3-analyzeChr.R -d "${DATADIR}/${chr}CovInfo.Rdata" -c "${chrnum}" -m ${CORES} -e "${EXPERIMENT}"
 
 # Move log files into the logs directory

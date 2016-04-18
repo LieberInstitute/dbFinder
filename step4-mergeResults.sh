@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Usage
-# sh step4-mergeResults.sh shulha run4-v1.0.10
+# sh step4-mergeResults.sh shulha run5-v1.5.33
 
 # Define variables
 EXPERIMENT=$1
@@ -9,7 +9,7 @@ SHORT="derM-${EXPERIMENT}"
 PREFIX=$2
 
 # Directories
-ROOTDIR=/dcs01/ajaffe/Brain/derRuns/derChIP
+ROOTDIR=/dcl01/lieber/ajaffe/derRuns/derChIP
 MAINDIR=${ROOTDIR}/${EXPERIMENT}
 WDIR=${MAINDIR}/derAnalysis
 
@@ -32,8 +32,8 @@ mkdir -p ${WDIR}/${outdir}/logs
 
 # merge results
 cd ${WDIR}
-module load R/3.1.x
-Rscript -e "library(derfinder); load('/dcs01/ajaffe/Brain/derRuns/derfinderExample/derGenomicState/GenomicState.Hsapiens.UCSC.hg19.knownGene.Rdata'); load('${WDIR}/${PREFIX}/chr22/optionsStats.Rdata'); chrs <- paste0('chr', c(1:22, 'X', 'Y', 'M')); mergeResults(chrs = chrs, prefix = '${PREFIX}', genomicState = GenomicState.Hsapiens.UCSC.hg19.knownGene[['fullGenome']], optionsStats = optionsStats); prefix <- '${PREFIX}'; source('/dcs01/ajaffe/Brain/derRuns/derChIP/fix-colnames.R'); Sys.time(); proc.time(); options(width = 120); devtools::session_info()"
+module load R/3.3
+Rscript -e "library(derfinder); load('/dcl01/lieber/ajaffe/derRuns/derfinderExample/derGenomicState/GenomicState.Hsapiens.UCSC.hg19.knownGene.Rdata'); load('${WDIR}/${PREFIX}/chr22/optionsStats.Rdata'); chrs <- paste0('chr', c(1:22, 'X', 'Y', 'M')); mergeResults(chrs = chrs, prefix = '${PREFIX}', genomicState = GenomicState.Hsapiens.UCSC.hg19.knownGene[['fullGenome']], optionsStats = optionsStats); prefix <- '${PREFIX}'; source('/dcl01/lieber/ajaffe/derRuns/derChIP/fix-colnames.R'); Sys.time(); proc.time(); options(width = 120); devtools::session_info()"
 
 # Move log files into the logs directory
 mv ${ROOTDIR}/${sname}.* ${WDIR}/${outdir}/logs/

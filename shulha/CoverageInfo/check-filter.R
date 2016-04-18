@@ -1,4 +1,4 @@
-setwd('/dcs01/ajaffe/Brain/derRuns/derChIP/shulha/CoverageInfo')
+setwd('/dcl01/lieber/ajaffe/derRuns/derChIP/shulha/CoverageInfo')
 
 library('GenomicRanges')
 chrs <- paste0('chr', c(1:22, 'X', 'Y', 'M'))
@@ -7,7 +7,7 @@ chrs <- paste0('chr', c(1:22, 'X', 'Y', 'M'))
 # chrs <- c('chrM', 'chrY')
 
 filtered <- lapply(chrs, function(chr) {
-    load(paste0(chr, 'CovInfo.Rdata'))
+    load(paste0(chr, 'CovInfo-filtered.Rdata'))
     eval(parse(text=paste0('covData <- ', chr, 'CovInfo')))
     #eval(parse(text=paste0('rm(', chr, 'CovInfo)')))
     data.frame('Remaining' = sum(covData$position), 'Total' = length(covData$position), 'chr' = chr)

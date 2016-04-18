@@ -26,8 +26,10 @@ if (!is.null(opt$help)) {
 	q(status=1)
 }
 
-## Default value for fileStyle
+## Default values
 if (is.null(opt$fileStyle)) opt$fileStyle <- 'UCSC'
+if (is.null(opt$totalMapped)) opt$totalMapped <- NULL
+if (is.null(opt$targetSize)) opt$targetSize <- 80e6
 
 ## Identify the data directories
 if(opt$datadir == '/dcs01/ajaffe/ChIPseq/Shulha2013/BED') {
@@ -47,18 +49,29 @@ fullCov <- fullCoverage(files = files, chrs = chrnums, mc.cores = opt$mcores, fi
 message(paste(Sys.time(), 'Saving the full (unfiltered) coverage data'))
 save(fullCov, file='fullCov.Rdata')
 
+rm(fullCov)
+
+fullCov_files <- as.list(dir(pattern = 'chr'))
+names(fullCov_files) <- sapply(fullCov_files, function(x) gsub('CovInfo.Rdata', '', x))
+
 ## Filter the data and save it by chr
-myFilt <- function(chr, rawData, cutoff) {
+myFilt <- function(chr, rawData_file, cutoff, totalMapped = NULL, targetSize = 80e6) {
     library('derfinder')
-    message(paste(Sys.time(), 'Filtering chromosome', chr))
+    
+    ## Load raw data
+    message(paste(Sys.time(), 'Loading raw file', rawData_file, 'for', chr))
+    load(rawData_file)
+    rawData <- get(paste0(chr, 'CovInfo'))
     
 	## Filter the data
-	res <- filterData(data = rawData, cutoff = cutoff, index = NULL)
+    message(paste(Sys.time(), 'Filtering chromosome', chr))
+	res <- filterData(data = rawData$coverage, cutoff = cutoff, index = NULL,
+        totalMapped = totalMapped, targetSize = targetSize)
 	
 	## Save it in a unified name format
 	varname <- paste0(chr, 'CovInfo')
 	assign(varname, res)
-	output <- paste0(varname, '.Rdata')
+	output <- paste0(varname, '-filtered.Rdata')
 	
 	## Save the filtered data
 	save(list = varname, file = output, compress='gzip')
@@ -67,8 +80,9 @@ myFilt <- function(chr, rawData, cutoff) {
 	return(invisible(NULL))
 }
 
+
 message(paste(Sys.time(), 'Filtering and saving the data with cutoff', opt$cutoff))
-filteredCov <- bpmapply(myFilt, names(fullCov), fullCov, BPPARAM = SnowParam(opt$mcores, outfile = Sys.getenv('SGE_STDERR_PATH')), MoreArgs = list(cutoff = opt$cutoff))
+filteredCov <- bpmapply(myFilt, names(fullCov_files), fullCov_files, BPPARAM = SnowParam(workers = opt$mcores), MoreArgs = list(cutoff = opt$cutoff, totalMapped = opt$totalMapped, targetSize = opt$targetSize))
 
 ## Done!
 proc.time()

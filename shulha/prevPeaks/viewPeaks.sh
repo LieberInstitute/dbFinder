@@ -9,7 +9,7 @@ date
 mkdir -p logs
 
 # Generate HTML
-module load R/3.1.x
+module load R/3.3
 Rscript -e "library(rmarkdown); render('viewPeaks.Rmd', clean = FALSE)"
 
 mv visPeaks.* logs/

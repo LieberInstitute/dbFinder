@@ -931,11 +931,11 @@ library('bumphunter')</code></pre><button class="message R toggle btn btn-xs btn
 </button><pre style=""><code class="source r">library('devtools')
 
 ## Load data
-load('/dcs01/ajaffe/Brain/derRuns/derfinderExample/derGenomicState/GenomicState.Hsapiens.UCSC.hg19.knownGene.Rdata')
+load('/dcl01/lieber/ajaffe/derRuns/derfinderExample/derGenomicState/GenomicState.Hsapiens.UCSC.hg19.knownGene.Rdata')
 load('neunPeaks.Rdata')
 load(file.path('..', 'CoverageInfo', 'fullCov.Rdata'))
-load(file.path('..', 'derAnalysis', 'run4-v1.0.10', 'groupInfo.Rdata'))
-load(file.path('..', 'derAnalysis', 'run4-v1.0.10', 'colsubset.Rdata'))
+load(file.path('..', 'derAnalysis', 'run5-v1.5.33', 'groupInfo.Rdata'))
+load(file.path('..', 'derAnalysis', 'run5-v1.5.33', 'colsubset.Rdata'))
 
 ## Keep only samples used
 fullCov <- lapply(fullCov, function(x) { x[, colsubset]})

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Usage
-# sh step2-makeModels.sh shulha run4-v1.0.10
+# sh step2-makeModels.sh shulha run5-v1.5.33
 
 # Define variables
 EXPERIMENT=$1
@@ -9,7 +9,7 @@ SHORT="derMod-${EXPERIMENT}"
 PREFIX=$2
 
 # Directories
-ROOTDIR=/dcs01/ajaffe/Brain/derRuns/derChIP
+ROOTDIR=/dcl01/lieber/ajaffe/derRuns/derChIP
 MAINDIR=${ROOTDIR}/${EXPERIMENT}
 WDIR=${MAINDIR}/derAnalysis
 
@@ -32,7 +32,7 @@ mkdir -p ${WDIR}/${outdir}/logs
 
 # merge results
 cd ${WDIR}/${outdir}/
-module load R/3.1.x
+module load R/3.3
 Rscript ${ROOTDIR}/step2-makeModels.R -e "${EXPERIMENT}"
 
 # Move log files into the logs directory

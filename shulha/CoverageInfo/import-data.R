@@ -49,18 +49,45 @@ names(fullCov) <- chrs
 ## Save the coverage data
 save(fullCov, file = 'fullCov.Rdata')
 
+
+## Save unfiltered chrs individually
+xx <- lapply(chrs, function(chr) {
+    varname <- paste0(chr, 'CovInfo')
+    res <- list('coverage' = fullCov[[chr]], 'position' = NULL)
+    assign(varname, res)
+    output <- paste0(varname, '.Rdata')
+    
+    ## Save the raw data
+    save(list = varname, file = output, compress = 'gzip')
+    
+    ## Finish
+    return(invisible(NULL))
+})
+
+## Proceed to filter the coverage data
+rm(fullCov)
+
+fullCov_files <- as.list(dir(pattern = 'chr'))
+names(fullCov_files) <- sapply(fullCov_files, function(x) gsub('CovInfo.Rdata', '', x))
+
 ## Filter the data and save it by chr
-myFilt <- function(chr, rawData, cutoff) {
+myFilt <- function(chr, rawData_file, cutoff, totalMapped = NULL, targetSize = 80e6) {
     library('derfinder')
-    message(paste(Sys.time(), 'Filtering chromosome', chr))
+    
+    ## Load raw data
+    message(paste(Sys.time(), 'Loading raw file', rawData_file, 'for', chr))
+    load(rawData_file)
+    rawData <- get(paste0(chr, 'CovInfo'))
     
 	## Filter the data
-	res <- filterData(data = rawData, cutoff = cutoff, index = NULL)
+    message(paste(Sys.time(), 'Filtering chromosome', chr))
+	res <- filterData(data = rawData$coverage, cutoff = cutoff, index = NULL,
+        totalMapped = totalMapped, targetSize = targetSize)
 	
 	## Save it in a unified name format
 	varname <- paste0(chr, 'CovInfo')
 	assign(varname, res)
-	output <- paste0(varname, '.Rdata')
+	output <- paste0(varname, '-filtered.Rdata')
 	
 	## Save the filtered data
 	save(list = varname, file = output, compress='gzip')
@@ -69,12 +96,11 @@ myFilt <- function(chr, rawData, cutoff) {
 	return(invisible(NULL))
 }
 
-message(paste(Sys.time(), 'Filtering and saving the data with cutoff', 2))
-filteredCov <- bpmapply(myFilt, names(fullCov), fullCov, BPPARAM = SnowParam(workers = 10), MoreArgs = list(cutoff = 2))
 
-source('check-filter.R')
+message(paste(Sys.time(), 'Filtering and saving the data with cutoff', opt$cutoff))
+filteredCov <- bpmapply(myFilt, names(fullCov_files), fullCov_files, BPPARAM = SnowParam(workers = opt$mcores), MoreArgs = list(cutoff = opt$cutoff))
 
-## Reproducibility
+## Done!
 proc.time()
 options(width = 120)
 session_info()
