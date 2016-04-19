@@ -14,6 +14,12 @@ Do differentially bound peaks found via `derfinder` overlap the published list o
 
 # Setup
 
+```{r 'setup', dev = 'CairoPNG'}
+library('knitr')
+opts_chunk$set(dev = 'CairoPNG')
+```
+
+
 ```{r}
 library('GenomicRanges')
 library('devtools')

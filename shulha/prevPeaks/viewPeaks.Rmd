@@ -11,6 +11,12 @@ Visualize Neun+ peaks
 
 # Setup
 
+```{r 'setup', dev = 'CairoPNG'}
+library('knitr')
+opts_chunk$set(dev = 'CairoPNG')
+```
+
+
 ```{r}
 library('GenomicRanges')
 library('derfinder')
