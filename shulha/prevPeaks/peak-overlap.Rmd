@@ -32,6 +32,21 @@ ders <- lapply(runs, function(path) {
 names(ders) <- runs
 ```
 
+This is the actual run setup:
+
+```{r, results = 'asis'}
+df <- data.frame(
+    Run = runs,
+    cutoffData = rep(c(5, 2), c(1, 4)),
+    cutoffF = c(1e-04, 0.05, 0.01, 0.01, 0.05),
+    scalefac = c(32, 32, 32, 1, 32),
+    smooth = rep(c(FALSE, TRUE), c(4, 1)),
+    minNum = rep(c(NA, 36), c(4, 1))
+)
+kable(df, format = 'markdown')
+```
+
+
 
 # Overlap: derfinder to peaks
 
