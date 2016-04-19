@@ -97,8 +97,8 @@ myFilt <- function(chr, rawData_file, cutoff, totalMapped = NULL, targetSize = 8
 }
 
 
-message(paste(Sys.time(), 'Filtering and saving the data with cutoff', opt$cutoff))
-filteredCov <- bpmapply(myFilt, names(fullCov_files), fullCov_files, BPPARAM = SnowParam(workers = opt$mcores), MoreArgs = list(cutoff = opt$cutoff))
+message(paste(Sys.time(), 'Filtering and saving the data with cutoff', 2))
+filteredCov <- bpmapply(myFilt, names(fullCov_files), fullCov_files, BPPARAM = SnowParam(workers = 10), MoreArgs = list(cutoff = 2))
 
 ## Done!
 proc.time()
