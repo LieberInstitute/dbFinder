@@ -53,8 +53,11 @@ idx <- neunPeaks.pad$Direction == 'Up'
 ## Get region coverage
 regionCov <- getRegionCoverage(fullCov, neunPeaks.pad[idx])
 
+## Genes
+genes <- annotateTranscripts(txdb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+
 ## Nearest annotation
-annoNear <- annotateNearest(neunPeaks.pad[idx], 'hg19')
+annoNear <- matchGenes(neunPeaks.pad[idx], subject = genes)
 
 ## Genomic states
 annoReg <- annotateRegions(neunPeaks.pad[idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
@@ -73,7 +76,7 @@ dev.off()
 regionCov <- getRegionCoverage(fullCov, neunPeaks.pad[!idx])
 
 ## Nearest annotation
-annoNear <- annotateNearest(neunPeaks.pad[!idx], 'hg19')
+annoNear <- matchGenes(neunPeaks.pad[!idx], genes)
 
 ## Genomic states
 annoReg <- annotateRegions(neunPeaks.pad[!idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)
