@@ -865,59 +865,180 @@
 <div class="container">
 <div class="row row-offcanvas row-offcanvas-right">
 <div class="contents col-xs-12 col-md-10">
-<h1>Overlap with Neun+ peaks</h1>
+<h1 id="overlap-with-neun-peaks">Overlap with Neun+ peaks</h1>
 <p>Do differentially bound peaks found via <code>derfinder</code> overlap the published list of Neun+ peaks?</p>
-<h1>Setup</h1>
+<h1 id="setup">Setup</h1>
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-up"></span> R source
+</button>
+<pre style="display:none"><code class="source r">library('knitr')
+opts_chunk$set(dev = 'CairoPNG')</code></pre>
+</div>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
 </button>
 <pre style=""><code class="source r">library('GenomicRanges')</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
-<span class="glyphicon glyphicon-chevron-down"></span> R message
+<span class="glyphicon glyphicon-chevron-up"></span> R message
 </button>
-<pre style=""><code class="message r">## Loading required package: BiocGenerics
-## Loading required package: parallel
-## 
+<pre style="display:none"><code class="message r">## Loading required package: BiocGenerics
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## Loading required package: parallel
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## 
 ## Attaching package: 'BiocGenerics'
-## 
-## The following objects are masked from 'package:parallel':
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## The following objects are masked from 'package:parallel':
 ## 
 ##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
 ##     clusterExport, clusterMap, parApply, parCapply, parLapply,
 ##     parLapplyLB, parRapply, parSapply, parSapplyLB
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## The following objects are masked from 'package:stats':
 ## 
-## The following object is masked from 'package:stats':
+##     IQR, mad, xtabs
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## The following objects are masked from 'package:base':
 ## 
-##     xtabs
+##     anyDuplicated, append, as.data.frame, cbind, colnames,
+##     do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+##     grepl, intersect, is.unsorted, lapply, lengths, Map, mapply,
+##     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+##     Position, rank, rbind, Reduce, rownames, sapply, setdiff,
+##     sort, table, tapply, union, unique, unsplit
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## Loading required package: S4Vectors
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## Loading required package: stats4
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## 
+## Attaching package: 'S4Vectors'
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## The following objects are masked from 'package:base':
 ## 
-## The following objects are masked from 'package:base':
-## 
-##     anyDuplicated, append, as.data.frame, as.vector, cbind,
-##     colnames, do.call, duplicated, eval, evalq, Filter, Find, get,
-##     intersect, is.unsorted, lapply, Map, mapply, match, mget,
-##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
-##     rbind, Reduce, rep.int, rownames, sapply, setdiff, sort,
-##     table, tapply, union, unique, unlist, unsplit
-## 
-## Loading required package: S4Vectors
-## Loading required package: stats4
-## Loading required package: IRanges
-## Loading required package: GenomeInfoDb
+##     colMeans, colSums, expand.grid, rowMeans, rowSums
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## Loading required package: IRanges
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-up"></span> R message
+</button>
+<pre style="display:none"><code class="message r">## Loading required package: GenomeInfoDb
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
 </button>
 <pre style=""><code class="source r">library('devtools')
 load('neunPeaks.Rdata')
-runs <- paste0('run', 1:4, '-v1.0.10')
+runs <- c(paste0('run', 1:4, '-v1.0.10'), 'run5-v1.5.34')
 ders <- lapply(runs, function(path) { 
     load(file.path('..', 'derAnalysis', path, 'fullRegions.Rdata'))
     return(fullRegions)
 })
 names(ders) <- runs</code></pre>
 </div>
-<h1>Overlap: derfinder to peaks</h1>
+<p>This is the actual run setup:</p>
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">df <- data.frame(
+    Run = runs,
+    cutoffData = rep(c(5, 2), c(1, 4)),
+    cutoffF = c(1e-04, 0.05, 0.01, 0.01, 0.05),
+    scalefac = c(32, 32, 32, 1, 32),
+    smooth = rep(c(FALSE, TRUE), c(4, 1)),
+    minNum = rep(c(NA, 36), c(4, 1))
+)
+kable(df, format = 'markdown')</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Run</th>
+<th align="right">cutoffData</th>
+<th align="right">cutoffF</th>
+<th align="right">scalefac</th>
+<th align="left">smooth</th>
+<th align="right">minNum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">run1-v1.0.10</td>
+<td align="right">5</td>
+<td align="right">1e-04</td>
+<td align="right">32</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">run2-v1.0.10</td>
+<td align="right">2</td>
+<td align="right">5e-02</td>
+<td align="right">32</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">run3-v1.0.10</td>
+<td align="right">2</td>
+<td align="right">1e-02</td>
+<td align="right">32</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">run4-v1.0.10</td>
+<td align="right">2</td>
+<td align="right">1e-02</td>
+<td align="right">1</td>
+<td align="left">FALSE</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">run5-v1.5.34</td>
+<td align="right">2</td>
+<td align="right">5e-02</td>
+<td align="right">32</td>
+<td align="left">TRUE</td>
+<td align="right">36</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="overlap-derfinder-to-peaks">Overlap: derfinder to peaks</h1>
 <p>Basic overlap info</p>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
@@ -956,7 +1077,12 @@ lapply(ov, table)</code></pre>
 ## $`run4-v1.0.10`
 ## 
 ##      0      1 
-## 144179  27377
+## 144179  27377 
+## 
+## $`run5-v1.5.34`
+## 
+##     0     1 
+## 29468  3827
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -965,7 +1091,7 @@ lapply(ov, table)</code></pre>
 #lapply(ov.down, table)</code></pre>
 </div>
 <p>The next subsections show the percent of candidate DERs overlapping known Neun+ peaks. First using all the peaks, next broken down by direction of the peak.</p>
-<h2>All</h2>
+<h2 id="all">All</h2>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -978,9 +1104,12 @@ sapply(ov, perc)</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##    34.277620     9.427187    16.692871    15.958055
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    34.277620     9.427187    16.692871    15.958055    11.494218
 </code></pre>
+</div>
+<h3 id="all-at-0.05">All at 0.05</h3>
+<div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
 </button>
@@ -989,8 +1118,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov)</code></pr
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     46.15385     76.92308     80.95238     67.83217
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     46.15385     76.92308     80.95238     67.83217     71.42857
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -999,11 +1128,36 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov)</code></pr
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     45.94595     64.53202     61.72249     49.05983
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     45.94595     64.53202     61.72249     49.05983     57.97101
 </code></pre>
 </div>
-<h2>Up</h2>
+<h3 id="all-at-0.10">All at 0.10</h3>
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Percent of significant DERs overlapping known Neun+ peaks
+mapply(function(der, over) { perc(over[der$fwer < 0.10 ])}, ders, ov)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     50.00000     64.56311     62.43094     65.87838     70.37037
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">mapply(function(der, over) { perc(over[der$qvalues < 0.10 ])}, ders, ov)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     49.18033     57.37705     53.29768     43.12682     53.02166
+</code></pre>
+</div>
+<h2 id="up">Up</h2>
+<h3 id="up-at-0.10">Up at 0.10</h3>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1013,8 +1167,8 @@ sapply(ov.up, perc)</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     5.637394     2.855092     3.671061     4.968640
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     5.637394     2.855092     3.671061     4.968640     1.549782
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1024,8 +1178,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.up)</code><
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     2.564103     0.000000     0.000000    10.489510
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     2.564103     0.000000     0.000000    10.489510     0.000000
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1034,11 +1188,47 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.up)</code><
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##    2.7027027    1.9704433    0.4784689   11.1965812
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    2.7027027    1.9704433    0.4784689   11.1965812    4.0579710
 </code></pre>
 </div>
-<h2>Down</h2>
+<h3 id="up-at-0.10-1">Up at 0.10</h3>
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Percent of candidate DERs overlapping known Neun+ peaks (Up only)
+sapply(ov.up, perc)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     5.637394     2.855092     3.671061     4.968640     1.549782
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Percent of significant DERs overlapping known Neun+ peaks (Up only)
+mapply(function(der, over) { perc(over[der$fwer < 0.10 ])}, ders, ov.up)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    1.8518519    1.9417476    0.5524862   14.5270270    0.0000000
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">mapply(function(der, over) { perc(over[der$qvalues < 0.10 ])}, ders, ov.up)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     1.639344     3.161593     3.743316    10.358180     6.043330
+</code></pre>
+</div>
+<h2 id="down">Down</h2>
+<h3 id="down-at-0.05">Down at 0.05</h3>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1048,8 +1238,8 @@ sapply(ov.down, perc)</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##    28.640227     6.572095    13.021810    10.989415
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    28.640227     6.572095    13.021810    10.989415     9.944436
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1059,8 +1249,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.down)</code
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     43.58974     76.92308     80.95238     57.34266
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     43.58974     76.92308     80.95238     57.34266     71.42857
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1069,13 +1259,48 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.down)</code
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     43.24324     62.56158     61.24402     37.86325
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     43.24324     62.56158     61.24402     37.86325     53.91304
 </code></pre>
 </div>
-<h1>Overlap: Neun+ to derfinder</h1>
+<h3 id="down-at-0.10">Down at 0.10</h3>
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Percent of candidate DERs overlapping known Neun+ peaks (Down only)
+sapply(ov.down, perc)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    28.640227     6.572095    13.021810    10.989415     9.944436
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Percent of significant DERs overlapping known Neun+ peaks (Down only)
+mapply(function(der, over) { perc(over[der$fwer < 0.10 ])}, ders, ov.down)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     48.14815     62.62136     61.87845     51.35135     70.37037
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">mapply(function(der, over) { perc(over[der$qvalues < 0.10 ])}, ders, ov.down)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     47.54098     54.21546     49.55437     32.76864     46.97834
+</code></pre>
+</div>
+<h1 id="overlap-neun-to-derfinder">Overlap: Neun+ to derfinder</h1>
 <p>Do Neun+ peaks overlap regions found by the <code>derfinder</code> runs?</p>
-<h2>All</h2>
+<h2 id="all-1">All</h2>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1087,8 +1312,8 @@ sapply(ders, function(der) {
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     25.75627     99.56785     96.28349     98.96283
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     25.75627     99.56785     96.28349     98.96283     62.66206
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1099,8 +1324,8 @@ sapply(ders, function(der) {
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     19.03614     98.79518     91.08434     98.31325
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     19.03614     98.79518     91.08434     98.31325     27.22892
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1111,11 +1336,12 @@ sapply(ders, function(der) {
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     29.51482    100.00000     99.19137     99.32615
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     29.51482    100.00000     99.19137     99.32615     82.47978
 </code></pre>
 </div>
-<h2>FWER</h2>
+<h2 id="fwer">FWER</h2>
+<h3 id="fwer-at-0.05">FWER at 0.05</h3>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1127,8 +1353,8 @@ sapply(ders, function(der) {
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##    0.8643042    2.9386344    1.1235955    4.5808124
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    0.8643042    2.9386344    1.1235955    4.5808124    0.3457217
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1139,8 +1365,8 @@ sapply(ders, function(der) {
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##    0.2409639    0.0000000    0.0000000    2.1686747
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    0.2409639    0.0000000    0.0000000    2.1686747    0.0000000
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1151,57 +1377,166 @@ sapply(ders, function(der) {
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     1.212938     4.582210     1.752022     5.929919
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    1.2129380    4.5822102    1.7520216    5.9299191    0.5390836
 </code></pre>
 </div>
-<h2>FDR</h2>
+<h3 id="fwer-at-0.10">FWER at 0.10</h3>
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Percent Neun+ peaks overlapping signicicant DERs (FWER), then Up only, then Down only
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks, der[der$fwer < 0.10 ]))
+})</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     1.296456     7.692308     6.050130     9.248055     1.469317
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Up'], der[der$fwer < 0.10 ]))
+})</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    0.2409639    0.7228916    0.2409639    6.2650602    0.0000000
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Down'], der[der$fwer < 0.10 ]))
+})</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     1.886792    11.590296     9.299191    10.916442     2.291105
+</code></pre>
+</div>
+<h2 id="fdr">FDR</h2>
+<h3 id="fdr-at-0.05">FDR at 0.05</h3>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
 </button>
 <pre style=""><code class="source r">## Percent Neun+ peaks overlapping signicicant DERs (FDR), then Up only, then Down only
 sapply(ders, function(der) {
-    perc(countOverlaps(neunPeaks, der[der$fwer < 0.05 ]))
+    perc(countOverlaps(neunPeaks, der[der$qvalues < 0.05 ]))
 })</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##    0.8643042    2.9386344    1.1235955    4.5808124
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    0.7778738    7.5194468    6.8280035   37.2515125   15.7303371
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
 </button>
 <pre style=""><code class="source r">sapply(ders, function(der) {
-    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Up'], der[der$fwer < 0.05 ]))
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Up'], der[der$qvalues < 0.05 ]))
 })</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##    0.2409639    0.0000000    0.0000000    2.1686747
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    0.2409639    0.7228916    0.2409639   25.0602410    3.1325301
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
 </button>
 <pre style=""><code class="source r">sapply(ders, function(der) {
-    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Down'], der[der$fwer < 0.05 ]))
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Down'], der[der$qvalues < 0.05 ]))
 })</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##     1.212938     4.582210     1.752022     5.929919
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     1.078167    11.320755    10.512129    44.070081    22.776280
 </code></pre>
 </div>
-<h1>derfinder summary</h1>
+<h3 id="fdr-at-0.10">FDR at 0.10</h3>
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Percent Neun+ peaks overlapping signicicant DERs (FDR), then Up only, then Down only
+sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks, der[der$qvalues < 0.10 ]))
+})</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     1.469317    22.385480    13.396716    48.746759    34.053587
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Up'], der[der$qvalues < 0.10 ]))
+})</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    0.2409639    4.8192771    4.3373494   35.1807229   10.8433735
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">sapply(ders, function(der) {
+    perc(countOverlaps(neunPeaks[neunPeaks$Direction == 'Down'], der[der$qvalues < 0.10 ]))
+})</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##     2.156334    32.210243    18.463612    56.334232    47.035040
+</code></pre>
+</div>
+<h1 id="derfinder-summary">derfinder summary</h1>
 <p>Brief summary of number of regions found by <code>derfinder</code> and width distribution for the significant ones.</p>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
 </button>
-<pre style=""><code class="source r">## Length (in bp) summary of DERs
+<pre style=""><code class="source r">## Length (in bp) summary of all candidate DERs
+lapply(ders, function(der) { summary(width(der))})</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## $`run1-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.00    1.00    3.00    5.41    6.00  121.00 
+## 
+## $`run2-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.00    2.00    4.00   10.15   11.00 1648.00 
+## 
+## $`run3-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   2.000   4.000   8.392   9.000 763.000 
+## 
+## $`run4-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   1.000   2.000   4.000   8.401  10.000 534.000 
+## 
+## $`run5-v1.5.34`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.00    5.00   12.00   59.77   31.00 3752.00
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Length (in bp) summary of DERs at 0.05
 lapply(ders, function(der) { summary(width(der[der$fwer < 0.05 ]))})</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
@@ -1220,7 +1555,11 @@ lapply(ders, function(der) { summary(width(der[der$fwer < 0.05 ]))})</code></pre
 ## 
 ## $`run4-v1.0.10`
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    66.0   144.5   171.0   191.0   220.0   534.0
+##    66.0   144.5   171.0   191.0   220.0   534.0 
+## 
+## $`run5-v1.5.34`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1817    2113    2762    2597    2836    3704
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1243,7 +1582,66 @@ lapply(ders, function(der) { summary(width(der[der$fwer < 0.05 ]))})</code></pre
 ## 
 ## $`run4-v1.0.10`
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   26.00   52.00   65.00   75.43   83.00  534.00
+##   26.00   52.00   65.00   75.43   83.00  534.00 
+## 
+## $`run5-v1.5.34`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     541     999    1247    1363    1575    3752
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Length (in bp) summary of DERs at 0.10
+lapply(ders, function(der) { summary(width(der[der$fwer < 0.10 ]))})</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## $`run1-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   25.00   34.25   36.50   39.39   40.00  121.00 
+## 
+## $`run2-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   166.0   268.2   324.0   366.1   408.5  1648.0 
+## 
+## $`run3-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    57.0   130.0   146.0   170.4   171.0   763.0 
+## 
+## $`run4-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    59.0   111.0   136.5   152.1   170.0   534.0 
+## 
+## $`run5-v1.5.34`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1280    1992    2448    2431    2788    3752
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">lapply(ders, function(der) { summary(width(der[der$qvalues < 0.10 ]))})</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## $`run1-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   25.00   34.00   36.00   38.84   40.00  121.00 
+## 
+## $`run2-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    61.0   156.0   192.0   224.5   245.0  1648.0 
+## 
+## $`run3-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    33.0    87.0   104.0   118.4   132.0   763.0 
+## 
+## $`run4-v1.0.10`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   17.00   43.00   52.00   62.03   68.00  534.00 
+## 
+## $`run5-v1.5.34`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     186     649     816     959    1123    3752
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1253,8 +1651,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.05) })</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##           39           52           21          143
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##           39           52           21          143            7
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1263,8 +1661,29 @@ sapply(ders, function(der) { sum(der$fwer < 0.05) })</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##           37          203          209         2340
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##           37          203          209         2340          345
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Number of significant DERs at 0.10
+sapply(ders, function(der) { sum(der$fwer < 0.10) })</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##           54          206          181          296           27
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">sapply(ders, function(der) { sum(der$qvalues < 0.10) })</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##           61          854          561         4132          877
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1274,8 +1693,8 @@ sapply(ders, length)</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##         3530       406887       138652       171556
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##         3530       406887       138652       171556        33295
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1285,8 +1704,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.05) }) / sapply(ders, length) * 10
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##   1.10481586   0.01277996   0.01514583   0.08335471
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##   1.10481586   0.01277996   0.01514583   0.08335471   0.02102418
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1295,11 +1714,32 @@ sapply(ders, function(der) { sum(der$fwer < 0.05) }) / sapply(ders, length) * 10
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 
-##    1.0481586    0.0498910    0.1507371    1.3639861
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    1.0481586    0.0498910    0.1507371    1.3639861    1.0361916
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Percent of significant DERs at 0.10
+sapply(ders, function(der) { sum(der$fwer < 0.10) }) / sapply(ders, length) * 100</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##   1.52974504   0.05062831   0.13054265   0.17253841   0.08109326
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">sapply(ders, function(der) { sum(der$qvalues < 0.10) }) / sapply(ders, length) * 100</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</button>
+<pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
+##    1.7280453    0.2098863    0.4046101    2.4085430    2.6340291
 </code></pre>
 </div>
-<h1>Reproducibility</h1>
+<h1 id="reproducibility">Reproducibility</h1>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1310,46 +1750,53 @@ session_info()</code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## Session info-----------------------------------------------------------------------------------------------------------
+<pre style=""><code class="message r">## Session info -----------------------------------------------------------------------------------------------------------
 </code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">##  setting  value                                             
-##  version  R Under development (unstable) (2014-11-01 r66923)
-##  system   x86_64, darwin10.8.0                              
-##  ui       X11                                               
-##  language (EN)                                              
-##  collate  en_US.UTF-8                                       
-##  tz       America/Detroit
+<pre style=""><code class="output r">##  setting  value                                   
+##  version  R version 3.3.0 beta (2016-04-18 r70508)
+##  system   x86_64, linux-gnu                       
+##  ui       X11                                     
+##  language (EN)                                    
+##  collate  en_US.UTF-8                             
+##  tz       <NA>                                    
+##  date     2016-04-19
 </code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
 </button>
-<pre style=""><code class="message r">## Packages---------------------------------------------------------------------------------------------------------------
+<pre style=""><code class="message r">## Packages ---------------------------------------------------------------------------------------------------------------
 </code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">##  package        * version date       source                                   
-##  BiocGenerics   * 0.13.11 2015-04-03 Bioconductor                             
-##  devtools       * 1.6.1   2014-10-07 CRAN (R 3.2.0)                           
-##  digest           0.6.8   2014-12-31 CRAN (R 3.2.0)                           
-##  evaluate         0.5.5   2014-04-29 CRAN (R 3.2.0)                           
-##  formatR          1.0     2014-08-25 CRAN (R 3.2.0)                           
-##  GenomeInfoDb   * 1.3.16  2015-03-27 Bioconductor                             
-##  GenomicRanges  * 1.19.52 2015-04-04 Bioconductor                             
-##  htmltools        0.2.6   2014-09-08 CRAN (R 3.2.0)                           
-##  IRanges        * 2.1.43  2015-03-07 Bioconductor                             
-##  knitr            1.7     2014-10-13 CRAN (R 3.2.0)                           
-##  knitrBootstrap   1.0.0   2014-11-03 Github (jimhester/knitrBootstrap@76c41f0)
-##  markdown         0.7.4   2014-08-24 CRAN (R 3.2.0)                           
-##  rmarkdown      * 0.5.1   2015-01-26 CRAN (R 3.2.0)                           
-##  rstudioapi       0.3.1   2015-04-07 CRAN (R 3.2.0)                           
-##  S4Vectors      * 0.5.22  2015-03-06 Bioconductor                             
-##  stringr          0.6.2   2012-12-06 CRAN (R 3.2.0)                           
-##  XVector          0.7.4   2015-02-08 Bioconductor                             
-##  yaml             2.1.13  2014-06-12 CRAN (R 3.2.0)
+<pre style=""><code class="output r">##  package        * version  date       source                                   
+##  BiocGenerics   * 0.17.5   2016-04-18 Bioconductor                             
+##  colorout       * 1.1-2    2016-04-02 Github (jalvesaq/colorout@f96c00c)       
+##  devtools       * 1.10.0   2016-01-23 CRAN (R 3.3.0)                           
+##  digest           0.6.9    2016-01-08 CRAN (R 3.3.0)                           
+##  evaluate         0.8.3    2016-03-05 CRAN (R 3.3.0)                           
+##  formatR          1.3      2016-03-05 CRAN (R 3.3.0)                           
+##  GenomeInfoDb   * 1.7.6    2016-04-02 Bioconductor                             
+##  GenomicRanges  * 1.23.27  2016-04-18 Bioconductor                             
+##  highr            0.5.1    2015-09-18 CRAN (R 3.3.0)                           
+##  htmltools        0.3.5    2016-03-21 CRAN (R 3.3.0)                           
+##  IRanges        * 2.5.46   2016-04-18 Bioconductor                             
+##  knitr          * 1.12.3   2016-01-22 CRAN (R 3.3.0)                           
+##  knitrBootstrap   1.0.0    2016-04-02 Github (jimhester/knitrBootstrap@cdaa4a9)
+##  magrittr         1.5      2014-11-22 CRAN (R 3.3.0)                           
+##  markdown         0.7.7    2015-04-22 CRAN (R 3.3.0)                           
+##  memoise          1.0.0    2016-01-29 CRAN (R 3.3.0)                           
+##  Rcpp             0.12.4.5 2016-04-18 local                                    
+##  rmarkdown        0.9.5    2016-02-22 CRAN (R 3.3.0)                           
+##  S4Vectors      * 0.9.51   2016-04-18 Bioconductor                             
+##  stringi          1.0-1    2015-10-22 CRAN (R 3.3.0)                           
+##  stringr          1.0.0    2015-04-30 CRAN (R 3.3.0)                           
+##  XVector          0.11.8   2016-04-11 Bioconductor                             
+##  yaml             2.1.13   2014-06-12 CRAN (R 3.3.0)                           
+##  zlibbioc         1.17.1   2016-03-28 Bioconductor
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1358,7 +1805,7 @@ session_info()</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## [1] "2015-05-13 23:23:02 EDT"
+<pre style=""><code class="output r">## [1] "2016-04-19 19:41:54 EDT"
 </code></pre>
 </div>
 </div>

@@ -1,0 +1,10 @@
+
+
+processing file: viewPeaks.Rmd
+output file: viewPeaks.knit.md
+
+pandoc: Could not find data file templates/default.html
+Error: pandoc document conversion failed with error 97
+In addition: Warning message:
+In grDevices::png(tempfile()) : unable to open connection to X11 display ''
+Execution halted

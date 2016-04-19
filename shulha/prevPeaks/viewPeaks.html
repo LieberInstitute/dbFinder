@@ -861,74 +861,173 @@
   </style>
 </head>
 <body>
-<div id="wrap"><div class="container"><div class="row row-offcanvas row-offcanvas-right"><div class="contents col-xs-12 col-md-10">
+<div id="wrap">
+<div class="container">
+<div class="row row-offcanvas row-offcanvas-right">
+<div class="contents col-xs-12 col-md-10">
 <h1 id="visualize-neun-peaks">Visualize Neun+ peaks</h1>
 <h1 id="setup">Setup</h1>
-<div class="row"><button class="source R toggle btn btn-xs btn-primary">
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">library('GenomicRanges')</code></pre><button class="message R toggle btn btn-xs btn-info">
+</button>
+<pre style=""><code class="source r">library('knitr')
+opts_chunk$set(dev = 'CairoPNG')</code></pre>
+</div>
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">library('GenomicRanges')</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## Loading required package: methods
-## Loading required package: BiocGenerics
-## Loading required package: parallel
-## 
+</button>
+<pre style=""><code class="message r">## Loading required package: methods
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: BiocGenerics
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: parallel
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 
 ## Attaching package: 'BiocGenerics'
-## 
-## The following objects are masked from 'package:parallel':
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## The following objects are masked from 'package:parallel':
 ## 
 ##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
 ##     clusterExport, clusterMap, parApply, parCapply, parLapply,
 ##     parLapplyLB, parRapply, parSapply, parSapplyLB
-## 
-## The following object is masked from 'package:stats':
-## 
-##     xtabs
-## 
-## The following objects are masked from 'package:base':
-## 
-##     anyDuplicated, append, as.data.frame, as.vector, cbind,
-##     colnames, do.call, duplicated, eval, evalq, Filter, Find, get,
-##     intersect, is.unsorted, lapply, Map, mapply, match, mget,
-##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
-##     rbind, Reduce, rep.int, rownames, sapply, setdiff, sort,
-##     table, tapply, union, unique, unlist, unsplit
-## 
-## Loading required package: S4Vectors
-## Loading required package: stats4
-## Loading required package: IRanges
-## Loading required package: GenomeInfoDb
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">library('derfinder')
-library('derfinderPlot')
-library('bumphunter')</code></pre><button class="message R toggle btn btn-xs btn-info">
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## Loading required package: foreach
-## Loading required package: iterators
-## Loading required package: locfit
-## locfit 1.5-9.1    2013-03-22
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">library('TxDb.Hsapiens.UCSC.hg19.knownGene')</code></pre><button class="message R toggle btn btn-xs btn-info">
+</button>
+<pre style=""><code class="message r">## The following objects are masked from 'package:stats':
+## 
+##     IQR, mad, xtabs
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## Loading required package: GenomicFeatures
-## Loading required package: AnnotationDbi
-## Loading required package: Biobase
-## Welcome to Bioconductor
+</button>
+<pre style=""><code class="message r">## The following objects are masked from 'package:base':
+## 
+##     anyDuplicated, append, as.data.frame, cbind, colnames,
+##     do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+##     grepl, intersect, is.unsorted, lapply, lengths, Map, mapply,
+##     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,
+##     Position, rank, rbind, Reduce, rownames, sapply, setdiff,
+##     sort, table, tapply, union, unique, unsplit
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: S4Vectors
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: stats4
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 
+## Attaching package: 'S4Vectors'
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## The following objects are masked from 'package:base':
+## 
+##     colMeans, colSums, expand.grid, rowMeans, rowSums
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: IRanges
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: GenomeInfoDb
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">library('derfinder')
+library('derfinderPlot')</code></pre>
+<button class="warning R toggle btn btn-xs btn-warning">
+<span class="glyphicon glyphicon-chevron-down"></span> R warning
+</button>
+<pre style=""><code class="warning r">## Warning: replacing previous import 'ggplot2::Position' by
+## 'BiocGenerics::Position' when loading 'ggbio'
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">library('bumphunter')</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: foreach
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: iterators
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: locfit
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## locfit 1.5-9.1   2013-03-22
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">library('TxDb.Hsapiens.UCSC.hg19.knownGene')</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: GenomicFeatures
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: AnnotationDbi
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: Biobase
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Welcome to Bioconductor
 ## 
 ##     Vignettes contain introductory material; view with
 ##     'browseVignettes()'. To cite Bioconductor, see
 ##     'citation("Biobase")', and for packages 'citation("pkgname")'.
-## 
-## 
-## Attaching package: 'AnnotationDbi'
-## 
-## The following object is masked from 'package:GenomeInfoDb':
-## 
-##     species
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">library('devtools')
+</button>
+<pre style=""><code class="source r">library('devtools')
 
 ## Load data
 load('/dcl01/lieber/ajaffe/derRuns/derfinderExample/derGenomicState/GenomicState.Hsapiens.UCSC.hg19.knownGene.Rdata')
@@ -943,475 +1042,1020 @@ fullCov <- lapply(fullCov, function(x) { x[, colsubset]})
 ## Add padding to peaks
 neunPeaks.pad <- resize(neunPeaks, round(width(neunPeaks) * 1.1, 0), fix = 'center')
 ## A small fraction overlaps
-table(countOverlaps(neunPeaks.pad) - 1)</code></pre><button class="output R toggle btn btn-xs btn-success">
+table(countOverlaps(neunPeaks.pad) - 1)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button><pre style=""><code class="output r">## 
+</button>
+<pre style=""><code class="output r">## 
 ##    0    1 
 ## 1147   10
-</code></pre></div>
-
+</code></pre>
+</div>
 <h1 id="plots">Plots</h1>
 <p>Region coverage plots for Neun+ peaks separated by direction: top 100 regions ordered by log ratio for each direction. Plots have 10% padding (5% on each end).</p>
 <h2 id="up">Up</h2>
-<div class="row"><button class="source R toggle btn btn-xs btn-primary">
+<div class="row">
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">idx <- neunPeaks.pad$Direction == 'Up'
+</button>
+<pre style=""><code class="source r">idx <- neunPeaks.pad$Direction == 'Up'
 
 ## Get region coverage
-regionCov <- getRegionCoverage(fullCov, neunPeaks.pad[idx])</code></pre><button class="message R toggle btn btn-xs btn-info">
+regionCov <- getRegionCoverage(fullCov, neunPeaks.pad[idx])</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## 2015-05-14 22:33:33 getRegionCoverage: processing chr1
-## 2015-05-14 22:33:34 getRegionCoverage: done processing chr1
-## 2015-05-14 22:33:34 getRegionCoverage: processing chr2
-## 2015-05-14 22:33:35 getRegionCoverage: done processing chr2
-## 2015-05-14 22:33:35 getRegionCoverage: processing chr3
-## 2015-05-14 22:33:35 getRegionCoverage: done processing chr3
-## 2015-05-14 22:33:35 getRegionCoverage: processing chr4
-## 2015-05-14 22:33:36 getRegionCoverage: done processing chr4
-## 2015-05-14 22:33:36 getRegionCoverage: processing chr5
-## 2015-05-14 22:33:37 getRegionCoverage: done processing chr5
-## 2015-05-14 22:33:37 getRegionCoverage: processing chr6
-## 2015-05-14 22:33:37 getRegionCoverage: done processing chr6
-## 2015-05-14 22:33:37 getRegionCoverage: processing chr7
-## 2015-05-14 22:33:38 getRegionCoverage: done processing chr7
-## 2015-05-14 22:33:38 getRegionCoverage: processing chr8
-## 2015-05-14 22:33:38 getRegionCoverage: done processing chr8
-## 2015-05-14 22:33:38 getRegionCoverage: processing chr9
-## 2015-05-14 22:33:39 getRegionCoverage: done processing chr9
-## 2015-05-14 22:33:39 getRegionCoverage: processing chr10
-## 2015-05-14 22:33:39 getRegionCoverage: done processing chr10
-## 2015-05-14 22:33:39 getRegionCoverage: processing chr11
-## 2015-05-14 22:33:40 getRegionCoverage: done processing chr11
-## 2015-05-14 22:33:40 getRegionCoverage: processing chr12
-## 2015-05-14 22:33:40 getRegionCoverage: done processing chr12
-## 2015-05-14 22:33:41 getRegionCoverage: processing chr13
-## 2015-05-14 22:33:41 getRegionCoverage: done processing chr13
-## 2015-05-14 22:33:41 getRegionCoverage: processing chr14
-## 2015-05-14 22:33:41 getRegionCoverage: done processing chr14
-## 2015-05-14 22:33:41 getRegionCoverage: processing chr15
-## 2015-05-14 22:33:42 getRegionCoverage: done processing chr15
-## 2015-05-14 22:33:42 getRegionCoverage: processing chr16
-## 2015-05-14 22:33:42 getRegionCoverage: done processing chr16
-## 2015-05-14 22:33:42 getRegionCoverage: processing chr17
-## 2015-05-14 22:33:43 getRegionCoverage: done processing chr17
-## 2015-05-14 22:33:43 getRegionCoverage: processing chr18
-## 2015-05-14 22:33:43 getRegionCoverage: done processing chr18
-## 2015-05-14 22:33:43 getRegionCoverage: processing chr19
-## 2015-05-14 22:33:44 getRegionCoverage: done processing chr19
-## 2015-05-14 22:33:44 getRegionCoverage: processing chr20
-## 2015-05-14 22:33:44 getRegionCoverage: done processing chr20
-## 2015-05-14 22:33:44 getRegionCoverage: processing chr21
-## 2015-05-14 22:33:45 getRegionCoverage: done processing chr21
-## 2015-05-14 22:33:45 getRegionCoverage: processing chr22
-## 2015-05-14 22:33:45 getRegionCoverage: done processing chr22
-## 2015-05-14 22:33:45 getRegionCoverage: processing chrX
-## 2015-05-14 22:33:46 getRegionCoverage: done processing chrX
-## 2015-05-14 22:33:46 getRegionCoverage: processing chrY
-## 2015-05-14 22:33:46 getRegionCoverage: done processing chrY
-## 2015-05-14 22:33:46 getRegionCoverage: processing chrM
-## 2015-05-14 22:33:46 getRegionCoverage: done processing chrM
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:52 getRegionCoverage: processing chr1
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:52 getRegionCoverage: done processing chr1
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:53 getRegionCoverage: processing chr2
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:53 getRegionCoverage: done processing chr2
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:53 getRegionCoverage: processing chr3
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:53 getRegionCoverage: done processing chr3
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:53 getRegionCoverage: processing chr4
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:53 getRegionCoverage: done processing chr4
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:53 getRegionCoverage: processing chr5
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: done processing chr5
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: processing chr6
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: done processing chr6
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: processing chr7
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: done processing chr7
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: processing chr8
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: done processing chr8
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: processing chr9
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: done processing chr9
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: processing chr10
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: done processing chr10
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:54 getRegionCoverage: processing chr11
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: done processing chr11
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: processing chr12
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: done processing chr12
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: processing chr13
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: done processing chr13
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: processing chr14
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: done processing chr14
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: processing chr15
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: done processing chr15
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: processing chr16
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: done processing chr16
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: processing chr17
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: done processing chr17
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:55 getRegionCoverage: processing chr18
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: done processing chr18
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: processing chr19
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: done processing chr19
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: processing chr20
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: done processing chr20
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: processing chr21
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: done processing chr21
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: processing chr22
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: done processing chr22
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: processing chrX
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: done processing chrX
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: processing chrY
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: done processing chrY
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: processing chrM
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:56:56 getRegionCoverage: done processing chrM
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">## Nearest annotation
-annoNear <- annotateNearest(neunPeaks.pad[idx], 'hg19')</code></pre><button class="output R toggle btn btn-xs btn-success">
+</button>
+<pre style=""><code class="source r">## Genes
+genes <- annotateTranscripts(txdb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)</code></pre>
+<button class="warning R toggle btn btn-xs btn-warning">
+<span class="glyphicon glyphicon-chevron-down"></span> R warning
+</button>
+<pre style=""><code class="warning r">## Warning:   Calling species() on a TxDb object is *deprecated*.
+##   Please use organism() instead.
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## No annotationPackage supplied. Trying org.Hs.eg.db.
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Loading required package: org.Hs.eg.db
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Getting TSS and TSE.
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Getting CSS and CSE.
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Getting exons.
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## Annotating genes.
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</button>
+<pre style=""><code class="source r">## Nearest annotation
+annoNear <- matchGenes(neunPeaks.pad[idx], subject = genes)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button><pre style=""><code class="output r">## Matching regions to genes.
-## nearestgene: loading bumphunter hg19 transcript database
-## finding nearest transcripts...
-## AnnotatingDone.
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</button>
+<pre style=""><code class="output r">## ....
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">## Genomic states
-annoReg <- annotateRegions(neunPeaks.pad[idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)</code></pre><button class="message R toggle btn btn-xs btn-info">
+</button>
+<pre style=""><code class="source r">## Genomic states
+annoReg <- annotateRegions(neunPeaks.pad[idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## 2015-05-14 22:34:16 annotateRegions: counting
-## 2015-05-14 22:34:20 annotateRegions: annotating
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:58:21 annotateRegions: counting
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:58:22 annotateRegions: annotating
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">## Plots
+</button>
+<pre style=""><code class="source r">## Plots
 pdf('neunPeaks_up_top100.pdf')
-plotRegionCoverage(neunPeaks.pad[idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, head(order(abs(neunPeaks.pad$LogRatio[idx]), decreasing = TRUE), n = 100))</code></pre><button class="message R toggle btn btn-xs btn-info">
+plotRegionCoverage(neunPeaks.pad[idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, head(order(abs(neunPeaks.pad$LogRatio[idx]), decreasing = TRUE), n = 100))</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## 2015-05-14 22:34:22 plotRegionCoverage: extracting Tx info
-## 2015-05-14 22:34:33 plotRegionCoverage: getting Tx plot info
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:58:23 plotRegionCoverage: extracting Tx info
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:58:27 plotRegionCoverage: getting Tx plot info
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">dev.off()</code></pre><button class="output R toggle btn btn-xs btn-success">
+</button>
+<pre style=""><code class="source r">dev.off()</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button><pre style=""><code class="output r">## pdf 
+</button>
+<pre style=""><code class="output r">## pdf 
 ##   2
-</code></pre></div>
-
-
+</code></pre>
+</div>
 <h2 id="down">Down</h2>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">## Get region coverage
-regionCov <- getRegionCoverage(fullCov, neunPeaks.pad[!idx])</code></pre><button class="message R toggle btn btn-xs btn-info">
+</button>
+<pre style=""><code class="source r">## Get region coverage
+regionCov <- getRegionCoverage(fullCov, neunPeaks.pad[!idx])</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## 2015-05-14 22:35:55 getRegionCoverage: processing chr1
-## 2015-05-14 22:35:56 getRegionCoverage: done processing chr1
-## 2015-05-14 22:35:56 getRegionCoverage: processing chr2
-## 2015-05-14 22:35:57 getRegionCoverage: done processing chr2
-## 2015-05-14 22:35:57 getRegionCoverage: processing chr3
-## 2015-05-14 22:35:57 getRegionCoverage: done processing chr3
-## 2015-05-14 22:35:57 getRegionCoverage: processing chr4
-## 2015-05-14 22:35:58 getRegionCoverage: done processing chr4
-## 2015-05-14 22:35:58 getRegionCoverage: processing chr5
-## 2015-05-14 22:35:58 getRegionCoverage: done processing chr5
-## 2015-05-14 22:35:58 getRegionCoverage: processing chr6
-## 2015-05-14 22:35:59 getRegionCoverage: done processing chr6
-## 2015-05-14 22:35:59 getRegionCoverage: processing chr7
-## 2015-05-14 22:36:00 getRegionCoverage: done processing chr7
-## 2015-05-14 22:36:00 getRegionCoverage: processing chr8
-## 2015-05-14 22:36:00 getRegionCoverage: done processing chr8
-## 2015-05-14 22:36:00 getRegionCoverage: processing chr9
-## 2015-05-14 22:36:01 getRegionCoverage: done processing chr9
-## 2015-05-14 22:36:01 getRegionCoverage: processing chr10
-## 2015-05-14 22:36:01 getRegionCoverage: done processing chr10
-## 2015-05-14 22:36:01 getRegionCoverage: processing chr11
-## 2015-05-14 22:36:02 getRegionCoverage: done processing chr11
-## 2015-05-14 22:36:02 getRegionCoverage: processing chr12
-## 2015-05-14 22:36:03 getRegionCoverage: done processing chr12
-## 2015-05-14 22:36:03 getRegionCoverage: processing chr13
-## 2015-05-14 22:36:03 getRegionCoverage: done processing chr13
-## 2015-05-14 22:36:03 getRegionCoverage: processing chr14
-## 2015-05-14 22:36:04 getRegionCoverage: done processing chr14
-## 2015-05-14 22:36:04 getRegionCoverage: processing chr15
-## 2015-05-14 22:36:04 getRegionCoverage: done processing chr15
-## 2015-05-14 22:36:04 getRegionCoverage: processing chr16
-## 2015-05-14 22:36:05 getRegionCoverage: done processing chr16
-## 2015-05-14 22:36:05 getRegionCoverage: processing chr17
-## 2015-05-14 22:36:05 getRegionCoverage: done processing chr17
-## 2015-05-14 22:36:05 getRegionCoverage: processing chr18
-## 2015-05-14 22:36:06 getRegionCoverage: done processing chr18
-## 2015-05-14 22:36:06 getRegionCoverage: processing chr19
-## 2015-05-14 22:36:07 getRegionCoverage: done processing chr19
-## 2015-05-14 22:36:07 getRegionCoverage: processing chr20
-## 2015-05-14 22:36:07 getRegionCoverage: done processing chr20
-## 2015-05-14 22:36:07 getRegionCoverage: processing chr21
-## 2015-05-14 22:36:08 getRegionCoverage: done processing chr21
-## 2015-05-14 22:36:08 getRegionCoverage: processing chr22
-## 2015-05-14 22:36:08 getRegionCoverage: done processing chr22
-## 2015-05-14 22:36:08 getRegionCoverage: processing chrX
-## 2015-05-14 22:36:09 getRegionCoverage: done processing chrX
-## 2015-05-14 22:36:09 getRegionCoverage: processing chrY
-## 2015-05-14 22:36:09 getRegionCoverage: done processing chrY
-## 2015-05-14 22:36:09 getRegionCoverage: processing chrM
-## 2015-05-14 22:36:09 getRegionCoverage: done processing chrM
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:19 getRegionCoverage: processing chr1
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:19 getRegionCoverage: done processing chr1
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:19 getRegionCoverage: processing chr2
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:19 getRegionCoverage: done processing chr2
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:19 getRegionCoverage: processing chr3
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:20 getRegionCoverage: done processing chr3
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:20 getRegionCoverage: processing chr4
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:20 getRegionCoverage: done processing chr4
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:20 getRegionCoverage: processing chr5
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:20 getRegionCoverage: done processing chr5
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:20 getRegionCoverage: processing chr6
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:20 getRegionCoverage: done processing chr6
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:20 getRegionCoverage: processing chr7
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:21 getRegionCoverage: done processing chr7
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:21 getRegionCoverage: processing chr8
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:21 getRegionCoverage: done processing chr8
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:21 getRegionCoverage: processing chr9
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:21 getRegionCoverage: done processing chr9
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:21 getRegionCoverage: processing chr10
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:21 getRegionCoverage: done processing chr10
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:21 getRegionCoverage: processing chr11
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:21 getRegionCoverage: done processing chr11
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: processing chr12
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: done processing chr12
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: processing chr13
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: done processing chr13
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: processing chr14
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: done processing chr14
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: processing chr15
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: done processing chr15
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: processing chr16
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:22 getRegionCoverage: done processing chr16
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: processing chr17
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: done processing chr17
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: processing chr18
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: done processing chr18
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: processing chr19
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: done processing chr19
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: processing chr20
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: done processing chr20
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: processing chr21
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: done processing chr21
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:23 getRegionCoverage: processing chr22
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:24 getRegionCoverage: done processing chr22
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:24 getRegionCoverage: processing chrX
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:24 getRegionCoverage: done processing chrX
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:24 getRegionCoverage: processing chrY
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:24 getRegionCoverage: done processing chrY
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:24 getRegionCoverage: processing chrM
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 18:59:24 getRegionCoverage: done processing chrM
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">## Nearest annotation
-annoNear <- annotateNearest(neunPeaks.pad[!idx], 'hg19')</code></pre><button class="output R toggle btn btn-xs btn-success">
+</button>
+<pre style=""><code class="source r">## Nearest annotation
+annoNear <- matchGenes(neunPeaks.pad[!idx], genes)</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button><pre style=""><code class="output r">## Matching regions to genes.
-## nearestgene: loading bumphunter hg19 transcript database
-## finding nearest transcripts...
-## AnnotatingDone.
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</button>
+<pre style=""><code class="output r">## .......
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">## Genomic states
-annoReg <- annotateRegions(neunPeaks.pad[!idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)</code></pre><button class="message R toggle btn btn-xs btn-info">
+</button>
+<pre style=""><code class="source r">## Genomic states
+annoReg <- annotateRegions(neunPeaks.pad[!idx], GenomicState.Hsapiens.UCSC.hg19.knownGene$fullGenome)</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## 2015-05-14 22:37:01 annotateRegions: counting
-## 2015-05-14 22:37:05 annotateRegions: annotating
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</button>
+<pre style=""><code class="message r">## 2016-04-19 19:01:33 annotateRegions: counting
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 19:01:34 annotateRegions: annotating
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">## Plots
+</button>
+<pre style=""><code class="source r">## Plots
 pdf('neunPeaks_down_top100.pdf')
-plotRegionCoverage(neunPeaks.pad[!idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, head(order(abs(neunPeaks.pad$LogRatio[!idx]), decreasing = TRUE), n = 100))</code></pre><button class="message R toggle btn btn-xs btn-info">
+plotRegionCoverage(neunPeaks.pad[!idx], regionCov, groupInfo, annoNear, annoReg, TxDb.Hsapiens.UCSC.hg19.knownGene, head(order(abs(neunPeaks.pad$LogRatio[!idx]), decreasing = TRUE), n = 100))</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## 2015-05-14 22:37:07 plotRegionCoverage: extracting Tx info
-## 2015-05-14 22:37:16 plotRegionCoverage: getting Tx plot info
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</button>
+<pre style=""><code class="message r">## 2016-04-19 19:01:34 plotRegionCoverage: extracting Tx info
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
+<span class="glyphicon glyphicon-chevron-down"></span> R message
+</button>
+<pre style=""><code class="message r">## 2016-04-19 19:01:39 plotRegionCoverage: getting Tx plot info
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">dev.off()</code></pre><button class="output R toggle btn btn-xs btn-success">
+</button>
+<pre style=""><code class="source r">dev.off()</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button><pre style=""><code class="output r">## pdf 
+</button>
+<pre style=""><code class="output r">## pdf 
 ##   2
-</code></pre></div>
-
-<h1>Reproducibility</h1>
+</code></pre>
+</div>
+<h1 id="reproducibility">Reproducibility</h1>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">## Reproducibility info
+</button>
+<pre style=""><code class="source r">## Reproducibility info
 options(width = 120)
-session_info()</code></pre><button class="message R toggle btn btn-xs btn-info">
+session_info()</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## Session info -----------------------------------------------------------------------------------------------------------
-</code></pre><button class="output R toggle btn btn-xs btn-success">
+</button>
+<pre style=""><code class="message r">## Session info -----------------------------------------------------------------------------------------------------------
+</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button><pre style=""><code class="output r">##  setting  value                                      
-##  version  R version 3.1.1 Patched (2014-10-16 r66782)
-##  system   x86_64, linux-gnu                          
-##  ui       X11                                        
-##  language (EN)                                       
-##  collate  en_US.UTF-8                                
-##  tz       <NA>
-</code></pre><button class="message R toggle btn btn-xs btn-info">
+</button>
+<pre style=""><code class="output r">##  setting  value                                   
+##  version  R version 3.3.0 beta (2016-04-18 r70508)
+##  system   x86_64, linux-gnu                       
+##  ui       X11                                     
+##  language (EN)                                    
+##  collate  en_US.UTF-8                             
+##  tz       <NA>                                    
+##  date     2016-04-19
+</code></pre>
+<button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
-</button><pre style=""><code class="message r">## Packages ---------------------------------------------------------------------------------------------------------------
-</code></pre><button class="output R toggle btn btn-xs btn-success">
+</button>
+<pre style=""><code class="message r">## Packages ---------------------------------------------------------------------------------------------------------------
+</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button><pre style=""><code class="output r">##  package                           * version  date       source                                            
-##  acepack                           * 1.3-3.3  2013-05-03 CRAN (R 3.1.1)                                    
-##  AnnotationDbi                       1.28.1   2014-10-29 Bioconductor                                      
-##  base64enc                         * 0.1-2    2014-06-26 CRAN (R 3.1.0)                                    
-##  BatchJobs                         * 1.5      2014-10-30 CRAN (R 3.1.1)                                    
-##  BBmisc                            * 1.9      2015-02-03 CRAN (R 3.1.1)                                    
-##  Biobase                             2.26.0   2014-10-15 Bioconductor                                      
-##  BiocGenerics                        0.12.1   2014-11-15 Bioconductor                                      
-##  BiocParallel                      * 1.0.3    2015-02-09 Bioconductor                                      
-##  biomaRt                           * 2.22.0   2014-10-15 Bioconductor                                      
-##  Biostrings                        * 2.34.1   2014-12-13 Bioconductor                                      
-##  biovizBase                        * 1.14.1   2014-12-14 Bioconductor                                      
-##  bitops                            * 1.0-6    2013-08-17 CRAN (R 3.1.0)                                    
-##  brew                              * 1.0-6    2011-04-13 CRAN (R 3.1.0)                                    
-##  BSgenome                          * 1.34.1   2014-12-31 Bioconductor                                      
-##  bumphunter                          1.6.0    2014-10-15 Bioconductor                                      
-##  checkmate                         * 1.5.1    2014-12-14 CRAN (R 3.1.1)                                    
-##  cluster                           * 1.15.3   2014-09-04 CRAN (R 3.1.1)                                    
-##  codetools                         * 0.2-9    2014-08-21 CRAN (R 3.1.1)                                    
-##  colorspace                        * 1.2-6    2015-03-11 CRAN (R 3.1.1)                                    
-##  DBI                               * 0.3.1    2014-09-24 CRAN (R 3.1.1)                                    
-##  derfinder                           1.0.10   2015-03-14 Bioconductor                                      
-##  derfinderHelper                   * 1.0.4    2014-11-05 Github (lcolladotor/derfinderHelper@27bcfe6)      
-##  derfinderPlot                       1.0.3    2015-02-22 Github (lcolladotor/derfinderPlot-release@d1dd4bd)
-##  devtools                            1.7.0    2015-01-17 CRAN (R 3.1.1)                                    
-##  dichromat                         * 2.0-0    2013-01-24 CRAN (R 3.1.0)                                    
-##  digest                            * 0.6.8    2014-12-31 CRAN (R 3.1.1)                                    
-##  doRNG                             * 1.6      2014-03-07 CRAN (R 3.1.0)                                    
-##  evaluate                          * 0.5.5    2014-04-29 CRAN (R 3.1.0)                                    
-##  fail                              * 1.2      2013-09-19 CRAN (R 3.1.0)                                    
-##  foreach                             1.4.2    2014-04-11 CRAN (R 3.1.0)                                    
-##  foreign                           * 0.8-61   2014-03-28 CRAN (R 3.1.1)                                    
-##  formatR                           * 1.0      2014-08-25 CRAN (R 3.1.1)                                    
-##  Formula                           * 1.2-0    2015-01-20 CRAN (R 3.1.1)                                    
-##  GenomeInfoDb                        1.2.4    2014-12-20 Bioconductor                                      
-##  GenomicAlignments                 * 1.2.2    2015-03-04 Bioconductor                                      
-##  GenomicFeatures                     1.18.3   2014-12-17 Bioconductor                                      
-##  GenomicFiles                      * 1.2.1    2015-02-08 Bioconductor                                      
-##  GenomicRanges                       1.18.4   2015-01-08 Bioconductor                                      
-##  GGally                            * 0.5.0    2014-12-02 CRAN (R 3.1.1)                                    
-##  ggbio                             * 1.14.0   2014-11-04 Bioconductor                                      
-##  ggplot2                           * 1.0.0    2014-05-21 CRAN (R 3.1.0)                                    
-##  graph                             * 1.44.1   2014-12-10 Bioconductor                                      
-##  gridExtra                         * 0.9.1    2012-08-09 CRAN (R 3.1.1)                                    
-##  gtable                            * 0.1.2    2012-12-05 CRAN (R 3.1.0)                                    
-##  Hmisc                             * 3.15-0   2015-02-16 CRAN (R 3.1.1)                                    
-##  htmltools                         * 0.2.6    2014-09-08 CRAN (R 3.1.1)                                    
-##  IRanges                             2.0.1    2014-12-13 Bioconductor                                      
-##  iterators                           1.0.7    2014-04-11 CRAN (R 3.1.0)                                    
-##  knitr                             * 1.9      2015-01-20 CRAN (R 3.1.1)                                    
-##  knitrBootstrap                    * 1.0.0    2014-11-19 Github (jimhester/knitrBootstrap@76c41f0)         
-##  lattice                           * 0.20-29  2014-04-04 CRAN (R 3.1.1)                                    
-##  latticeExtra                      * 0.6-26   2013-08-15 CRAN (R 3.1.0)                                    
-##  locfit                              1.5-9.1  2013-04-20 CRAN (R 3.1.0)                                    
-##  markdown                          * 0.7.4    2014-08-24 CRAN (R 3.1.1)                                    
-##  MASS                              * 7.3-35   2014-09-30 CRAN (R 3.1.1)                                    
-##  Matrix                            * 1.1-4    2014-06-15 CRAN (R 3.1.1)                                    
-##  matrixStats                       * 0.14.0   2015-02-14 CRAN (R 3.1.1)                                    
-##  munsell                           * 0.4.2    2013-07-11 CRAN (R 3.1.0)                                    
-##  nnet                              * 7.3-8    2014-03-28 CRAN (R 3.1.1)                                    
-##  OrganismDbi                       * 1.8.1    2015-03-11 Bioconductor                                      
-##  pkgmaker                          * 0.22     2014-05-14 CRAN (R 3.1.0)                                    
-##  plyr                              * 1.8.1    2014-02-26 CRAN (R 3.1.0)                                    
-##  proto                             * 0.3-10   2012-12-22 CRAN (R 3.1.0)                                    
-##  qvalue                            * 1.43.0   2015-03-06 Bioconductor                                      
-##  RBGL                              * 1.42.0   2014-10-15 Bioconductor                                      
-##  RColorBrewer                      * 1.1-2    2014-12-07 CRAN (R 3.1.1)                                    
-##  Rcpp                              * 0.11.5   2015-03-06 CRAN (R 3.1.1)                                    
-##  RCurl                             * 1.95-4.5 2014-12-06 CRAN (R 3.1.1)                                    
-##  registry                          * 0.2      2012-01-24 CRAN (R 3.1.0)                                    
-##  reshape                           * 0.8.5    2014-04-23 CRAN (R 3.1.0)                                    
-##  reshape2                          * 1.4.1    2014-12-06 CRAN (R 3.1.1)                                    
-##  rmarkdown                           0.5.1    2015-01-26 CRAN (R 3.1.1)                                    
-##  rngtools                          * 1.2.4    2014-03-06 CRAN (R 3.1.0)                                    
-##  rpart                             * 4.1-8    2014-03-28 CRAN (R 3.1.1)                                    
-##  Rsamtools                         * 1.18.3   2015-03-04 Bioconductor                                      
-##  RSQLite                           * 1.0.0    2014-10-25 CRAN (R 3.1.1)                                    
-##  rstudioapi                        * 0.2      2014-12-31 CRAN (R 3.1.1)                                    
-##  rtracklayer                       * 1.26.2   2014-11-12 Bioconductor                                      
-##  S4Vectors                           0.4.0    2014-10-15 Bioconductor                                      
-##  scales                            * 0.2.4    2014-04-22 CRAN (R 3.1.0)                                    
-##  sendmailR                         * 1.2-1    2014-09-21 CRAN (R 3.1.1)                                    
-##  stringr                           * 0.6.2    2012-12-06 CRAN (R 3.1.0)                                    
-##  survival                          * 2.37-7   2014-01-22 CRAN (R 3.1.1)                                    
-##  TxDb.Hsapiens.UCSC.hg19.knownGene   3.0.0    2014-09-29 Bioconductor                                      
-##  VariantAnnotation                 * 1.12.9   2015-01-22 Bioconductor                                      
-##  XML                               * 3.98-1.1 2013-06-20 CRAN (R 3.1.0)                                    
-##  xtable                            * 1.7-4    2014-09-12 CRAN (R 3.1.1)                                    
-##  XVector                           * 0.6.0    2014-10-15 Bioconductor                                      
-##  yaml                              * 2.1.13   2014-06-12 CRAN (R 3.1.1)                                    
-##  zlibbioc                          * 1.12.0   2014-10-15 Bioconductor
-</code></pre><button class="source R toggle btn btn-xs btn-primary">
+</button>
+<pre style=""><code class="output r">##  package                           * version  date       source                                   
+##  acepack                             1.3-3.3  2014-11-24 CRAN (R 3.3.0)                           
+##  AnnotationDbi                     * 1.33.12  2016-04-18 Bioconductor                             
+##  AnnotationHub                       2.3.16   2016-03-28 Bioconductor                             
+##  Biobase                           * 2.31.3   2016-03-28 Bioconductor                             
+##  BiocGenerics                      * 0.17.5   2016-04-18 Bioconductor                             
+##  BiocInstaller                       1.21.4   2016-03-25 Bioconductor                             
+##  BiocParallel                        1.5.21   2016-03-28 Bioconductor                             
+##  biomaRt                             2.27.2   2016-03-28 Bioconductor                             
+##  Biostrings                          2.39.14  2016-04-18 Bioconductor                             
+##  biovizBase                          1.19.6   2016-04-11 Bioconductor                             
+##  bitops                              1.0-6    2013-08-17 CRAN (R 3.3.0)                           
+##  BSgenome                            1.39.5   2016-04-18 Bioconductor                             
+##  bumphunter                        * 1.11.5   2016-04-11 Bioconductor                             
+##  cluster                             2.0.4    2016-04-18 CRAN (R 3.3.0)                           
+##  codetools                           0.2-14   2015-07-15 CRAN (R 3.3.0)                           
+##  colorspace                          1.2-6    2015-03-11 CRAN (R 3.3.0)                           
+##  DBI                                 0.3.1    2014-09-24 CRAN (R 3.3.0)                           
+##  derfinder                         * 1.5.34   2016-04-19 Github (lcolladotor/derfinder@9277c20)   
+##  derfinderHelper                     1.5.3    2016-04-02 Bioconductor                             
+##  derfinderPlot                     * 1.5.7    2016-04-10 Bioconductor                             
+##  devtools                          * 1.10.0   2016-01-23 CRAN (R 3.3.0)                           
+##  dichromat                           2.0-0    2013-01-24 CRAN (R 3.3.0)                           
+##  digest                              0.6.9    2016-01-08 CRAN (R 3.3.0)                           
+##  doRNG                               1.6      2014-03-07 CRAN (R 3.3.0)                           
+##  ensembldb                           1.3.19   2016-04-11 Bioconductor                             
+##  evaluate                            0.8.3    2016-03-05 CRAN (R 3.3.0)                           
+##  foreach                           * 1.4.3    2015-10-13 CRAN (R 3.3.0)                           
+##  foreign                             0.8-66   2015-08-19 CRAN (R 3.3.0)                           
+##  formatR                             1.3      2016-03-05 CRAN (R 3.3.0)                           
+##  Formula                             1.2-1    2015-04-07 CRAN (R 3.3.0)                           
+##  GenomeInfoDb                      * 1.7.6    2016-04-02 Bioconductor                             
+##  GenomicAlignments                   1.7.21   2016-04-18 Bioconductor                             
+##  GenomicFeatures                   * 1.23.30  2016-04-18 Bioconductor                             
+##  GenomicFiles                        1.7.12   2016-04-18 Bioconductor                             
+##  GenomicRanges                     * 1.23.27  2016-04-18 Bioconductor                             
+##  GGally                              1.0.1    2016-01-14 CRAN (R 3.3.0)                           
+##  ggbio                               1.19.13  2016-04-10 Bioconductor                             
+##  ggplot2                             2.1.0    2016-03-01 CRAN (R 3.3.0)                           
+##  graph                               1.49.1   2016-03-28 Bioconductor                             
+##  gridExtra                           2.2.1    2016-02-29 CRAN (R 3.3.0)                           
+##  gtable                              0.2.0    2016-02-26 CRAN (R 3.3.0)                           
+##  Hmisc                               3.17-3   2016-04-03 CRAN (R 3.3.0)                           
+##  htmltools                           0.3.5    2016-03-21 CRAN (R 3.3.0)                           
+##  httpuv                              1.3.3    2015-08-04 CRAN (R 3.3.0)                           
+##  httr                                1.1.0    2016-01-28 CRAN (R 3.3.0)                           
+##  interactiveDisplayBase              1.9.0    2016-03-28 Bioconductor                             
+##  IRanges                           * 2.5.46   2016-04-18 Bioconductor                             
+##  iterators                         * 1.0.8    2015-10-13 CRAN (R 3.3.0)                           
+##  knitr                             * 1.12.3   2016-01-22 CRAN (R 3.3.0)                           
+##  knitrBootstrap                      1.0.0    2016-04-02 Github (jimhester/knitrBootstrap@cdaa4a9)
+##  lattice                             0.20-33  2015-07-14 CRAN (R 3.3.0)                           
+##  latticeExtra                        0.6-28   2016-02-09 CRAN (R 3.3.0)                           
+##  limma                               3.27.18  2016-04-18 Bioconductor                             
+##  locfit                            * 1.5-9.1  2013-04-20 CRAN (R 3.3.0)                           
+##  magrittr                            1.5      2014-11-22 CRAN (R 3.3.0)                           
+##  markdown                            0.7.7    2015-04-22 CRAN (R 3.3.0)                           
+##  Matrix                              1.2-5    2016-04-17 CRAN (R 3.3.0)                           
+##  matrixStats                         0.50.1   2015-12-15 CRAN (R 3.3.0)                           
+##  memoise                             1.0.0    2016-01-29 CRAN (R 3.3.0)                           
+##  mime                                0.4      2015-09-03 CRAN (R 3.3.0)                           
+##  munsell                             0.4.3    2016-02-13 CRAN (R 3.3.0)                           
+##  nnet                                7.3-12   2016-02-02 CRAN (R 3.3.0)                           
+##  OrganismDbi                         1.13.6   2016-04-11 Bioconductor                             
+##  org.Hs.eg.db                      * 3.3.0    2016-04-11 Bioconductor                             
+##  pkgmaker                            0.22     2014-05-14 CRAN (R 3.3.0)                           
+##  plyr                                1.8.3    2015-06-12 CRAN (R 3.3.0)                           
+##  qvalue                              2.3.2    2016-03-28 Bioconductor                             
+##  R6                                  2.1.2    2016-01-26 CRAN (R 3.3.0)                           
+##  RBGL                                1.47.0   2016-03-28 Bioconductor                             
+##  RColorBrewer                        1.1-2    2014-12-07 CRAN (R 3.3.0)                           
+##  Rcpp                                0.12.4.5 2016-04-18 local                                    
+##  RCurl                               1.95-4.8 2016-03-01 CRAN (R 3.3.0)                           
+##  registry                            0.3      2015-07-08 CRAN (R 3.3.0)                           
+##  reshape                             0.8.5    2014-04-23 CRAN (R 3.3.0)                           
+##  reshape2                            1.4.1    2014-12-06 CRAN (R 3.3.0)                           
+##  rmarkdown                         * 0.9.5    2016-02-22 CRAN (R 3.3.0)                           
+##  rngtools                            1.2.4    2014-03-06 CRAN (R 3.3.0)                           
+##  rpart                               4.1-10   2015-06-29 CRAN (R 3.3.0)                           
+##  Rsamtools                           1.23.8   2016-04-11 Bioconductor                             
+##  RSQLite                             1.0.0    2014-10-25 CRAN (R 3.3.0)                           
+##  rtracklayer                         1.31.10  2016-04-11 Bioconductor                             
+##  S4Vectors                         * 0.9.51   2016-04-18 Bioconductor                             
+##  scales                              0.4.0    2016-02-26 CRAN (R 3.3.0)                           
+##  shiny                               0.13.2   2016-03-28 CRAN (R 3.3.0)                           
+##  stringi                             1.0-1    2015-10-22 CRAN (R 3.3.0)                           
+##  stringr                             1.0.0    2015-04-30 CRAN (R 3.3.0)                           
+##  SummarizedExperiment                1.1.24   2016-04-18 Bioconductor                             
+##  survival                            2.39-2   2016-04-16 CRAN (R 3.3.0)                           
+##  TxDb.Hsapiens.UCSC.hg19.knownGene * 3.2.2    2016-03-28 Bioconductor                             
+##  VariantAnnotation                   1.17.24  2016-04-18 Bioconductor                             
+##  XML                                 3.98-1.4 2016-03-01 CRAN (R 3.3.0)                           
+##  xtable                              1.8-2    2016-02-05 CRAN (R 3.3.0)                           
+##  XVector                             0.11.8   2016-04-11 Bioconductor                             
+##  yaml                                2.1.13   2014-06-12 CRAN (R 3.3.0)                           
+##  zlibbioc                            1.17.1   2016-03-28 Bioconductor
+</code></pre>
+<button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button><pre style=""><code class="source r">Sys.time()</code></pre><button class="output R toggle btn btn-xs btn-success">
+</button>
+<pre style=""><code class="source r">Sys.time()</code></pre>
+<button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button><pre style=""><code class="output r">## [1] "2015-05-14 22:38:29 EDT"
-</code></pre></div></div></div>
-<div class="navbar navbar-fixed-bottom navbar-inverse"><div class="container"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+</button>
+<pre style=""><code class="output r">## [1] "2016-04-19 19:03:04 EDT"
+</code></pre>
+</div>
+</div>
+</div>
+<div class="navbar navbar-fixed-bottom navbar-inverse">
+<div class="container">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
 <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-</button></div>
-<div id="bottom-navbar" class="navbar-collapse collapse navbar-responsive-collapse"><ul class="nav navbar-nav navbar-right"><li class="nav"><p class="navbar-text">
+</button>
+</div>
+<div id="bottom-navbar" class="navbar-collapse collapse navbar-responsive-collapse">
+<ul class="nav navbar-nav navbar-right">
+<li class="nav">
+<p class="navbar-text">
 Toggle
-</p></li>
+</p>
+</li>
 <li class="dropup">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <b class="caret"></b></a>
-<ul class="dropdown-menu"><li class="dropdown-header">
+<ul class="dropdown-menu">
+<li class="dropdown-header">
 Languages
 </li>
 <li class="active">
 <a href="#" class="toggle-global source R" type="source.R">R</a>
 </li>
-<li >
+<li>
 <a href="#" type="all-source" class="toggle-global">All</a>
-</li></ul></li>
+</li>
+</ul>
+</li>
 <li class="dropup">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Output <b class="caret"></b></a>
-<ul class="dropdown-menu"><li class="dropdown-header">
+<ul class="dropdown-menu">
+<li class="dropdown-header">
 Type
 </li>
 <li class="active">
 <a href="#" class="toggle-global message" type="message">message</a>
 </li>
 <li class="active">
+<a href="#" class="toggle-global warning" type="warning">warning</a>
+</li>
+<li class="active">
 <a href="#" class="toggle-global output" type="output">output</a>
 </li>
-<li >
+<li>
 <a href="#" type="all-output" class="toggle-global">All</a>
-</li></ul></li>
+</li>
+</ul>
+</li>
 <li class="active">
 <a href="#" type="figure" class="toggle-global">Figures</a>
-</li></ul>
-<ul class="nav navbar-nav navbar-left"><li class="dropup">
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-left">
+<li class="dropup">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bootstrap theme <b class="caret"></b></a>
-<ul class="dropdown-menu"><li class="active">
+<ul class="dropdown-menu">
+<li class="active">
 <a class="theme-switch" title="Default" href="#">Default</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Amelia" href="#">Amelia</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Cerulean" href="#">Cerulean</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Cosmo" href="#">Cosmo</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Cyborg" href="#">Cyborg</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Journal" href="#">Journal</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Flatly" href="#">Flatly</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Readable" href="#">Readable</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Simplex" href="#">Simplex</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Slate" href="#">Slate</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="Spacelab" href="#">Spacelab</a>
 </li>
-<li >
+<li>
 <a class="theme-switch" title="United" href="#">United</a>
-</li></ul></li></ul>
-<ul class="nav navbar-nav navbar-left"><li class="dropup">
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav navbar-nav navbar-left">
+<li class="dropup">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Code highlighting <b class="caret"></b></a>
-<ul class="dropdown-menu"><li class="active">
+<ul class="dropdown-menu">
+<li class="active">
 <a class="highlight-switch" title="HighlightJs" href="#">HighlightJs</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Dark" href="#">Dark</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Far" href="#">Far</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Idea" href="#">Idea</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Sunburst" href="#">Sunburst</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Zenburn" href="#">Zenburn</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Visual Studio" href="#">Visual Studio</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Ascetic" href="#">Ascetic</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Magula" href="#">Magula</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Github" href="#">Github</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Google Code" href="#">Google Code</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Brown Paper" href="#">Brown Paper</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="School Book" href="#">School Book</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="IR Black" href="#">IR Black</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Solarized - Dark" href="#">Solarized - Dark</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Solarized - Light" href="#">Solarized - Light</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Arta" href="#">Arta</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Monokai" href="#">Monokai</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Xcode" href="#">Xcode</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Pojoaque" href="#">Pojoaque</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Rainbow" href="#">Rainbow</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Tomorrow" href="#">Tomorrow</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Tomorrow Night" href="#">Tomorrow Night</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Tomorrow Night Bright" href="#">Tomorrow Night Bright</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Tomorrow Night Blue" href="#">Tomorrow Night Blue</a>
 </li>
-<li >
+<li>
 <a class="highlight-switch" title="Tomorrow Night Eighties" href="#">Tomorrow Night Eighties</a>
-</li></ul></li></ul></div></div></div>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" title="Default" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/amelia/bootstrap.min.css" title="Amelia" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/cerulean/bootstrap.min.css" title="Cerulean" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/cosmo/bootstrap.min.css" title="Cosmo" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/cyborg/bootstrap.min.css" title="Cyborg" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/journal/bootstrap.min.css" title="Journal" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/flatly/bootstrap.min.css" title="Flatly" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/readable/bootstrap.min.css" title="Readable" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/simplex/bootstrap.min.css" title="Simplex" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/slate/bootstrap.min.css" title="Slate" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/spacelab/bootstrap.min.css" title="Spacelab" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/united/bootstrap.min.css" title="United" media="screen"></link><link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/default.min.css" title="HighlightJs" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/dark.min.css" title="Dark" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/far.min.css" title="Far" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/idea.min.css" title="Idea" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/sunburst.min.css" title="Sunburst" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/zenburn.min.css" title="Zenburn" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/vs.min.css" title="Visual Studio" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/ascetic.min.css" title="Ascetic" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/magula.min.css" title="Magula" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/github.min.css" title="Github" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/googlecode.min.css" title="Google Code" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/brown_paper.min.css" title="Brown Paper" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/school_book.min.css" title="School Book" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/ir_black.min.css" title="IR Black" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/solarized_dark.min.css" title="Solarized - Dark" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/solarized_light.min.css" title="Solarized - Light" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/arta.min.css" title="Arta" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/monokai.min.css" title="Monokai" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/xcode.min.css" title="Xcode" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/pojoaque.min.css" title="Pojoaque" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/rainbow.min.css" title="Rainbow" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow.min.css" title="Tomorrow" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night.min.css" title="Tomorrow Night" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night-bright.min.css" title="Tomorrow Night Bright" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night-blue.min.css" title="Tomorrow Night Blue" media="screen"></link> <link rel="alternate stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night-eighties.min.css" title="Tomorrow Night Eighties" media="screen"></link>
 </div>
 <div id="push">
 
 </div>
-<div id="footer"><div class="container"><p class="text-muted" id="credit">
+<div id="footer">
+<div class="container">
+<p class="text-muted" id="credit">
 Styled with <a href="https://github.com/jimhester/knitrBootstrap">knitrBootstrap</a>
-</p></div></div>
+</p>
+</div>
+</div>
 <link rel="stylesheet" id="theme" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" media="screen"></link><link rel="stylesheet" id="highlight" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/default.min.css" media="screen"></link>
 </div>
 </body>

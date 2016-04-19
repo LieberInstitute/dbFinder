@@ -1,0 +1,34 @@
+**** Job starts ****
+Tue Apr 19 18:55:25 EDT 2016
+  |                                                                         |                                                                 |   0%  |                                                                         |......                                                           |  10%
+  ordinary text without R code
+
+  |                                                                         |.............                                                    |  20%
+label: setup (with options) 
+List of 1
+ $ dev: chr "CairoPNG"
+
+  |                                                                         |....................                                             |  30%
+  ordinary text without R code
+
+  |                                                                         |..........................                                       |  40%
+label: unnamed-chunk-1
+  |                                                                         |................................                                 |  50%
+  ordinary text without R code
+
+  |                                                                         |.......................................                          |  60%
+label: unnamed-chunk-2
+  |                                                                         |..............................................                   |  70%
+  ordinary text without R code
+
+  |                                                                         |....................................................             |  80%
+label: unnamed-chunk-3
+  |                                                                         |..........................................................       |  90%
+  ordinary text without R code
+
+  |                                                                         |.................................................................| 100%
+label: unnamed-chunk-4
+
+/jhpce/shared/jhpce/core/JHPCE_tools/1.0/bin/pandoc +RTS -K512m -RTS viewPeaks.utf8.md --to html --from markdown-hard_line_breaks+superscript+tex_math_dollars+raw_html+markdown_in_html_blocks-implicit_figures --output viewPeaks.html -H /scratch/temp/1059000.1.shared.q/Rtmp0CVT7y/knitr_bootstrap_full.html 
+**** Job ends ****
+Tue Apr 19 19:03:09 EDT 2016
