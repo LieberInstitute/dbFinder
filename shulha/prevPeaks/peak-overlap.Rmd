@@ -226,9 +226,16 @@ sapply(ders, function(der) {
 Brief summary of number of regions found by `derfinder` and width distribution for the significant ones.
 
 ```{r}
-## Length (in bp) summary of DERs
+## Length (in bp) summary of all candidate DERs
+lapply(ders, function(der) { summary(width(der))})
+
+## Length (in bp) summary of DERs at 0.05
 lapply(ders, function(der) { summary(width(der[der$fwer < 0.05 ]))})
 lapply(ders, function(der) { summary(width(der[der$qvalues < 0.05 ]))})
+
+## Length (in bp) summary of DERs at 0.10
+lapply(ders, function(der) { summary(width(der[der$fwer < 0.10 ]))})
+lapply(ders, function(der) { summary(width(der[der$qvalues < 0.10 ]))})
 
 ## Number of significant DERs at 0.05
 sapply(ders, function(der) { sum(der$fwer < 0.05) })
