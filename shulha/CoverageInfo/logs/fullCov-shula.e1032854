@@ -1,0 +1,858 @@
+Loading required package: methods
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BSgenome
+Loading required package: Biostrings
+Loading required package: XVector
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+2016-04-18 20:31:47 Filtering and saving the data with cutoff 2
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+starting worker localhost:11562
+2016-04-18 20:32:19 Loading raw file chrMCovInfo.Rdata for chrM
+2016-04-18 20:32:19 Filtering chromosome chrM
+2016-04-18 20:32:19 filterData: originally there were 16571 rows, now there are 12526 rows. Meaning that 24.41 percent was filtered.
+2016-04-18 20:32:19 Loading raw file chrXCovInfo.Rdata for chrX
+2016-04-18 20:32:28 Filtering chromosome chrX
+2016-04-18 20:32:37 filterData: originally there were 155270560 rows, now there are 1864433 rows. Meaning that 98.8 percent was filtered.
+2016-04-18 20:32:42 Loading raw file chrYCovInfo.Rdata for chrY
+2016-04-18 20:32:42 Filtering chromosome chrY
+2016-04-18 20:32:42 filterData: originally there were 59373566 rows, now there are 135596 rows. Meaning that 99.77 percent was filtered.
+2016-04-18 20:32:19 Loading raw file chr13CovInfo.Rdata for chr13
+2016-04-18 20:32:24 Filtering chromosome chr13
+2016-04-18 20:32:33 filterData: originally there were 115169878 rows, now there are 1871627 rows. Meaning that 98.37 percent was filtered.
+2016-04-18 20:32:40 Loading raw file chr14CovInfo.Rdata for chr14
+2016-04-18 20:32:43 Filtering chromosome chr14
+2016-04-18 20:32:54 filterData: originally there were 107349540 rows, now there are 2464249 rows. Meaning that 97.7 percent was filtered.
+2016-04-18 20:32:18 Loading raw file chr18CovInfo.Rdata for chr18
+2016-04-18 20:32:25 Filtering chromosome chr18
+2016-04-18 20:32:34 filterData: originally there were 78077248 rows, now there are 1664719 rows. Meaning that 97.87 percent was filtered.
+2016-04-18 20:32:38 Loading raw file chr19CovInfo.Rdata for chr19
+2016-04-18 20:32:40 Filtering chromosome chr19
+2016-04-18 20:32:51 filterData: originally there were 59128983 rows, now there are 3851713 rows. Meaning that 93.49 percent was filtered.
+2016-04-18 20:32:18 Loading raw file chr3CovInfo.Rdata for chr3
+2016-04-18 20:32:27 Filtering chromosome chr3
+2016-04-18 20:32:42 filterData: originally there were 198022430 rows, now there are 4546446 rows. Meaning that 97.7 percent was filtered.
+2016-04-18 20:32:55 Loading raw file chr4CovInfo.Rdata for chr4
+2016-04-18 20:32:57 Filtering chromosome chr4
+2016-04-18 20:33:09 filterData: originally there were 191154276 rows, now there are 3436470 rows. Meaning that 98.2 percent was filtered.
+2016-04-18 20:32:18 Loading raw file chr8CovInfo.Rdata for chr8
+2016-04-18 20:32:28 Filtering chromosome chr8
+2016-04-18 20:32:47 filterData: originally there were 146364022 rows, now there are 3502654 rows. Meaning that 97.61 percent was filtered.
+2016-04-18 20:32:56 Loading raw file chr9CovInfo.Rdata for chr9
+2016-04-18 20:32:58 Filtering chromosome chr9
+2016-04-18 20:33:09 filterData: originally there were 141213431 rows, now there are 3329253 rows. Meaning that 97.64 percent was filtered.
+2016-04-18 20:32:19 Loading raw file chr22CovInfo.Rdata for chr22
+2016-04-18 20:32:24 Filtering chromosome chr22
+2016-04-18 20:32:34 filterData: originally there were 51304566 rows, now there are 1927158 rows. Meaning that 96.24 percent was filtered.
+2016-04-18 20:32:41 Loading raw file chr2CovInfo.Rdata for chr2
+2016-04-18 20:32:47 Filtering chromosome chr2
+2016-04-18 20:33:08 filterData: originally there were 243199373 rows, now there are 5917508 rows. Meaning that 97.57 percent was filtered.
+2016-04-18 20:32:19 Loading raw file chr5CovInfo.Rdata for chr5
+2016-04-18 20:32:26 Filtering chromosome chr5
+2016-04-18 20:32:41 filterData: originally there were 180915260 rows, now there are 4086780 rows. Meaning that 97.74 percent was filtered.
+2016-04-18 20:32:51 Loading raw file chr6CovInfo.Rdata for chr6
+2016-04-18 20:32:54 Filtering chromosome chr6
+2016-04-18 20:33:07 filterData: originally there were 171115067 rows, now there are 4138237 rows. Meaning that 97.58 percent was filtered.
+2016-04-18 20:33:18 Loading raw file chr7CovInfo.Rdata for chr7
+2016-04-18 20:33:20 Filtering chromosome chr7
+2016-04-18 20:33:32 filterData: originally there were 159138663 rows, now there are 3911691 rows. Meaning that 97.54 percent was filtered.
+2016-04-18 20:32:18 Loading raw file chr15CovInfo.Rdata for chr15
+2016-04-18 20:32:27 Filtering chromosome chr15
+2016-04-18 20:32:41 filterData: originally there were 102531392 rows, now there are 2467650 rows. Meaning that 97.59 percent was filtered.
+2016-04-18 20:32:52 Loading raw file chr16CovInfo.Rdata for chr16
+2016-04-18 20:32:54 Filtering chromosome chr16
+2016-04-18 20:33:09 filterData: originally there were 90354753 rows, now there are 3109877 rows. Meaning that 96.56 percent was filtered.
+2016-04-18 20:33:23 Loading raw file chr17CovInfo.Rdata for chr17
+2016-04-18 20:33:26 Filtering chromosome chr17
+2016-04-18 20:33:41 filterData: originally there were 81195210 rows, now there are 3789749 rows. Meaning that 95.33 percent was filtered.
+2016-04-18 20:32:19 Loading raw file chr1CovInfo.Rdata for chr1
+2016-04-18 20:32:35 Filtering chromosome chr1
+2016-04-18 20:33:10 filterData: originally there were 249250621 rows, now there are 7256659 rows. Meaning that 97.09 percent was filtered.
+2016-04-18 20:33:42 Loading raw file chr20CovInfo.Rdata for chr20
+2016-04-18 20:33:43 Filtering chromosome chr20
+2016-04-18 20:33:50 filterData: originally there were 63025520 rows, now there are 2303115 rows. Meaning that 96.35 percent was filtered.
+2016-04-18 20:33:57 Loading raw file chr21CovInfo.Rdata for chr21
+2016-04-18 20:33:57 Filtering chromosome chr21
+2016-04-18 20:33:59 filterData: originally there were 48129895 rows, now there are 1019657 rows. Meaning that 97.88 percent was filtered.
+2016-04-18 20:32:19 Loading raw file chr10CovInfo.Rdata for chr10
+2016-04-18 20:32:32 Filtering chromosome chr10
+2016-04-18 20:32:53 filterData: originally there were 135534747 rows, now there are 3761290 rows. Meaning that 97.22 percent was filtered.
+2016-04-18 20:33:08 Loading raw file chr11CovInfo.Rdata for chr11
+2016-04-18 20:33:11 Filtering chromosome chr11
+2016-04-18 20:33:33 filterData: originally there were 135006516 rows, now there are 4268312 rows. Meaning that 96.84 percent was filtered.
+2016-04-18 20:33:49 Loading raw file chr12CovInfo.Rdata for chr12
+2016-04-18 20:33:51 Filtering chromosome chr12
+2016-04-18 20:34:03 filterData: originally there were 133851895 rows, now there are 3765397 rows. Meaning that 97.19 percent was filtered.
+Session info -----------------------------------------------------------------------------------------------------------
+Packages ---------------------------------------------------------------------------------------------------------------

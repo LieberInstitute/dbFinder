@@ -1,0 +1,47 @@
+**** Job starts ****
+Mon Apr 18 20:07:49 EDT 2016
+   user  system elapsed 
+125.893  20.738 301.035 
+10.6 Gb
+   user  system elapsed 
+ 81.417  16.779 232.880 
+3.6 Gb
+   user  system elapsed 
+  2.859   0.058   2.932 
+    user   system  elapsed 
+1097.217   48.225 1585.299 
+ setting  value                                   
+ version  R version 3.3.0 beta (2016-04-18 r70505)
+ system   x86_64, linux-gnu                       
+ ui       X11                                     
+ language (EN)                                    
+ collate  en_US.UTF-8                             
+ tz       <NA>                                    
+ date     2016-04-18                              
+
+ package                     * version  date       source        
+ Biobase                       2.31.3   2016-03-28 Bioconductor  
+ BiocGenerics                * 0.17.5   2016-04-18 Bioconductor  
+ BiocParallel                * 1.5.21   2016-03-28 Bioconductor  
+ Biostrings                  * 2.39.14  2016-04-18 Bioconductor  
+ bitops                        1.0-6    2013-08-17 CRAN (R 3.3.0)
+ BSgenome                    * 1.39.5   2016-04-18 Bioconductor  
+ BSgenome.Hsapiens.UCSC.hg19 * 1.4.0    2016-03-28 Bioconductor  
+ devtools                    * 1.10.0   2016-01-23 CRAN (R 3.3.0)
+ digest                        0.6.9    2016-01-08 CRAN (R 3.3.0)
+ GenomeInfoDb                * 1.7.6    2016-04-02 Bioconductor  
+ GenomicAlignments             1.7.21   2016-04-18 Bioconductor  
+ GenomicRanges               * 1.23.27  2016-04-18 Bioconductor  
+ IRanges                     * 2.5.46   2016-04-18 Bioconductor  
+ memoise                       1.0.0    2016-01-29 CRAN (R 3.3.0)
+ RCurl                         1.95-4.8 2016-03-01 CRAN (R 3.3.0)
+ Rsamtools                     1.23.8   2016-04-11 Bioconductor  
+ rtracklayer                 * 1.31.10  2016-04-11 Bioconductor  
+ S4Vectors                   * 0.9.51   2016-04-18 Bioconductor  
+ snow                          0.4-1    2015-10-31 CRAN (R 3.3.0)
+ SummarizedExperiment          1.1.24   2016-04-18 Bioconductor  
+ XML                           3.98-1.4 2016-03-01 CRAN (R 3.3.0)
+ XVector                     * 0.11.8   2016-04-11 Bioconductor  
+ zlibbioc                      1.17.1   2016-03-28 Bioconductor  
+**** Job ends ****
+Mon Apr 18 20:34:15 EDT 2016
