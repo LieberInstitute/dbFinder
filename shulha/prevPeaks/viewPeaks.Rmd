@@ -29,8 +29,8 @@ library('devtools')
 load('/dcl01/lieber/ajaffe/derRuns/derfinderExample/derGenomicState/GenomicState.Hsapiens.UCSC.hg19.knownGene.Rdata')
 load('neunPeaks.Rdata')
 load(file.path('..', 'CoverageInfo', 'fullCov.Rdata'))
-load(file.path('..', 'derAnalysis', 'run5-v1.5.34', 'groupInfo.Rdata'))
-load(file.path('..', 'derAnalysis', 'run5-v1.5.34', 'colsubset.Rdata'))
+load(file.path('..', 'derAnalysis', 'run6-v1.5.34', 'groupInfo.Rdata'))
+load(file.path('..', 'derAnalysis', 'run6-v1.5.34', 'colsubset.Rdata'))
 
 ## Keep only samples used
 fullCov <- lapply(fullCov, function(x) { x[, colsubset]})

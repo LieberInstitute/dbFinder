@@ -57,7 +57,7 @@ if(file.exists('colsubset.Rdata')) {
 ## Run the analysis
 if(opt$experiment == 'shulha') {
     analyzeChr(chr = opt$chr, coverageInfo = covData, models = models, 
-        cutoffFstat = 0.05, colsubset = colsubset, cutoffPre = 2,
+        cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 2,
         nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
         groupInfo = groupInfo, mc.cores = opt$mcores,
         lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'),
