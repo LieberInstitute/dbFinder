@@ -3,6 +3,7 @@
 #$ -m e
 #$ -l mem_free=30G,h_vmem=100G
 #$ -N visPeaks
+#$ -hold_jid derM-shulha
 echo "**** Job starts ****"
 date
 
