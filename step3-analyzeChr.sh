@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## Usage
-# sh step3-analyzeChr.sh shulha run5-v1.5.33
+# sh step3-analyzeChr.sh shulha run5-v1.5.34
 
 # Define variables
 EXPERIMENT=$1

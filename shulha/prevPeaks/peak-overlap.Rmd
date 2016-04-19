@@ -18,7 +18,7 @@ Do differentially bound peaks found via `derfinder` overlap the published list o
 library('GenomicRanges')
 library('devtools')
 load('neunPeaks.Rdata')
-runs <- c(paste0('run', 1:4, '-v1.0.10'), 'run5-v1.5.33')
+runs <- c(paste0('run', 1:4, '-v1.0.10'), 'run5-v1.5.34')
 ders <- lapply(runs, function(path) { 
     load(file.path('..', 'derAnalysis', path, 'fullRegions.Rdata'))
     return(fullRegions)
