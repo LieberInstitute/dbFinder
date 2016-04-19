@@ -11,7 +11,7 @@ Visualize Neun+ peaks
 
 # Setup
 
-```{r 'setup', dev = 'CairoPNG'}
+```{r 'setup', dev = 'CairoPNG', bootstrap.show.code = FALSE}
 library('knitr')
 opts_chunk$set(dev = 'CairoPNG')
 ```
