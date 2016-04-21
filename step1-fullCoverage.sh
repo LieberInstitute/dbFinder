@@ -22,6 +22,7 @@ then
     PATTERN='c'
     CUTOFF=2
 elif [[ "${EXPERIMENT}" == 'epimap' ]]
+then
     DATADIR=/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap
     PATTERN=''
     CUTOFF=5
