@@ -35,7 +35,7 @@ if (is.null(opt$targetSize)) opt$targetSize <- 80e6
 if(opt$datadir == '/dcs01/ajaffe/ChIPseq/Shulha2013/BED') {
     #files <- rawFiles(datadir=opt$datadir, samplepatt=opt$pattern)
     beds <- dir(opt$datadir, pattern = opt$pattern, full.names = TRUE)
-    names(beds) <- dir(opt$datadir, pattern = 'c')
+    names(beds) <- dir(opt$datadir, pattern = opt$pattern)
     
     stop('Use shulha/CoverageInfo/run-import.sh instead')
 } else if (opt$dir == '/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap') {
