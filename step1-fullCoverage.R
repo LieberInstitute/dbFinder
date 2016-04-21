@@ -38,7 +38,7 @@ if(opt$datadir == '/dcs01/ajaffe/ChIPseq/Shulha2013/BED') {
     names(beds) <- dir(opt$datadir, pattern = opt$pattern)
     
     stop('Use shulha/CoverageInfo/run-import.sh instead')
-} else if (opt$dir == '/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap') {
+} else if (opt$datadir == '/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap') {
     load('/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/annotated_phenotype_EpiMap_ChIPseq.rda')
     files <- pd$bamFile
     names(files) <- pd$Sample_ID
