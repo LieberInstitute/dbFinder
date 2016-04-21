@@ -3,6 +3,7 @@
 
 ## Usage
 # sh step1-fullCoverage.sh shulha
+# sh step1-fullCoverage.sh epimap
 
 
 # Define variables
@@ -20,8 +21,12 @@ then
     DATADIR=/dcs01/ajaffe/ChIPseq/Shulha2013/BED
     PATTERN='c'
     CUTOFF=2
+elif [[ "${EXPERIMENT}" == 'epimap' ]]
+    DATADIR=/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap
+    PATTERN=''
+    CUTOFF=5
 else
-    echo "Specify a valid experiment: shulha"
+    echo "Specify a valid experiment: shulha, epimap"
 fi
 
 
@@ -32,7 +37,7 @@ cat > ${ROOTDIR}/.${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=10G,h_vmem=15G,h_fsize=40G
+#$ -l mem_free=15G,h_vmem=20G,h_fsize=40G
 #$ -N ${SHORT}
 #$ -pe local ${CORES}
 
