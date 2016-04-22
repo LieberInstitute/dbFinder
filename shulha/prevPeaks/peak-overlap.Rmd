@@ -37,7 +37,7 @@ This is the actual run setup:
 ```{r, results = 'asis'}
 df <- data.frame(
     Run = runs,
-    cutoffData = rep(c(5, 2), c(1, 5)),
+    cutoffData = rep(c(5, 2), c(1, 7)),
     cutoffF = c(1e-04, 0.05, 0.01, 0.01, rep(c(0.05, 0.01), 2)),
     scalefac = c(32, 32, 32, 1, 32, 32, 32, 32),
     smooth = rep(c(FALSE, TRUE), c(4, 4)),
