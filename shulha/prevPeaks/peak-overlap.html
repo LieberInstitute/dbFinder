@@ -962,7 +962,7 @@ opts_chunk$set(dev = 'CairoPNG')</code></pre>
 </button>
 <pre style=""><code class="source r">library('devtools')
 load('neunPeaks.Rdata')
-runs <- c(paste0('run', 1:4, '-v1.0.10'), 'run5-v1.5.34', 'run6-v1.5.34')
+runs <- c(paste0('run', 1:4, '-v1.0.10'), 'run5-v1.5.34', 'run6-v1.5.34', 'run7-v1.5.35', 'run8-v1.5.35')
 ders <- lapply(runs, function(path) { 
     load(file.path('..', 'derAnalysis', path, 'fullRegions.Rdata'))
     return(fullRegions)
@@ -976,11 +976,12 @@ names(ders) <- runs</code></pre>
 </button>
 <pre style=""><code class="source r">df <- data.frame(
     Run = runs,
-    cutoffData = rep(c(5, 2), c(1, 5)),
-    cutoffF = c(1e-04, 0.05, 0.01, 0.01, 0.05, 0.01),
-    scalefac = c(32, 32, 32, 1, 32, 32),
-    smooth = rep(c(FALSE, TRUE), c(4, 2)),
-    minNum = rep(c(NA, 36), c(4, 2))
+    cutoffData = rep(c(5, 2), c(1, 7)),
+    cutoffF = c(1e-04, 0.05, 0.01, 0.01, rep(c(0.05, 0.01), 2)),
+    scalefac = c(32, 32, 32, 1, 32, 32, 32, 32),
+    smooth = rep(c(FALSE, TRUE), c(4, 4)),
+    minNum = rep(c(NA, 36), c(4, 4)),
+    bpSpan = rep(c(NA, 1000, 300), c(4, 2, 2))
 )
 kable(df, format = 'markdown')</code></pre>
 <table>
@@ -992,6 +993,7 @@ kable(df, format = 'markdown')</code></pre>
 <th align="right">scalefac</th>
 <th align="left">smooth</th>
 <th align="right">minNum</th>
+<th align="right">bpSpan</th>
 </tr>
 </thead>
 <tbody>
@@ -1002,6 +1004,7 @@ kable(df, format = 'markdown')</code></pre>
 <td align="right">32</td>
 <td align="left">FALSE</td>
 <td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">run2-v1.0.10</td>
@@ -1009,6 +1012,7 @@ kable(df, format = 'markdown')</code></pre>
 <td align="right">5e-02</td>
 <td align="right">32</td>
 <td align="left">FALSE</td>
+<td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
@@ -1018,6 +1022,7 @@ kable(df, format = 'markdown')</code></pre>
 <td align="right">32</td>
 <td align="left">FALSE</td>
 <td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">run4-v1.0.10</td>
@@ -1025,6 +1030,7 @@ kable(df, format = 'markdown')</code></pre>
 <td align="right">1e-02</td>
 <td align="right">1</td>
 <td align="left">FALSE</td>
+<td align="right">NA</td>
 <td align="right">NA</td>
 </tr>
 <tr class="odd">
@@ -1034,6 +1040,7 @@ kable(df, format = 'markdown')</code></pre>
 <td align="right">32</td>
 <td align="left">TRUE</td>
 <td align="right">36</td>
+<td align="right">1000</td>
 </tr>
 <tr class="even">
 <td align="left">run6-v1.5.34</td>
@@ -1042,6 +1049,25 @@ kable(df, format = 'markdown')</code></pre>
 <td align="right">32</td>
 <td align="left">TRUE</td>
 <td align="right">36</td>
+<td align="right">1000</td>
+</tr>
+<tr class="odd">
+<td align="left">run7-v1.5.35</td>
+<td align="right">2</td>
+<td align="right">5e-02</td>
+<td align="right">32</td>
+<td align="left">TRUE</td>
+<td align="right">36</td>
+<td align="right">300</td>
+</tr>
+<tr class="even">
+<td align="left">run8-v1.5.35</td>
+<td align="right">2</td>
+<td align="right">1e-02</td>
+<td align="right">32</td>
+<td align="left">TRUE</td>
+<td align="right">36</td>
+<td align="right">300</td>
 </tr>
 </tbody>
 </table>
@@ -1095,7 +1121,17 @@ lapply(ov, table)</code></pre>
 ## $`run6-v1.5.34`
 ## 
 ##    0    1 
-## 2407  489
+## 2407  489 
+## 
+## $`run7-v1.5.35`
+## 
+##     0     1 
+## 40062  4130 
+## 
+## $`run8-v1.5.35`
+## 
+##    0    1 
+## 3967  836
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1119,8 +1155,8 @@ sapply(ov, perc)</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    34.277620     9.427187    16.692871    15.958055    11.494218 
-## run6-v1.5.34 
-##    16.885359
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    16.885359     9.345583    17.405788
 </code></pre>
 </div>
 <h3 id="all-at-0.05">All at 0.05</h3>
@@ -1135,8 +1171,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov)</code></pr
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     46.15385     76.92308     80.95238     67.83217     71.42857 
-## run6-v1.5.34 
-##     83.33333
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     83.33333     75.00000     67.24138
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1147,8 +1183,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov)</code></pr
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     45.94595     64.53202     61.72249     49.05983     57.97101 
-## run6-v1.5.34 
-##     63.98467
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     63.98467     56.35593     44.51220
 </code></pre>
 </div>
 <h3 id="all-at-0.10">All at 0.10</h3>
@@ -1163,8 +1199,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.10 ])}, ders, ov)</code></pr
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     50.00000     64.56311     62.43094     65.87838     70.37037 
-## run6-v1.5.34 
-##     81.81818
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     81.81818     67.39130     64.39394
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1175,8 +1211,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.10 ])}, ders, ov)</code></pr
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     49.18033     57.37705     53.29768     43.12682     53.02166 
-## run6-v1.5.34 
-##     62.57310
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     62.57310     27.55989     41.13009
 </code></pre>
 </div>
 <h2 id="up">Up</h2>
@@ -1192,8 +1228,8 @@ sapply(ov.up, perc)</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     5.637394     2.855092     3.671061     4.968640     1.549782 
-## run6-v1.5.34 
-##     1.864641
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     1.864641     1.774077     2.894025
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1205,8 +1241,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.up)</code><
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     2.564103     0.000000     0.000000    10.489510     0.000000 
-## run6-v1.5.34 
-##     0.000000
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     0.000000     0.000000     0.000000
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1217,8 +1253,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.up)</code><
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    2.7027027    1.9704433    0.4784689   11.1965812    4.0579710 
-## run6-v1.5.34 
-##    4.9808429
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    4.9808429    5.2259887    5.2591463
 </code></pre>
 </div>
 <h3 id="up-at-0.10-1">Up at 0.10</h3>
@@ -1233,8 +1269,8 @@ sapply(ov.up, perc)</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     5.637394     2.855092     3.671061     4.968640     1.549782 
-## run6-v1.5.34 
-##     1.864641
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     1.864641     1.774077     2.894025
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1246,8 +1282,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.10 ])}, ders, ov.up)</code><
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    1.8518519    1.9417476    0.5524862   14.5270270    0.0000000 
-## run6-v1.5.34 
-##    0.0000000
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    0.0000000    2.1739130    2.2727273
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1258,8 +1294,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.10 ])}, ders, ov.up)</code><
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     1.639344     3.161593     3.743316    10.358180     6.043330 
-## run6-v1.5.34 
-##     4.093567
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     4.093567     4.418811     5.256242
 </code></pre>
 </div>
 <h2 id="down">Down</h2>
@@ -1275,8 +1311,8 @@ sapply(ov.down, perc)</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    28.640227     6.572095    13.021810    10.989415     9.944436 
-## run6-v1.5.34 
-##    15.020718
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    15.020718     7.571506    14.511763
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1288,8 +1324,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.down)</code
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     43.58974     76.92308     80.95238     57.34266     71.42857 
-## run6-v1.5.34 
-##     83.33333
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     83.33333     75.00000     67.24138
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1300,8 +1336,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.05 ])}, ders, ov.down)</code
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     43.24324     62.56158     61.24402     37.86325     53.91304 
-## run6-v1.5.34 
-##     59.00383
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     59.00383     51.12994     39.25305
 </code></pre>
 </div>
 <h3 id="down-at-0.10">Down at 0.10</h3>
@@ -1316,8 +1352,8 @@ sapply(ov.down, perc)</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    28.640227     6.572095    13.021810    10.989415     9.944436 
-## run6-v1.5.34 
-##    15.020718
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    15.020718     7.571506    14.511763
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1329,8 +1365,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.10 ])}, ders, ov.down)</code
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     48.14815     62.62136     61.87845     51.35135     70.37037 
-## run6-v1.5.34 
-##     81.81818
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     81.81818     65.21739     62.12121
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1341,8 +1377,8 @@ mapply(function(der, over) { perc(over[der$fwer < 0.10 ])}, ders, ov.down)</code
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     47.54098     54.21546     49.55437     32.76864     46.97834 
-## run6-v1.5.34 
-##     58.47953
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     58.47953     23.14108     35.87385
 </code></pre>
 </div>
 <h1 id="overlap-neun-to-derfinder">Overlap: Neun+ to derfinder</h1>
@@ -1361,8 +1397,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     25.75627     99.56785     96.28349     98.96283     62.66206 
-## run6-v1.5.34 
-##     18.32325
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     18.32325     78.04667     35.78220
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1375,8 +1411,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    19.036145    98.795181    91.084337    98.313253    27.228916 
-## run6-v1.5.34 
-##     4.096386
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     4.096386    49.879518    15.421687
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1389,8 +1425,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     29.51482    100.00000     99.19137     99.32615     82.47978 
-## run6-v1.5.34 
-##     26.28032
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     26.28032     93.80054     47.16981
 </code></pre>
 </div>
 <h2 id="fwer">FWER</h2>
@@ -1408,8 +1444,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    0.8643042    2.9386344    1.1235955    4.5808124    0.3457217 
-## run6-v1.5.34 
-##    0.3457217
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    0.3457217    2.1607606    3.1114952
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1422,8 +1458,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    0.2409639    0.0000000    0.0000000    2.1686747    0.0000000 
-## run6-v1.5.34 
-##    0.0000000
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    0.0000000    0.0000000    0.0000000
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1436,8 +1472,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    1.2129380    4.5822102    1.7520216    5.9299191    0.5390836 
-## run6-v1.5.34 
-##    0.5390836
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    0.5390836    3.3692722    4.8517520
 </code></pre>
 </div>
 <h3 id="fwer-at-0.10">FWER at 0.10</h3>
@@ -1454,8 +1490,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     1.296456     7.692308     6.050130     9.248055     1.469317 
-## run6-v1.5.34 
-##     0.605013
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##     0.605013     5.185825     6.482282
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1468,8 +1504,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    0.2409639    0.7228916    0.2409639    6.2650602    0.0000000 
-## run6-v1.5.34 
-##    0.0000000
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    0.0000000    0.4819277    0.7228916
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1482,8 +1518,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    1.8867925   11.5902965    9.2991914   10.9164420    2.2911051 
-## run6-v1.5.34 
-##    0.9433962
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    0.9433962    7.8167116    9.7035040
 </code></pre>
 </div>
 <h2 id="fdr">FDR</h2>
@@ -1501,8 +1537,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    0.7778738    7.5194468    6.8280035   37.2515125   15.7303371 
-## run6-v1.5.34 
-##   12.1866897
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##   12.1866897   28.7813310   31.6335350
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1515,8 +1551,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    0.2409639    0.7228916    0.2409639   25.0602410    3.1325301 
-## run6-v1.5.34 
-##    2.6506024
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    2.6506024    7.2289157   10.3614458
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1529,8 +1565,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     1.078167    11.320755    10.512129    44.070081    22.776280 
-## run6-v1.5.34 
-##    17.520216
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    17.520216    40.835580    43.530997
 </code></pre>
 </div>
 <h3 id="fdr-at-0.10">FDR at 0.10</h3>
@@ -1547,8 +1583,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     1.469317    22.385480    13.396716    48.746759    34.053587 
-## run6-v1.5.34 
-##    14.693172
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    14.693172    68.539326    32.843561
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1561,8 +1597,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    0.2409639    4.8192771    4.3373494   35.1807229   10.8433735 
-## run6-v1.5.34 
-##    2.8915663
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    2.8915663   33.9759036   11.5662651
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1575,8 +1611,8 @@ sapply(ders, function(der) {
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##     2.156334    32.210243    18.463612    56.334232    47.035040 
-## run6-v1.5.34 
-##    21.293801
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    21.293801    87.870620    44.743935
 </code></pre>
 </div>
 <h1 id="derfinder-summary">derfinder summary</h1>
@@ -1612,7 +1648,15 @@ lapply(ders, function(der) { summary(width(der))})</code></pre>
 ## 
 ## $`run6-v1.5.34`
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    1.00    4.00   10.00   95.01   36.00 2418.00
+##    1.00    4.00   10.00   95.01   36.00 2418.00 
+## 
+## $`run7-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.00    5.00   14.00   56.48   37.00 2931.00 
+## 
+## $`run8-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.00    5.00   16.00   82.53   87.00 2176.00
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1644,7 +1688,15 @@ lapply(ders, function(der) { summary(width(der[der$fwer < 0.05 ]))})</code></pre
 ## 
 ## $`run6-v1.5.34`
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    1280    1835    1952    1910    2036    2418
+##    1280    1835    1952    1910    2036    2418 
+## 
+## $`run7-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1247    1676    1900    1978    2280    2931 
+## 
+## $`run8-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   554.0   841.8   990.0  1105.0  1280.0  2176.0
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1675,7 +1727,15 @@ lapply(ders, function(der) { summary(width(der[der$fwer < 0.05 ]))})</code></pre
 ## 
 ## $`run6-v1.5.34`
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   183.0   461.0   654.0   741.4   886.0  2418.0
+##   183.0   461.0   654.0   741.4   886.0  2418.0 
+## 
+## $`run7-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   266.0   594.0   751.5   867.5  1012.0  2931.0 
+## 
+## $`run8-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##      34     125     191     263     293    2176
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1707,7 +1767,15 @@ lapply(ders, function(der) { summary(width(der[der$fwer < 0.10 ]))})</code></pre
 ## 
 ## $`run6-v1.5.34`
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    1194    1472    1817    1761    2029    2418
+##    1194    1472    1817    1761    2029    2418 
+## 
+## $`run7-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     599    1335    1583    1654    1900    2931 
+## 
+## $`run8-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   427.0   578.8   733.0   832.8   967.2  2176.0
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1738,7 +1806,15 @@ lapply(ders, function(der) { summary(width(der[der$fwer < 0.10 ]))})</code></pre
 ## 
 ## $`run6-v1.5.34`
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   183.0   339.8   539.5   634.3   803.5  2418.0
+##   183.0   339.8   539.5   634.3   803.5  2418.0 
+## 
+## $`run7-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    34.0   161.0   220.0   309.9   338.0  2931.0 
+## 
+## $`run8-v1.5.35`
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    22.0    97.0   170.0   234.7   273.0  2176.0
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1750,8 +1826,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.05) })</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##           39           52           21          143            7 
-## run6-v1.5.34 
-##            6
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##            6           36           58
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1762,8 +1838,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.05) })</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##           37          203          209         2340          345 
-## run6-v1.5.34 
-##          261
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##          261          708         1312
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1775,8 +1851,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.10) })</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##           54          206          181          296           27 
-## run6-v1.5.34 
-##           11
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##           11           92          132
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1787,8 +1863,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.10) })</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##           61          854          561         4132          877 
-## run6-v1.5.34 
-##          342
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##          342         5635         1522
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1800,8 +1876,8 @@ sapply(ders, length)</code></pre>
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##         3530       406887       138652       171556        33295 
-## run6-v1.5.34 
-##         2896
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##         2896        44192         4803
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1813,8 +1889,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.05) }) / sapply(ders, length) * 10
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##   1.10481586   0.01277996   0.01514583   0.08335471   0.02102418 
-## run6-v1.5.34 
-##   0.20718232
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##   0.20718232   0.08146271   1.20757860
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1825,8 +1901,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.05) }) / sapply(ders, length) * 10
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    1.0481586    0.0498910    0.1507371    1.3639861    1.0361916 
-## run6-v1.5.34 
-##    9.0124309
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##    9.0124309    1.6020999   27.3162607
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1838,8 +1914,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.10) }) / sapply(ders, length) * 10
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##   1.52974504   0.05062831   0.13054265   0.17253841   0.08109326 
-## run6-v1.5.34 
-##   0.37983425
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##   0.37983425   0.20818248   2.74828232
 </code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1850,8 +1926,8 @@ sapply(ders, function(der) { sum(der$fwer < 0.10) }) / sapply(ders, length) * 10
 </button>
 <pre style=""><code class="output r">## run1-v1.0.10 run2-v1.0.10 run3-v1.0.10 run4-v1.0.10 run5-v1.5.34 
 ##    1.7280453    0.2098863    0.4046101    2.4085430    2.6340291 
-## run6-v1.5.34 
-##   11.8093923
+## run6-v1.5.34 run7-v1.5.35 run8-v1.5.35 
+##   11.8093923   12.7511767   31.6885280
 </code></pre>
 </div>
 <h1 id="reproducibility">Reproducibility</h1>
@@ -1871,13 +1947,13 @@ session_info()</code></pre>
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
 <pre style=""><code class="output r">##  setting  value                                   
-##  version  R version 3.3.0 beta (2016-04-20 r70523)
+##  version  R version 3.3.0 beta (2016-04-21 r70529)
 ##  system   x86_64, linux-gnu                       
 ##  ui       X11                                     
 ##  language (EN)                                    
 ##  collate  en_US.UTF-8                             
 ##  tz       <NA>                                    
-##  date     2016-04-20
+##  date     2016-04-22
 </code></pre>
 <button class="message R toggle btn btn-xs btn-info">
 <span class="glyphicon glyphicon-chevron-down"></span> R message
@@ -1889,7 +1965,6 @@ session_info()</code></pre>
 </button>
 <pre style=""><code class="output r">##  package        * version  date       source                                   
 ##  BiocGenerics   * 0.17.5   2016-04-18 Bioconductor                             
-##  colorout       * 1.1-2    2016-04-02 Github (jalvesaq/colorout@f96c00c)       
 ##  devtools       * 1.10.0   2016-01-23 CRAN (R 3.3.0)                           
 ##  digest           0.6.9    2016-01-08 CRAN (R 3.3.0)                           
 ##  evaluate         0.8.3    2016-03-05 CRAN (R 3.3.0)                           
@@ -1920,7 +1995,7 @@ session_info()</code></pre>
 <button class="output R toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </button>
-<pre style=""><code class="output r">## [1] "2016-04-20 12:50:03 EDT"
+<pre style=""><code class="output r">## [1] "2016-04-22 07:50:09 EDT"
 </code></pre>
 </div>
 </div>
