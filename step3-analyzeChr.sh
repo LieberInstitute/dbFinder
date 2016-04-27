@@ -2,11 +2,14 @@
 
 ## Usage
 # sh step3-analyzeChr.sh shulha run8-v1.5.35
+# sh step3-analyzeChr.sh epimap run1-v1.5.38 H3K27ac
+# sh step3-analyzeChr.sh epimap run1-v1.5.38 H3K4me3
 
 # Define variables
 EXPERIMENT=$1
 SHORT="derA-${EXPERIMENT}"
 PREFIX=$2
+HISTONE=$3
 
 # Directories
 ROOTDIR=/dcl01/lieber/ajaffe/derRuns/derChIP
@@ -20,25 +23,30 @@ CHRNUMS="M 22 21 Y 20 19 18 17 16 15 14 13 12 11 10 9 8 X 7 6 5 4 3 2 1"
 for chrnum in ${CHRNUMS}
 do
 	echo "Creating script for chromosome ${chrnum}"
+    chr="chr${chrnum}"
     
-    if [[ ${EXPERIMENT} == "shulha" ]]
+    if [[ "${EXPERIMENT}" == "shulha" ]]
     then
-        CORES=2
+        CORES=4
+    	outdir="${PREFIX}/${chr}"
+    	sname="${SHORT}.${PREFIX}.${chr}"
+    elif [[ "${EXPERIMENT}" == "epimap" ]]
+    then
+        CORES=20
+    	outdir="${PREFIX}-${HISTONE}/${chr}"
+    	sname="${SHORT}.${PREFIX}-${HISTONE}.${chr}"
     else
-        echo "Specify a valid experiment: shulha"
+        echo "Specify a valid experiment: shulha, epimap"
     fi
-    
-	chr="chr${chrnum}"
-	outdir="${PREFIX}/${chr}"
-	sname="${SHORT}.${PREFIX}.${chr}"
+	
 	cat > ${ROOTDIR}/.${sname}.sh <<EOF
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=8G,h_vmem=10G,h_fsize=10G,h=!compute-04[3-5]*
+#$ -l mem_free=2G,h_vmem=3G,h_fsize=10G,h=!compute-04[3-5]*
 #$ -N ${sname}
 #$ -pe local ${CORES}
-#$ -hold_jid derMod-${EXPERIMENT}.${PREFIX}
+#$ -hold_jid derMod-${EXPERIMENT}.${PREFIX}*
 
 echo "**** Job starts ****"
 date

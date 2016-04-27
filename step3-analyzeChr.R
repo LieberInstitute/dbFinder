@@ -10,7 +10,7 @@ library('GenomeInfoDb')
 
 ## Specify parameters
 spec <- matrix(c(
-    'experiment', 'e', 1, 'character', 'Experiment. Either stem, brainspan, snyder, hippo, or simulation',
+    'experiment', 'e', 1, 'character', 'Experiment. Either shulha or epimap',
 	'CovFile', 'd', 1, 'character', 'path to the .Rdata file with the results from loadCoverage() with cutoff >= 0',
 	'chr', 'c', 1, 'character', 'Chromosome under analysis',
 	'mcores', 'm', 1, 'integer', 'Number of cores',
@@ -27,7 +27,7 @@ if (!is.null(opt$help)) {
 }
 
 ## Check experiment input
-stopifnot(opt$experiment %in% c('shulha'))
+stopifnot(opt$experiment %in% c('shulha', 'epimap'))
 
 ## Format chromosome name appropriately
 if(opt$chr == 'M') opt$chr <- 'chrM' else opt$chr <- mapSeqlevels(opt$chr, 'UCSC')
@@ -62,6 +62,13 @@ if(opt$experiment == 'shulha') {
         groupInfo = groupInfo, mc.cores = opt$mcores,
         lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'),
         smooth = TRUE, minNum = 36, bpSpan = 300)    
+} else if (opt$experiment == 'epimap') {
+    analyzeChr(chr = opt$chr, coverageInfo = covData, models = models, 
+        cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 5,
+        nPermute = 100, seeds = seq_len(100) + 160427, maxClusterGap = 3000,
+        groupInfo = groupInfo, mc.cores = opt$mcores,
+        lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'),
+        smooth = TRUE, minNum = 100, bpSpan = 300)    
 }
 
 

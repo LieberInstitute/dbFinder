@@ -2,11 +2,14 @@
 
 ## Usage
 # sh step2-makeModels.sh shulha run8-v1.5.35
+# sh step2-makeModels.sh epimap run1-v1.5.38 H3K27ac
+# sh step2-makeModels.sh epimap run1-v1.5.38 H3K4me3
 
 # Define variables
 EXPERIMENT=$1
 SHORT="derMod-${EXPERIMENT}"
 PREFIX=$2
+HISTONE=$3
 
 # Directories
 ROOTDIR=/dcl01/lieber/ajaffe/derRuns/derChIP
@@ -14,8 +17,18 @@ MAINDIR=${ROOTDIR}/${EXPERIMENT}
 WDIR=${MAINDIR}/derAnalysis
 
 # Construct shell files
-outdir="${PREFIX}"
-sname="${SHORT}.${PREFIX}"
+if [[ "${EXPERIMENT}" == "shulha" ]]
+then
+    outdir="${PREFIX}"
+    sname="${SHORT}.${PREFIX}"
+elif [[ "${EXPERIMENT}" == 'epimap' ]]
+then
+    outdir="${PREFIX}-${HISTONE}"
+    sname="${SHORT}.${PREFIX}-${HISTONE}"
+else
+    echo "Specify a valid experiment: shulha, epimap"
+fi
+
 echo "Creating script ${sname}"
 cat > ${ROOTDIR}/.${sname}.sh <<EOF
 #!/bin/bash
@@ -41,6 +54,9 @@ mv ${ROOTDIR}/${sname}.* ${WDIR}/${outdir}/logs/
 echo "**** Job ends ****"
 date
 EOF
+
+
+## Run job
 call="qsub .${sname}.sh"
 echo $call
 $call

@@ -2,13 +2,14 @@
 
 ## Usage
 # sh run-all.sh shulha run8-v1.5.35 TRUE
+# sh run-all.sh epimap run1-v1.5.38 TRUE H3K27ac
+# sh run-all.sh epimap run1-v1.5.38 TRUE H3K4me3
 
 # Define variables
 EXPERIMENT=$1
 PREFIX=$2
 SKIP1=${3-"FALSE"}
-SKIP6=${4-"FALSE"}
-SKIP8=${5-"FALSE"}
+HISTONE=$4
 
 mkdir -p ${EXPERIMENT}/CoverageInfo
 mkdir -p ${EXPERIMENT}/derAnalysis
@@ -20,10 +21,10 @@ if [[ $SKIP1 == "FALSE" ]]
 then  
     sh step1-fullCoverage.sh ${EXPERIMENT}
 fi
-sh step2-makeModels.sh ${EXPERIMENT} ${PREFIX}
-sh step3-analyzeChr.sh ${EXPERIMENT} ${PREFIX}
-sh step4-mergeResults.sh ${EXPERIMENT} ${PREFIX}
-sh step5-derfinderReport.sh ${EXPERIMENT} ${PREFIX}
+sh step2-makeModels.sh ${EXPERIMENT} ${PREFIX} ${HISTONE}
+sh step3-analyzeChr.sh ${EXPERIMENT} ${PREFIX} ${HISTONE}
+sh step4-mergeResults.sh ${EXPERIMENT} ${PREFIX} ${HISTONE}
+sh step5-derfinderReport.sh ${EXPERIMENT} ${PREFIX} ${HISTONE}
 
 #if [[ $SKIP6 == "FALSE" ]]
 #then  

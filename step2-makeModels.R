@@ -9,7 +9,8 @@ library('devtools')
 
 ## Specify parameters
 spec <- matrix(c(
-	'experiment', 'e', 1, 'character', 'Experiment. Either stem, brainspan, snyder, hippo, or simulation',
+	'experiment', 'e', 1, 'character', 'Experiment. Either shulha or epimap',
+    'histone', 'i', 2, 'character', 'For epimap, the histone mark to use. Either H3K27ac or H3K4me3.',
 	'help' , 'h', 0, 'logical', 'Display help'
 ), byrow=TRUE, ncol=5)
 opt <- getopt(spec)
@@ -23,9 +24,9 @@ if (!is.null(opt$help)) {
 }
 
 ## Check experiment input
-stopifnot(opt$experiment %in% c('shulha'))
+stopifnot(opt$experiment %in% c('shulha', 'epimap'))
 
-if(opt$experiment != 'brainspan') {
+if(opt$experiment != 'epimap') {
     ## Load the coverage information
     load(file.path('..', '..', 'CoverageInfo', 'fullCov.Rdata'))
     load(file.path('..', '..', 'CoverageInfo', 'chr22CovInfo.Rdata'))
@@ -35,7 +36,7 @@ if(opt$experiment != 'brainspan') {
 }
 
  ## Calculate the library adjustments and build the models
-buildModels <- function(fullCov, testvars, colsubset = NULL) {
+buildModels <- function(fullCov, testvars, colsubset = NULL, adjustvars = NULL) {
     ## Determine sample size adjustments
     if(file.exists("sampleDepths.Rdata")) {
     	load("sampleDepths.Rdata")
@@ -54,7 +55,7 @@ buildModels <- function(fullCov, testvars, colsubset = NULL) {
     }
     ## Build the models
     models <- makeModels(sampleDepths = sampleDepths, testvars = testvars,
-        adjustvars = NULL, testIntercept = FALSE)
+        adjustvars = adjustvars, testIntercept = FALSE)
     
     return(models)
 }
@@ -94,6 +95,33 @@ if(opt$experiment == 'shulha') {
     
     ## Build models
     models <- buildModels(fullCov, testvars, colsubset)
+} else if (opt$experiment == 'epimap') {
+   ## Load the phenotype data
+    load('/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/annotated_phenotype_EpiMap_ChIPseq.rda')
+    
+    ## For testing
+    if(FALSE) opt <- list(histone = 'H3K27ac')
+    
+    stopifnot(opt$histone %in% c('H3K4me3', 'H3K27ac'))
+    ## Subset to apropriate mark
+    colsubset <- which(pd$HistoneMark == opt$histone)
+    
+    ## Save colsubset
+    save(colsubset, file = 'colsubset.Rdata')
+    
+    ## Define test variables
+    testvars <- pd[colsubset, c('BrainRegion', 'CellType', 'AgeDeath')]
+    
+    ## Define models
+    models <- list(
+        mod = model.matrix(~ testvars$BrainRegion + testvars$AgeDeath + testvars$CellType),
+        mod0 = model.matrix(~0 + rep(1, nrow(testvars)))
+    )
+    
+    ## Define groups
+    groupvars <- testvars
+    groupvars$AgeDeath <- Hmisc::cut2(testvars$AgeDeath, g = 2)
+    groupInfo <- factor(apply(groupvars, 1, function(x) paste(x, collapse = '_')))
 }
 
 ## Save models
