@@ -46,7 +46,16 @@ mkdir -p ${WDIR}/${outdir}/logs
 # merge results
 cd ${WDIR}/${outdir}/
 module load R/3.3
-Rscript ${ROOTDIR}/step2-makeModels.R -e "${EXPERIMENT}"
+
+if [[ "${EXPERIMENT}" == "shulha"]]
+then
+    Rscript ${ROOTDIR}/step2-makeModels.R -e "${EXPERIMENT}"
+elif [[ "${EXPERIMENT}" == "epimap" ]]
+then
+    Rscript ${ROOTDIR}/step2-makeModels.R -e "${EXPERIMENT}" -i "${HISTONE}"
+else
+    echo "Specify a valid experiment: shulha, epimap"
+fi
 
 # Move log files into the logs directory
 mv ${ROOTDIR}/${sname}.* ${WDIR}/${outdir}/logs/

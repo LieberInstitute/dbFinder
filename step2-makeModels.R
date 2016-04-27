@@ -102,6 +102,7 @@ if(opt$experiment == 'shulha') {
     ## For testing
     if(FALSE) opt <- list(histone = 'H3K27ac')
     
+    stopifnot(!is.null(opt$histone))
     stopifnot(opt$histone %in% c('H3K4me3', 'H3K27ac'))
     ## Subset to apropriate mark
     colsubset <- which(pd$HistoneMark == opt$histone)
