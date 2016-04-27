@@ -48,7 +48,7 @@ if(opt$datadir == '/dcs01/ajaffe/ChIPseq/Shulha2013/BED') {
 
 
 ## Load the coverage information without filtering
-chrnums <- c(1:22, 'X', 'Y')
+chrnums <- c(1:22, 'X', 'Y', 'M')
 
 fullCov <- fullCoverage(files = files, chrs = chrnums, mc.cores = opt$mcores, fileStyle = opt$fileStyle, outputs = 'auto')
 

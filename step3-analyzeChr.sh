@@ -29,11 +29,13 @@ do
     then
         CORES=4
     	outdir="${PREFIX}/${chr}"
+        rundir="${PREFIX}"
     	sname="${SHORT}.${PREFIX}.${chr}"
     elif [[ "${EXPERIMENT}" == "epimap" ]]
     then
         CORES=20
     	outdir="${PREFIX}-${HISTONE}/${chr}"
+        rundir="${PREFIX}-${HISTONE}"
     	sname="${SHORT}.${PREFIX}-${HISTONE}.${chr}"
     else
         echo "Specify a valid experiment: shulha, epimap"
@@ -57,7 +59,7 @@ mkdir -p ${WDIR}/${outdir}
 mkdir -p ${WDIR}/${outdir}/logs
 
 # run analyzeChr()
-cd ${WDIR}/${PREFIX}/
+cd ${WDIR}/${rundir}/
 module load R/3.3
 Rscript ${ROOTDIR}/step3-analyzeChr.R -d "${DATADIR}/${chr}CovInfo-filtered.Rdata" -c "${chrnum}" -m ${CORES} -e "${EXPERIMENT}"
 
