@@ -64,7 +64,7 @@ if(opt$experiment == 'shulha') {
         smooth = TRUE, minNum = 36, bpSpan = 300)    
 } else if (opt$experiment == 'epimap') {
     analyzeChr(chr = opt$chr, coverageInfo = covData, models = models, 
-        cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 5,
+        cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 10,
         nPermute = 100, seeds = seq_len(100) + 160427, maxClusterGap = 3000,
         groupInfo = groupInfo, mc.cores = opt$mcores,
         lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'),

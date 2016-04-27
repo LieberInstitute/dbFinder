@@ -6,6 +6,7 @@ spec <- matrix(c(
 	'experiment', 'e', 1, 'character', 'Experiment',
 	'run', 'r', 1, 'character', 'run name',
     'npermute', 'n', 1, 'integer', 'Number of permutations',
+    'histone', 'i', 2, 'character', 'For epimap, the histone mark to use. Either H3K27ac or H3K4me3.',
 	'help' , 'h', 0, 'logical', 'Display help'
 ), byrow=TRUE, ncol=5)
 opt <- getopt(spec)
@@ -18,11 +19,20 @@ if (!is.null(opt$help)) {
 }
 
 ## Check experiment input
-stopifnot(opt$experiment %in% c('shulha'))
+stopifnot(opt$experiment %in% c('shulha', 'epimap'))
 
 chrs <- paste0('chr', c(1:22, 'X', 'Y', 'M'))
 study <- opt$experiment
 run <- opt$run
+
+if(opt$experiment == 'epimap') {
+    stopifnot(!is.null(opt$histone))
+    stopifnot(opt$histone %in% c('H3K4me3', 'H3K27ac'))
+    run <- paste0(run, '-', opt$histone)
+}
+
+
+
 
 timediff <- lapply(chrs, function(chr) {
     info <- tryCatch(system(paste0('grep permutation *', study, '*', run, '*', chr, '.e*'), intern = TRUE), warning = function(w) { 'no data'})
@@ -58,7 +68,9 @@ if(!file.exists(file.path(study, 'derAnalysis', run, 'nChunks.Rdata'))) {
 }
 
 if(study == 'shulha') {
-    nCores <- rep(2, 25)
+    nCores <- rep(4, 25)
+} else if(study == 'epimap') {
+    nCores <- rep(20, 25)
 }
 names(nCores) <- chrs
 

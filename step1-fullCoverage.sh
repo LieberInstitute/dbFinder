@@ -25,7 +25,7 @@ elif [[ "${EXPERIMENT}" == 'epimap' ]]
 then
     DATADIR=/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap
     PATTERN=''
-    CUTOFF=5
+    CUTOFF=10
 else
     echo "Specify a valid experiment: shulha, epimap"
 fi
