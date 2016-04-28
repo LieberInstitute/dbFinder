@@ -1,0 +1,377 @@
+Loading required package: colorout
+2016-04-27 23:48:44 creating script for job macs-HBCC_ACC_382_B
+2016-04-27 23:48:44 qsub .macs-HBCC_ACC_382_B.sh
+Your job 1371771 ("macs-HBCC_ACC_382_B") has been submitted
+2016-04-27 23:48:44 creating script for job macs-HBCC_PFC_381_B
+2016-04-27 23:48:44 qsub .macs-HBCC_PFC_381_B.sh
+Your job 1371772 ("macs-HBCC_PFC_381_B") has been submitted
+2016-04-27 23:48:44 creating script for job macs-HBCC_ACC_340_D
+2016-04-27 23:48:44 qsub .macs-HBCC_ACC_340_D.sh
+Your job 1371773 ("macs-HBCC_ACC_340_D") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_ACC_340_B
+2016-04-27 23:48:45 qsub .macs-HBCC_ACC_340_B.sh
+Your job 1371774 ("macs-HBCC_ACC_340_B") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_PFC_339_D
+2016-04-27 23:48:45 qsub .macs-HBCC_PFC_339_D.sh
+Your job 1371775 ("macs-HBCC_PFC_339_D") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_PFC_339_B
+2016-04-27 23:48:45 qsub .macs-HBCC_PFC_339_B.sh
+Your job 1371776 ("macs-HBCC_PFC_339_B") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_ACC_378_B
+2016-04-27 23:48:45 qsub .macs-HBCC_ACC_378_B.sh
+Your job 1371777 ("macs-HBCC_ACC_378_B") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_PFC_377_D
+2016-04-27 23:48:45 qsub .macs-HBCC_PFC_377_D.sh
+Your job 1371778 ("macs-HBCC_PFC_377_D") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_PFC_377_B
+2016-04-27 23:48:45 qsub .macs-HBCC_PFC_377_B.sh
+Your job 1371779 ("macs-HBCC_PFC_377_B") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_ACC_385_D
+2016-04-27 23:48:45 qsub .macs-HBCC_ACC_385_D.sh
+Your job 1371780 ("macs-HBCC_ACC_385_D") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_ACC_385_B
+2016-04-27 23:48:45 qsub .macs-HBCC_ACC_385_B.sh
+Your job 1371781 ("macs-HBCC_ACC_385_B") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_PFC_384_D
+2016-04-27 23:48:45 qsub .macs-HBCC_PFC_384_D.sh
+Your job 1371782 ("macs-HBCC_PFC_384_D") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_PFC_384_B
+2016-04-27 23:48:45 qsub .macs-HBCC_PFC_384_B.sh
+Your job 1371783 ("macs-HBCC_PFC_384_B") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_ACC_362_D
+2016-04-27 23:48:45 qsub .macs-HBCC_ACC_362_D.sh
+Your job 1371784 ("macs-HBCC_ACC_362_D") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_ACC_362_B
+2016-04-27 23:48:45 qsub .macs-HBCC_ACC_362_B.sh
+Your job 1371785 ("macs-HBCC_ACC_362_B") has been submitted
+2016-04-27 23:48:45 creating script for job macs-HBCC_PFC_361_D
+2016-04-27 23:48:45 qsub .macs-HBCC_PFC_361_D.sh
+Your job 1371786 ("macs-HBCC_PFC_361_D") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_PFC_361_B
+2016-04-27 23:48:46 qsub .macs-HBCC_PFC_361_B.sh
+Your job 1371787 ("macs-HBCC_PFC_361_B") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_ACC_358_D
+2016-04-27 23:48:46 qsub .macs-HBCC_ACC_358_D.sh
+Your job 1371788 ("macs-HBCC_ACC_358_D") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_ACC_358_B
+2016-04-27 23:48:46 qsub .macs-HBCC_ACC_358_B.sh
+Your job 1371789 ("macs-HBCC_ACC_358_B") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_PFC_357_D
+2016-04-27 23:48:46 qsub .macs-HBCC_PFC_357_D.sh
+Your job 1371790 ("macs-HBCC_PFC_357_D") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_PFC_357_B
+2016-04-27 23:48:46 qsub .macs-HBCC_PFC_357_B.sh
+Your job 1371791 ("macs-HBCC_PFC_357_B") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_ACC_344_D
+2016-04-27 23:48:46 qsub .macs-HBCC_ACC_344_D.sh
+Your job 1371792 ("macs-HBCC_ACC_344_D") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_ACC_344_B
+2016-04-27 23:48:46 qsub .macs-HBCC_ACC_344_B.sh
+Your job 1371793 ("macs-HBCC_ACC_344_B") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_PFC_343_D
+2016-04-27 23:48:46 qsub .macs-HBCC_PFC_343_D.sh
+Your job 1371794 ("macs-HBCC_PFC_343_D") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_PFC_343_B
+2016-04-27 23:48:46 qsub .macs-HBCC_PFC_343_B.sh
+Your job 1371795 ("macs-HBCC_PFC_343_B") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_ACC_352_D
+2016-04-27 23:48:46 qsub .macs-HBCC_ACC_352_D.sh
+Your job 1371796 ("macs-HBCC_ACC_352_D") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_PFC_351_D
+2016-04-27 23:48:46 qsub .macs-HBCC_PFC_351_D.sh
+Your job 1371797 ("macs-HBCC_PFC_351_D") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_PFC_351_B
+2016-04-27 23:48:46 qsub .macs-HBCC_PFC_351_B.sh
+Your job 1371798 ("macs-HBCC_PFC_351_B") has been submitted
+2016-04-27 23:48:46 creating script for job macs-HBCC_ACC_356_D
+2016-04-27 23:48:46 qsub .macs-HBCC_ACC_356_D.sh
+Your job 1371799 ("macs-HBCC_ACC_356_D") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_PFC_355_D
+2016-04-27 23:48:47 qsub .macs-HBCC_PFC_355_D.sh
+Your job 1371800 ("macs-HBCC_PFC_355_D") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_PFC_355_B
+2016-04-27 23:48:47 qsub .macs-HBCC_PFC_355_B.sh
+Your job 1371801 ("macs-HBCC_PFC_355_B") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_ACC_350_D
+2016-04-27 23:48:47 qsub .macs-HBCC_ACC_350_D.sh
+Your job 1371802 ("macs-HBCC_ACC_350_D") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_ACC_350_B
+2016-04-27 23:48:47 qsub .macs-HBCC_ACC_350_B.sh
+Your job 1371803 ("macs-HBCC_ACC_350_B") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_PFC_349_D
+2016-04-27 23:48:47 qsub .macs-HBCC_PFC_349_D.sh
+Your job 1371804 ("macs-HBCC_PFC_349_D") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_PFC_349_B
+2016-04-27 23:48:47 qsub .macs-HBCC_PFC_349_B.sh
+Your job 1371805 ("macs-HBCC_PFC_349_B") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_ACC_354_D
+2016-04-27 23:48:47 qsub .macs-HBCC_ACC_354_D.sh
+Your job 1371806 ("macs-HBCC_ACC_354_D") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_PFC_353_D
+2016-04-27 23:48:47 qsub .macs-HBCC_PFC_353_D.sh
+Your job 1371807 ("macs-HBCC_PFC_353_D") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_PFC_353_B
+2016-04-27 23:48:47 qsub .macs-HBCC_PFC_353_B.sh
+Your job 1371808 ("macs-HBCC_PFC_353_B") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_ACC_346_D
+2016-04-27 23:48:47 qsub .macs-HBCC_ACC_346_D.sh
+Your job 1371809 ("macs-HBCC_ACC_346_D") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_ACC_346_B
+2016-04-27 23:48:47 qsub .macs-HBCC_ACC_346_B.sh
+Your job 1371810 ("macs-HBCC_ACC_346_B") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_PFC_345_D
+2016-04-27 23:48:47 qsub .macs-HBCC_PFC_345_D.sh
+Your job 1371811 ("macs-HBCC_PFC_345_D") has been submitted
+2016-04-27 23:48:47 creating script for job macs-HBCC_PFC_345_B
+2016-04-27 23:48:48 qsub .macs-HBCC_PFC_345_B.sh
+Your job 1371812 ("macs-HBCC_PFC_345_B") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_ACC_376_D
+2016-04-27 23:48:48 qsub .macs-HBCC_ACC_376_D.sh
+Your job 1371813 ("macs-HBCC_ACC_376_D") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_ACC_376_B
+2016-04-27 23:48:48 qsub .macs-HBCC_ACC_376_B.sh
+Your job 1371814 ("macs-HBCC_ACC_376_B") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_PFC_375_B
+2016-04-27 23:48:48 qsub .macs-HBCC_PFC_375_B.sh
+Your job 1371815 ("macs-HBCC_PFC_375_B") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_ACC_360_B
+2016-04-27 23:48:48 qsub .macs-HBCC_ACC_360_B.sh
+Your job 1371816 ("macs-HBCC_ACC_360_B") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_PFC_359_D
+2016-04-27 23:48:48 qsub .macs-HBCC_PFC_359_D.sh
+Your job 1371817 ("macs-HBCC_PFC_359_D") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_PFC_359_B
+2016-04-27 23:48:48 qsub .macs-HBCC_PFC_359_B.sh
+Your job 1371818 ("macs-HBCC_PFC_359_B") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_ACC_374_D
+2016-04-27 23:48:48 qsub .macs-HBCC_ACC_374_D.sh
+Your job 1371819 ("macs-HBCC_ACC_374_D") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_ACC_374_B
+2016-04-27 23:48:48 qsub .macs-HBCC_ACC_374_B.sh
+Your job 1371820 ("macs-HBCC_ACC_374_B") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_PFC_373_D
+2016-04-27 23:48:48 qsub .macs-HBCC_PFC_373_D.sh
+Your job 1371821 ("macs-HBCC_PFC_373_D") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_PFC_373_B
+2016-04-27 23:48:48 qsub .macs-HBCC_PFC_373_B.sh
+Your job 1371822 ("macs-HBCC_PFC_373_B") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_ACC_370_D
+2016-04-27 23:48:48 qsub .macs-HBCC_ACC_370_D.sh
+Your job 1371823 ("macs-HBCC_ACC_370_D") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_ACC_370_B
+2016-04-27 23:48:48 qsub .macs-HBCC_ACC_370_B.sh
+Your job 1371824 ("macs-HBCC_ACC_370_B") has been submitted
+2016-04-27 23:48:48 creating script for job macs-HBCC_PFC_369_D
+2016-04-27 23:48:48 qsub .macs-HBCC_PFC_369_D.sh
+Your job 1371825 ("macs-HBCC_PFC_369_D") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_PFC_369_B
+2016-04-27 23:48:49 qsub .macs-HBCC_PFC_369_B.sh
+Your job 1371826 ("macs-HBCC_PFC_369_B") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_ACC_342_D
+2016-04-27 23:48:49 qsub .macs-HBCC_ACC_342_D.sh
+Your job 1371827 ("macs-HBCC_ACC_342_D") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_ACC_342_B
+2016-04-27 23:48:49 qsub .macs-HBCC_ACC_342_B.sh
+Your job 1371828 ("macs-HBCC_ACC_342_B") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_PFC_341_B
+2016-04-27 23:48:49 qsub .macs-HBCC_PFC_341_B.sh
+Your job 1371829 ("macs-HBCC_PFC_341_B") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_ACC_382_A
+2016-04-27 23:48:49 qsub .macs-HBCC_ACC_382_A.sh
+Your job 1371830 ("macs-HBCC_ACC_382_A") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_PFC_381_C
+2016-04-27 23:48:49 qsub .macs-HBCC_PFC_381_C.sh
+Your job 1371831 ("macs-HBCC_PFC_381_C") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_PFC_381_A
+2016-04-27 23:48:49 qsub .macs-HBCC_PFC_381_A.sh
+Your job 1371832 ("macs-HBCC_PFC_381_A") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_ACC_340_C
+2016-04-27 23:48:49 qsub .macs-HBCC_ACC_340_C.sh
+Your job 1371833 ("macs-HBCC_ACC_340_C") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_ACC_340_A
+2016-04-27 23:48:49 qsub .macs-HBCC_ACC_340_A.sh
+Your job 1371834 ("macs-HBCC_ACC_340_A") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_PFC_339_C
+2016-04-27 23:48:49 qsub .macs-HBCC_PFC_339_C.sh
+Your job 1371835 ("macs-HBCC_PFC_339_C") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_PFC_339_A
+2016-04-27 23:48:49 qsub .macs-HBCC_PFC_339_A.sh
+Your job 1371836 ("macs-HBCC_PFC_339_A") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_ACC_378_C
+2016-04-27 23:48:49 qsub .macs-HBCC_ACC_378_C.sh
+Your job 1371837 ("macs-HBCC_ACC_378_C") has been submitted
+2016-04-27 23:48:49 creating script for job macs-HBCC_PFC_377_C
+2016-04-27 23:48:49 qsub .macs-HBCC_PFC_377_C.sh
+Your job 1371838 ("macs-HBCC_PFC_377_C") has been submitted
+2016-04-27 23:48:50 creating script for job macs-HBCC_PFC_377_A
+2016-04-27 23:48:50 qsub .macs-HBCC_PFC_377_A.sh
+Your job 1371839 ("macs-HBCC_PFC_377_A") has been submitted
+2016-04-27 23:48:50 creating script for job macs-HBCC_ACC_385_C
+2016-04-27 23:48:50 qsub .macs-HBCC_ACC_385_C.sh
+Your job 1371840 ("macs-HBCC_ACC_385_C") has been submitted
+2016-04-27 23:48:50 creating script for job macs-HBCC_ACC_385_A
+2016-04-27 23:48:50 qsub .macs-HBCC_ACC_385_A.sh
+Your job 1371841 ("macs-HBCC_ACC_385_A") has been submitted
+2016-04-27 23:48:50 creating script for job macs-HBCC_PFC_384_C
+2016-04-27 23:48:50 qsub .macs-HBCC_PFC_384_C.sh
+Your job 1371842 ("macs-HBCC_PFC_384_C") has been submitted
+2016-04-27 23:48:50 creating script for job macs-HBCC_PFC_384_A
+2016-04-27 23:48:50 qsub .macs-HBCC_PFC_384_A.sh
+Your job 1371843 ("macs-HBCC_PFC_384_A") has been submitted
+2016-04-27 23:48:50 creating script for job macs-HBCC_ACC_362_C
+2016-04-27 23:48:50 qsub .macs-HBCC_ACC_362_C.sh
+Your job 1371844 ("macs-HBCC_ACC_362_C") has been submitted
+2016-04-27 23:48:50 creating script for job macs-HBCC_ACC_362_A
+2016-04-27 23:48:50 qsub .macs-HBCC_ACC_362_A.sh
+Your job 1371845 ("macs-HBCC_ACC_362_A") has been submitted
+2016-04-27 23:48:50 creating script for job macs-HBCC_PFC_361_C
+2016-04-27 23:48:50 qsub .macs-HBCC_PFC_361_C.sh
+Your job 1371846 ("macs-HBCC_PFC_361_C") has been submitted
+2016-04-27 23:48:50 creating script for job macs-HBCC_PFC_361_A
+2016-04-27 23:48:50 qsub .macs-HBCC_PFC_361_A.sh
+Your job 1371847 ("macs-HBCC_PFC_361_A") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_ACC_358_C
+2016-04-27 23:48:51 qsub .macs-HBCC_ACC_358_C.sh
+Your job 1371848 ("macs-HBCC_ACC_358_C") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_ACC_358_A
+2016-04-27 23:48:51 qsub .macs-HBCC_ACC_358_A.sh
+Your job 1371849 ("macs-HBCC_ACC_358_A") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_PFC_357_C
+2016-04-27 23:48:51 qsub .macs-HBCC_PFC_357_C.sh
+Your job 1371850 ("macs-HBCC_PFC_357_C") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_PFC_357_A
+2016-04-27 23:48:51 qsub .macs-HBCC_PFC_357_A.sh
+Your job 1371851 ("macs-HBCC_PFC_357_A") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_ACC_344_C
+2016-04-27 23:48:51 qsub .macs-HBCC_ACC_344_C.sh
+Your job 1371852 ("macs-HBCC_ACC_344_C") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_ACC_344_A
+2016-04-27 23:48:51 qsub .macs-HBCC_ACC_344_A.sh
+Your job 1371853 ("macs-HBCC_ACC_344_A") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_PFC_343_A
+2016-04-27 23:48:51 qsub .macs-HBCC_PFC_343_A.sh
+Your job 1371854 ("macs-HBCC_PFC_343_A") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_ACC_352_C
+2016-04-27 23:48:51 qsub .macs-HBCC_ACC_352_C.sh
+Your job 1371855 ("macs-HBCC_ACC_352_C") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_PFC_351_C
+2016-04-27 23:48:51 qsub .macs-HBCC_PFC_351_C.sh
+Your job 1371856 ("macs-HBCC_PFC_351_C") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_PFC_351_A
+2016-04-27 23:48:51 qsub .macs-HBCC_PFC_351_A.sh
+Your job 1371857 ("macs-HBCC_PFC_351_A") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_ACC_356_C
+2016-04-27 23:48:51 qsub .macs-HBCC_ACC_356_C.sh
+Your job 1371858 ("macs-HBCC_ACC_356_C") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_ACC_356_A
+2016-04-27 23:48:51 qsub .macs-HBCC_ACC_356_A.sh
+Your job 1371859 ("macs-HBCC_ACC_356_A") has been submitted
+2016-04-27 23:48:51 creating script for job macs-HBCC_ACC_350_C
+2016-04-27 23:48:51 qsub .macs-HBCC_ACC_350_C.sh
+Your job 1371860 ("macs-HBCC_ACC_350_C") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_ACC_350_A
+2016-04-27 23:48:52 qsub .macs-HBCC_ACC_350_A.sh
+Your job 1371861 ("macs-HBCC_ACC_350_A") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_PFC_349_C
+2016-04-27 23:48:52 qsub .macs-HBCC_PFC_349_C.sh
+Your job 1371862 ("macs-HBCC_PFC_349_C") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_PFC_349_A
+2016-04-27 23:48:52 qsub .macs-HBCC_PFC_349_A.sh
+Your job 1371863 ("macs-HBCC_PFC_349_A") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_ACC_354_C
+2016-04-27 23:48:52 qsub .macs-HBCC_ACC_354_C.sh
+Your job 1371864 ("macs-HBCC_ACC_354_C") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_ACC_354_A
+2016-04-27 23:48:52 qsub .macs-HBCC_ACC_354_A.sh
+Your job 1371865 ("macs-HBCC_ACC_354_A") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_PFC_353_C
+2016-04-27 23:48:52 qsub .macs-HBCC_PFC_353_C.sh
+Your job 1371866 ("macs-HBCC_PFC_353_C") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_PFC_353_A
+2016-04-27 23:48:52 qsub .macs-HBCC_PFC_353_A.sh
+Your job 1371867 ("macs-HBCC_PFC_353_A") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_ACC_346_C
+2016-04-27 23:48:52 qsub .macs-HBCC_ACC_346_C.sh
+Your job 1371868 ("macs-HBCC_ACC_346_C") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_ACC_346_A
+2016-04-27 23:48:52 qsub .macs-HBCC_ACC_346_A.sh
+Your job 1371869 ("macs-HBCC_ACC_346_A") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_PFC_345_C
+2016-04-27 23:48:52 qsub .macs-HBCC_PFC_345_C.sh
+Your job 1371870 ("macs-HBCC_PFC_345_C") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_PFC_345_A
+2016-04-27 23:48:52 qsub .macs-HBCC_PFC_345_A.sh
+Your job 1371871 ("macs-HBCC_PFC_345_A") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_ACC_376_C
+2016-04-27 23:48:52 qsub .macs-HBCC_ACC_376_C.sh
+Your job 1371872 ("macs-HBCC_ACC_376_C") has been submitted
+2016-04-27 23:48:52 creating script for job macs-HBCC_ACC_376_A
+2016-04-27 23:48:52 qsub .macs-HBCC_ACC_376_A.sh
+Your job 1371873 ("macs-HBCC_ACC_376_A") has been submitted
+2016-04-27 23:48:53 creating script for job macs-HBCC_PFC_375_A
+2016-04-27 23:48:53 qsub .macs-HBCC_PFC_375_A.sh
+Your job 1371874 ("macs-HBCC_PFC_375_A") has been submitted
+2016-04-27 23:48:53 creating script for job macs-HBCC_ACC_360_C
+2016-04-27 23:48:53 qsub .macs-HBCC_ACC_360_C.sh
+Your job 1371875 ("macs-HBCC_ACC_360_C") has been submitted
+2016-04-27 23:48:53 creating script for job macs-HBCC_ACC_360_A
+2016-04-27 23:48:53 qsub .macs-HBCC_ACC_360_A.sh
+Your job 1371876 ("macs-HBCC_ACC_360_A") has been submitted
+2016-04-27 23:48:53 creating script for job macs-HBCC_PFC_359_C
+2016-04-27 23:48:53 qsub .macs-HBCC_PFC_359_C.sh
+Your job 1371877 ("macs-HBCC_PFC_359_C") has been submitted
+2016-04-27 23:48:53 creating script for job macs-HBCC_PFC_359_A
+2016-04-27 23:48:53 qsub .macs-HBCC_PFC_359_A.sh
+Your job 1371878 ("macs-HBCC_PFC_359_A") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_ACC_374_C
+2016-04-27 23:48:54 qsub .macs-HBCC_ACC_374_C.sh
+Your job 1371879 ("macs-HBCC_ACC_374_C") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_ACC_374_A
+2016-04-27 23:48:54 qsub .macs-HBCC_ACC_374_A.sh
+Your job 1371880 ("macs-HBCC_ACC_374_A") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_PFC_373_C
+2016-04-27 23:48:54 qsub .macs-HBCC_PFC_373_C.sh
+Your job 1371881 ("macs-HBCC_PFC_373_C") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_PFC_373_A
+2016-04-27 23:48:54 qsub .macs-HBCC_PFC_373_A.sh
+Your job 1371882 ("macs-HBCC_PFC_373_A") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_ACC_370_C
+2016-04-27 23:48:54 qsub .macs-HBCC_ACC_370_C.sh
+Your job 1371883 ("macs-HBCC_ACC_370_C") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_PFC_369_C
+2016-04-27 23:48:54 qsub .macs-HBCC_PFC_369_C.sh
+Your job 1371884 ("macs-HBCC_PFC_369_C") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_PFC_369_A
+2016-04-27 23:48:54 qsub .macs-HBCC_PFC_369_A.sh
+Your job 1371885 ("macs-HBCC_PFC_369_A") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_ACC_342_C
+2016-04-27 23:48:54 qsub .macs-HBCC_ACC_342_C.sh
+Your job 1371886 ("macs-HBCC_ACC_342_C") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_ACC_342_A
+2016-04-27 23:48:54 qsub .macs-HBCC_ACC_342_A.sh
+Your job 1371887 ("macs-HBCC_ACC_342_A") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_PFC_341_C
+2016-04-27 23:48:54 qsub .macs-HBCC_PFC_341_C.sh
+Your job 1371888 ("macs-HBCC_PFC_341_C") has been submitted
+2016-04-27 23:48:54 creating script for job macs-HBCC_PFC_341_A
+2016-04-27 23:48:54 qsub .macs-HBCC_PFC_341_A.sh
+Your job 1371889 ("macs-HBCC_PFC_341_A") has been submitted
+   user  system elapsed 
+  2.094   5.513  10.283 
+2016-04-27 23:48:54
+Session info -----------------------------------------------------------------------------------------------------------
+ setting  value                                 
+ version  R version 3.3.0 RC (2016-04-27 r70556)
+ system   x86_64, linux-gnu                     
+ ui       X11                                   
+ language (EN)                                  
+ collate  en_US.UTF-8                           
+ tz       <NA>                                  
+ date     2016-04-27                            
+
+Packages ---------------------------------------------------------------------------------------------------------------
+ package  * version date       source                            
+ colorout * 1.1-2   2016-04-02 Github (jalvesaq/colorout@f96c00c)
+ devtools   1.10.0  2016-01-23 CRAN (R 3.3.0)                    
+ digest     0.6.9   2016-01-08 CRAN (R 3.3.0)                    
+ memoise    1.0.0   2016-01-29 CRAN (R 3.3.0)                    
