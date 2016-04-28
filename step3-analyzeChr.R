@@ -26,6 +26,16 @@ if (!is.null(opt$help)) {
 	q(status=1)
 }
 
+## For testing
+if(FALSE) {
+    # qrsh -l mem_free=4G,h_vmem=6G,h_fsize=10G -pe local 2
+    # module load R/3.3
+    # cd /dcl01/lieber/ajaffe/derRuns/derChIP/epimap/derAnalysis/run1-v1.5.38-H3K27ac
+    opt <- list(experiment = 'epimap', chr = 'chrY', mcores = 2,
+    CovFile = '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap/CoverageInfo/chrYCovInfo-filtered.Rdata'
+    )
+}
+
 ## Check experiment input
 stopifnot(opt$experiment %in% c('shulha', 'epimap'))
 
@@ -56,19 +66,67 @@ if(file.exists('colsubset.Rdata')) {
 
 ## Run the analysis
 if(opt$experiment == 'shulha') {
-    analyzeChr(chr = opt$chr, coverageInfo = covData, models = models, 
-        cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 2,
-        nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
-        groupInfo = groupInfo, mc.cores = opt$mcores,
-        lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'),
-        smooth = TRUE, minNum = 36, bpSpan = 300)    
+    run <- gsub('/dcl01/lieber/ajaffe/derRuns/derChIP/shulha/derAnalysis/', '', getwd())
+    if(run == 'run1-v1.0.10') {
+        analyzeChr(chr = opt$chr, coverageInfo = covData, models = models,
+            cutoffFstat = 1e-04, colsubset = colsubset, cutoffPre = 5,
+            nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
+            groupInfo = groupInfo, mc.cores = opt$mcores,
+            lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'))
+    } else if (run == 'run2-v1.0.10') {
+        analyzeChr(chr = opt$chr, coverageInfo = covData, models = models,
+            cutoffFstat = 0.05, colsubset = colsubset, cutoffPre = 2,
+            nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
+            groupInfo = groupInfo, mc.cores = opt$mcores,
+            lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'))
+    } else if (run == 'run3-v1.0.10') {
+        analyzeChr(chr = opt$chr, coverageInfo = covData, models = models,
+            cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 2,
+            nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
+            groupInfo = groupInfo, mc.cores = opt$mcores,
+            lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'))
+    } else if (run == 'run4-v1.0.10') {
+        analyzeChr(chr = opt$chr, coverageInfo = covData, models = models,
+            cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 2,
+            nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
+            groupInfo = groupInfo, mc.cores = opt$mcores,
+            lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'), scalefac=1)
+    } else if(run == 'run5-v1.5.34') {
+        analyzeChr(chr = opt$chr, coverageInfo = covData, models = models,
+            cutoffFstat = 0.05, colsubset = colsubset, cutoffPre = 2,
+            nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
+            groupInfo = groupInfo, mc.cores = opt$mcores,
+            lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'),
+            smooth = TRUE, minNum = 36, bpSpan = 1000, minInSpan = 36)
+    } else if (run == 'run6-v1.5.34') {
+        analyzeChr(chr = opt$chr, coverageInfo = covData, models = models,
+            cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 2,
+            nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
+            groupInfo = groupInfo, mc.cores = opt$mcores,
+            lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'),
+            smooth = TRUE, minNum = 36, bpSpan = 1000, minInSpan = 36)
+    } else if (run == 'run7-v1.5.35') {
+        analyzeChr(chr = opt$chr, coverageInfo = covData, models = models,
+            cutoffFstat = 0.05, colsubset = colsubset, cutoffPre = 2,
+            nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
+            groupInfo = groupInfo, mc.cores = opt$mcores,
+            lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'),
+            smooth = TRUE, minNum = 36, bpSpan = 300, minInSpan = 36)
+    } else if (run == 'run8-v1.5.35') {
+        analyzeChr(chr = opt$chr, coverageInfo = covData, models = models,
+            cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 2,
+            nPermute = 100, seeds = seq_len(100) + 150422, maxClusterGap = 3000,
+            groupInfo = groupInfo, mc.cores = opt$mcores,
+            lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'),
+            smooth = TRUE, minNum = 36, bpSpan = 300, minInSpan = 36)
+    }
 } else if (opt$experiment == 'epimap') {
-    analyzeChr(chr = opt$chr, coverageInfo = covData, models = models, 
+    analyzeChr(chr = opt$chr, coverageInfo = covData, models = models,
         cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 10,
         nPermute = 100, seeds = seq_len(100) + 160427, maxClusterGap = 3000,
         groupInfo = groupInfo, mc.cores = opt$mcores,
         lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'), chunksize = 5e5,
-        smooth = TRUE, minNum = 100, bpSpan = 300)    
+        smooth = TRUE, minNum = 100, bpSpan = 300, minInSpan = 100)
 }
 
 
