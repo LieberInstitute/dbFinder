@@ -1,0 +1,217 @@
+INFO  @ Wed, 27 Apr 2016 23:49:02: 
+# Command line: callpeak -t /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K27ac_NeuN-_HiSeq2500_CMC_HBCC_411_filter.bam -c /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_control_NeuN-_HiSeq2500_CMC_HBCC_444_filter.bam --tsize 100 --bw 230 -n HBCC_ACC_350_D_macs_out
+# ARGUMENTS LIST:
+# name = HBCC_ACC_350_D_macs_out
+# format = AUTO
+# ChIP-seq file = ['/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K27ac_NeuN-_HiSeq2500_CMC_HBCC_411_filter.bam']
+# control file = ['/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_control_NeuN-_HiSeq2500_CMC_HBCC_444_filter.bam']
+# effective genome size = 2.70e+09
+# band width = 230
+# model fold = [5, 50]
+# qvalue cutoff = 5.00e-02
+# Larger dataset will be scaled towards smaller dataset.
+# Range for calculating regional lambda is: 1000 bps and 10000 bps
+# Broad region calling is off
+ 
+INFO  @ Wed, 27 Apr 2016 23:49:02: #1 read tag files... 
+INFO  @ Wed, 27 Apr 2016 23:49:02: #1 read treatment tags... 
+INFO  @ Wed, 27 Apr 2016 23:49:02: Detected format is: BAM 
+INFO  @ Wed, 27 Apr 2016 23:49:02: * Input file is gzipped. 
+INFO  @ Wed, 27 Apr 2016 23:49:23:  1000000 
+INFO  @ Wed, 27 Apr 2016 23:49:43:  2000000 
+INFO  @ Wed, 27 Apr 2016 23:50:02:  3000000 
+INFO  @ Wed, 27 Apr 2016 23:50:20:  4000000 
+INFO  @ Wed, 27 Apr 2016 23:50:39:  5000000 
+INFO  @ Wed, 27 Apr 2016 23:50:58:  6000000 
+INFO  @ Wed, 27 Apr 2016 23:51:17:  7000000 
+INFO  @ Wed, 27 Apr 2016 23:51:36:  8000000 
+INFO  @ Wed, 27 Apr 2016 23:51:55:  9000000 
+INFO  @ Wed, 27 Apr 2016 23:52:14:  10000000 
+INFO  @ Wed, 27 Apr 2016 23:52:32:  11000000 
+INFO  @ Wed, 27 Apr 2016 23:52:50:  12000000 
+INFO  @ Wed, 27 Apr 2016 23:53:09:  13000000 
+INFO  @ Wed, 27 Apr 2016 23:53:27:  14000000 
+INFO  @ Wed, 27 Apr 2016 23:53:43:  15000000 
+INFO  @ Wed, 27 Apr 2016 23:53:58:  16000000 
+INFO  @ Wed, 27 Apr 2016 23:54:13:  17000000 
+INFO  @ Wed, 27 Apr 2016 23:54:28:  18000000 
+INFO  @ Wed, 27 Apr 2016 23:54:43:  19000000 
+INFO  @ Wed, 27 Apr 2016 23:54:58:  20000000 
+INFO  @ Wed, 27 Apr 2016 23:55:12:  21000000 
+INFO  @ Wed, 27 Apr 2016 23:55:27:  22000000 
+INFO  @ Wed, 27 Apr 2016 23:55:43:  23000000 
+INFO  @ Wed, 27 Apr 2016 23:56:01:  24000000 
+INFO  @ Wed, 27 Apr 2016 23:56:19:  25000000 
+INFO  @ Wed, 27 Apr 2016 23:56:36:  26000000 
+INFO  @ Wed, 27 Apr 2016 23:56:54:  27000000 
+INFO  @ Wed, 27 Apr 2016 23:57:12:  28000000 
+INFO  @ Wed, 27 Apr 2016 23:57:29:  29000000 
+INFO  @ Wed, 27 Apr 2016 23:57:46:  30000000 
+INFO  @ Wed, 27 Apr 2016 23:58:04:  31000000 
+INFO  @ Wed, 27 Apr 2016 23:58:20:  32000000 
+INFO  @ Wed, 27 Apr 2016 23:58:37:  33000000 
+INFO  @ Wed, 27 Apr 2016 23:58:54:  34000000 
+INFO  @ Wed, 27 Apr 2016 23:59:10:  35000000 
+INFO  @ Wed, 27 Apr 2016 23:59:27:  36000000 
+INFO  @ Wed, 27 Apr 2016 23:59:44:  37000000 
+INFO  @ Thu, 28 Apr 2016 00:00:01:  38000000 
+INFO  @ Thu, 28 Apr 2016 00:00:18:  39000000 
+INFO  @ Thu, 28 Apr 2016 00:00:36:  40000000 
+INFO  @ Thu, 28 Apr 2016 00:00:53:  41000000 
+INFO  @ Thu, 28 Apr 2016 00:01:11:  42000000 
+INFO  @ Thu, 28 Apr 2016 00:01:29:  43000000 
+INFO  @ Thu, 28 Apr 2016 00:01:46:  44000000 
+INFO  @ Thu, 28 Apr 2016 00:02:03:  45000000 
+INFO  @ Thu, 28 Apr 2016 00:02:20:  46000000 
+INFO  @ Thu, 28 Apr 2016 00:02:37:  47000000 
+INFO  @ Thu, 28 Apr 2016 00:02:54:  48000000 
+INFO  @ Thu, 28 Apr 2016 00:03:11:  49000000 
+INFO  @ Thu, 28 Apr 2016 00:03:26:  50000000 
+INFO  @ Thu, 28 Apr 2016 00:03:41:  51000000 
+INFO  @ Thu, 28 Apr 2016 00:03:56:  52000000 
+INFO  @ Thu, 28 Apr 2016 00:04:11:  53000000 
+INFO  @ Thu, 28 Apr 2016 00:04:25:  54000000 
+INFO  @ Thu, 28 Apr 2016 00:04:40:  55000000 
+INFO  @ Thu, 28 Apr 2016 00:04:54:  56000000 
+INFO  @ Thu, 28 Apr 2016 00:05:09:  57000000 
+INFO  @ Thu, 28 Apr 2016 00:05:24:  58000000 
+INFO  @ Thu, 28 Apr 2016 00:05:43:  59000000 
+INFO  @ Thu, 28 Apr 2016 00:06:03:  60000000 
+INFO  @ Thu, 28 Apr 2016 00:06:23:  61000000 
+INFO  @ Thu, 28 Apr 2016 00:06:43:  62000000 
+INFO  @ Thu, 28 Apr 2016 00:07:03:  63000000 
+INFO  @ Thu, 28 Apr 2016 00:07:21:  64000000 
+INFO  @ Thu, 28 Apr 2016 00:07:37:  65000000 
+INFO  @ Thu, 28 Apr 2016 00:07:54:  66000000 
+INFO  @ Thu, 28 Apr 2016 00:08:10:  67000000 
+INFO  @ Thu, 28 Apr 2016 00:08:26:  68000000 
+INFO  @ Thu, 28 Apr 2016 00:08:42:  69000000 
+INFO  @ Thu, 28 Apr 2016 00:08:58:  70000000 
+INFO  @ Thu, 28 Apr 2016 00:09:14:  71000000 
+INFO  @ Thu, 28 Apr 2016 00:09:29:  72000000 
+INFO  @ Thu, 28 Apr 2016 00:09:45:  73000000 
+INFO  @ Thu, 28 Apr 2016 00:10:01:  74000000 
+INFO  @ Thu, 28 Apr 2016 00:10:17:  75000000 
+INFO  @ Thu, 28 Apr 2016 00:10:34:  76000000 
+INFO  @ Thu, 28 Apr 2016 00:10:50:  77000000 
+INFO  @ Thu, 28 Apr 2016 00:11:06:  78000000 
+INFO  @ Thu, 28 Apr 2016 00:11:22:  79000000 
+INFO  @ Thu, 28 Apr 2016 00:11:38:  80000000 
+INFO  @ Thu, 28 Apr 2016 00:11:55:  81000000 
+INFO  @ Thu, 28 Apr 2016 00:12:04: #1.2 read input tags... 
+INFO  @ Thu, 28 Apr 2016 00:12:04: Detected format is: BAM 
+INFO  @ Thu, 28 Apr 2016 00:12:04: * Input file is gzipped. 
+INFO  @ Thu, 28 Apr 2016 00:12:18:  1000000 
+INFO  @ Thu, 28 Apr 2016 00:12:31:  2000000 
+INFO  @ Thu, 28 Apr 2016 00:12:45:  3000000 
+INFO  @ Thu, 28 Apr 2016 00:12:59:  4000000 
+INFO  @ Thu, 28 Apr 2016 00:13:16:  5000000 
+INFO  @ Thu, 28 Apr 2016 00:13:32:  6000000 
+INFO  @ Thu, 28 Apr 2016 00:13:47:  7000000 
+INFO  @ Thu, 28 Apr 2016 00:14:03:  8000000 
+INFO  @ Thu, 28 Apr 2016 00:14:18:  9000000 
+INFO  @ Thu, 28 Apr 2016 00:14:35:  10000000 
+INFO  @ Thu, 28 Apr 2016 00:14:55:  11000000 
+INFO  @ Thu, 28 Apr 2016 00:15:14:  12000000 
+INFO  @ Thu, 28 Apr 2016 00:15:34:  13000000 
+INFO  @ Thu, 28 Apr 2016 00:15:53:  14000000 
+INFO  @ Thu, 28 Apr 2016 00:16:11:  15000000 
+INFO  @ Thu, 28 Apr 2016 00:16:30:  16000000 
+INFO  @ Thu, 28 Apr 2016 00:16:49:  17000000 
+INFO  @ Thu, 28 Apr 2016 00:17:08:  18000000 
+INFO  @ Thu, 28 Apr 2016 00:17:27:  19000000 
+INFO  @ Thu, 28 Apr 2016 00:17:46:  20000000 
+INFO  @ Thu, 28 Apr 2016 00:18:05:  21000000 
+INFO  @ Thu, 28 Apr 2016 00:18:23:  22000000 
+INFO  @ Thu, 28 Apr 2016 00:18:42:  23000000 
+INFO  @ Thu, 28 Apr 2016 00:19:01:  24000000 
+INFO  @ Thu, 28 Apr 2016 00:19:20:  25000000 
+INFO  @ Thu, 28 Apr 2016 00:19:38:  26000000 
+INFO  @ Thu, 28 Apr 2016 00:19:56:  27000000 
+INFO  @ Thu, 28 Apr 2016 00:20:15:  28000000 
+INFO  @ Thu, 28 Apr 2016 00:20:33:  29000000 
+INFO  @ Thu, 28 Apr 2016 00:20:51:  30000000 
+INFO  @ Thu, 28 Apr 2016 00:21:10:  31000000 
+INFO  @ Thu, 28 Apr 2016 00:21:29:  32000000 
+INFO  @ Thu, 28 Apr 2016 00:21:47:  33000000 
+INFO  @ Thu, 28 Apr 2016 00:22:05:  34000000 
+INFO  @ Thu, 28 Apr 2016 00:22:22:  35000000 
+INFO  @ Thu, 28 Apr 2016 00:22:39:  36000000 
+INFO  @ Thu, 28 Apr 2016 00:22:56:  37000000 
+INFO  @ Thu, 28 Apr 2016 00:23:13:  38000000 
+INFO  @ Thu, 28 Apr 2016 00:23:30:  39000000 
+INFO  @ Thu, 28 Apr 2016 00:23:49:  40000000 
+INFO  @ Thu, 28 Apr 2016 00:24:09:  41000000 
+INFO  @ Thu, 28 Apr 2016 00:24:28:  42000000 
+INFO  @ Thu, 28 Apr 2016 00:24:47:  43000000 
+INFO  @ Thu, 28 Apr 2016 00:25:06:  44000000 
+INFO  @ Thu, 28 Apr 2016 00:25:23:  45000000 
+INFO  @ Thu, 28 Apr 2016 00:25:38:  46000000 
+INFO  @ Thu, 28 Apr 2016 00:25:52:  47000000 
+INFO  @ Thu, 28 Apr 2016 00:26:07:  48000000 
+INFO  @ Thu, 28 Apr 2016 00:26:21:  49000000 
+INFO  @ Thu, 28 Apr 2016 00:26:35:  50000000 
+INFO  @ Thu, 28 Apr 2016 00:26:49:  51000000 
+INFO  @ Thu, 28 Apr 2016 00:27:03:  52000000 
+INFO  @ Thu, 28 Apr 2016 00:27:17:  53000000 
+INFO  @ Thu, 28 Apr 2016 00:27:31:  54000000 
+INFO  @ Thu, 28 Apr 2016 00:27:44:  55000000 
+INFO  @ Thu, 28 Apr 2016 00:27:58:  56000000 
+INFO  @ Thu, 28 Apr 2016 00:28:12:  57000000 
+INFO  @ Thu, 28 Apr 2016 00:28:26:  58000000 
+INFO  @ Thu, 28 Apr 2016 00:28:39:  59000000 
+INFO  @ Thu, 28 Apr 2016 00:28:53:  60000000 
+INFO  @ Thu, 28 Apr 2016 00:29:07:  61000000 
+INFO  @ Thu, 28 Apr 2016 00:29:21:  62000000 
+INFO  @ Thu, 28 Apr 2016 00:29:34:  63000000 
+INFO  @ Thu, 28 Apr 2016 00:29:48:  64000000 
+INFO  @ Thu, 28 Apr 2016 00:30:02:  65000000 
+INFO  @ Thu, 28 Apr 2016 00:30:16:  66000000 
+INFO  @ Thu, 28 Apr 2016 00:30:30:  67000000 
+INFO  @ Thu, 28 Apr 2016 00:30:43:  68000000 
+INFO  @ Thu, 28 Apr 2016 00:30:57:  69000000 
+INFO  @ Thu, 28 Apr 2016 00:31:10:  70000000 
+INFO  @ Thu, 28 Apr 2016 00:31:22:  71000000 
+INFO  @ Thu, 28 Apr 2016 00:31:35:  72000000 
+INFO  @ Thu, 28 Apr 2016 00:31:48:  73000000 
+INFO  @ Thu, 28 Apr 2016 00:32:01:  74000000 
+INFO  @ Thu, 28 Apr 2016 00:32:13:  75000000 
+INFO  @ Thu, 28 Apr 2016 00:32:25:  76000000 
+INFO  @ Thu, 28 Apr 2016 00:32:38:  77000000 
+INFO  @ Thu, 28 Apr 2016 00:32:50:  78000000 
+INFO  @ Thu, 28 Apr 2016 00:33:04:  79000000 
+INFO  @ Thu, 28 Apr 2016 00:33:17:  80000000 
+INFO  @ Thu, 28 Apr 2016 00:33:31:  81000000 
+INFO  @ Thu, 28 Apr 2016 00:33:45:  82000000 
+INFO  @ Thu, 28 Apr 2016 00:34:01: #1 tag size is determined as 100 bps 
+INFO  @ Thu, 28 Apr 2016 00:34:01: #1 tag size = 100 
+INFO  @ Thu, 28 Apr 2016 00:34:01: #1  total tags in treatment: 40735368 
+INFO  @ Thu, 28 Apr 2016 00:34:01: #1 user defined the maximum tags... 
+INFO  @ Thu, 28 Apr 2016 00:34:01: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
+INFO  @ Thu, 28 Apr 2016 00:34:09: #1  tags after filtering in treatment: 36049489 
+INFO  @ Thu, 28 Apr 2016 00:34:09: #1  Redundant rate of treatment: 0.12 
+INFO  @ Thu, 28 Apr 2016 00:34:09: #1  total tags in control: 41494013 
+INFO  @ Thu, 28 Apr 2016 00:34:09: #1 user defined the maximum tags... 
+INFO  @ Thu, 28 Apr 2016 00:34:09: #1 filter out redundant tags at the same location and the same strand by allowing at most 1 tag(s) 
+INFO  @ Thu, 28 Apr 2016 00:34:18: #1  tags after filtering in control: 39261226 
+INFO  @ Thu, 28 Apr 2016 00:34:18: #1  Redundant rate of control: 0.05 
+INFO  @ Thu, 28 Apr 2016 00:34:18: #1 finished! 
+INFO  @ Thu, 28 Apr 2016 00:34:18: #2 Build Peak Model... 
+INFO  @ Thu, 28 Apr 2016 00:34:46: #2 number of paired peaks: 212295 
+INFO  @ Thu, 28 Apr 2016 00:34:46: start model_add_line... 
+INFO  @ Thu, 28 Apr 2016 00:39:34: start X-correlation... 
+INFO  @ Thu, 28 Apr 2016 00:39:34: end of X-cor 
+INFO  @ Thu, 28 Apr 2016 00:39:34: #2 finished! 
+INFO  @ Thu, 28 Apr 2016 00:39:34: #2 predicted fragment length is 156 bps 
+INFO  @ Thu, 28 Apr 2016 00:39:34: #2 alternative fragment length(s) may be 3,156 bps 
+INFO  @ Thu, 28 Apr 2016 00:39:34: #2.2 Generate R script for model : HBCC_ACC_350_D_macs_out_model.r 
+WARNING @ Thu, 28 Apr 2016 00:39:34: #2 Since the d (156) calculated from paired-peaks are smaller than 2*tag length, it may be influenced by unknown sequencing problem! 
+WARNING @ Thu, 28 Apr 2016 00:39:34: #2 You may need to consider one of the other alternative d(s): 3,156 
+WARNING @ Thu, 28 Apr 2016 00:39:34: #2 You can restart the process with --nomodel --extsize XXX with your choice or an arbitrary number. Nontheless, MACS will continute computing. 
+INFO  @ Thu, 28 Apr 2016 00:39:34: #3 Call peaks... 
+INFO  @ Thu, 28 Apr 2016 00:39:34: #3 Pre-compute pvalue-qvalue table... 
+INFO  @ Thu, 28 Apr 2016 00:52:50: #3 Call peaks for each chromosome... 
+INFO  @ Thu, 28 Apr 2016 01:08:04: #4 Write output xls file... HBCC_ACC_350_D_macs_out_peaks.xls 
+INFO  @ Thu, 28 Apr 2016 01:08:08: #4 Write peak in narrowPeak format file... HBCC_ACC_350_D_macs_out_peaks.narrowPeak 
+INFO  @ Thu, 28 Apr 2016 01:08:11: #4 Write summits bed file... HBCC_ACC_350_D_macs_out_summits.bed 
+INFO  @ Thu, 28 Apr 2016 01:08:12: Done! 
