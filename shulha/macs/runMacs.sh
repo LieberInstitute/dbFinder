@@ -24,7 +24,7 @@ date
 ## Create logs dir
 mkdir -p ${WDIR}/logs
 
-# merge results
+# run MACS
 cd ${WDIR}
 module load macs/2.1.0
 macs2 callpeak -t /dcs01/ajaffe/ChIPseq/Shulha2013/BED/${sample} -c /dcs01/ajaffe/ChIPseq/Shulha2013/BED/c28in --tsize 36 --bw 230 -n ${sample}_macs_out
