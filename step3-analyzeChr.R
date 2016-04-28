@@ -67,7 +67,7 @@ if(opt$experiment == 'shulha') {
         cutoffFstat = 0.01, colsubset = colsubset, cutoffPre = 10,
         nPermute = 100, seeds = seq_len(100) + 160427, maxClusterGap = 3000,
         groupInfo = groupInfo, mc.cores = opt$mcores,
-        lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'), chunksize = 1e6,
+        lowMemDir = file.path(tempdir(), opt$chr, 'chunksDir'), chunksize = 5e5,
         smooth = TRUE, minNum = 100, bpSpan = 300)    
 }
 

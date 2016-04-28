@@ -72,11 +72,6 @@ if(study == 'shulha') {
 } else if(study == 'epimap') {
     nCores <- rep(20, 25)
     nCores[chr == 'chrY'] <- 2
-    nCores[chr == 'chr18'] <- 19
-    nCores[chr == 'chr19'] <- 18
-    nCores[chr == 'chr21'] <- 10
-    nCores[chr == 'chr22'] <- 14
-    nCores[chr == 'chrX'] <- 17
     nCores[chr == 'chrM'] <- 1
 }
 names(nCores) <- chrs

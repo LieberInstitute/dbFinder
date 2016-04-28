@@ -36,21 +36,6 @@ do
         if [[ "${chrnum}" == "Y" ]]
         then
             CORES=2
-        elif [[ "${chrnum}" == "18" ]]
-        then
-            CORES=19
-        elif [[ "${chrnum}" == "19" ]]
-        then
-            CORES=18
-        elif [[ "${chrnum}" == "21" ]]
-        then
-            CORES=10
-        elif [[ "${chrnum}" == "22" ]]
-        then
-            CORES=14
-        elif [[ "${chrnum}" == "X" ]]
-        then
-            CORES=17
         elif [[ "${chrnum}" == "M" ]]
         then
             CORES=1
@@ -68,7 +53,7 @@ do
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=3G,h_vmem=4G,h_fsize=10G,h=!compute-04[3-5]*
+#$ -l mem_free=4G,h_vmem=6G,h_fsize=10G,h=!compute-04[3-5]*
 #$ -N ${sname}
 #$ -pe local ${CORES}
 #$ -hold_jid derMod-${EXPERIMENT}.${PREFIX}*
