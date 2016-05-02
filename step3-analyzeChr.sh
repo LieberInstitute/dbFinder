@@ -31,6 +31,7 @@ do
     	outdir="${PREFIX}/${chr}"
         rundir="${PREFIX}"
     	sname="${SHORT}.${PREFIX}.${chr}"
+        MEMREQ="mem_free=4G,h_vmem=6G"
     elif [[ "${EXPERIMENT}" == "epimap" ]]
     then
         if [[ "${chrnum}" == "Y" ]]
@@ -41,6 +42,15 @@ do
             CORES=1
         else
             CORES=20
+        fi
+        if [[ "${chrnum}" == "1" ]]
+        then
+            MEMREQ="mem_free=6G,h_vmem=8G"
+        elif [[ "${chrnum}" == "2" ]]
+        then
+            MEMREQ="mem_free=6G,h_vmem=8G"
+        else
+            MEMREQ="mem_free=4G,h_vmem=6G"
         fi
     	outdir="${PREFIX}-${HISTONE}/${chr}"
         rundir="${PREFIX}-${HISTONE}"
@@ -53,7 +63,7 @@ do
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=4G,h_vmem=6G,h_fsize=10G,h=!compute-04[3-5]*
+#$ -l ${MEMREQ},h_fsize=10G,h=!compute-04[3-5]*
 #$ -N ${sname}
 #$ -pe local ${CORES}
 #$ -hold_jid derMod-${EXPERIMENT}.${PREFIX}*
