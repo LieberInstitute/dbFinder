@@ -45,7 +45,7 @@ do
         fi
         if [[ "${chrnum}" == "1" ]]
         then
-            MEMREQ="mem_free=6G,h_vmem=8G"
+            MEMREQ="mem_free=8G,h_vmem=10G"
         elif [[ "${chrnum}" == "2" ]]
         then
             MEMREQ="mem_free=6G,h_vmem=8G"
