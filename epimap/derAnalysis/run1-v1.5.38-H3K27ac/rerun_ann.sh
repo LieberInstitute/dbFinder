@@ -29,7 +29,7 @@ mkdir -p ${WDIR}/${CHR}/logs
 
 ## Fix annotation
 module load R/3.3
-Rscript ${WDIR}/rerun_annotation -c "${CHR}"
+Rscript ${WDIR}/rerun_annotation.R -c "${CHR}"
 
 # Move log files into the logs directory
 mv ${WDIR}/${sname}.* ${WDIR}/${CHR}/logs/
