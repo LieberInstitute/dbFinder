@@ -6,7 +6,7 @@ load(file.path(prefix, "groupInfo.Rdata"))
 
 colnames(values(fullRegions))
 
-i <- grep("mean\\.", colnames(values(fullRegions)))
+i <- grep("mean[A|D]", colnames(values(fullRegions)))
 colnames(values(fullRegions))[i] <- paste("mean", levels(groupInfo), sep="")
 
 i <- grep("log2FoldChange", colnames(values(fullRegions)))
