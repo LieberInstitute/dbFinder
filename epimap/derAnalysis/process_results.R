@@ -5,6 +5,7 @@ library('getopt')
 
 ## Available at http://www.bioconductor.org/packages/release/bioc/html/derfinder.html
 library('derfinder')
+library('GenomicRanges')
 library('devtools')
 
 ## Specify parameters
