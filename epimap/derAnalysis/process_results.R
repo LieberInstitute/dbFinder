@@ -11,7 +11,7 @@ library('devtools')
 ## Specify parameters
 spec <- matrix(c(
     'histone', 'i', 1, 'character', 'For epimap, the histone mark to use. Either H3K27ac or H3K4me3.',
-    'chr', 'c', 2, 'character', 'Chromosome number',
+    'chr', 'c', 2, 'character', 'Chromosome name',
 	'help' , 'h', 0, 'logical', 'Display help'
 ), byrow=TRUE, ncol=5)
 opt <- getopt(spec)
