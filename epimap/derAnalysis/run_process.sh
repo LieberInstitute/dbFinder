@@ -12,7 +12,7 @@ for HISTONE in H3K27ac H3K4me3
     do
     if [[ "${HISTONE}" == "H3K27ac" ]]
     then
-        CHRNUMS="22 21 Y 20 19 18 17 16 15 14 13 12 11 10 9 8 X 7 6 5 4 3 2 1"
+        CHRNUMS="Y X 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22"
         
     elif [[ "${HISTONE}" == "H3K4me3" ]]
     then

@@ -11,7 +11,7 @@ library('devtools')
 ## Specify parameters
 spec <- matrix(c(
     'histone', 'i', 1, 'character', 'For epimap, the histone mark to use. Either H3K27ac or H3K4me3.',
-    'chrnum', 'c', 2, 'character', 'Chromosome number',
+    'chr', 'c', 2, 'character', 'Chromosome number',
 	'help' , 'h', 0, 'logical', 'Display help'
 ), byrow=TRUE, ncol=5)
 opt <- getopt(spec)
@@ -24,7 +24,7 @@ if (!is.null(opt$help)) {
 	q(status=1)
 }
 
-chrFlag <- !is.null(opt$chrnum) | opt$chrnum != 'all'
+chrFlag <- !is.null(opt$chr) | opt$chr != 'chrall'
 
 ## Load colsubset info
 rootdir <- '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap/'
@@ -51,7 +51,7 @@ if(!chrFlag) {
     save(fullCov, file = file.path(rootdir, 'CoverageInfo', paste0('fullCov-',
         opt$histone, '.Rdata')))
 } else {
-    chr <- paste0('chr', opt$chrnum)
+    chr <- paste0('chr', opt$chr)
     
     ## Load coverage info
     message(paste(Sys.time(), 'loading fullCov.Rdata'))
