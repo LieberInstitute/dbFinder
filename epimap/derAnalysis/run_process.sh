@@ -63,6 +63,7 @@ EOF
 #$ -m e
 #$ -l mem_free=200G,h_vmem=270G,h_fsize=100G
 #$ -N ${sname}
+#$ -hold_jid H3K27ac.chr*
 
 echo "**** Job starts ****"
 date
