@@ -11,6 +11,7 @@ library('devtools')
 ## Specify parameters
 spec <- matrix(c(
     'histone', 'i', 1, 'character', 'For epimap, the histone mark to use. Either H3K27ac or H3K4me3.',
+    'chrnum', 'c', 2, 'character', 'Chromosome number',
 	'help' , 'h', 0, 'logical', 'Display help'
 ), byrow=TRUE, ncol=5)
 opt <- getopt(spec)
@@ -23,30 +24,54 @@ if (!is.null(opt$help)) {
 	q(status=1)
 }
 
-
-## Load full coverage info
-rootdir <- '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap/'
-message(paste(Sys.time(), 'loading fullCov.Rdata'))
-load(file.path(rootdir, 'CoverageInfo', 'fullCov.Rdata'))
-print(object.size(fullCov), units = 'Mb')
+chrFlag <- !is.null(opt$chrnum) | opt$chrnum != 'all'
 
 ## Load colsubset info
+rootdir <- '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap/'
 maindir <- file.path(rootdir, 'derAnalysis', paste0('run1-v1.5.38-',
     opt$histone))
 load(file.path(maindir, 'colsubset.Rdata'))
 
-## Subset full cov info
-message(paste(Sys.time(), 'subsetting fullCov'))
-fullCov <- lapply(fullCov, function(x) { x[, colsubset] })
-print(object.size(fullCov), units = 'Mb')
-
-message(paste(Sys.time(), 'saving fullCov subset'))
-save(fullCov, file = file.path(rootdir, 'CoverageInfo', paste0('fullCov-',
-    opt$histone, '.Rdata')))
-
 ## Load regions
 message(paste(Sys.time(), 'loading fullRegions.Rdata'))
 load(file.path(maindir, 'fullRegions.Rdata'))
+
+if(!chrFlag) {
+    ## Load full coverage info
+    message(paste(Sys.time(), 'loading fullCov.Rdata'))
+    load(file.path(rootdir, 'CoverageInfo', 'fullCov.Rdata'))
+    print(object.size(fullCov), units = 'Mb')    
+
+    ## Subset full cov info
+    message(paste(Sys.time(), 'subsetting fullCov'))
+    fullCov <- lapply(fullCov, function(x) { x[, colsubset] })
+    print(object.size(fullCov), units = 'Mb')
+
+    message(paste(Sys.time(), 'saving fullCov subset'))
+    save(fullCov, file = file.path(rootdir, 'CoverageInfo', paste0('fullCov-',
+        opt$histone, '.Rdata')))
+} else {
+    chr <- paste0('chr', opt$chrnum)
+    
+    ## Load coverage info
+    message(paste(Sys.time(), 'loading fullCov.Rdata'))
+    load(file.path(rootdir, 'CoverageInfo', paste0(chr, 'CovInfo.Rdata')))
+    eval(parse(text=paste0('fullCov <- list(', chr, ' = ', chr, 'CovInfo$coverage)')))
+    eval(parse(text=paste0('rm(', chr, 'CovInfo)')))
+    print(object.size(fullCov), units = 'Mb')
+
+    ## Subset full cov info
+    message(paste(Sys.time(), 'subsetting fullCov'))
+    fullCov <- lapply(fullCov, function(x) { x[, colsubset] })
+    print(object.size(fullCov), units = 'Mb')
+    
+    message(paste(Sys.time(), 'saving fullCov subset'))
+    save(fullCov, file = file.path(rootdir, 'CoverageInfo', paste0('fullCov-',
+        chr, '-', opt$histone, '.Rdata')))
+        
+    ## Subset regions
+    fullRegions <- fullRegions[seqnames(fullRegions) == chr]
+}
     
 ## Get region coverage
 message(paste(Sys.time(), 'obtaining region coverage'))
@@ -55,7 +80,13 @@ print(object.size(regionCoverage), units = 'Mb')
 rm(fullCov)
 
 message(paste(Sys.time(), 'saving regionCov_all.Rdata'))
-save(regionCoverage, file = file.path(maindir, 'regionCov_all.Rdata'))
+if(chrFlag) {
+    save(regionCoverage, file = file.path(maindir, paste0('regionCov-', chr,
+        '.Rdata')))
+} else {
+    save(regionCoverage, file = file.path(maindir, 'regionCov_all.Rdata'))
+}
+
 
 ## Construct coverage matrix
 message(paste(Sys.time(), 'building coverageMatrix'))
@@ -65,7 +96,13 @@ coverageMatrix <- do.call(rbind, coverageMatrix) / L
 print(object.size(coverageMatrix), units = 'Mb')
 
 message(paste(Sys.time(), 'saving coverageMatrix'))
-save(coverageMatrix, file = file.path(maindir, 'coverageMatrix.Rdata'))
+if(chrFlag) {
+    save(coverageMatrix, file = file.path(maindir, paste0('coverageMatrix',
+        chr, '.Rdata')))
+} else {
+    save(coverageMatrix, file = file.path(maindir, 'coverageMatrix.Rdata'))
+}
+
 rm(coverageMatrix)
 
 ## Calculate group means
@@ -76,10 +113,15 @@ tIndexes <- split(seq_len(length(groupInfo)), groupInfo)
 meanCoverage <- lapply(regionCoverage, function(x) {
 	sapply(tIndexes, function(ii) rowMeans(x[,ii]))
 })
+print(object.size(meanCoverage), units = 'Mb')
 
 message(paste(Sys.time(), 'saving meanCoverage.Rdata'))
-save(meanCoverage, file = file.path(maindir, 'meanCoverage.Rdata'))
-
+if(chrFlag) {
+    save(meanCoverage, file = file.path(maindir, paste0('meanCoverage-', chr,
+        '.Rdata')))
+} else {
+    save(meanCoverage, file = file.path(maindir, 'meanCoverage.Rdata'))
+}
 
 ## Reproducibility info
 proc.time()
