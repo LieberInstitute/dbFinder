@@ -13,10 +13,11 @@ for HISTONE in H3K27ac H3K4me3
     if [[ "${HISTONE}" == "H3K27ac" ]]
     then
         CHRNUMS="Y X 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22"
-        
+        MEM="mem_free=50G,h_vmem=100G,h_fsize=100G"
     elif [[ "${HISTONE}" == "H3K4me3" ]]
     then
         CHRNUMS="all"
+        MEM="mem_free=100G,h_vmem=150G,h_fsize=100G"
     fi
     
     for chrnum in ${CHRNUMS}
@@ -29,7 +30,7 @@ for HISTONE in H3K27ac H3K4me3
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=150G,h_vmem=200G,h_fsize=100G
+#$ -l ${MEM}
 #$ -N ${sname}
 
 echo "**** Job starts ****"

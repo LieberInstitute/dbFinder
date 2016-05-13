@@ -11,7 +11,7 @@ maindir <- file.path(rootdir, 'derAnalysis', 'run1-v1.5.38-H3K27ac')
 chrs <- paste0('chr', c(1:22, 'X', 'Y')) # chrM has no regions
 
 loadCov <- function(chr) {
-    load(file.path(maindir, paste0('coverageMatrix', chr, '.Rdata')))
+    load(file.path(maindir, paste0('coverageMatrix-', chr, '.Rdata')))
     return(coverageMatrix)
 }
 

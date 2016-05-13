@@ -100,7 +100,7 @@ print(object.size(coverageMatrix), units = 'Mb')
 
 message(paste(Sys.time(), 'saving coverageMatrix'))
 if(chrFlag) {
-    save(coverageMatrix, file = file.path(maindir, paste0('coverageMatrix',
+    save(coverageMatrix, file = file.path(maindir, paste0('coverageMatrix-',
         opt$chr, '.Rdata')))
 } else {
     save(coverageMatrix, file = file.path(maindir, 'coverageMatrix.Rdata'))
