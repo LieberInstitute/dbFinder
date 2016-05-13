@@ -24,7 +24,12 @@ if (!is.null(opt$help)) {
 	q(status=1)
 }
 
-chrFlag <- !is.null(opt$chr) | opt$chr != 'chrall'
+if(!is.null(opt$chr)) {
+    chrFlag <- opt$chr != 'chrall'
+} else {
+    chrFlag <- FALSE
+}
+
 
 ## Load colsubset info
 rootdir <- '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap/'
@@ -50,14 +55,12 @@ if(!chrFlag) {
     message(paste(Sys.time(), 'saving fullCov subset'))
     save(fullCov, file = file.path(rootdir, 'CoverageInfo', paste0('fullCov-',
         opt$histone, '.Rdata')))
-} else {
-    chr <- paste0('chr', opt$chr)
-    
+} else {    
     ## Load coverage info
     message(paste(Sys.time(), 'loading fullCov.Rdata'))
-    load(file.path(rootdir, 'CoverageInfo', paste0(chr, 'CovInfo.Rdata')))
-    eval(parse(text=paste0('fullCov <- list(', chr, ' = ', chr, 'CovInfo$coverage)')))
-    eval(parse(text=paste0('rm(', chr, 'CovInfo)')))
+    load(file.path(rootdir, 'CoverageInfo', paste0(opt$chr, 'CovInfo.Rdata')))
+    eval(parse(text=paste0('fullCov <- list(', opt$chr, ' = ', opt$chr, 'CovInfo$coverage)')))
+    eval(parse(text=paste0('rm(', opt$chr, 'CovInfo)')))
     print(object.size(fullCov), units = 'Mb')
 
     ## Subset full cov info
@@ -67,10 +70,10 @@ if(!chrFlag) {
     
     message(paste(Sys.time(), 'saving fullCov subset'))
     save(fullCov, file = file.path(rootdir, 'CoverageInfo', paste0('fullCov-',
-        chr, '-', opt$histone, '.Rdata')))
+        opt$chr, '-', opt$histone, '.Rdata')))
         
     ## Subset regions
-    fullRegions <- fullRegions[seqnames(fullRegions) == chr]
+    fullRegions <- fullRegions[seqnames(fullRegions) == opt$chr]
 }
     
 ## Get region coverage
@@ -81,7 +84,7 @@ rm(fullCov)
 
 message(paste(Sys.time(), 'saving regionCov_all.Rdata'))
 if(chrFlag) {
-    save(regionCoverage, file = file.path(maindir, paste0('regionCov-', chr,
+    save(regionCoverage, file = file.path(maindir, paste0('regionCov-', opt$chr,
         '.Rdata')))
 } else {
     save(regionCoverage, file = file.path(maindir, 'regionCov_all.Rdata'))
@@ -98,7 +101,7 @@ print(object.size(coverageMatrix), units = 'Mb')
 message(paste(Sys.time(), 'saving coverageMatrix'))
 if(chrFlag) {
     save(coverageMatrix, file = file.path(maindir, paste0('coverageMatrix',
-        chr, '.Rdata')))
+        opt$chr, '.Rdata')))
 } else {
     save(coverageMatrix, file = file.path(maindir, 'coverageMatrix.Rdata'))
 }
@@ -117,8 +120,8 @@ print(object.size(meanCoverage), units = 'Mb')
 
 message(paste(Sys.time(), 'saving meanCoverage.Rdata'))
 if(chrFlag) {
-    save(meanCoverage, file = file.path(maindir, paste0('meanCoverage-', chr,
-        '.Rdata')))
+    save(meanCoverage, file = file.path(maindir, paste0('meanCoverage-',
+        opt$chr, '.Rdata')))
 } else {
     save(meanCoverage, file = file.path(maindir, 'meanCoverage.Rdata'))
 }
