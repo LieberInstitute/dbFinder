@@ -41,7 +41,8 @@ load(file.path(maindir, 'colsubset.Rdata'))
 message(paste(Sys.time(), 'loading fullRegions.Rdata'))
 load(file.path(maindir, 'fullRegions.Rdata'))
 
-keepIndex <- width(fullRegions) >=6
+#keepIndex <- width(fullRegions) >=6
+keepIndex <- fullRegions$significantQval == 'TRUE'
 regions <- fullRegions[keepIndex]
 
 ## Phenotype information
