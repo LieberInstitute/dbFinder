@@ -31,7 +31,7 @@ if(FALSE) opt <- list(histone = 'H3K4me3')
 rootdir <- '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap/'
 maindir <- file.path(rootdir, 'derAnalysis', paste0('run1-v1.5.38-',
     opt$histone))
-plotdir <- file.path(maindir, 'plots')
+plotdir <- file.path(rootdir, 'derAnalysis', 'plots')
 dir.create(plotdir, showWarnings = FALSE)
     
 ## Results
@@ -189,7 +189,8 @@ vennDiagram_custom <- function (object, include = "both", names = NULL,
     }
 }
 
-pdf(file.path(plotdir, 'ensemblVenn.pdf'), width = 10, height = 10)
+pdf(file.path(plotdir, paste0(opt$histone, '_ensemblVenn.pdf')), width = 10,
+    height = 10)
 venn_col <- brewer.pal(7, "Dark2")[c(1, 3, 2, 4)]
 vennDiagram_custom(vennCounts(countTable > 0), 
     main = 'dbPeaks overlap with Ensembl v75 features', cex.main = 2,
@@ -205,7 +206,8 @@ print('annotation breakdown: all types')
 cbind(venn, 'Percent' = round(venn[, 4]/ sum(venn[, 4]) * 100, 2))
 venn[, 4] <- round(venn[, 4]/ sum(venn[, 4]) * 100, 2)
 
-pdf(file.path(plotdir, 'ensemblVenn_percent.pdf'), width = 10, height = 10)
+pdf(file.path(plotdir, paste0(opt$histone, '_ensemblVenn_percent.pdf')),
+    width = 10, height = 10)
 vennDiagram_custom(venn, 
     main = 'dbPeaks overlap with Ensembl v75 features (in %)', cex.main = 2,
     circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
@@ -220,12 +222,14 @@ getCount <- function(ann) {
 }
 venn_idx <- lapply(c('exon', 'intergenic', 'intron'), getCount)
 names(venn_idx) <- c('exon', 'intergenic', 'intron')
-for(i in which(venn[, 4] > 0)) {
-    venn[i, 4] <- round(sum(width(regions)[ venn_idx$exon == venn[i, 1] & venn_idx$intergenic == venn[i, 2] & venn_idx$intron == venn[i, 3] ]) / 1e6, 2)
+venn_bp <- venn
+for(i in which(venn_bp[, 4] > 0)) {
+    venn_bp[i, 4] <- round(sum(width(regions)[ venn_idx$exon == venn_bp[i, 1] & venn_idx$intergenic == venn_bp[i, 2] & venn_idx$intron == venn_bp[i, 3] ]) / 1e6, 2)
 }
 
-pdf(file.path(plotdir, 'ensemblVenn_bp.pdf'), width = 10, height = 10)
-vennDiagram_custom(venn, 
+pdf(file.path(plotdir, paste0(opt$histone, '_ensemblVenn_bp.pdf')), width = 10,
+    height = 10)
+vennDiagram_custom(venn_bp, 
     main = 'dbPeaks overlap with Ensembl v75 features (in Mb)', cex.main = 2,
     circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
     text.col = c('black', venn_col[3:2], 'black', venn_col[c(1, 4)], 'black',
@@ -233,12 +237,19 @@ vennDiagram_custom(venn,
 )
 dev.off()
 print('annotation breakdown: by region width')
-cbind(venn, 'Percent' = round(venn[, 4]/ sum(venn[, 4]) * 100, 2))
+cbind(venn_bp, 'Percent' = round(venn_bp[, 4]/ sum(venn_bp[, 4]) * 100, 2))
+venn_bp[, 4] <- round(venn_bp[, 4]/ sum(venn_bp[, 4]) * 100, 2)
 
-venn[, 4] <- round(venn[, 4]/ sum(venn[, 4]) * 100, 2)
+print('Percent fold change: number / bp')
+cbind(venn_bp[, 1:3], 'Fold Change #/bp' = round(venn[, 4] / venn_bp[, 4], 2))
+print('Percent fold change: bp / number')
+cbind(venn_bp[, 1:3], 'Fold Change bp/#' = round(venn_bp[, 4] / venn[, 4], 2))
 
-pdf(file.path(plotdir, 'ensemblVenn_bp_percent.pdf'), width = 10, height = 10)
-vennDiagram_custom(venn, 
+
+
+pdf(file.path(plotdir, paste0(opt$histone, '_ensemblVenn_bp_percent.pdf')),
+    width = 10, height = 10)
+vennDiagram_custom(venn_bp, 
     main = 'dbPeaks overlap with Ensembl v75 features (bp %)', cex.main = 2,
     circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
     text.col = c('black', venn_col[3:2], 'black', venn_col[c(1, 4)], 'black',
@@ -272,16 +283,22 @@ pc1Mat <- sapply(pcList, function(x) x$x[,1])
 pc2Mat <- sapply(pcList, function(x) x$x[,2])
 
 ## Make PCA plots
-pdf(file.path(plotdir, 'dbPeaks_PCA_byAnno.pdf'))
-palette(brewer.pal(4, "Dark2"))
-name <- c("Exonic", "Intronic", "Intergenic","Exon+Intron", "All")
+name <- c('Exonic', 'Intronic', 'Intergenic', 'Exon+Intron', 'All')
 group <- factor(paste0(pd$BrainRegion, '_', c('52-',
     '52+')[as.numeric(pd$AgeDeath < 52) + 1]))
+cellgroup <- factor(pd$CellType, levels = c('NeuN-', 'NeuN+'))
+groupSimple <- groupInfo
+levels(groupSimple) <- gsub('\\[23,52\\)', '52-', levels(groupSimple))
+levels(groupSimple) <- gsub('\\[52,65\\]', '52+', levels(groupSimple))
+levels(groupSimple) <- gsub('_', ':', levels(groupSimple))
+
+pdf(file.path(plotdir, paste0(opt$histone, '_dbPeaks_PCA_byAnno.pdf')))
+palette(brewer.pal(4, 'Paired'))
 par(mar=c(5,6,2,2))
 for(i in 1:ncol(pc1Mat)) {
 	plot(x=pc1Mat[,i], y=pc2Mat[,i],
         bg = as.numeric(group),
-		pch = c(21,22)[as.numeric(factor(pd$CellType, levels = c('NeuN-', 'NeuN+')))],
+		pch = c(21,22)[as.numeric(cellgroup)],
 		xlab = paste0("PC1: ",pcVarMat[1,i],"% of Var Expl"),
 		ylab = paste0("PC2: ",pcVarMat[2,i],"% of Var Expl"),
 		cex.axis=2,cex.lab=2, cex.main=1.8,
@@ -294,8 +311,68 @@ for(i in 1:ncol(pc1Mat)) {
 }
 dev.off()
 
+pdf(file.path(plotdir, paste0(opt$histone, '_dbPeaks_PCsbyGroup_byAnno.pdf')),
+    width = 11)
+palette(brewer.pal(4, 'Paired'))
+par(mar=c(14,6,2,2))
+set.seed(20160514)
+for(i in seq_len(ncol(pc1Mat))) {
+	## PC1
+	boxplot(pc1Mat[, i] ~ groupSimple, las=3,
+		ylab = paste0("PC1: ", pcVarMat[1, i], "% of Var Expl"),
+		cex.axis=1.7, cex.lab=2, cex.main=1.8, xlab="", outline=FALSE,
+		main = paste0("PCA of dbPeaks (", name[i],")"))
+	points(pc1Mat[, i] ~ jitter(as.numeric(groupSimple), amount=0.2),
+		bg = as.numeric(group), cex=1.3,
+		pch = c(21,22)[as.numeric(cellgroup)])
+	# PC2 
+	boxplot(pc2Mat[, i] ~ groupSimple, las=3,
+		ylab = paste0("PC2: ", pcVarMat[2, i], "% of Var Expl"),
+		cex.axis=1.7, cex.lab=2, xlab="", outline=FALSE)
+	points(pc2Mat[, i] ~ jitter(as.numeric(groupSimple), amount=0.2),
+		bg = as.numeric(group), cex=1.3,
+		pch = c(21,22)[as.numeric(cellgroup)])
+}
+dev.off()
 
 
+## Joint modeling
+message(paste(Sys.time(), 'performing joint modeling'))
+system.time( sumSqList <- parallel::mclapply(seq_len(nrow(y)), function(i) {
+	if(i %% 10000 == 0) cat(".")
+        t(anova(lm(y[i,] ~ BrainRegion + CellType + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + ChromatinAmount + AntibodyAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+}, mc.cores=8) )
+
+ssOut <- do.call("rbind", sumSqList)
+rownames(ssOut) <- NULL
+bg <- matrix(rep(rowSums(ssOut), ncol(ssOut)), 
+	ncol = ncol(ssOut), nrow = nrow(ssOut))
+ssMat <- ssOut / bg
+lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'Chromatin amount', 'Antibody amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+
+message(paste(Sys.time(), 'saving joint modeling results'))
+save(ssMat, lab, file = file.path(maindir, paste0('ssMat_', opt$histone,
+    '.Rdata')), compress=TRUE)
+
+## Boxplot by variables
+pdf(file.path(plotdir, paste0(opt$histone, '_boxplots_overall.pdf')),
+    width = 12, height = 5)
+par(mar=c(9,5,2,2))
+palette(brewer.pal(7, "Dark2"))
+boxplot(100*ssMat,xaxt="n", ylim = c(0, 100), 
+	cex.axis=1.3,cex.lab=1.1, range=2,
+	ylab="Percentage variance explained", cex=0.5)
+text(seq_len(ncol(ssMat)) + 0.2, y = -8, lab, xpd=TRUE, srt=45, pos=2)
+text(x = 8.5, y= 90, "All Regions", cex=1.7)
+for(i in seq(along = annoClassList[1:4])) {
+	ii = annoClassList[[i]]
+	boxplot(100*ssMat[ii,],xaxt="n", ylim = c(0, 100), 
+		cex.axis=1.3,cex.lab=1.1,range=2, col = i,
+		ylab="Percentage variance explained", cex=0.5)
+	text(seq_len(ncol(ssMat)) + 0.1, y = -8, lab, xpd=TRUE, srt=45, pos=2)
+	text(x = 8.5, y= 90, name[i], cex=1.7)
+}
+dev.off()
 
 ## Reproducibility info
 proc.time()
