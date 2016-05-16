@@ -30,9 +30,21 @@ loadMean <- function(chr) {
     return(meanCoverage)
 }
 
+manualUnlist <- function(covList) {
+    covList <- c(covList[[1]], covList[[2]], covList[[3]], covList[[4]],
+        covList[[5]], covList[[6]], covList[[7]], covList[[8]], covList[[9]],
+        covList[[10]], covList[[11]], covList[[12]], covList[[13]],
+        covList[[14]], covList[[15]], covList[[16]], covList[[17]],
+        covList[[18]], covList[[19]], covList[[20]], covList[[21]],
+        covList[[22]], covList[[23]], covList[[24]]
+    )
+    names(covList) <- seq_len(length(covList))
+    return(covList)
+}
+
 message(paste(Sys.time(), 'building mean coverage'))
 meanCoverage <- lapply(chrs, loadMean)
-if(class(meanCoverage[[1]]) == 'list') meanCoverage <- unlist(meanCoverage)
+meanCoverage <- manualUnlist(meanCoverage)
 print(object.size(meanCoverage), units = 'Mb')
 
 message(paste(Sys.time(), 'saving meanCoverage.Rdata'))
@@ -47,9 +59,7 @@ loadReg <- function(cr) {
 
 message(paste(Sys.time(), 'obtaining region coverage'))
 regionCoverage <- lapply(chrs, loadReg)
-if(class(regionCoverage[[1]]) == 'list') {
-    regionCoverage <- unlist(regionCoverage)
-}
+regionCoverage <- manualUnlist(regionCoverage)
 print(object.size(regionCoverage), units = 'Mb')
 
 message(paste(Sys.time(), 'saving regionCov_all.Rdata'))
