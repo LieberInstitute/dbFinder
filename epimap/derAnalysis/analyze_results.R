@@ -12,6 +12,9 @@ library('GenomicFeatures')
 library('biomaRt')
 library('bumphunter')
 library('RColorBrewer')
+library('Hmisc')
+library('GOstats')
+library('org.Hs.eg.db')
 library('devtools')
 
 ## Specify parameters
@@ -29,7 +32,13 @@ if (!is.null(opt$help)) {
 }
 
 ## For testing
-if(FALSE) opt <- list(histone = 'H3K4me3')
+if(FALSE) {
+    opt <- list(histone = 'H3K4me3')
+    opt <- list(histone = 'H3K27ac')
+}
+    
+## Number of cores used
+cores <- 10
 
 ## Dirs
 rootdir <- '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap/'
@@ -340,20 +349,27 @@ for(i in seq_len(ncol(pc1Mat))) {
 }
 dev.off()
 
+## Add BMI
+pd$BMI <- pd$Weight / (pd$Height^2) * 703
+print('Number of samples, height, weight and BMI by sex')
+table(pd$Sex)
+tapply(pd$Height, pd$Sex, summary)
+tapply(pd$Weight, pd$Sex, summary)
+tapply(pd$BMI, pd$Sex, summary)
 
 ## Joint modeling
 message(paste(Sys.time(), 'performing joint modeling'))
 system.time( sumSqList <- parallel::mclapply(seq_len(nrow(y)), function(i) {
 	if(i %% 10000 == 0) cat(".")
-        t(anova(lm(y[i,] ~ BrainRegion + CellType + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + ChromatinAmount + AntibodyAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
-}, mc.cores=8) )
+        t(anova(lm(y[i,] ~ BrainRegion + CellType + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + AntibodyAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+}, mc.cores = cores) )
 
 ssOut <- do.call("rbind", sumSqList)
 rownames(ssOut) <- NULL
 bg <- matrix(rep(rowSums(ssOut), ncol(ssOut)), 
 	ncol = ncol(ssOut), nrow = nrow(ssOut))
 ssMat <- ssOut / bg
-lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'Chromatin amount', 'Antibody amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Antibody amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
 
 message(paste(Sys.time(), 'saving joint modeling results'))
 save(ssMat, lab, file = file.path(maindir, paste0('ssMat_', opt$histone,
@@ -379,19 +395,19 @@ for(i in seq(along = annoClassList[1:4])) {
 }
 dev.off()
 
-## Wihtout CellType
+## Without CellType
 message(paste(Sys.time(), 'performing joint modeling without CellType'))
 system.time( sumSqList2 <- parallel::mclapply(seq_len(nrow(y)), function(i) {
 	if(i %% 10000 == 0) cat(".")
-        t(anova(lm(y[i,] ~ BrainRegion + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + ChromatinAmount + AntibodyAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
-}, mc.cores=8) )
+        t(anova(lm(y[i,] ~ BrainRegion + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + AntibodyAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+}, mc.cores = cores) )
 
 ssOut2 <- do.call("rbind", sumSqList2)
 rownames(ssOut2) <- NULL
 bg2 <- matrix(rep(rowSums(ssOut2), ncol(ssOut2)), 
 	ncol = ncol(ssOut2), nrow = nrow(ssOut2))
 ssMat2 <- ssOut2 / bg2
-lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'Chromatin amount', 'Antibody amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Antibody amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
 
 message(paste(Sys.time(), 'saving joint modeling results'))
 save(ssMat2, lab2, file = file.path(maindir, paste0('ssMat2_', opt$histone,
@@ -417,6 +433,169 @@ for(i in seq(along = annoClassList[1:4])) {
 }
 dev.off()
 
+
+## p-values: main 3 covariates
+message(paste(Sys.time(), 'ANOVA main 3 covariates'))
+i_groups <- split(seq_len(nrow(y)), Hmisc::cut2(seq_len(nrow(y)), m = 1e3))
+system.time( pList <- parallel::mclapply(i_groups, function(i_group) {
+    res <- data.frame(matrix(NA, ncol = 3, nrow = length(i_group)))
+    colnames(res) <- c('BrainRegion', 'CellType', 'AgeDeath')
+    
+    for(j in seq_len(length(i_group))) {
+        i <- i_group[j]
+    	if(i %% 10000 == 0) cat(".")
+           res[j, ] <- c(
+                'BrainRegion' = anova(lm(y[i, ] ~ BrainRegion, data = pd))[[5]][1],
+                'CellType' = anova(lm(y[i, ] ~ CellType, data = pd))[[5]][1],
+                'AgeDeath' = anova(lm(y[i, ] ~ AgeDeath, data = pd))[[5]][1]
+            )
+    }
+	return(res)
+}, mc.cores = cores) )
+system.time( pTable_main <- do.call(rbind, pList) )
+rownames(pTable_main) <- NULL
+message(paste(Sys.time(), 'saving pTable_main.Rdata'))
+save(pTable_main, file = file.path(maindir, 'pTable_main.Rdata'))
+
+
+venn_main <- vennCounts(pTable_main < 0.05 / 3)
+colnames(venn_main) <- c('Brain region', 'Cell type', 'Age at death', 'Counts')
+print('dbPeaks by main covariate')
+venn_main
+venn_col <- brewer.pal(4, "Set1")[2:4]
+pdf(file.path(plotdir, paste0(opt$histone, '_venn_mainCovariates.pdf')),
+    width = 10, height = 10)
+vennDiagram_custom(venn_main, 
+    main = 'dbPeaks by modeled covariates', cex.main = 2,
+    circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
+    text.col = c('black', venn_col[3:2], 'black', venn_col[1], 'black', 'black',
+        'black')#, oma = rep(0, 4), pty = 'm'
+)
+dev.off()
+
+## Subset PCAs
+covClassList <- lapply(c('BrainRegion', 'CellType', 'AgeDeath'), function(covariate) {
+    not <- pTable_main[, -which(colnames(pTable_main) == covariate)] >= 0.05 / 3
+    which(pTable_main[, covariate] < 0.05 / 3 & apply(not, 1, all))
+})
+names(covClassList) <- c('BrainRegion', 'CellType', 'AgeDeath')
+
+pcListCov <- lapply(covClassList, function(ii) {
+	cat(".")
+	pc = prcomp(t(y[ii,]))
+	pc$rot = NULL # drop rotations
+	return(pc) 
+})
+
+pcVarMatCov <- sapply(pcListCov, getPcaVars)
+rownames(pcVarMatCov) <- paste0("PC", seq_len(nrow(pcVarMatCov)))
+pc1MatCov <- sapply(pcListCov, function(x) x$x[,1])
+pc2MatCov <- sapply(pcListCov, function(x) x$x[,2])
+
+## Plots by covariate
+pdf(file.path(plotdir, paste0(opt$histone, '_dbPeaks_PCA_byCovariate.pdf')))
+palette(brewer.pal(4, 'Paired'))
+par(mar=c(5,6,2,2))
+for(i in 1:ncol(pc1MatCov)) {
+	plot(x=pc1MatCov[,i], y=pc2MatCov[,i],
+        bg = as.numeric(group),
+		pch = c(21,22)[as.numeric(cellgroup)],
+		xlab = paste0("PC1: ",pcVarMatCov[1,i],"% of Var Expl"),
+		ylab = paste0("PC2: ",pcVarMatCov[2,i],"% of Var Expl"),
+		cex.axis=2, cex.lab=2, cex.main=1.8,
+		main = paste0("PCA of dbPeaks (", colnames(venn_main)[i],")"),
+        ylim = range(pc2MatCov[,i]) * 1.2)
+	legend("bottomright", c('Neun-', 'Neun+'), 
+		pch=c(19,15), cex=1.5, ncol = 2, bty = 'n')
+    legend("topright", levels(group),
+        col = seq_len(length(levels(group))), lwd=5, cex=1.5, ncol = 2,
+        bty = 'n')
+}
+dev.off()
+
+## Plots by group and covariate
+pdf(file.path(plotdir, paste0(opt$histone,
+    '_dbPeaks_PCsbyGroup_byCovariate.pdf')), width = 11)
+palette(brewer.pal(4, 'Paired'))
+par(mar=c(14,6,2,2))
+set.seed(20160516)
+for(i in seq_len(ncol(pc1MatCov))) {
+	## PC1
+	boxplot(pc1MatCov[, i] ~ groupSimple, las=3,
+		ylab = paste0("PC1: ", pcVarMatCov[1, i], "% of Var Expl"),
+		cex.axis=1.7, cex.lab=2, cex.main=1.8, xlab="", outline=FALSE,
+		main = paste0("PCA of dbPeaks (", colnames(venn_main)[i],")"),
+        ylim = range(pc1MatCov[, i]) * 1.1)
+	points(pc1MatCov[, i] ~ jitter(as.numeric(groupSimple), amount=0.2),
+		bg = as.numeric(group), cex=1.3,
+		pch = c(21,22)[as.numeric(cellgroup)])
+	# PC2 
+	boxplot(pc2MatCov[, i] ~ groupSimple, las=3,
+		ylab = paste0("PC2: ", pcVarMatCov[2, i], "% of Var Expl"),
+		cex.axis=1.7, cex.lab=2, xlab="", outline=FALSE)
+	points(pc2MatCov[, i] ~ jitter(as.numeric(groupSimple), amount=0.2),
+		bg = as.numeric(group), cex=1.3,
+		pch = c(21,22)[as.numeric(cellgroup)])
+}
+dev.off()
+
+
+## p-values: remaining covariates
+message(paste(Sys.time(), 'ANOVA remaining covariates'))
+system.time( pList2 <- parallel::mclapply(i_groups, function(i_group) {
+    res <- data.frame(matrix(NA, ncol = 13, nrow = length(i_group)))
+    colnames(res) <- c('Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'ChromatinAmount', 'AntibodyAmount', 'totalMapped', 'Individual_ID', 'FlowcellBatch', 'LibraryBatch')
+    
+    for(j in seq_len(length(i_group))) {
+        i <- i_group[j]
+    
+    	if(i %% 10000 == 0) cat(".")
+            fit1 <- lm(y[i, ] ~ BrainRegion + CellType + AgeDeath, data = pd)
+            res[j, ] <- c(
+                'Hemisphere' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Hemisphere, data = pd))[[5]][2],
+                'PMI' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + PMI, data = pd))[[5]][2],
+                'pH' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + pH, data = pd))[[5]][2],
+                'Sex' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Sex, data = pd))[[5]][2],
+                'Height' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Height, data = pd))[[5]][2],
+                'Weight' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Weight, data = pd))[[5]][2],
+                'BMI' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + BMI, data = pd))[[5]][2],
+                'ChromatinAmount' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + ChromatinAmount, data = pd))[[5]][2],
+                'AntibodyAmount' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + AntibodyAmount, data = pd))[[5]][2],
+                'totalMapped' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + totalMapped, data = pd))[[5]][2],
+                'Individual_ID' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Individual_ID, data = pd))[[5]][2],
+                'FlowcellBatch' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + FlowcellBatch, data = pd))[[5]][2],
+                'LibraryBatch' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + LibraryBatch, data = pd))[[5]][2]
+            )
+    }
+    return(res)
+}, mc.cores = cores) )
+system.time( pTable_rest <- do.call(rbind, pList2) )
+rownames(pTable_rest) <- NULL
+
+message(paste(Sys.time(), 'saving pTable_rest.Rdata'))
+save(pTable_rest, file = file.path(maindir, 'pTable_rest.Rdata'))
+
+## Cluster un-modeled covariates
+pdf(file.path(plotdir, paste0(opt$histone, '_clus_otherCovariates.pdf')))
+plot(hclust(as.dist(1 - cor( -log(pTable_rest * ncol(pTable_rest)) ))), frame.plot = TRUE, main = 'Un-modeled covariates clustered by -log10 pvalue', ylab = '', axes = FALSE, sub = '', ann = TRUE, labels = lab[4:16], xlab = '')
+dev.off()
+
+## Summary info for p-value table
+print('Summary of -log10 pvalues (Bonferroni adjusted)')
+summary(-log(pTable_rest * ncol(pTable_rest)))
+pTable_sig <- pTable_rest < 0.05 / ncol(pTable_rest)
+print('Significant dbPeaks by un-modeled covariate')
+colSums(pTable_sig)
+round(colSums(pTable_sig) / nrow(pTable_sig) * 100, 2)
+
+
+## Groups
+venn_rest <- vennCounts(pTable_sig)
+counts <- venn_rest[, ncol(pTable_rest) + 1]
+venn_not0 <- venn_rest[as.integer(names(sort(counts[counts > 0], decreasing = TRUE))), ]
+head(venn_not0, 10)
+
+
 ## Load mean coverage
 message(paste(Sys.time(), 'loading meanCoverage.Rdata'))
 load(file.path(maindir, 'meanCoverage.Rdata'))
@@ -426,12 +605,21 @@ map <- seq_len(length(fullRegions))[keepIndex]
 meanCoverage <- meanCoverage[as.character(map)]
 names(meanCoverage) <- seq_len(length(meanCoverage))
 
+## Define region sets
+regSets <- apply(cbind(pTable_main < 0.05 / 3, pTable_sig), 2, which)
+regSets <- regSets[sapply(regSets, length) > 0]
+print('Number of regions per covariate set')
+sapply(regSets, length)
 
 ## Select regions to highlight per covariate
-highlight <- apply(ssMat, 2, function(x) {
-    head(order(x, decreasing = TRUE), 10)
+pTable <- -log10(cbind(pTable_main * 3, pTable_rest * ncol(pTable_rest)))
+highlight <- lapply(names(regSets), function(x) {
+    ord <- order(pTable[[x]][regSets[[x]]], decreasing = TRUE)
+    ## Maximum 100
+    res <- regSets[[x]][head(ord, 50)] # Limiting to 50 in case some regions are huge
+    return(res)
 })
-
+names(highlight) <- names(regSets)
 
 ## From https://github.com/leekgroup/derSupplement/commit/d67dc1d2aee34eaae6e4a63082d03ea4397d46f1
 ## Load info
@@ -455,7 +643,6 @@ ensGene <- ensGene[!grepl("^MIR[0-9]", ensGene$Symbol)] # drop mirs
 
 ## Get nearest annotation
 genes <- annotateTranscripts(txdb = TranscriptDb)
-matchGenes(x = zoom, subject = genes)
 
 shorten <- function(x) {
     x <- gsub('ACC', 'A', x)
@@ -468,15 +655,16 @@ shorten <- function(x) {
 groupSimple_mean <- factor(shorten(levels(groupSimple)), levels = shorten(levels(groupSimple)))
 
 message(paste(Sys.time(), 'creating highlight region plots'))
-for(h in seq_len(ncol(highlight))) {
-    message(paste(Sys.time(), 'highlighting', colnames(ssMat)[h]))
+for(h in seq_len(length(highlight))) {
+    message(paste(Sys.time(), 'highlighting', names(highlight)[h]))
     ## Subset data
-    regs <- regions[highlight[, h]]
-    meanC <- meanCoverage[as.character(highlight[, h])]
-    names(meanC) <- seq_len(10)
-    annRegs <- list(annotationList = ensemblAnno$annotationList[highlight[, h]])
-    names(annRegs$annotationList) <- seq_len(10)
-    for(j in seq_len(10)) {
+    regs <- regions[highlight[[h]]]
+    meanC <- meanCoverage[as.character(highlight[[h]])]
+    h_len <- length(highlight[[h]])
+    names(meanC) <- seq_len(h_len)
+    annRegs <- list(annotationList = ensemblAnno$annotationList[highlight[[h]]])
+    names(annRegs$annotationList) <- seq_len(h_len)
+    for(j in seq_len(h_len)) {
         ## Remove symbols
         annRegs[[1]][[j]]$symbol <- CharacterList('')
     }    
@@ -484,9 +672,10 @@ for(h in seq_len(ncol(highlight))) {
     nearestAnn$name <- NA
     ov <- findOverlaps(ensGene, regs, ignore.strand = TRUE)
     nearestAnn$name[subjectHits(ov)] <- ensGene$Symbol[queryHits(ov)]
+    nearestAnn$name[nearestAnn$name == ''] <- NA
     
     pdf(file.path(plotdir, paste0(opt$histone, '_highlight_',
-        colnames(ssMat)[h], '.pdf')), height = 5, width = 8)
+        names(highlight)[h], '.pdf')), height = 5, width = 8)
     plotRegionCoverage(regions = regs,
         regionCoverage = meanC,
         groupInfo = groupSimple_mean,
@@ -498,6 +687,60 @@ for(h in seq_len(ncol(highlight))) {
     dev.off()
 }
 
+
+## GO analysis
+# Modified from /home/epi/ajaffe/Lieber/lieber_functions_aj.R
+dogo <- function(names, Universe, goP = 0.01, cond = FALSE, ontology = 'BP'){
+    gomap_names <- org.Hs.egREFSEQ2EG
+    x <- unlist(mget(as.character(names), gomap_names, ifnotfound = NA))
+    x <- x[!is.na(x)]    
+    Universe <- unique(c(Universe, unique(x)))
+
+    params <- new("GOHyperGParams", geneIds = unique(x),
+                  universeGeneIds = Universe,
+                  annotation = 'org.Hs.eg.db',
+                  ontology = ontology, pvalueCutoff = goP, conditional = cond,
+                  testDirection="over")
+    ht <- hyperGTest(params)
+    tab <- summary(ht)
+    tmp1 <- geneIdsByCategory(ht)
+    tmp1 <- tmp1[tab[, 1]]
+    tab$IDs <- sapply(tmp1, function(y) paste(names(x)[x %in% y], collapse=";"))
+    return(tab)
+}
+
+## Define universe: genes with a dbPeak within 5kb
+bg_genes <- resize(ensGene, width(ensGene) + 1e4, fix = 'center')
+bg_genes <- bg_genes[countOverlaps(bg_genes, regions, ignore.strand = TRUE) > 0]
+print('Percent of genes included in the background')
+round(length(bg_genes) / length(ensGene) * 100, 2)
+
+## Define GO universe
+gomap <- org.Hs.egENSEMBL2EG
+bg_universe <- unlist(mget(as.character(bg_genes$gene_id), gomap, ifnotfound = NA))
+print('Percent of background genes missing')
+round(sum(is.na(bg_universe)) / length(bg_universe) * 100, 2)
+bg_universe <- bg_universe[!is.na(bg_universe)]
+
+message(paste(Sys.time(), 'performing GO analysis'))
+goByCovariate <- mclapply(regSets, function(ii) {
+    regs <- regions[ii]
+    regs_names <- unlist(strsplit(regs$annotation, ' '))
+    ## Clean up
+    regs_names <- regs_names[!is.na(regs_names)]
+    go <- dogo(regs_names, bg_universe)
+}, mc.cores = cores)
+names(goByCovariate) <- names(regSets)
+
+message(paste(Sys.time(), 'saving goByCovariate.Rdata'))
+save(goByCovariate, file = file.path(maindir, 'goByCovariate.Rdata'))
+
+## Show GO results
+print('Top GO results')
+for(g in names(regSets)) {
+    print(g)
+    print(head(goByCovariate[[g]][, -8], 20))
+}
 
 
 ## Reproducibility info
