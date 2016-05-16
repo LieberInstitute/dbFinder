@@ -57,7 +57,7 @@ message(paste(Sys.time(), 'saving meanCoverage.Rdata'))
 save(meanCoverage, file = file.path(maindir, 'meanCoverage.Rdata'))
 rm(meanCoverage)
 
-loadReg <- function(cr) {
+loadReg <- function(chr) {
     load(file = file.path(maindir, paste0('regionCov-', chr,
         '.Rdata')))
     return(regionCoverage)
