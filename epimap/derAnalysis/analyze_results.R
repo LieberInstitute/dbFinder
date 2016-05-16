@@ -5,8 +5,12 @@ library('getopt')
 
 ## Available at http://www.bioconductor.org/packages/release/bioc/html/derfinder.html
 library('derfinder')
+library('derfinderPlot')
 library('GenomicRanges')
 library('limma')
+library('GenomicFeatures')
+library('biomaRt')
+library('bumphunter')
 library('RColorBrewer')
 library('devtools')
 
@@ -360,20 +364,141 @@ pdf(file.path(plotdir, paste0(opt$histone, '_boxplots_overall.pdf')),
     width = 12, height = 5)
 par(mar=c(9,5,2,2))
 palette(brewer.pal(7, "Dark2"))
-boxplot(100*ssMat,xaxt="n", ylim = c(0, 100), 
+boxplot(100*ssMat, xaxt="n", ylim = c(0, 100), 
 	cex.axis=1.3,cex.lab=1.1, range=2,
 	ylab="Percentage variance explained", cex=0.5)
 text(seq_len(ncol(ssMat)) + 0.2, y = -8, lab, xpd=TRUE, srt=45, pos=2)
 text(x = 8.5, y= 90, "All Regions", cex=1.7)
 for(i in seq(along = annoClassList[1:4])) {
 	ii = annoClassList[[i]]
-	boxplot(100*ssMat[ii,],xaxt="n", ylim = c(0, 100), 
-		cex.axis=1.3,cex.lab=1.1,range=2, col = i,
+	boxplot(100 * ssMat[ii,],xaxt="n", ylim = c(0, 100), 
+		cex.axis=1.3, cex.lab=1.1, range=2, col = i,
 		ylab="Percentage variance explained", cex=0.5)
 	text(seq_len(ncol(ssMat)) + 0.1, y = -8, lab, xpd=TRUE, srt=45, pos=2)
 	text(x = 8.5, y= 90, name[i], cex=1.7)
 }
 dev.off()
+
+## Wihtout CellType
+message(paste(Sys.time(), 'performing joint modeling without CellType'))
+system.time( sumSqList2 <- parallel::mclapply(seq_len(nrow(y)), function(i) {
+	if(i %% 10000 == 0) cat(".")
+        t(anova(lm(y[i,] ~ BrainRegion + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + ChromatinAmount + AntibodyAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+}, mc.cores=8) )
+
+ssOut2 <- do.call("rbind", sumSqList2)
+rownames(ssOut2) <- NULL
+bg2 <- matrix(rep(rowSums(ssOut2), ncol(ssOut2)), 
+	ncol = ncol(ssOut2), nrow = nrow(ssOut2))
+ssMat2 <- ssOut2 / bg2
+lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'Chromatin amount', 'Antibody amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+
+message(paste(Sys.time(), 'saving joint modeling results'))
+save(ssMat2, lab2, file = file.path(maindir, paste0('ssMat2_', opt$histone,
+    '_noCellType.Rdata')), compress=TRUE)
+
+## Boxplot by variables
+pdf(file.path(plotdir, paste0(opt$histone, '_boxplots_overall_noCellType.pdf')),
+    width = 12, height = 5)
+par(mar=c(9,5,2,2))
+palette(brewer.pal(7, "Dark2"))
+boxplot(100*ssMat2, xaxt="n", ylim = c(0, 100), 
+	cex.axis=1.3,cex.lab=1.1, range=2,
+	ylab="Percentage variance explained", cex=0.5)
+text(seq_len(ncol(ssMat2)) + 0.2, y = -8, lab2, xpd=TRUE, srt=45, pos=2)
+text(x = 8.5, y= 90, "All Regions", cex=1.7)
+for(i in seq(along = annoClassList[1:4])) {
+	ii = annoClassList[[i]]
+	boxplot(100 * ssMat2[ii,],xaxt="n", ylim = c(0, 100), 
+		cex.axis=1.3, cex.lab=1.1, range=2, col = i,
+		ylab="Percentage variance explained", cex=0.5)
+	text(seq_len(ncol(ssMat2)) + 0.1, y = -8, lab2, xpd=TRUE, srt=45, pos=2)
+	text(x = 8.5, y= 90, name[i], cex=1.7)
+}
+dev.off()
+
+## Load mean coverage
+message(paste(Sys.time(), 'loading meanCoverage.Rdata'))
+load(file.path(maindir, 'meanCoverage.Rdata'))
+
+message(paste(Sys.time(), 'subsetting meanCoverage'))
+map <- seq_len(length(fullRegions))[keepIndex]
+meanCoverage <- meanCoverage[as.character(map)]
+names(meanCoverage) <- seq_len(length(meanCoverage))
+
+
+## Select regions to highlight per covariate
+highlight <- apply(ssMat, 2, function(x) {
+    head(order(x, decreasing = TRUE), 10)
+})
+
+
+## From https://github.com/leekgroup/derSupplement/commit/d67dc1d2aee34eaae6e4a63082d03ea4397d46f1
+## Load info
+sql_file <- "/home/epi/ajaffe/Lieber/Projects/RNAseq/Ribozero_Compare/TxDb.Hsapiens.BioMart.ensembl.GRCh37.p12/inst/extdata/TxDb.Hsapiens.BioMart.ensembl.GRCh37.p12.sqlite"
+TranscriptDb <- loadDb(sql_file)
+
+## Fix seqlevels
+seqlevels(TranscriptDb, force=TRUE) <- c(1:22,"X","Y","MT")
+seqlevels(TranscriptDb) <- paste0("chr", c(1:22,"X","Y","M"))
+ensGene <- genes(TranscriptDb)
+
+## Get data from BioMart
+ensembl <- useMart("ENSEMBL_MART_ENSEMBL", # VERSION 75, hg19
+ 	dataset="hsapiens_gene_ensembl",
+	host="feb2014.archive.ensembl.org")
+sym <- getBM(attributes = c("ensembl_gene_id", "hgnc_symbol"), 
+ 	values = names(ensGene), mart = ensembl)
+ensGene$Symbol <- sym$hgnc_symbol[match(names(ensGene), sym$ensembl_gene_id)]
+ensGene <- ensGene[!grepl("^MIR[0-9]", ensGene$Symbol)] # drop mirs
+
+
+## Get nearest annotation
+genes <- annotateTranscripts(txdb = TranscriptDb)
+matchGenes(x = zoom, subject = genes)
+
+shorten <- function(x) {
+    x <- gsub('ACC', 'A', x)
+    x <- gsub('DLPFC', 'D', x)
+    x <- gsub('52', '', x)
+    x <- gsub('NeuN', 'N', x)
+    return(x)
+}
+
+groupSimple_mean <- factor(shorten(levels(groupSimple)), levels = shorten(levels(groupSimple)))
+
+message(paste(Sys.time(), 'creating highlight region plots'))
+for(h in seq_len(ncol(highlight))) {
+    message(paste(Sys.time(), 'highlighting', colnames(ssMat)[h]))
+    ## Subset data
+    regs <- regions[highlight[, h]]
+    meanC <- meanCoverage[as.character(highlight[, h])]
+    names(meanC) <- seq_len(10)
+    annRegs <- list(annotationList = ensemblAnno$annotationList[highlight[, h]])
+    names(annRegs$annotationList) <- seq_len(10)
+    for(j in seq_len(10)) {
+        ## Remove symbols
+        annRegs[[1]][[j]]$symbol <- CharacterList('')
+    }    
+    nearestAnn <- matchGenes(x = regs, subject = genes)
+    nearestAnn$name <- NA
+    ov <- findOverlaps(ensGene, regs, ignore.strand = TRUE)
+    nearestAnn$name[subjectHits(ov)] <- ensGene$Symbol[queryHits(ov)]
+    
+    pdf(file.path(plotdir, paste0(opt$histone, '_highlight_',
+        colnames(ssMat)[h], '.pdf')), height = 5, width = 8)
+    plotRegionCoverage(regions = regs,
+        regionCoverage = meanC,
+        groupInfo = groupSimple_mean,
+        nearestAnnotation = nearestAnn,
+        annotatedRegions = annRegs,
+        ask = FALSE, verbose = FALSE,
+        txdb = TranscriptDb, colors = brewer.pal(12, 'Paired')[5:12]
+    )
+    dev.off()
+}
+
+
 
 ## Reproducibility info
 proc.time()
