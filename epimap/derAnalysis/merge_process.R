@@ -30,7 +30,7 @@ loadMean <- function(chr) {
     return(meanCoverage)
 }
 
-manualUnlist <- function(covList) {
+manualUnlist <- function(covList, names) {
     covList <- c(covList[[1]], covList[[2]], covList[[3]], covList[[4]],
         covList[[5]], covList[[6]], covList[[7]], covList[[8]], covList[[9]],
         covList[[10]], covList[[11]], covList[[12]], covList[[13]],
@@ -38,13 +38,19 @@ manualUnlist <- function(covList) {
         covList[[18]], covList[[19]], covList[[20]], covList[[21]],
         covList[[22]], covList[[23]], covList[[24]]
     )
-    names(covList) <- seq_len(length(covList))
+    names(covList) <- names
     return(covList)
 }
 
+message(paste(Sys.time(), 'loading fullRegions'))
+load(file.path(maindir, 'fullRegions.Rdata'))
+name_groups <- split(seq_len(length(fullRegions)), seqnames(fullRegions))
+stopifnot(identical(names(name_groups), chrs))
+regNames <- unlist(name_groups)
+
 message(paste(Sys.time(), 'building mean coverage'))
 meanCoverage <- lapply(chrs, loadMean)
-meanCoverage <- manualUnlist(meanCoverage)
+meanCoverage <- manualUnlist(meanCoverage, regNames)
 print(object.size(meanCoverage), units = 'Mb')
 
 message(paste(Sys.time(), 'saving meanCoverage.Rdata'))
@@ -59,7 +65,7 @@ loadReg <- function(cr) {
 
 message(paste(Sys.time(), 'obtaining region coverage'))
 regionCoverage <- lapply(chrs, loadReg)
-regionCoverage <- manualUnlist(regionCoverage)
+regionCoverage <- manualUnlist(regionCoverage, regNames)
 print(object.size(regionCoverage), units = 'Mb')
 
 message(paste(Sys.time(), 'saving regionCov_all.Rdata'))
