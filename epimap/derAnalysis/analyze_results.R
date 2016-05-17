@@ -46,6 +46,9 @@ maindir <- file.path(rootdir, 'derAnalysis', paste0('run1-v1.5.38-',
     opt$histone))
 plotdir <- file.path(rootdir, 'derAnalysis', 'plots')
 dir.create(plotdir, showWarnings = FALSE)
+
+## Age cutoff
+ageCut <- ifelse(opt$histone == 'H3K4me3', 52, 53)
     
 ## Results
 load(file.path(maindir, 'groupInfo.Rdata'))
@@ -298,12 +301,11 @@ pc2Mat <- sapply(pcList, function(x) x$x[,2])
 
 ## Make PCA plots
 name <- c('Exonic', 'Intronic', 'Intergenic', 'Exon+Intron', 'All')
-group <- factor(paste0(pd$BrainRegion, '_', c('52-',
-    '52+')[as.numeric(pd$AgeDeath < 52) + 1]))
+group <- factor(paste0(pd$BrainRegion, '_', paste0(ageCut, c('-', '+'))[as.numeric(pd$AgeDeath < ageCut) + 1]))
 cellgroup <- factor(pd$CellType, levels = c('NeuN-', 'NeuN+'))
 groupSimple <- groupInfo
-levels(groupSimple) <- gsub('\\[23,52\\)', '52-', levels(groupSimple))
-levels(groupSimple) <- gsub('\\[52,65\\]', '52+', levels(groupSimple))
+levels(groupSimple) <- gsub(paste0('\\[23,', ageCut, '\\)'), paste0(ageCut, '-'), levels(groupSimple))
+levels(groupSimple) <- gsub(paste0('\\[', ageCut, ',65\\]'), paste0(ageCut, '+'), levels(groupSimple))
 levels(groupSimple) <- gsub('_', ':', levels(groupSimple))
 
 pdf(file.path(plotdir, paste0(opt$histone, '_dbPeaks_PCA_byAnno.pdf')))
@@ -647,7 +649,7 @@ genes <- annotateTranscripts(txdb = TranscriptDb)
 shorten <- function(x) {
     x <- gsub('ACC', 'A', x)
     x <- gsub('DLPFC', 'D', x)
-    x <- gsub('52', '', x)
+    x <- gsub(ageCut, '', x)
     x <- gsub('NeuN', 'N', x)
     return(x)
 }
