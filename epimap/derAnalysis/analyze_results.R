@@ -730,13 +730,13 @@ round(sum(is.na(bg_universe)) / length(bg_universe) * 100, 2)
 bg_universe <- bg_universe[!is.na(bg_universe)]
 
 message(paste(Sys.time(), 'performing GO analysis'))
-goByCovariate <- parallel::mclapply(regSets, function(ii) {
+goByCovariate <- lapply(regSets, function(ii) {
     regs <- regions[ii]
     regs_names <- unlist(strsplit(regs$annotation, ' '))
     ## Clean up
     regs_names <- regs_names[!is.na(regs_names)]
     go <- dogo(regs_names, bg_universe)
-}, mc.cores = cores)
+})
 names(goByCovariate) <- names(regSets)
 
 message(paste(Sys.time(), 'saving goByCovariate.Rdata'))
