@@ -735,7 +735,7 @@ goByCovariate <- lapply(regSets, function(ii) {
     regs_names <- unlist(strsplit(regs$annotation, ' '))
     ## Clean up
     regs_names <- regs_names[!is.na(regs_names)]
-    go <- tryCatch(dogo(regs_names, bg_universe), error = funtion(e) return(NULL))
+    go <- tryCatch(dogo(regs_names, bg_universe), error = function(e) return(NULL))
 })
 names(goByCovariate) <- names(regSets)
 
