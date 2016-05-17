@@ -735,9 +735,11 @@ goByCovariate <- lapply(regSets, function(ii) {
     regs_names <- unlist(strsplit(regs$annotation, ' '))
     ## Clean up
     regs_names <- regs_names[!is.na(regs_names)]
-    go <- dogo(regs_names, bg_universe)
+    go <- tryCatch(dogo(regs_names, bg_universe), error = funtion(e) return(NULL))
 })
 names(goByCovariate) <- names(regSets)
+
+goByCovariate <- goByCovariate[!sapply(goByCovariate, is.null)]
 
 message(paste(Sys.time(), 'saving goByCovariate.Rdata'))
 save(goByCovariate, file = file.path(maindir, 'goByCovariate.Rdata'))
