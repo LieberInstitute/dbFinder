@@ -584,7 +584,7 @@ save(pTable_rest, file = file.path(maindir, 'pTable_rest.Rdata'))
 
 ## Cluster un-modeled covariates
 pdf(file.path(plotdir, paste0(opt$histone, '_clus_otherCovariates.pdf')))
-plot(hclust(as.dist(1 - cor( -log(pTable_rest * ncol(pTable_rest)) ))), frame.plot = TRUE, main = 'Un-modeled covariates clustered by -log10 pvalue', ylab = '', axes = FALSE, sub = '', ann = TRUE, labels = lab[4:16], xlab = '')
+plot(hclust(as.dist(1 - cor( -log(pTable_rest * ncol(pTable_rest)) ))), frame.plot = TRUE, main = 'Un-modeled covariates clustered by -log10 pvalue', ylab = '', axes = FALSE, sub = '', ann = TRUE, labels = lab[4:(length(lab) - 1)], xlab = '')
 dev.off()
 
 ## Summary info for p-value table
