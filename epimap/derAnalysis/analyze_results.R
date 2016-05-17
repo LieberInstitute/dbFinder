@@ -481,6 +481,7 @@ covClassList <- lapply(c('BrainRegion', 'CellType', 'AgeDeath'), function(covari
     which(pTable_main[, covariate] < 0.05 / 3 & apply(not, 1, all))
 })
 names(covClassList) <- c('BrainRegion', 'CellType', 'AgeDeath')
+covClassList <- covClassList[sapply(covClassList, length) > 0]
 
 pcListCov <- lapply(covClassList, function(ii) {
 	cat(".")
@@ -498,7 +499,7 @@ pc2MatCov <- sapply(pcListCov, function(x) x$x[,2])
 pdf(file.path(plotdir, paste0(opt$histone, '_dbPeaks_PCA_byCovariate.pdf')))
 palette(brewer.pal(4, 'Paired'))
 par(mar=c(5,6,2,2))
-for(i in 1:ncol(pc1MatCov)) {
+for(i in seq_len(ncol(pc1MatCov))) {
 	plot(x=pc1MatCov[,i], y=pc2MatCov[,i],
         bg = as.numeric(group),
 		pch = c(21,22)[as.numeric(cellgroup)],
