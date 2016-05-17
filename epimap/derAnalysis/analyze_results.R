@@ -58,7 +58,7 @@ message(paste(Sys.time(), 'loading fullRegions.Rdata'))
 load(file.path(maindir, 'fullRegions.Rdata'))
 
 #keepIndex <- width(fullRegions) >=6
-keepIndex <- fullRegions$significantQval == 'TRUE'
+keepIndex <- fullRegions$significantFWER == 'TRUE'
 regions <- fullRegions[keepIndex]
 
 ## Phenotype information
@@ -301,7 +301,7 @@ pc2Mat <- sapply(pcList, function(x) x$x[,2])
 
 ## Make PCA plots
 name <- c('Exonic', 'Intronic', 'Intergenic', 'Exon+Intron', 'All')
-group <- factor(paste0(pd$BrainRegion, '_', paste0(ageCut, c('-', '+'))[as.numeric(pd$AgeDeath < ageCut) + 1]))
+group <- factor(paste0(pd$BrainRegion, ':', paste0(ageCut, c('-', '+'))[as.numeric(pd$AgeDeath < ageCut) + 1]))
 cellgroup <- factor(pd$CellType, levels = c('NeuN-', 'NeuN+'))
 groupSimple <- groupInfo
 levels(groupSimple) <- gsub(paste0('\\[23,', ageCut, '\\)'), paste0(ageCut, '-'), levels(groupSimple))
@@ -411,7 +411,7 @@ bg2 <- matrix(rep(rowSums(ssOut2), ncol(ssOut2)),
 ssMat2 <- ssOut2 / bg2
 lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Antibody amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
 
-message(paste(Sys.time(), 'saving joint modeling results'))
+message(paste(Sys.time(), 'saving joint modeling results (no cellType)'))
 save(ssMat2, lab2, file = file.path(maindir, paste0('ssMat2_', opt$histone,
     '_noCellType.Rdata')), compress=TRUE)
 
@@ -438,7 +438,7 @@ dev.off()
 
 ## p-values: main 3 covariates
 message(paste(Sys.time(), 'ANOVA main 3 covariates'))
-i_groups <- split(seq_len(nrow(y)), Hmisc::cut2(seq_len(nrow(y)), m = 1e3))
+i_groups <- split(seq_len(nrow(y)), Hmisc::cut2(seq_len(nrow(y)), m = 5e3))
 system.time( pList <- parallel::mclapply(i_groups, function(i_group) {
     res <- data.frame(matrix(NA, ncol = 3, nrow = length(i_group)))
     colnames(res) <- c('BrainRegion', 'CellType', 'AgeDeath')
@@ -725,7 +725,7 @@ round(sum(is.na(bg_universe)) / length(bg_universe) * 100, 2)
 bg_universe <- bg_universe[!is.na(bg_universe)]
 
 message(paste(Sys.time(), 'performing GO analysis'))
-goByCovariate <- mclapply(regSets, function(ii) {
+goByCovariate <- parallel::mclapply(regSets, function(ii) {
     regs <- regions[ii]
     regs_names <- unlist(strsplit(regs$annotation, ' '))
     ## Clean up
