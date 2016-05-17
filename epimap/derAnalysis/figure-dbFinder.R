@@ -1,4 +1,4 @@
-## Adapted from /home/epi/ajaffe/Lieber/Projects/derfinderPaper/figure1_stem.R
+## Adapted from https://github.com/leekgroup/derSupplement/blob/gh-pages/figure-single-base/figure-single-base.R
 
 ## Usage:
 # qrsh -l mem_free=80G,h_vmem=90G
