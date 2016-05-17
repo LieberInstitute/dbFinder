@@ -318,7 +318,8 @@ for(i in 1:ncol(pc1Mat)) {
 		xlab = paste0("PC1: ",pcVarMat[1,i],"% of Var Expl"),
 		ylab = paste0("PC2: ",pcVarMat[2,i],"% of Var Expl"),
 		cex.axis=2,cex.lab=2, cex.main=1.8,
-		main = paste0("PCA of dbPeaks (", name[i],")"))
+		main = paste0("PCA of dbPeaks (", name[i],")"),
+        ylim = range(pc2Mat[, i]) * 1.2)
 	legend("bottomright", c('Neun-', 'Neun+'), 
 		pch=c(19,15), cex=1.5, ncol = 2, bty = 'n')
     legend("topright", levels(group),
@@ -363,7 +364,7 @@ tapply(pd$BMI, pd$Sex, summary)
 message(paste(Sys.time(), 'performing joint modeling'))
 system.time( sumSqList <- parallel::mclapply(seq_len(nrow(y)), function(i) {
 	if(i %% 10000 == 0) cat(".")
-        t(anova(lm(y[i,] ~ BrainRegion + CellType + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + AntibodyAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+        t(anova(lm(y[i,] ~ BrainRegion + CellType + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
 }, mc.cores = cores) )
 
 ssOut <- do.call("rbind", sumSqList)
@@ -371,7 +372,7 @@ rownames(ssOut) <- NULL
 bg <- matrix(rep(rowSums(ssOut), ncol(ssOut)), 
 	ncol = ncol(ssOut), nrow = nrow(ssOut))
 ssMat <- ssOut / bg
-lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Antibody amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
 
 message(paste(Sys.time(), 'saving joint modeling results'))
 save(ssMat, lab, file = file.path(maindir, paste0('ssMat_', opt$histone,
@@ -401,7 +402,7 @@ dev.off()
 message(paste(Sys.time(), 'performing joint modeling without CellType'))
 system.time( sumSqList2 <- parallel::mclapply(seq_len(nrow(y)), function(i) {
 	if(i %% 10000 == 0) cat(".")
-        t(anova(lm(y[i,] ~ BrainRegion + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + AntibodyAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+        t(anova(lm(y[i,] ~ BrainRegion + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
 }, mc.cores = cores) )
 
 ssOut2 <- do.call("rbind", sumSqList2)
@@ -409,7 +410,7 @@ rownames(ssOut2) <- NULL
 bg2 <- matrix(rep(rowSums(ssOut2), ncol(ssOut2)), 
 	ncol = ncol(ssOut2), nrow = nrow(ssOut2))
 ssMat2 <- ssOut2 / bg2
-lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Antibody amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
 
 message(paste(Sys.time(), 'saving joint modeling results (no cellType)'))
 save(ssMat2, lab2, file = file.path(maindir, paste0('ssMat2_', opt$histone,
@@ -481,7 +482,10 @@ covClassList <- lapply(c('BrainRegion', 'CellType', 'AgeDeath'), function(covari
     which(pTable_main[, covariate] < 0.05 / 3 & apply(not, 1, all))
 })
 names(covClassList) <- c('BrainRegion', 'CellType', 'AgeDeath')
+print('Percent of regions exclusive by main covariate')
+round(sapply(covClassList, length) / nrow(y) * 100, 2)
 covClassList <- covClassList[sapply(covClassList, length) > 0]
+
 
 pcListCov <- lapply(covClassList, function(ii) {
 	cat(".")
@@ -490,7 +494,8 @@ pcListCov <- lapply(covClassList, function(ii) {
 	return(pc) 
 })
 
-pcVarMatCov <- sapply(pcListCov, getPcaVars)
+pcVarMatCov <- lapply(pcListCov, getPcaVars)
+pcVarMatCov <- do.call(cbind, lapply(pcVarMatCov, head, n = min(sapply(pcVarMatCov, length))))
 rownames(pcVarMatCov) <- paste0("PC", seq_len(nrow(pcVarMatCov)))
 pc1MatCov <- sapply(pcListCov, function(x) x$x[,1])
 pc2MatCov <- sapply(pcListCov, function(x) x$x[,2])
@@ -507,7 +512,7 @@ for(i in seq_len(ncol(pc1MatCov))) {
 		ylab = paste0("PC2: ",pcVarMatCov[2,i],"% of Var Expl"),
 		cex.axis=2, cex.lab=2, cex.main=1.8,
 		main = paste0("PCA of dbPeaks (", colnames(venn_main)[i],")"),
-        ylim = range(pc2MatCov[,i]) * 1.2)
+        ylim = range(pc2MatCov[,i]) * 1.4)
 	legend("bottomright", c('Neun-', 'Neun+'), 
 		pch=c(19,15), cex=1.5, ncol = 2, bty = 'n')
     legend("topright", levels(group),
@@ -546,8 +551,8 @@ dev.off()
 ## p-values: remaining covariates
 message(paste(Sys.time(), 'ANOVA remaining covariates'))
 system.time( pList2 <- parallel::mclapply(i_groups, function(i_group) {
-    res <- data.frame(matrix(NA, ncol = 13, nrow = length(i_group)))
-    colnames(res) <- c('Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'ChromatinAmount', 'AntibodyAmount', 'totalMapped', 'Individual_ID', 'FlowcellBatch', 'LibraryBatch')
+    res <- data.frame(matrix(NA, ncol = length(lab) - 4, nrow = length(i_group)))
+    colnames(res) <- c('Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'ChromatinAmount', 'totalMapped', 'Individual_ID', 'FlowcellBatch', 'LibraryBatch')
     
     for(j in seq_len(length(i_group))) {
         i <- i_group[j]
@@ -563,7 +568,6 @@ system.time( pList2 <- parallel::mclapply(i_groups, function(i_group) {
                 'Weight' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Weight, data = pd))[[5]][2],
                 'BMI' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + BMI, data = pd))[[5]][2],
                 'ChromatinAmount' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + ChromatinAmount, data = pd))[[5]][2],
-                'AntibodyAmount' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + AntibodyAmount, data = pd))[[5]][2],
                 'totalMapped' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + totalMapped, data = pd))[[5]][2],
                 'Individual_ID' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Individual_ID, data = pd))[[5]][2],
                 'FlowcellBatch' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + FlowcellBatch, data = pd))[[5]][2],
