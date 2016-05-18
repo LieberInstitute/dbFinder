@@ -448,9 +448,9 @@ system.time( pList <- parallel::mclapply(i_groups, function(i_group) {
         i <- i_group[j]
     	if(i %% 10000 == 0) cat(".")
            res[j, ] <- c(
-                'BrainRegion' = anova(lm(y[i, ] ~ BrainRegion, data = pd))[[5]][1],
-                'CellType' = anova(lm(y[i, ] ~ CellType, data = pd))[[5]][1],
-                'AgeDeath' = anova(lm(y[i, ] ~ AgeDeath, data = pd))[[5]][1]
+                'BrainRegion' = anova(lm(y[i, ] ~ BrainRegion, data = pd))[, 'Pr(>F)'][1],
+                'CellType' = anova(lm(y[i, ] ~ CellType, data = pd))[, 'Pr(>F)'][1],
+                'AgeDeath' = anova(lm(y[i, ] ~ AgeDeath, data = pd))[, 'Pr(>F)'][1]
             )
     }
 	return(res)
@@ -560,18 +560,18 @@ system.time( pList2 <- parallel::mclapply(i_groups, function(i_group) {
     	if(i %% 10000 == 0) cat(".")
             fit1 <- lm(y[i, ] ~ BrainRegion + CellType + AgeDeath, data = pd)
             res[j, ] <- c(
-                'Hemisphere' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Hemisphere, data = pd))[[5]][2],
-                'PMI' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + PMI, data = pd))[[5]][2],
-                'pH' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + pH, data = pd))[[5]][2],
-                'Sex' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Sex, data = pd))[[5]][2],
-                'Height' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Height, data = pd))[[5]][2],
-                'Weight' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Weight, data = pd))[[5]][2],
-                'BMI' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + BMI, data = pd))[[5]][2],
-                'ChromatinAmount' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + ChromatinAmount, data = pd))[[5]][2],
-                'totalMapped' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + totalMapped, data = pd))[[5]][2],
-                'Individual_ID' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Individual_ID, data = pd))[[5]][2],
-                'FlowcellBatch' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + FlowcellBatch, data = pd))[[5]][2],
-                'LibraryBatch' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + LibraryBatch, data = pd))[[5]][2]
+                'Hemisphere' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Hemisphere, data = pd))[, 'Pr(>F)'][2],
+                'PMI' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + PMI, data = pd))[, 'Pr(>F)'][2],
+                'pH' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + pH, data = pd))[, 'Pr(>F)'][2],
+                'Sex' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Sex, data = pd))[, 'Pr(>F)'][2],
+                'Height' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Height, data = pd))[, 'Pr(>F)'][2],
+                'Weight' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Weight, data = pd))[, 'Pr(>F)'][2],
+                'BMI' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + BMI, data = pd))[, 'Pr(>F)'][2],
+                'ChromatinAmount' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + ChromatinAmount, data = pd))[, 'Pr(>F)'][2],
+                'totalMapped' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + totalMapped, data = pd))[, 'Pr(>F)'][2],
+                'Individual_ID' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Individual_ID, data = pd))[, 'Pr(>F)'][2],
+                'FlowcellBatch' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + FlowcellBatch, data = pd))[, 'Pr(>F)'][2],
+                'LibraryBatch' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + LibraryBatch, data = pd))[, 'Pr(>F)'][2]
             )
     }
     return(res)
