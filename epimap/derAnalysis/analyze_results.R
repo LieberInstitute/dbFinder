@@ -18,6 +18,7 @@ library('Hmisc')
 library('GOstats')
 library('org.Hs.eg.db')
 library('devtools')
+library('ggplot2')
 
 ## Specify parameters
 spec <- matrix(c(
@@ -375,6 +376,7 @@ bg <- matrix(rep(rowSums(ssOut), ncol(ssOut)),
 	ncol = ncol(ssOut), nrow = nrow(ssOut))
 ssMat <- ssOut / bg
 lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+names(lab) <- colnames(ssMat)
 
 message(paste(Sys.time(), 'saving joint modeling results'))
 save(ssMat, lab, file = file.path(maindir, paste0('ssMat_', opt$histone,
@@ -622,16 +624,6 @@ counts <- venn_rest[, ncol(pTable_rest) + 1]
 venn_not0 <- venn_rest[as.integer(names(sort(counts[counts > 0], decreasing = TRUE))), ]
 head(venn_not0, 10)
 
-
-## Load mean coverage
-message(paste(Sys.time(), 'loading meanCoverage.Rdata'))
-load(file.path(maindir, 'meanCoverage.Rdata'))
-
-message(paste(Sys.time(), 'subsetting meanCoverage'))
-map <- seq_len(length(fullRegions))[keepIndex]
-meanCoverage <- meanCoverage[as.character(map)]
-names(meanCoverage) <- seq_len(length(meanCoverage))
-
 ## Define region sets
 regSets <- apply(cbind(pTable_main_sig, pTable_rest_sig), 2, which)
 regSets <- regSets[sapply(regSets, length) > 0]
@@ -639,7 +631,25 @@ message(paste(Sys.time(), 'saving regSets.Rdata'))
 save(regSets, file = file.path(maindir, 'regSets.Rdata'))
 
 print('Number of regions per covariate set')
-sapply(regSets, length)
+sets_l <- sapply(regSets, length)
+sets_l
+
+## Repeated ones by set
+repeated_sets <- sapply(regSets, function(s) {
+    sapply(regSets, function(r) {
+        sum(s %in% r)
+    })
+})
+print('Regions that are repeated in other sets')
+diag(repeated) <- NA
+repeated_sets
+repeated_sets > 0
+print('Regions that are repeated in other sets: percent by row')
+round(repeated_sets / matrix(rep(sets_l, ncol(repeated_sets)), ncol = ncol(repeated_sets)) * 100, 2)
+print('Regions that are repeated in other sets: percent by column')
+round(repeated_sets / matrix(rep(sets_l, nrow(repeated_sets)), nrow = nrow(repeated_sets), byrow = TRUE) * 100, 2)
+
+
 
 ## Select regions to highlight per covariate
 pTable <- -log10(cbind(pTable_main_adj, pTable_rest_adj))
@@ -705,6 +715,16 @@ shorten <- function(x) {
 
 groupSimple_mean <- factor(shorten(levels(groupSimple)), levels = shorten(levels(groupSimple)))
 
+## Load mean coverage
+message(paste(Sys.time(), 'loading meanCoverage.Rdata'))
+load(file.path(maindir, 'meanCoverage.Rdata'))
+
+message(paste(Sys.time(), 'subsetting meanCoverage'))
+map <- seq_len(length(fullRegions))[keepIndex]
+meanCoverage <- meanCoverage[as.character(map)]
+names(meanCoverage) <- seq_len(length(meanCoverage))
+
+
 message(paste(Sys.time(), 'creating highlight region plots'))
 for(h in seq_len(length(highlight))) {
     message(paste(Sys.time(), 'highlighting', names(highlight)[h]))
@@ -735,6 +755,38 @@ for(h in seq_len(length(highlight))) {
         ask = FALSE, verbose = FALSE,
         txdb = TranscriptDb, colors = brewer.pal(12, 'Paired')[5:12]
     )
+    dev.off()
+}
+
+
+message(paste(Sys.time(), 'creating highlight region plots (scatterplot)'))
+for(h in seq_len(length(highlight))) {
+    message(paste(Sys.time(), 'highlighting', names(highlight)[h], '(scatterplots)'))
+    height <- ifelse(names(highlight[h]) == 'FlowcellBatch', 10, 7)
+    pdf(file.path(plotdir, paste0(opt$histone, '_highlight_',
+        names(highlight)[h], '_scatter.pdf')), height = height)
+    for(hh in highlight[[h]]) {
+        df <- data.frame(x = pd[, names(highlight)[h]], y = y[hh, ], group = group, cell = cellgroup)
+        ypos <- max(df$y)
+        xpos <- if(is.character(df$x) | is.factor(df$x)) length(unique(df$x)) - 0.5 else max(mean(range(df$x)), 0.9 * max(df$x))
+        if(names(highlight)[h] == 'LibraryBatch') {
+            xpos <- xpos * 0.9
+            df$x <- factor(df$x, levels = sort(as.integer(levels(df$x))))
+        }
+        if(names(highlight)[h] == 'FlowcellBatch') xpos <- xpos - 1
+        label <- paste('-log10 p-value', round(pTable[, names(highlight)[h]][hh], 2))
+        g <- ggplot(df, aes(x = x, y = y, colour = group, shape = cell)) 
+        g <- if(is.character(df$x) | is.factor(df$x)) g + geom_jitter(size = 3, width = 0.2, height = NULL) else g + geom_point(size = 3)
+        g <- g +
+            scale_color_manual(values = brewer.pal(4, 'Paired')) +
+            scale_shape_manual(values = c(16, 15)) +
+            theme_bw(base_size = 16) +
+            xlab(lab[names(highlight)[h]]) +
+            ylab('Coverage (log2)') +
+            annotate('text', label = label, y = ypos, x = xpos)
+        g <- if((is.character(df$x) | is.factor(df$x)) & length(unique(df$x)) > 4) g + theme(legend.position = 'none', axis.text.x = element_text(angle = 90, hjust = 1)) else g + theme(legend.position = 'none')
+        print(g)
+    }
     dev.off()
 }
 
