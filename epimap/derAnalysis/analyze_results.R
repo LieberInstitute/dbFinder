@@ -1,5 +1,7 @@
 ## Analyze results
 
+options(width = 180)
+
 ## Load libraries
 library('getopt')
 
@@ -457,15 +459,23 @@ system.time( pList <- parallel::mclapply(i_groups, function(i_group) {
 }, mc.cores = cores) )
 system.time( pTable_main <- do.call(rbind, pList) )
 rownames(pTable_main) <- NULL
-print('Summary pTable_main')
-summary(pTable_main)
-print('Summary pTable_main (Bonf adjusted)')
-summary(pTable_main * 3)
 message(paste(Sys.time(), 'saving pTable_main.Rdata'))
 save(pTable_main, file = file.path(maindir, 'pTable_main.Rdata'))
 
+## Summary info for p-value table
+print('Summary pTable_main')
+summary(pTable_main)
+print('Summary pTable_main (Bonf adjusted)')
+pTable_main_adj <- t(apply(pTable_main, 1, p.adjust, method = 'bonferroni'))
+summary(pTable_main_adj)
+print('Summary of -log10 pvalues (Bonferroni adjusted)')
+summary(-log(pTable_main_adj))
+pTable_main_sig <- pTable_main_adj < 0.05
+print('Significant dbPeaks by modeled covariate')
+colSums(pTable_main_sig)
+round(colSums(pTable_main_sig) / nrow(pTable_main_sig) * 100, 2)
 
-venn_main <- vennCounts(pTable_main < 0.05 / 3)
+venn_main <- vennCounts(pTable_main_sig)
 colnames(venn_main) <- c('Brain region', 'Cell type', 'Age at death', 'Counts')
 print('dbPeaks by main covariate')
 venn_main
@@ -482,8 +492,8 @@ dev.off()
 
 ## Subset PCAs
 covClassList <- lapply(c('BrainRegion', 'CellType', 'AgeDeath'), function(covariate) {
-    not <- pTable_main[, -which(colnames(pTable_main) == covariate)] >= 0.05 / 3
-    which(pTable_main[, covariate] < 0.05 / 3 & apply(not, 1, all))
+    not <- !pTable_main_sig[, -which(colnames(pTable_main_sig) == covariate)]
+    which(pTable_main_sig[, covariate] & apply(not, 1, all))
 })
 names(covClassList) <- c('BrainRegion', 'CellType', 'AgeDeath')
 print('Percent of regions exclusive by main covariate')
@@ -582,31 +592,32 @@ system.time( pList2 <- parallel::mclapply(i_groups, function(i_group) {
 }, mc.cores = cores) )
 system.time( pTable_rest <- do.call(rbind, pList2) )
 rownames(pTable_rest) <- NULL
-
-print('Summary pTable_rest')
-summary(pTable_rest)
-print('Summary pTable_rest (Bonf adjusted)')
-summary(pTable_rest * ncol(pTable_rest))
-
 message(paste(Sys.time(), 'saving pTable_rest.Rdata'))
 save(pTable_rest, file = file.path(maindir, 'pTable_rest.Rdata'))
 
+## Summary info for p-value table
+print('Summary pTable_rest')
+summary(pTable_rest)
+print('Summary pTable_rest (Bonf adjusted)')
+pTable_rest_adj <- t(apply(pTable_rest, 1, p.adjust, method = 'bonferroni'))
+summary(pTable_rest_adj)
+print('Summary of -log10 pvalues (Bonferroni adjusted)')
+summary(-log(pTable_rest_adj))
+pTable_rest_sig <- pTable_rest_adj < 0.05
+print('Significant dbPeaks by un-modeled covariate')
+colSums(pTable_rest_sig)
+round(colSums(pTable_rest_sig) / nrow(pTable_rest_sig) * 100, 2)
+
+
+
 ## Cluster un-modeled covariates
 pdf(file.path(plotdir, paste0(opt$histone, '_clus_otherCovariates.pdf')))
-plot(hclust(as.dist(1 - cor( -log(pTable_rest * ncol(pTable_rest)) ))), frame.plot = TRUE, main = 'Un-modeled covariates clustered by -log10 pvalue', ylab = '', axes = FALSE, sub = '', ann = TRUE, labels = lab[4:(length(lab) - 1)], xlab = '')
+plot(hclust(as.dist(1 - cor( -log(pTable_rest_adj) ))), frame.plot = TRUE, main = 'Un-modeled covariates clustered by -log10 p-value', ylab = '', axes = FALSE, sub = '', ann = TRUE, labels = lab[4:(length(lab) - 1)], xlab = '')
 dev.off()
-
-## Summary info for p-value table
-print('Summary of -log10 pvalues (Bonferroni adjusted)')
-summary(-log(pTable_rest * ncol(pTable_rest)))
-pTable_sig <- pTable_rest < 0.05 / ncol(pTable_rest)
-print('Significant dbPeaks by un-modeled covariate')
-colSums(pTable_sig)
-round(colSums(pTable_sig) / nrow(pTable_sig) * 100, 2)
 
 
 ## Groups
-venn_rest <- vennCounts(pTable_sig)
+venn_rest <- vennCounts(pTable_rest_sig)
 counts <- venn_rest[, ncol(pTable_rest) + 1]
 venn_not0 <- venn_rest[as.integer(names(sort(counts[counts > 0], decreasing = TRUE))), ]
 head(venn_not0, 10)
@@ -622,20 +633,44 @@ meanCoverage <- meanCoverage[as.character(map)]
 names(meanCoverage) <- seq_len(length(meanCoverage))
 
 ## Define region sets
-regSets <- apply(cbind(pTable_main < 0.05 / 3, pTable_sig), 2, which)
+regSets <- apply(cbind(pTable_main_sig, pTable_rest_sig), 2, which)
 regSets <- regSets[sapply(regSets, length) > 0]
+message(paste(Sys.time(), 'saving regSets.Rdata'))
+save(regSets, file = file.path(maindir, 'regSets.Rdata'))
+
 print('Number of regions per covariate set')
 sapply(regSets, length)
 
 ## Select regions to highlight per covariate
-pTable <- -log10(cbind(pTable_main * 3, pTable_rest * ncol(pTable_rest)))
+pTable <- -log10(cbind(pTable_main_adj, pTable_rest_adj))
 highlight <- lapply(names(regSets), function(x) {
-    ord <- order(pTable[[x]][regSets[[x]]], decreasing = TRUE)
+    ord <- order(pTable[, x][regSets[[x]]], decreasing = TRUE)
     ## Maximum 100
     res <- regSets[[x]][head(ord, 50)] # Limiting to 50 in case some regions are huge
     return(res)
 })
 names(highlight) <- names(regSets)
+message(paste(Sys.time(), 'saving highlight.Rdata'))
+save(highlight, file = file.path(maindir, 'highlight.Rdata'))
+
+print('Number of regions higlighted by covariate')
+high_l <- sapply(highlight, length)
+high_l
+
+## Repeated ones?
+repeated <- sapply(highlight, function(s) {
+    sapply(highlight, function(r) {
+        sum(s %in% r)
+    })
+})
+print('Highlighted regions that are repeated in other sets')
+diag(repeated) <- NA
+repeated
+repeated > 0
+print('Highlighted regions that are repeated in other sets: percent by row')
+round(repeated / matrix(rep(high_l, ncol(repeated)), ncol = ncol(repeated)) * 100, 2)
+print('Highlighted regions that are repeated in other sets: percent by column')
+round(repeated / matrix(rep(high_l, nrow(repeated)), nrow = nrow(repeated), byrow = TRUE) * 100, 2)
 
 ## From https://github.com/leekgroup/derSupplement/commit/d67dc1d2aee34eaae6e4a63082d03ea4397d46f1
 ## Load info
@@ -764,5 +799,4 @@ for(g in names(regSets)) {
 ## Reproducibility info
 proc.time()
 message(Sys.time())
-options(width = 120)
 devtools::session_info()
