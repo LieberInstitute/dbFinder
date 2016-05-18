@@ -457,6 +457,10 @@ system.time( pList <- parallel::mclapply(i_groups, function(i_group) {
 }, mc.cores = cores) )
 system.time( pTable_main <- do.call(rbind, pList) )
 rownames(pTable_main) <- NULL
+print('Summary pTable_main')
+summary(pTable_main)
+print('Summary pTable_main (Bonf adjusted)')
+summary(pTable_main * 3)
 message(paste(Sys.time(), 'saving pTable_main.Rdata'))
 save(pTable_main, file = file.path(maindir, 'pTable_main.Rdata'))
 
@@ -578,6 +582,11 @@ system.time( pList2 <- parallel::mclapply(i_groups, function(i_group) {
 }, mc.cores = cores) )
 system.time( pTable_rest <- do.call(rbind, pList2) )
 rownames(pTable_rest) <- NULL
+
+print('Summary pTable_rest')
+summary(pTable_rest)
+print('Summary pTable_rest (Bonf adjusted)')
+summary(pTable_rest * ncol(pTable_rest))
 
 message(paste(Sys.time(), 'saving pTable_rest.Rdata'))
 save(pTable_rest, file = file.path(maindir, 'pTable_rest.Rdata'))
