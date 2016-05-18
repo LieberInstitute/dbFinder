@@ -641,7 +641,7 @@ repeated_sets <- sapply(regSets, function(s) {
     })
 })
 print('Regions that are repeated in other sets')
-diag(repeated) <- NA
+diag(repeated_sets) <- NA
 repeated_sets
 repeated_sets > 0
 print('Regions that are repeated in other sets: percent by row')
