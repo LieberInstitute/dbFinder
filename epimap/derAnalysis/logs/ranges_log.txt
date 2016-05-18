@@ -1,0 +1,61 @@
+Loading required package: colorout
+Loading required package: methods
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+null device 
+          1 
+   user  system elapsed 
+  1.714   0.091   1.860 
+2016-05-17 22:45:44
+Session info -----------------------------------------------------------------------------------------------------------
+ setting  value                                 
+ version  R version 3.3.0 RC (2016-05-01 r70572)
+ system   x86_64, darwin13.4.0                  
+ ui       X11                                   
+ language (EN)                                  
+ collate  en_US.UTF-8                           
+ tz       America/New_York                      
+ date     2016-05-17                            
+
+Packages ---------------------------------------------------------------------------------------------------------------
+ package      * version date       source                            
+ BiocGenerics * 0.18.0  2016-05-04 Bioconductor                      
+ colorout     * 1.1-2   2016-05-05 Github (jalvesaq/colorout@6538970)
+ devtools       1.11.1  2016-04-21 CRAN (R 3.3.0)                    
+ digest         0.6.9   2016-01-08 CRAN (R 3.3.0)                    
+ IRanges      * 2.6.0   2016-05-04 Bioconductor                      
+ memoise        1.0.0   2016-01-29 CRAN (R 3.3.0)                    
+ RColorBrewer * 1.1-2   2014-12-07 CRAN (R 3.3.0)                    
+ S4Vectors    * 0.10.0  2016-05-04 Bioconductor                      
+ withr          1.0.1   2016-02-04 CRAN (R 3.3.0)                    
