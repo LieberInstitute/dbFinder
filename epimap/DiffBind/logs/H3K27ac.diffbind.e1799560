@@ -1,0 +1,151 @@
+Loading required package: GenomicRanges
+Loading required package: methods
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: SummarizedExperiment
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages 'citation("pkgname")'.
+
+Loading required package: limma
+
+Attaching package: ‘limma’
+
+The following object is masked from ‘package:BiocGenerics’:
+
+    plotMA
+
+Loading required package: GenomicAlignments
+Loading required package: Biostrings
+Loading required package: XVector
+Loading required package: Rsamtools
+Loading required package: locfit
+locfit 1.5-9.1 	 2013-03-22
+
+Attaching package: ‘locfit’
+
+The following objects are masked from ‘package:GenomicAlignments’:
+
+    left, right
+
+
+2016-05-18 23:31:24 loading phenotype information
+2016-05-18 23:31:24 creating DBA object
+HBCC_PFC_381_C DLPFC Age2 NeunTrue DLPFCNeunTrueAge2 NA macs
+HBCC_ACC_340_D ACC Age1 NeunFalse ACCNeunFalseAge1 NA macs
+HBCC_ACC_340_C ACC Age1 NeunTrue ACCNeunTrueAge1 NA macs
+HBCC_PFC_339_D DLPFC Age1 NeunFalse DLPFCNeunFalseAge1 NA macs
+HBCC_PFC_339_C DLPFC Age1 NeunTrue DLPFCNeunTrueAge1 NA macs
+HBCC_ACC_378_C ACC Age2 NeunTrue ACCNeunTrueAge2 NA macs
+HBCC_PFC_377_D DLPFC Age2 NeunFalse DLPFCNeunFalseAge2 NA macs
+HBCC_PFC_377_C DLPFC Age2 NeunTrue DLPFCNeunTrueAge2 NA macs
+HBCC_ACC_385_D ACC Age1 NeunFalse ACCNeunFalseAge1 NA macs
+HBCC_ACC_385_C ACC Age1 NeunTrue ACCNeunTrueAge1 NA macs
+HBCC_PFC_384_D DLPFC Age1 NeunFalse DLPFCNeunFalseAge1 NA macs
+HBCC_PFC_384_C DLPFC Age1 NeunTrue DLPFCNeunTrueAge1 NA macs
+HBCC_ACC_362_D ACC Age2 NeunFalse ACCNeunFalseAge2 NA macs
+HBCC_ACC_362_C ACC Age2 NeunTrue ACCNeunTrueAge2 NA macs
+HBCC_PFC_361_D DLPFC Age2 NeunFalse DLPFCNeunFalseAge2 NA macs
+HBCC_PFC_361_C DLPFC Age2 NeunTrue DLPFCNeunTrueAge2 NA macs
+HBCC_ACC_358_D ACC Age1 NeunFalse ACCNeunFalseAge1 NA macs
+HBCC_ACC_358_C ACC Age1 NeunTrue ACCNeunTrueAge1 NA macs
+HBCC_PFC_357_D DLPFC Age1 NeunFalse DLPFCNeunFalseAge1 NA macs
+HBCC_PFC_357_C DLPFC Age1 NeunTrue DLPFCNeunTrueAge1 NA macs
+HBCC_ACC_344_D ACC Age2 NeunFalse ACCNeunFalseAge2 NA macs
+HBCC_ACC_344_C ACC Age2 NeunTrue ACCNeunTrueAge2 NA macs
+HBCC_PFC_343_D DLPFC Age2 NeunFalse DLPFCNeunFalseAge2 NA macs
+HBCC_ACC_352_D ACC Age2 NeunFalse ACCNeunFalseAge2 NA macs
+HBCC_ACC_352_C ACC Age2 NeunTrue ACCNeunTrueAge2 NA macs
+HBCC_PFC_351_D DLPFC Age2 NeunFalse DLPFCNeunFalseAge2 NA macs
+HBCC_PFC_351_C DLPFC Age2 NeunTrue DLPFCNeunTrueAge2 NA macs
+HBCC_ACC_356_D ACC Age2 NeunFalse ACCNeunFalseAge2 NA macs
+HBCC_ACC_356_C ACC Age2 NeunTrue ACCNeunTrueAge2 NA macs
+HBCC_PFC_355_D DLPFC Age2 NeunFalse DLPFCNeunFalseAge2 NA macs
+HBCC_ACC_350_D ACC Age1 NeunFalse ACCNeunFalseAge1 NA macs
+HBCC_ACC_350_C ACC Age1 NeunTrue ACCNeunTrueAge1 NA macs
+HBCC_PFC_349_D DLPFC Age1 NeunFalse DLPFCNeunFalseAge1 NA macs
+HBCC_PFC_349_C DLPFC Age1 NeunTrue DLPFCNeunTrueAge1 NA macs
+HBCC_ACC_354_D ACC Age1 NeunFalse ACCNeunFalseAge1 NA macs
+HBCC_ACC_354_C ACC Age1 NeunTrue ACCNeunTrueAge1 NA macs
+HBCC_PFC_353_D DLPFC Age1 NeunFalse DLPFCNeunFalseAge1 NA macs
+HBCC_PFC_353_C DLPFC Age1 NeunTrue DLPFCNeunTrueAge1 NA macs
+HBCC_ACC_346_D ACC Age2 NeunFalse ACCNeunFalseAge2 NA macs
+HBCC_ACC_346_C ACC Age2 NeunTrue ACCNeunTrueAge2 NA macs
+HBCC_PFC_345_D DLPFC Age2 NeunFalse DLPFCNeunFalseAge2 NA macs
+HBCC_PFC_345_C DLPFC Age2 NeunTrue DLPFCNeunTrueAge2 NA macs
+HBCC_ACC_376_D ACC Age1 NeunFalse ACCNeunFalseAge1 NA macs
+HBCC_ACC_376_C ACC Age1 NeunTrue ACCNeunTrueAge1 NA macs
+HBCC_ACC_360_C ACC Age2 NeunTrue ACCNeunTrueAge2 NA macs
+HBCC_PFC_359_D DLPFC Age2 NeunFalse DLPFCNeunFalseAge2 NA macs
+HBCC_PFC_359_C DLPFC Age2 NeunTrue DLPFCNeunTrueAge2 NA macs
+HBCC_ACC_374_D ACC Age1 NeunFalse ACCNeunFalseAge1 NA macs
+HBCC_ACC_374_C ACC Age1 NeunTrue ACCNeunTrueAge1 NA macs
+HBCC_PFC_373_D DLPFC Age1 NeunFalse DLPFCNeunFalseAge1 NA macs
+HBCC_PFC_373_C DLPFC Age1 NeunTrue DLPFCNeunTrueAge1 NA macs
+HBCC_ACC_370_D ACC Age1 NeunFalse ACCNeunFalseAge1 NA macs
+HBCC_PFC_369_D DLPFC Age1 NeunFalse DLPFCNeunFalseAge1 NA macs
+HBCC_PFC_369_C DLPFC Age1 NeunTrue DLPFCNeunTrueAge1 NA macs
+HBCC_ACC_342_D ACC Age1 NeunFalse ACCNeunFalseAge1 NA macs
+HBCC_ACC_342_C ACC Age1 NeunTrue ACCNeunTrueAge1 NA macs
+HBCC_PFC_341_C DLPFC Age1 NeunTrue DLPFCNeunTrueAge1 NA macs
+2016-05-18 23:41:09 counting without specifying summits
+2016-05-19 00:25:34 saving results (no summits) -- in case code breaks
+2016-05-19 00:28:59 setting contrast
+2016-05-19 00:28:59 performing analysis
+converting counts to integer mode
+gene-wise dispersion estimates
+mean-dispersion relationship
+final dispersion estimates
+2016-05-19 01:34:00 saving results (no summits)
+2016-05-19 01:37:12 extracting results
+2016-05-19 01:37:56 saving results report (no summits)
+2016-05-19 01:37:59 counting with summits
+Re-centering peaks...
+2016-05-19 03:30:52 setting contrast
+2016-05-19 03:30:52 performing analysis
+converting counts to integer mode
+gene-wise dispersion estimates
+mean-dispersion relationship
+final dispersion estimates
+2016-05-19 04:29:11 saving results (summits)
+2016-05-19 04:32:24 extracting results
+2016-05-19 04:33:03 saving results report (summits)
+2016-05-19 04:33:06
+Session info -----------------------------------------------------------------------------------------------------------
+Packages ---------------------------------------------------------------------------------------------------------------

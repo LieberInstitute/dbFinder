@@ -1,0 +1,212 @@
+**** Job starts ****
+Wed May 18 23:31:12 EDT 2016
+62 Samples, 100326 sites in matrix (142102 total):
+               ID Tissue Factor Condition          Treatment Caller Intervals
+1  HBCC_ACC_382_B    ACC   Age2 NeunFalse   ACCNeunFalseAge2   macs     29243
+2  HBCC_ACC_382_A    ACC   Age2  NeunTrue    ACCNeunTrueAge2   macs     27673
+3  HBCC_PFC_381_B  DLPFC   Age2 NeunFalse DLPFCNeunFalseAge2   macs     35429
+4  HBCC_PFC_381_A  DLPFC   Age2  NeunTrue  DLPFCNeunTrueAge2   macs     30626
+5  HBCC_ACC_340_B    ACC   Age1 NeunFalse   ACCNeunFalseAge1   macs     50246
+6  HBCC_ACC_340_A    ACC   Age1  NeunTrue    ACCNeunTrueAge1   macs     39361
+7  HBCC_PFC_339_B  DLPFC   Age1 NeunFalse DLPFCNeunFalseAge1   macs     41798
+8  HBCC_PFC_339_A  DLPFC   Age1  NeunTrue  DLPFCNeunTrueAge1   macs     37347
+9  HBCC_ACC_378_B    ACC   Age2 NeunFalse   ACCNeunFalseAge2   macs     43576
+10 HBCC_PFC_377_B  DLPFC   Age2 NeunFalse DLPFCNeunFalseAge2   macs     54575
+11 HBCC_PFC_377_A  DLPFC   Age2  NeunTrue  DLPFCNeunTrueAge2   macs     37902
+12 HBCC_ACC_385_B    ACC   Age1 NeunFalse   ACCNeunFalseAge1   macs     36027
+13 HBCC_ACC_385_A    ACC   Age1  NeunTrue    ACCNeunTrueAge1   macs     29837
+14 HBCC_PFC_384_B  DLPFC   Age1 NeunFalse DLPFCNeunFalseAge1   macs     40990
+15 HBCC_PFC_384_A  DLPFC   Age1  NeunTrue  DLPFCNeunTrueAge1   macs     29205
+16 HBCC_ACC_362_B    ACC   Age2 NeunFalse   ACCNeunFalseAge2   macs     57059
+17 HBCC_ACC_362_A    ACC   Age2  NeunTrue    ACCNeunTrueAge2   macs     42282
+18 HBCC_PFC_361_B  DLPFC   Age2 NeunFalse DLPFCNeunFalseAge2   macs     51556
+19 HBCC_PFC_361_A  DLPFC   Age2  NeunTrue  DLPFCNeunTrueAge2   macs     48740
+20 HBCC_ACC_358_B    ACC   Age2 NeunFalse   ACCNeunFalseAge2   macs     58829
+21 HBCC_ACC_358_A    ACC   Age2  NeunTrue    ACCNeunTrueAge2   macs     45680
+22 HBCC_PFC_357_B  DLPFC   Age2 NeunFalse DLPFCNeunFalseAge2   macs     69812
+23 HBCC_PFC_357_A  DLPFC   Age2  NeunTrue  DLPFCNeunTrueAge2   macs     55407
+24 HBCC_ACC_344_B    ACC   Age2 NeunFalse   ACCNeunFalseAge2   macs     43499
+25 HBCC_ACC_344_A    ACC   Age2  NeunTrue    ACCNeunTrueAge2   macs     41747
+26 HBCC_PFC_343_B  DLPFC   Age2 NeunFalse DLPFCNeunFalseAge2   macs     49823
+27 HBCC_PFC_343_A  DLPFC   Age2  NeunTrue  DLPFCNeunTrueAge2   macs     44992
+28 HBCC_PFC_351_B  DLPFC   Age2 NeunFalse DLPFCNeunFalseAge2   macs     51916
+29 HBCC_PFC_351_A  DLPFC   Age2  NeunTrue  DLPFCNeunTrueAge2   macs     38806
+30 HBCC_ACC_356_A    ACC   Age2  NeunTrue    ACCNeunTrueAge2   macs     41603
+31 HBCC_PFC_355_B  DLPFC   Age2 NeunFalse DLPFCNeunFalseAge2   macs     35540
+32 HBCC_ACC_350_B    ACC   Age1 NeunFalse   ACCNeunFalseAge1   macs     41276
+33 HBCC_ACC_350_A    ACC   Age1  NeunTrue    ACCNeunTrueAge1   macs     38251
+34 HBCC_PFC_349_B  DLPFC   Age1 NeunFalse DLPFCNeunFalseAge1   macs     41285
+35 HBCC_PFC_349_A  DLPFC   Age1  NeunTrue  DLPFCNeunTrueAge1   macs     38779
+36 HBCC_ACC_354_A    ACC   Age1  NeunTrue    ACCNeunTrueAge1   macs     41384
+37 HBCC_PFC_353_B  DLPFC   Age1 NeunFalse DLPFCNeunFalseAge1   macs     54216
+38 HBCC_PFC_353_A  DLPFC   Age1  NeunTrue  DLPFCNeunTrueAge1   macs     69767
+39 HBCC_ACC_346_B    ACC   Age2 NeunFalse   ACCNeunFalseAge2   macs     45982
+40 HBCC_ACC_346_A    ACC   Age2  NeunTrue    ACCNeunTrueAge2   macs     42131
+41 HBCC_PFC_345_B  DLPFC   Age2 NeunFalse DLPFCNeunFalseAge2   macs     60475
+42 HBCC_PFC_345_A  DLPFC   Age2  NeunTrue  DLPFCNeunTrueAge2   macs     56225
+43 HBCC_ACC_376_B    ACC   Age1 NeunFalse   ACCNeunFalseAge1   macs     41616
+44 HBCC_ACC_376_A    ACC   Age1  NeunTrue    ACCNeunTrueAge1   macs     38521
+45 HBCC_PFC_375_B  DLPFC   Age1 NeunFalse DLPFCNeunFalseAge1   macs     40620
+46 HBCC_PFC_375_A  DLPFC   Age1  NeunTrue  DLPFCNeunTrueAge1   macs     41722
+47 HBCC_ACC_360_B    ACC   Age2 NeunFalse   ACCNeunFalseAge2   macs     38243
+48 HBCC_ACC_360_A    ACC   Age2  NeunTrue    ACCNeunTrueAge2   macs     30230
+49 HBCC_PFC_359_B  DLPFC   Age2 NeunFalse DLPFCNeunFalseAge2   macs     33300
+50 HBCC_PFC_359_A  DLPFC   Age2  NeunTrue  DLPFCNeunTrueAge2   macs     28818
+51 HBCC_ACC_374_B    ACC   Age1 NeunFalse   ACCNeunFalseAge1   macs     46913
+52 HBCC_ACC_374_A    ACC   Age1  NeunTrue    ACCNeunTrueAge1   macs     35400
+53 HBCC_PFC_373_B  DLPFC   Age1 NeunFalse DLPFCNeunFalseAge1   macs     54247
+54 HBCC_PFC_373_A  DLPFC   Age1  NeunTrue  DLPFCNeunTrueAge1   macs     47155
+55 HBCC_ACC_370_B    ACC   Age1 NeunFalse   ACCNeunFalseAge1   macs     60229
+56 HBCC_ACC_370_C    ACC   Age1  NeunTrue    ACCNeunTrueAge1   macs     44012
+57 HBCC_PFC_369_B  DLPFC   Age1 NeunFalse DLPFCNeunFalseAge1   macs     75121
+58 HBCC_PFC_369_A  DLPFC   Age1  NeunTrue  DLPFCNeunTrueAge1   macs     55483
+59 HBCC_ACC_342_B    ACC   Age1 NeunFalse   ACCNeunFalseAge1   macs     48474
+60 HBCC_ACC_342_A    ACC   Age1  NeunTrue    ACCNeunTrueAge1   macs     53186
+61 HBCC_PFC_341_B  DLPFC   Age1 NeunFalse DLPFCNeunFalseAge1   macs     52728
+62 HBCC_PFC_341_A  DLPFC   Age1  NeunTrue  DLPFCNeunTrueAge1   macs     56426
+    user   system  elapsed 
+8262.520  687.194 2216.528 
+    user   system  elapsed 
+1155.711    2.878 1159.092 
+[1] "diffbind_summit_no size information"
+824.7 Mb
+[1] "Number of dbPeaks with FWER < 0.05"
+
+FALSE  TRUE 
+34690 63681 
+
+FALSE  TRUE 
+35.26 64.74 
+[1] "Width summary for all peaks"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    130     344     615    1176    1238   41840 
+[1] "Width summary for non-sig peaks"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    130     250     401    1089    1186   41840 
+[1] "Width summary for sig peaks"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    134     434     697    1223    1253   37380 
+     user    system   elapsed 
+24848.098  1211.328  4893.563 
+[1] "diffbind_summit size information"
+526.5 Mb
+[1] "Number of dbPeaks with FWER < 0.05"
+
+FALSE  TRUE 
+32687 63302 
+
+FALSE  TRUE 
+34.05 65.95 
+[1] "Width summary for all peaks"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  501.0   501.0   501.0   510.7   501.0  1825.0 
+[1] "Width summary for non-sig peaks"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  501.0   501.0   501.0   507.8   501.0  1606.0 
+[1] "Width summary for sig peaks"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  501.0   501.0   501.0   512.1   501.0  1825.0 
+     user    system   elapsed 
+35707.491  1908.437  9726.283 
+ setting  value                                      
+ version  R version 3.3.0 Patched (2016-05-17 r70629)
+ system   x86_64, linux-gnu                          
+ ui       X11                                        
+ language (EN)                                       
+ collate  en_US.UTF-8                                
+ tz       <NA>                                       
+ date     2016-05-19                                 
+
+ package              * version  date       source        
+ acepack                1.3-3.3  2014-11-24 CRAN (R 3.3.0)
+ amap                   0.8-14   2014-12-17 CRAN (R 3.3.0)
+ annotate               1.50.0   2016-05-08 Bioconductor  
+ AnnotationDbi          1.34.0   2016-05-08 Bioconductor  
+ AnnotationForge        1.14.0   2016-05-08 Bioconductor  
+ assertthat             0.1      2013-12-06 CRAN (R 3.3.0)
+ backports              1.0.2    2016-03-18 CRAN (R 3.3.0)
+ base64enc              0.1-3    2015-07-28 CRAN (R 3.3.0)
+ BatchJobs              1.6      2015-03-18 CRAN (R 3.3.0)
+ BBmisc                 1.9      2015-02-03 CRAN (R 3.3.0)
+ Biobase              * 2.32.0   2016-05-05 Bioconductor  
+ BiocGenerics         * 0.18.0   2016-05-08 Bioconductor  
+ BiocParallel           1.6.0    2016-05-08 Bioconductor  
+ biomaRt                2.28.0   2016-05-08 Bioconductor  
+ Biostrings           * 2.40.0   2016-05-08 Bioconductor  
+ bitops                 1.0-6    2013-08-17 CRAN (R 3.3.0)
+ brew                   1.0-6    2011-04-13 CRAN (R 3.3.0)
+ Category               2.38.0   2016-05-05 Bioconductor  
+ caTools                1.17.1   2014-09-10 CRAN (R 3.3.0)
+ checkmate              1.7.4    2016-04-08 CRAN (R 3.3.0)
+ chron                  2.3-47   2015-06-24 CRAN (R 3.3.0)
+ cluster                2.0.4    2016-04-18 CRAN (R 3.3.0)
+ colorspace             1.2-6    2015-03-11 CRAN (R 3.3.0)
+ data.table             1.9.6    2015-09-19 CRAN (R 3.3.0)
+ DBI                    0.4      2016-05-02 CRAN (R 3.3.0)
+ DESeq2                 1.12.0   2016-05-08 Bioconductor  
+ devtools             * 1.11.1   2016-04-21 CRAN (R 3.3.0)
+ DiffBind             * 2.0.0    2016-05-08 Bioconductor  
+ digest                 0.6.9    2016-01-08 CRAN (R 3.3.0)
+ dplyr                  0.4.3    2015-09-01 CRAN (R 3.3.0)
+ edgeR                  3.14.0   2016-05-08 Bioconductor  
+ fail                   1.3      2015-10-01 CRAN (R 3.3.0)
+ foreign                0.8-66   2015-08-19 CRAN (R 3.3.0)
+ Formula                1.2-1    2015-04-07 CRAN (R 3.3.0)
+ gdata                  2.17.0   2015-07-04 CRAN (R 3.3.0)
+ genefilter             1.54.0   2016-05-08 Bioconductor  
+ geneplotter            1.50.0   2016-05-05 Bioconductor  
+ GenomeInfoDb         * 1.8.0    2016-05-08 Bioconductor  
+ GenomicAlignments    * 1.8.0    2016-05-08 Bioconductor  
+ GenomicFeatures        1.24.0   2016-05-08 Bioconductor  
+ GenomicRanges        * 1.24.0   2016-05-08 Bioconductor  
+ getopt               * 1.20.0   2013-08-30 CRAN (R 3.3.0)
+ ggplot2                2.1.0    2016-03-01 CRAN (R 3.3.0)
+ GO.db                  3.3.0    2016-05-08 Bioconductor  
+ GOstats                2.38.0   2016-05-05 Bioconductor  
+ gplots                 3.0.1    2016-03-30 CRAN (R 3.3.0)
+ graph                  1.50.0   2016-05-05 Bioconductor  
+ gridExtra              2.2.1    2016-02-29 CRAN (R 3.3.0)
+ GSEABase               1.34.0   2016-05-08 Bioconductor  
+ gtable                 0.2.0    2016-02-26 CRAN (R 3.3.0)
+ gtools                 3.5.0    2015-05-29 CRAN (R 3.3.0)
+ Hmisc                  3.17-4   2016-05-02 CRAN (R 3.3.0)
+ hwriter                1.3.2    2014-09-10 CRAN (R 3.3.0)
+ IRanges              * 2.6.0    2016-05-08 Bioconductor  
+ KernSmooth             2.23-15  2015-06-29 CRAN (R 3.3.0)
+ lattice                0.20-33  2015-07-14 CRAN (R 3.3.0)
+ latticeExtra           0.6-28   2016-02-09 CRAN (R 3.3.0)
+ limma                * 3.28.2   2016-05-08 Bioconductor  
+ locfit               * 1.5-9.1  2013-04-20 CRAN (R 3.3.0)
+ magrittr               1.5      2014-11-22 CRAN (R 3.3.0)
+ Matrix                 1.2-6    2016-05-02 CRAN (R 3.3.0)
+ memoise                1.0.0    2016-01-29 CRAN (R 3.3.0)
+ munsell                0.4.3    2016-02-13 CRAN (R 3.3.0)
+ nnet                   7.3-12   2016-02-02 CRAN (R 3.3.0)
+ pheatmap               1.0.8    2015-12-11 CRAN (R 3.3.0)
+ plyr                   1.8.3    2015-06-12 CRAN (R 3.3.0)
+ R6                     2.1.2    2016-01-26 CRAN (R 3.3.0)
+ RBGL                   1.48.0   2016-05-05 Bioconductor  
+ RColorBrewer           1.1-2    2014-12-07 CRAN (R 3.3.0)
+ Rcpp                   0.12.4.5 2016-05-08 local         
+ RCurl                  1.95-4.8 2016-03-01 CRAN (R 3.3.0)
+ rjson                  0.2.15   2014-11-03 CRAN (R 3.3.0)
+ rpart                  4.1-10   2015-06-29 CRAN (R 3.3.0)
+ Rsamtools            * 1.24.0   2016-05-08 Bioconductor  
+ RSQLite                1.0.0    2014-10-25 CRAN (R 3.3.0)
+ rtracklayer            1.32.0   2016-05-08 Bioconductor  
+ S4Vectors            * 0.10.0   2016-05-08 Bioconductor  
+ scales                 0.4.0    2016-02-26 CRAN (R 3.3.0)
+ sendmailR              1.2-1    2014-09-21 CRAN (R 3.3.0)
+ ShortRead              1.30.0   2016-05-05 Bioconductor  
+ stringi                1.0-1    2015-10-22 CRAN (R 3.3.0)
+ stringr                1.0.0    2015-04-30 CRAN (R 3.3.0)
+ SummarizedExperiment * 1.2.0    2016-05-08 Bioconductor  
+ survival               2.39-3   2016-05-05 CRAN (R 3.3.0)
+ systemPipeR            1.6.0    2016-05-05 Bioconductor  
+ withr                  1.0.1    2016-02-04 CRAN (R 3.3.0)
+ XML                    3.98-1.4 2016-03-01 CRAN (R 3.3.0)
+ xtable                 1.8-2    2016-02-05 CRAN (R 3.3.0)
+ XVector              * 0.12.0   2016-05-08 Bioconductor  
+ zlibbioc               1.18.0   2016-05-05 Bioconductor  
+**** Job ends ****
+Thu May 19 02:13:19 EDT 2016
