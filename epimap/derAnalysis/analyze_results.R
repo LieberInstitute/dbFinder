@@ -663,7 +663,7 @@ names(highlight) <- names(regSets)
 message(paste(Sys.time(), 'saving highlight.Rdata'))
 save(highlight, file = file.path(maindir, 'highlight.Rdata'))
 
-print('Number of regions higlighted by covariate')
+print('Number of regions highlighted by covariate')
 high_l <- sapply(highlight, length)
 high_l
 
