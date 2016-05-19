@@ -774,6 +774,7 @@ for(h in seq_len(length(highlight))) {
             df$x <- factor(df$x, levels = sort(as.integer(levels(df$x))))
         }
         if(names(highlight)[h] == 'FlowcellBatch') xpos <- xpos - 1
+        if(names(highlight)[h] == 'Individual_ID') xpos <- xpos - 2
         label <- paste('-log10 p-value', round(pTable[, names(highlight)[h]][hh], 2))
         g <- ggplot(df, aes(x = x, y = y, colour = group, shape = cell)) 
         g <- if(is.character(df$x) | is.factor(df$x)) g + geom_jitter(size = 3, width = 0.2, height = NULL) else g + geom_point(size = 3)
