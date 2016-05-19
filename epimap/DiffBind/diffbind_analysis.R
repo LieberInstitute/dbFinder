@@ -33,9 +33,9 @@ rootdir <- '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap/'
 derdir <- file.path(rootdir, 'derAnalysis', paste0('run1-v1.5.38-',
     opt$histone))
 maindir <- file.path(rootdir, 'DiffBind')
-plotdir <- file.path(maindir, 'plots')
 macsdir <- file.path(rootdir, 'macs')
-dir.create(plotdir, showWarnings = FALSE)
+#plotdir <- file.path(maindir, 'plots')
+#dir.create(plotdir, showWarnings = FALSE)
 
 ## Load sample info
 load(file.path(derdir, 'groupInfo.Rdata'))
@@ -91,7 +91,8 @@ message(paste(Sys.time(), 'counting without specifying summits'))
 system.time( diffbind_summit_no <- dba.count(diffbind, minOverlap = minOv) )
 
 message(paste(Sys.time(), 'saving results (no summits) -- in case code breaks'))
-save(diffbind_summit_no, file.path(maindir, paste0(opt$histone, '_diffbind_summit_no.Rdata')))
+save(diffbind_summit_no, file = file.path(maindir, paste0(opt$histone,
+    '_diffbind_summit_no.Rdata')))
 
 message(paste(Sys.time(), 'setting contrast'))
 diffbind_summit_no <- dba.contrast(diffbind_summit_no, categories=DBA_CONDITION)
@@ -103,7 +104,8 @@ print('diffbind_summit_no size information')
 print(object.size(diffbind_summit_no), units = 'Mb')
 
 message(paste(Sys.time(), 'saving results (no summits)'))
-save(diffbind_summit_no, file.path(maindir, paste0(opt$histone, '_diffbind_summit_no.Rdata')))
+save(diffbind_summit_no, file = file.path(maindir, paste0(opt$histone,
+    '_diffbind_summit_no.Rdata')))
 
 message(paste(Sys.time(), 'extracting results'))
 diffbind_summit_no_res <- dba.report(diffbind_summit_no, th = 1)
@@ -111,11 +113,13 @@ diffbind_summit_no_res$FWER <- p.adjust(mcols(diffbind_summit_no_res)[['p-value'
     method = 'bonferroni')
 
 message(paste(Sys.time(), 'saving results report (no summits)'))
-save(diffbind_summit_no_res, file.path(maindir, paste0(opt$histone, '_diffbind_summit_no_res.Rdata')))
+save(diffbind_summit_no_res, file = file.path(maindir, paste0(opt$histone,
+    '_diffbind_summit_no_res.Rdata')))
 
 print('Number of dbPeaks with FWER < 0.05')
 table(diffbind_summit_no_res$FWER < 0.05)
-round(table(diffbind_summit_no_res$FWER < 0.05) / length(diffbind_summit_no_res) * 100, 2)
+round(table(diffbind_summit_no_res$FWER < 0.05) /
+    length(diffbind_summit_no_res) * 100, 2)
 
 print('Width summary for all peaks')
 summary(width(diffbind_summit_no_res))
@@ -141,7 +145,8 @@ print('diffbind_summit size information')
 print(object.size(diffbind_summit), units = 'Mb')
 
 message(paste(Sys.time(), 'saving results (summits)'))
-save(diffbind_summit, file.path(maindir, paste0(opt$histone, '_diffbind_summit.Rdata')))
+save(diffbind_summit, file = file.path(maindir, paste0(opt$histone,
+    '_diffbind_summit.Rdata')))
 
 message(paste(Sys.time(), 'extracting results'))
 diffbind_summit_res <- dba.report(diffbind_summit, th = 1)
@@ -149,11 +154,13 @@ diffbind_summit_res$FWER <- p.adjust(mcols(diffbind_summit_res)[['p-value']],
     method = 'bonferroni')
     
 message(paste(Sys.time(), 'saving results report (summits)'))
-save(diffbind_summit_res, file.path(maindir, paste0(opt$histone, '_diffbind_summit_res.Rdata')))
+save(diffbind_summit_res, file = file.path(maindir, paste0(opt$histone,
+    '_diffbind_summit_res.Rdata')))
     
 print('Number of dbPeaks with FWER < 0.05')
 table(diffbind_summit_res$FWER < 0.05)
-round(table(diffbind_summit_res$FWER < 0.05) / length(diffbind_summit_res) * 100, 2)
+round(table(diffbind_summit_res$FWER < 0.05) / length(diffbind_summit_res) *
+    100, 2)
 
 print('Width summary for all peaks')
 summary(width(diffbind_summit_res))
