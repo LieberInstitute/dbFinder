@@ -1,0 +1,164 @@
+Warning message:
+replacing previous import ‘ggplot2::Position’ by ‘BiocGenerics::Position’ when loading ‘ggbio’ 
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: 'BiocGenerics'
+
+The following objects are masked from 'package:parallel':
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ, clusterExport, clusterMap, parApply, parCapply, parLapply, parLapplyLB, parRapply, parSapply,
+    parSapplyLB
+
+The following objects are masked from 'package:stats':
+
+    IQR, mad, xtabs
+
+The following objects are masked from 'package:base':
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call, duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect, is.unsorted, lapply,
+    lengths, Map, mapply, match, mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort, table,
+    tapply, union, unique, unsplit
+
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: 'S4Vectors'
+
+The following objects are masked from 'package:base':
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+
+Attaching package: 'limma'
+
+The following object is masked from 'package:BiocGenerics':
+
+    plotMA
+
+Loading required package: AnnotationDbi
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with 'browseVignettes()'. To cite Bioconductor, see 'citation("Biobase")', and for packages
+    'citation("pkgname")'.
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: locfit
+locfit 1.5-9.1 	 2013-03-22
+Loading required package: lattice
+Loading required package: survival
+Loading required package: Formula
+Loading required package: ggplot2
+
+Attaching package: 'Hmisc'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    contents
+
+The following objects are masked from 'package:Biobase':
+
+    combine, contents
+
+The following object is masked from 'package:BiocGenerics':
+
+    combine
+
+The following objects are masked from 'package:base':
+
+    format.pval, round.POSIXt, trunc.POSIXt, units
+
+Loading required package: Category
+Loading required package: Matrix
+
+Attaching package: 'Matrix'
+
+The following object is masked from 'package:S4Vectors':
+
+    expand
+
+Loading required package: graph
+
+
+Attaching package: 'GOstats'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    makeGOGraph
+
+
+2016-05-18 18:54:26 loading fullRegions.Rdata
+2016-05-18 18:55:15 loading phenotype information
+2016-05-18 18:55:15 loading ENSEMBL genomic state
+2016-05-18 18:55:25 annotating with ENSEMBL v75
+2016-05-18 18:55:26 annotateRegions: counting
+2016-05-18 18:55:28 annotateRegions: annotating
+2016-05-18 18:55:40 loading coverageMatrix.Rdata
+2016-05-18 18:56:01 log2 transforming counts
+2016-05-18 18:56:02 performing PCA analysis
+2016-05-18 18:56:21 performing joint modeling
+2016-05-18 19:00:49 saving joint modeling results
+2016-05-18 19:00:57 performing joint modeling without CellType
+2016-05-18 19:05:28 saving joint modeling results (no cellType)
+2016-05-18 19:05:34 ANOVA main 3 covariates
+2016-05-18 19:10:42 saving pTable_main.Rdata
+2016-05-18 19:11:16 ANOVA remaining covariates
+2016-05-18 19:43:08 saving pTable_rest.Rdata
+2016-05-18 19:43:32 saving regSets.Rdata
+2016-05-18 19:43:34 saving highlight.Rdata
+No annotationPackage supplied. Trying org.Hs.eg.db.
+Getting TSS and TSE.
+Getting CSS and CSE.
+Getting exons.
+Annotating genes.
+Warning message:
+  Calling species() on a TxDb object is *deprecated*.
+  Please use organism() instead. 
+2016-05-18 19:45:47 loading meanCoverage.Rdata
+2016-05-18 20:02:57 subsetting meanCoverage
+2016-05-18 20:02:59 creating highlight region plots
+2016-05-18 20:02:59 highlighting BrainRegion
+2016-05-18 20:05:16 highlighting CellType
+2016-05-18 20:07:33 highlighting AgeDeath
+2016-05-18 20:09:16 highlighting Hemisphere
+2016-05-18 20:11:05 highlighting PMI
+2016-05-18 20:12:43 highlighting pH
+2016-05-18 20:14:18 highlighting Sex
+2016-05-18 20:16:00 highlighting Height
+2016-05-18 20:17:36 highlighting Weight
+2016-05-18 20:19:16 highlighting BMI
+2016-05-18 20:21:14 highlighting ChromatinAmount
+2016-05-18 20:22:54 highlighting totalMapped
+2016-05-18 20:24:45 highlighting Individual_ID
+2016-05-18 20:26:23 highlighting FlowcellBatch
+2016-05-18 20:28:05 highlighting LibraryBatch
+2016-05-18 20:29:53 creating highlight region plots (scatterplot)
+2016-05-18 20:29:53 highlighting BrainRegion (scatterplots)
+2016-05-18 20:30:10 highlighting CellType (scatterplots)
+2016-05-18 20:30:25 highlighting AgeDeath (scatterplots)
+2016-05-18 20:30:40 highlighting Hemisphere (scatterplots)
+2016-05-18 20:30:56 highlighting PMI (scatterplots)
+2016-05-18 20:31:10 highlighting pH (scatterplots)
+2016-05-18 20:31:27 highlighting Sex (scatterplots)
+2016-05-18 20:31:41 highlighting Height (scatterplots)
+2016-05-18 20:31:58 highlighting Weight (scatterplots)
+2016-05-18 20:32:11 highlighting BMI (scatterplots)
+2016-05-18 20:32:26 highlighting ChromatinAmount (scatterplots)
+2016-05-18 20:32:39 highlighting totalMapped (scatterplots)
+2016-05-18 20:32:53 highlighting Individual_ID (scatterplots)
+2016-05-18 20:33:09 highlighting FlowcellBatch (scatterplots)
+2016-05-18 20:33:23 highlighting LibraryBatch (scatterplots)
+Warning message:
+In valid.GenomicRanges.seqinfo(x, suggest.trim = TRUE) :
+  GRanges object contains 1 out-of-bound range located on sequence chr17. Note that only ranges located on a non-circular sequence whose length is not NA can be
+  considered out-of-bound (use seqlengths() and isCircular() to get the lengths and circularity flags of the underlying sequences). You can use trim() to trim
+  these ranges. See ?`trim,GenomicRanges-method` for more information.
+2016-05-18 20:33:40 performing GO analysis
+2016-05-18 21:03:32 saving goByCovariate.Rdata
+2016-05-18 21:08:33
+Session info -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Packages ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
