@@ -91,25 +91,25 @@ The following object is masked from 'package:AnnotationDbi':
     makeGOGraph
 
 
-2016-05-19 00:02:56 loading fullRegions.Rdata
-2016-05-19 00:03:06 loading phenotype information
-2016-05-19 00:03:06 loading ENSEMBL genomic state
-2016-05-19 00:03:18 annotating with ENSEMBL v75
-2016-05-19 00:03:20 annotateRegions: counting
-2016-05-19 00:03:21 annotateRegions: annotating
-2016-05-19 00:03:24 loading coverageMatrix.Rdata
-2016-05-19 00:03:28 log2 transforming counts
-2016-05-19 00:03:28 performing PCA analysis
-2016-05-19 00:03:31 performing joint modeling
-2016-05-19 00:04:15 saving joint modeling results
-2016-05-19 00:04:16 performing joint modeling without CellType
-2016-05-19 00:05:00 saving joint modeling results (no cellType)
-2016-05-19 00:05:01 ANOVA main 3 covariates
-2016-05-19 00:06:33 saving pTable_main.Rdata
-2016-05-19 00:06:39 ANOVA remaining covariates
-2016-05-19 00:15:19 saving pTable_rest.Rdata
-2016-05-19 00:15:22 saving regSets.Rdata
-2016-05-19 00:15:23 saving highlight.Rdata
+2016-05-24 11:14:38 loading fullRegions.Rdata
+2016-05-24 11:14:47 loading phenotype information
+2016-05-24 11:14:47 loading ENSEMBL genomic state
+2016-05-24 11:14:59 annotating with ENSEMBL v75
+2016-05-24 11:15:01 annotateRegions: counting
+2016-05-24 11:15:02 annotateRegions: annotating
+2016-05-24 11:15:05 loading coverageMatrix.Rdata
+2016-05-24 11:15:08 log2 transforming counts
+2016-05-24 11:15:08 performing PCA analysis
+2016-05-24 11:15:11 performing joint modeling
+2016-05-24 11:15:43 saving joint modeling results
+2016-05-24 11:15:44 performing joint modeling without CellType
+2016-05-24 11:16:15 saving joint modeling results (no cellType)
+2016-05-24 11:16:15 ANOVA main 3 covariates
+2016-05-24 11:17:31 saving pTable_main.Rdata
+2016-05-24 11:17:35 ANOVA remaining covariates
+2016-05-24 11:24:49 saving pTable_rest.Rdata
+2016-05-24 11:24:52 saving regSets.Rdata
+2016-05-24 11:24:52 saving highlight.Rdata
 No annotationPackage supplied. Trying org.Hs.eg.db.
 Getting TSS and TSE.
 Getting CSS and CSE.
@@ -118,47 +118,45 @@ Annotating genes.
 Warning message:
   Calling species() on a TxDb object is *deprecated*.
   Please use organism() instead. 
-2016-05-19 00:17:39 loading meanCoverage.Rdata
-2016-05-19 00:20:22 subsetting meanCoverage
-2016-05-19 00:20:23 creating highlight region plots
-2016-05-19 00:20:23 highlighting BrainRegion
-2016-05-19 00:22:04 highlighting CellType
-2016-05-19 00:23:52 highlighting AgeDeath
-2016-05-19 00:26:07 highlighting Hemisphere
-2016-05-19 00:27:41 highlighting PMI
-2016-05-19 00:29:16 highlighting pH
-2016-05-19 00:31:07 highlighting Sex
-2016-05-19 00:32:48 highlighting Height
-2016-05-19 00:33:33 highlighting Weight
-2016-05-19 00:35:44 highlighting BMI
-2016-05-19 00:36:49 highlighting ChromatinAmount
-2016-05-19 00:37:10 highlighting totalMapped
-2016-05-19 00:38:48 highlighting Individual_ID
-2016-05-19 00:40:17 highlighting FlowcellBatch
-2016-05-19 00:41:57 highlighting LibraryBatch
-2016-05-19 00:43:35 creating highlight region plots (scatterplot)
-2016-05-19 00:43:35 highlighting BrainRegion (scatterplots)
-2016-05-19 00:43:48 highlighting CellType (scatterplots)
-2016-05-19 00:44:01 highlighting AgeDeath (scatterplots)
-2016-05-19 00:44:17 highlighting Hemisphere (scatterplots)
-2016-05-19 00:44:30 highlighting PMI (scatterplots)
-2016-05-19 00:44:50 highlighting pH (scatterplots)
-2016-05-19 00:45:08 highlighting Sex (scatterplots)
-2016-05-19 00:45:21 highlighting Height (scatterplots)
-2016-05-19 00:45:29 highlighting Weight (scatterplots)
-2016-05-19 00:45:43 highlighting BMI (scatterplots)
-2016-05-19 00:45:54 highlighting ChromatinAmount (scatterplots)
-2016-05-19 00:45:58 highlighting totalMapped (scatterplots)
-2016-05-19 00:46:12 highlighting Individual_ID (scatterplots)
-2016-05-19 00:46:25 highlighting FlowcellBatch (scatterplots)
-2016-05-19 00:46:38 highlighting LibraryBatch (scatterplots)
+2016-05-24 11:26:42 loading meanCoverage.Rdata
+2016-05-24 11:28:51 subsetting meanCoverage
+2016-05-24 11:28:52 creating highlight region plots
+2016-05-24 11:28:52 highlighting BrainRegion
+2016-05-24 11:30:09 highlighting CellType
+2016-05-24 11:31:34 highlighting AgeDeath
+2016-05-24 11:33:07 highlighting Hemisphere
+2016-05-24 11:34:35 highlighting PMI
+2016-05-24 11:35:53 highlighting pH
+2016-05-24 11:37:05 highlighting Sex
+2016-05-24 11:38:15 highlighting Height
+2016-05-24 11:38:48 highlighting BMI
+2016-05-24 11:39:47 highlighting ChromatinAmount
+2016-05-24 11:40:03 highlighting totalMapped
+2016-05-24 11:41:19 highlighting Individual_ID
+2016-05-24 11:42:29 highlighting FlowcellBatch
+2016-05-24 11:43:45 highlighting LibraryBatch
+2016-05-24 11:44:57 creating highlight region plots (scatterplot)
+2016-05-24 11:44:57 highlighting BrainRegion (scatterplots)
+2016-05-24 11:45:08 highlighting CellType (scatterplots)
+2016-05-24 11:45:20 highlighting AgeDeath (scatterplots)
+2016-05-24 11:45:30 highlighting Hemisphere (scatterplots)
+2016-05-24 11:45:40 highlighting PMI (scatterplots)
+2016-05-24 11:45:52 highlighting pH (scatterplots)
+2016-05-24 11:46:06 highlighting Sex (scatterplots)
+2016-05-24 11:46:17 highlighting Height (scatterplots)
+2016-05-24 11:46:25 highlighting BMI (scatterplots)
+2016-05-24 11:46:36 highlighting ChromatinAmount (scatterplots)
+2016-05-24 11:46:40 highlighting totalMapped (scatterplots)
+2016-05-24 11:46:54 highlighting Individual_ID (scatterplots)
+2016-05-24 11:47:06 highlighting FlowcellBatch (scatterplots)
+2016-05-24 11:47:19 highlighting LibraryBatch (scatterplots)
 Warning message:
 In valid.GenomicRanges.seqinfo(x, suggest.trim = TRUE) :
   GRanges object contains 1 out-of-bound range located on sequence chr17. Note that only ranges located on a non-circular sequence whose length is not NA can be
   considered out-of-bound (use seqlengths() and isCircular() to get the lengths and circularity flags of the underlying sequences). You can use trim() to trim
   these ranges. See ?`trim,GenomicRanges-method` for more information.
-2016-05-19 00:46:53 performing GO analysis
-2016-05-19 01:09:10 saving goByCovariate.Rdata
-2016-05-19 01:10:26
+2016-05-24 11:47:33 performing GO analysis
+2016-05-24 12:05:26 saving goByCovariate.Rdata
+2016-05-24 12:06:36
 Session info -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Packages ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
