@@ -363,7 +363,7 @@ tapply(pd$BMI, pd$Sex, summary)
 message(paste(Sys.time(), 'performing joint modeling'))
 system.time( sumSqList <- parallel::mclapply(seq_len(nrow(y)), function(i) {
 	if(i %% 10000 == 0) cat(".")
-        t(anova(lm(y[i,] ~ BrainRegion + CellType + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+        t(anova(lm(y[i,] ~ BrainRegion + CellType + AgeDeath + Hemisphere + PMI + pH + Sex + Height + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
 }, mc.cores = cores) )
 
 ssOut <- do.call("rbind", sumSqList)
@@ -371,7 +371,7 @@ rownames(ssOut) <- NULL
 bg <- matrix(rep(rowSums(ssOut), ncol(ssOut)), 
 	ncol = ncol(ssOut), nrow = nrow(ssOut))
 ssMat <- ssOut / bg
-lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height','BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
 names(lab) <- colnames(ssMat)
 
 message(paste(Sys.time(), 'saving joint modeling results'))
@@ -402,7 +402,7 @@ dev.off()
 message(paste(Sys.time(), 'performing joint modeling without CellType'))
 system.time( sumSqList2 <- parallel::mclapply(seq_len(nrow(y)), function(i) {
 	if(i %% 10000 == 0) cat(".")
-        t(anova(lm(y[i,] ~ BrainRegion + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+        t(anova(lm(y[i,] ~ BrainRegion + AgeDeath + Hemisphere + PMI + pH + Sex + Height + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
 }, mc.cores = cores) )
 
 ssOut2 <- do.call("rbind", sumSqList2)
@@ -410,7 +410,7 @@ rownames(ssOut2) <- NULL
 bg2 <- matrix(rep(rowSums(ssOut2), ncol(ssOut2)), 
 	ncol = ncol(ssOut2), nrow = nrow(ssOut2))
 ssMat2 <- ssOut2 / bg2
-lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
 
 message(paste(Sys.time(), 'saving joint modeling results (no cellType)'))
 save(ssMat2, lab2, file = file.path(maindir, paste0('ssMat2_all_', opt$histone,

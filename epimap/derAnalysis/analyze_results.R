@@ -367,7 +367,7 @@ tapply(pd$BMI, pd$Sex, summary)
 message(paste(Sys.time(), 'performing joint modeling'))
 system.time( sumSqList <- parallel::mclapply(seq_len(nrow(y)), function(i) {
 	if(i %% 10000 == 0) cat(".")
-        t(anova(lm(y[i,] ~ BrainRegion + CellType + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+        t(anova(lm(y[i,] ~ BrainRegion + CellType + AgeDeath + Hemisphere + PMI + pH + Sex + Height + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
 }, mc.cores = cores) )
 
 ssOut <- do.call("rbind", sumSqList)
@@ -375,7 +375,7 @@ rownames(ssOut) <- NULL
 bg <- matrix(rep(rowSums(ssOut), ncol(ssOut)), 
 	ncol = ncol(ssOut), nrow = nrow(ssOut))
 ssMat <- ssOut / bg
-lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+lab <- c('Brain region', 'Cell type', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
 names(lab) <- colnames(ssMat)
 
 message(paste(Sys.time(), 'saving joint modeling results'))
@@ -406,7 +406,7 @@ dev.off()
 message(paste(Sys.time(), 'performing joint modeling without CellType'))
 system.time( sumSqList2 <- parallel::mclapply(seq_len(nrow(y)), function(i) {
 	if(i %% 10000 == 0) cat(".")
-        t(anova(lm(y[i,] ~ BrainRegion + AgeDeath + Hemisphere + PMI + pH + Sex + Height + Weight + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
+        t(anova(lm(y[i,] ~ BrainRegion + AgeDeath + Hemisphere + PMI + pH + Sex + Height + BMI + ChromatinAmount + totalMapped + Individual_ID + FlowcellBatch + LibraryBatch, data=pd))[2])
 }, mc.cores = cores) )
 
 ssOut2 <- do.call("rbind", sumSqList2)
@@ -414,7 +414,7 @@ rownames(ssOut2) <- NULL
 bg2 <- matrix(rep(rowSums(ssOut2), ncol(ssOut2)), 
 	ncol = ncol(ssOut2), nrow = nrow(ssOut2))
 ssMat2 <- ssOut2 / bg2
-lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
+lab2 <- c('Brain region', 'Age at death', 'Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'BMI', 'Chromatin amount', 'Mapped reads', 'Individual', 'Flowcell batch', 'Library batch', 'Residual variation')
 
 message(paste(Sys.time(), 'saving joint modeling results (no cellType)'))
 save(ssMat2, lab2, file = file.path(maindir, paste0('ssMat2_', opt$histone,
@@ -485,7 +485,7 @@ venn_col <- brewer.pal(4, "Set1")[2:4]
 pdf(file.path(plotdir, paste0(opt$histone, '_venn_mainCovariates.pdf')),
     width = 10, height = 10)
 vennDiagram_custom(venn_main, 
-    main = 'dbPeaks by modeled covariates', cex.main = 2,
+    main = paste(opt$histone, 'dbPeaks by main covariates'), cex.main = 2,
     circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
     text.col = c('black', venn_col[3:2], 'black', venn_col[1], 'black', 'black',
         'black')#, oma = rep(0, 4), pty = 'm'
@@ -548,7 +548,7 @@ for(i in seq_len(ncol(pc1MatCov))) {
 	boxplot(pc1MatCov[, i] ~ groupSimple, las=3,
 		ylab = paste0("PC1: ", pcVarMatCov[1, i], "% of Var Expl"),
 		cex.axis=1.7, cex.lab=2, cex.main=1.8, xlab="", outline=FALSE,
-		main = paste0("PCA of dbPeaks (", colnames(venn_main)[i],")"),
+		main = colnames(venn_main)[i],
         ylim = range(pc1MatCov[, i]) * 1.1)
 	points(pc1MatCov[, i] ~ jitter(as.numeric(groupSimple), amount=0.2),
 		bg = as.numeric(group), cex=1.3,
@@ -568,7 +568,7 @@ dev.off()
 message(paste(Sys.time(), 'ANOVA remaining covariates'))
 system.time( pList2 <- parallel::mclapply(i_groups, function(i_group) {
     res <- data.frame(matrix(NA, ncol = length(lab) - 4, nrow = length(i_group)))
-    colnames(res) <- c('Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'Weight', 'BMI', 'ChromatinAmount', 'totalMapped', 'Individual_ID', 'FlowcellBatch', 'LibraryBatch')
+    colnames(res) <- c('Hemisphere', 'PMI', 'pH', 'Sex', 'Height', 'BMI', 'ChromatinAmount', 'totalMapped', 'Individual_ID', 'FlowcellBatch', 'LibraryBatch')
     
     for(j in seq_len(length(i_group))) {
         i <- i_group[j]
@@ -581,7 +581,6 @@ system.time( pList2 <- parallel::mclapply(i_groups, function(i_group) {
                 'pH' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + pH, data = pd))[, 'Pr(>F)'][2],
                 'Sex' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Sex, data = pd))[, 'Pr(>F)'][2],
                 'Height' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Height, data = pd))[, 'Pr(>F)'][2],
-                'Weight' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + Weight, data = pd))[, 'Pr(>F)'][2],
                 'BMI' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + BMI, data = pd))[, 'Pr(>F)'][2],
                 'ChromatinAmount' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + ChromatinAmount, data = pd))[, 'Pr(>F)'][2],
                 'totalMapped' = anova(fit1, lm(y[i, ] ~ BrainRegion + CellType + AgeDeath + totalMapped, data = pd))[, 'Pr(>F)'][2],
@@ -783,7 +782,7 @@ for(h in seq_len(length(highlight))) {
             scale_shape_manual(values = c(16, 15)) +
             theme_bw(base_size = 16) +
             xlab(lab[names(highlight)[h]]) +
-            ylab('Coverage (log2)') +
+            ylab('Counts (log2)') +
             annotate('text', label = label, y = ypos, x = xpos)
         g <- if((is.character(df$x) | is.factor(df$x)) & length(unique(df$x)) > 4) g + theme(legend.position = 'none', axis.text.x = element_text(angle = 90, hjust = 1)) else g + theme(legend.position = 'none')
         print(g)
