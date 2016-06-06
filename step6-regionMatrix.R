@@ -47,7 +47,7 @@ message(Sys.time())
 
 ## run regionMatrix
 regionMat <- regionMatrix(fullCov, maxClusterGap = 3000L, L = readLen,
-    cutoff = cutoff, returnBP = FALSE, smooth = TRUE, minNum = 100,
+    cutoff = cutoff, returnBP = FALSE, smoothMean = TRUE, minNum = 100,
     bpSpan = 300, minInSpan = 100)
 timeinfo <- c(timeinfo, list(Sys.time()))
 
