@@ -50,7 +50,7 @@ maindir <- file.path(rootdir, 'derAnalysis', paste0('run1-v1.5.38-',
     opt$histone))
 regmatdir <- file.path(rootdir, 'regionMatrix')
 resdir <- file.path(regmatdir, paste0(opt$histone, '-cut', opt$cutoff))
-dir.crea(resdir, showWarnings = FALSE)
+dir.create(resdir, showWarnings = FALSE)
 plotdir <- file.path(regmatdir, paste0('plots-cut', opt$cutoff))
 dir.create(plotdir, showWarnings = FALSE)
 
