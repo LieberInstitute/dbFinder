@@ -57,7 +57,7 @@ save(regionMat, file=paste0('regionMat-', opt$histone, '-cut', cutoff, '-', chr,
 timeinfo <- c(timeinfo, list(Sys.time()))
 
 ## Save time information
-save(timeinfo, file=paste0('timeinfo-', opt$histone, '-', chr, '.Rdata'))
+save(timeinfo, file=paste0('timeinfo-', opt$histone, '-cut', cutoff, '-', chr, '.Rdata'))
 
 ## Reproducibility info
 proc.time()
