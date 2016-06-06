@@ -60,7 +60,8 @@ load(file.path(maindir, 'colsubset.Rdata'))
 message(paste(Sys.time(), 'loading fullRegions.Rdata'))
 load(file.path(maindir, 'fullRegions.Rdata'))
 
-regions <- fullRegions
+keepIndex <- width(fullRegions) >= 20
+regions <- fullRegions[keepIndex]
 
 ## Phenotype information
 message(paste(Sys.time(), 'loading phenotype information'))
@@ -279,6 +280,8 @@ dev.off()
 message(paste(Sys.time(), 'loading coverageMatrix.Rdata'))
 load(file.path(maindir, 'coverageMatrix.Rdata'))
 
+## Subset to regions of interest
+coverageMatrix <- coverageMatrix[keepIndex, ]
 
 message(paste(Sys.time(), 'log2 transforming counts'))
 y <- log2(coverageMatrix + 1)
