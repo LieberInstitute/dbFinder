@@ -7,7 +7,6 @@ library('devtools')
 spec <- matrix(c(
     'maindir', 'm', 1, 'character', 'Main directory',
 	'cutoff', 't', 1, 'numeric', 'Cutoff to use',
-	'chr', 'c', 1, 'character', 'Chromosome under analysis',
 	'readLen', 'r', 1, 'integer', 'Read length',
     'histone', 'i', 1, 'character', 'For epimap, the histone mark to use. Either H3K27ac or H3K4me3.',
 	'help' , 'h', 0, 'logical', 'Display help'
@@ -26,7 +25,7 @@ if (!is.null(opt$help)) {
 maindir <- opt$maindir
 cutoff <- opt$cutoff
 readLen <- opt$readLen
-chr <- opt$chr
+chr <- paste0('chr', c('Y', 1:22, 'X'))[Sys.getenv('SGE_TASK_ID')]
 
 message(Sys.time())
 timeinfo <- NULL

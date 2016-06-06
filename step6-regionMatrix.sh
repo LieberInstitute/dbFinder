@@ -28,19 +28,17 @@ for CUTOFF in ${CUTOFFS}
 do
     for HISTONE in H3K27ac H3K4me3
     do
-        for chrnum in 22 21 Y 20 19 18 17 16 15 14 13 12 11 10 9 8 X 7 6 5 4 3 2 1
-        do
-            chr="chr${chrnum}"
-            sname="${SHORT}-${HISTONE}-cut-${CUTOFF}-${chr}"
-            echo "Creating script ${sname}"
+        sname="${SHORT}-${HISTONE}-cut-${CUTOFF}"
+        echo "Creating script ${sname}"
 
-            cat > ${ROOTDIR}/.${sname}.sh <<EOF
+        cat > ${ROOTDIR}/.${sname}.sh <<EOF
 #!/bin/bash	
 #$ -cwd
 #$ -m e
 #$ -l mem_free=70G,h_vmem=90G,h_fsize=30G
 #$ -N ${sname}
 #$ -hold_jid fullCov-${EXPERIMENT}
+#$ -t 1:24
 
 echo "**** Job starts ****"
 date
@@ -51,19 +49,18 @@ mkdir -p ${WDIR}/logs
 # Load coverage & get region matrix
 cd ${WDIR}
 module load R/3.3
-Rscript ${ROOTDIR}/step6-regionMatrix.R -m "${MAINDIR}" -c "${chr}" -r ${RLENGTH} -t ${CUTOFF} -i "${HISTONE}"
+Rscript ${ROOTDIR}/step6-regionMatrix.R -m "${MAINDIR}" -r ${RLENGTH} -t ${CUTOFF} -i "${HISTONE}"
 
 ## Move log files into the logs directory
-mv ${ROOTDIR}/${sname}.* ${WDIR}/logs/
+mv ${ROOTDIR}/${sname}.*.\${SGE_TASK_ID} ${WDIR}/logs/
 
 echo "**** Job ends ****"
 date
 EOF
 
-            call="qsub .${sname}.sh"
-            echo $call
-            $call
-        done
+        call="qsub .${sname}.sh"
+        echo $call
+        $call
     
         sname="${SHORT}-${HISTONE}-cut-${CUTOFF}-merge"
     
@@ -74,7 +71,7 @@ EOF
 #$ -m e
 #$ -l mem_free=100G,h_vmem=120G,h_fsize=40G
 #$ -N ${sname}
-#$ -hold_jid ${SHORT}-${HISTONE}-cut-${CUTOFF}-chr*
+#$ -hold_jid ${SHORT}-${HISTONE}-cut-${CUTOFF}
 
 echo "**** Job starts ****"
 date
