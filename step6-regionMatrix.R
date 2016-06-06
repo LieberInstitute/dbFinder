@@ -25,7 +25,7 @@ if (!is.null(opt$help)) {
 maindir <- opt$maindir
 cutoff <- opt$cutoff
 readLen <- opt$readLen
-chr <- paste0('chr', c('Y', 1:22, 'X'))[Sys.getenv('SGE_TASK_ID')]
+chr <- paste0('chr', c('Y', 1:22, 'X'))[as.numeric(Sys.getenv("SGE_TASK_ID"))]
 
 message(Sys.time())
 timeinfo <- NULL
