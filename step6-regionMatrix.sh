@@ -37,7 +37,7 @@ do
 #$ -m e
 #$ -l mem_free=70G,h_vmem=90G,h_fsize=30G
 #$ -N ${sname}
-#$ -hold_jid fullCov-${EXPERIMENT},sra.fileinfo
+#$ -hold_jid fullCov-${EXPERIMENT}
 #$ -t 1:24
 
 echo "**** Job starts ****"
