@@ -21,6 +21,9 @@ if (!is.null(opt$help)) {
 	q(status=1)
 }
 
+## For testing
+if(FALSE) opt <- list('maindir' = '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap', cutoff = 10, readLen = 100, histone = 'H3K4me3')
+
 ## Input options used
 maindir <- opt$maindir
 cutoff <- opt$cutoff
@@ -47,8 +50,8 @@ message(Sys.time())
 
 ## run regionMatrix
 regionMat <- regionMatrix(fullCov, maxClusterGap = 3000L, L = readLen,
-    cutoff = cutoff, returnBP = FALSE, smoothMean = TRUE, minNum = 100,
-    bpSpan = 300, minInSpan = 100)
+    cutoff = cutoff, returnBP = FALSE, smoothMean = TRUE, 
+    smoothFun = bumphunter::runmedByCluster, k = 299)
 timeinfo <- c(timeinfo, list(Sys.time()))
 
 ## Save results
