@@ -56,7 +56,7 @@ dir.create(plotdir, showWarnings = FALSE)
 
 ## Age cutoff
 ageCut <- ifelse(opt$histone == 'H3K4me3', 52, 53)
-    
+
 ## Results
 load(file.path(maindir, 'groupInfo.Rdata'))
 load(file.path(maindir, 'colsubset.Rdata'))
@@ -64,13 +64,13 @@ load(file.path(maindir, 'models.Rdata'))
 
 ## Load regions
 message(paste(Sys.time(), 'loading fullRegions.Rdata'))
-load(file.path(regmatdir, paste0('fullRegions-', opt$histone, '-cut', cutoff,
-    '.Rdata')))
+load(file.path(regmatdir, paste0('fullRegions-', opt$histone, '-cut',
+    opt$cutoff, '.Rdata')))
 
 ## Load coverage matrix
 message(paste(Sys.time(), 'loading coverageMatrix.Rdata'))
 load(file.path(regmatdir, paste0('coverageMatrix-', opt$histone, '-cut',
-    cutoff, '.Rdata')))
+    opt$cutoff, '.Rdata')))
 
 message(paste(Sys.time(), 'log2 transforming counts'))
 y <- log2(coverageMatrix + 1)

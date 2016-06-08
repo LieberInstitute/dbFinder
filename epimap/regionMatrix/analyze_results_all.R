@@ -62,8 +62,8 @@ load(file.path(maindir, 'groupInfo.Rdata'))
 load(file.path(maindir, 'colsubset.Rdata'))
 ## Load regions
 message(paste(Sys.time(), 'loading fullRegions.Rdata'))
-load(file.path(regmatdir, paste0('fullRegions-', opt$histone, '-cut', cutoff,
-    '.Rdata')))
+load(file.path(regmatdir, paste0('fullRegions-', opt$histone, '-cut',
+    opt$cutoff, '.Rdata')))
 
 keepIndex <- width(fullRegions) >= 20
 regions <- fullRegions[keepIndex]
@@ -284,7 +284,7 @@ dev.off()
 ## Load coverage matrix
 message(paste(Sys.time(), 'loading coverageMatrix.Rdata'))
 load(file.path(regmatdir, paste0('coverageMatrix-', opt$histone, '-cut',
-    cutoff, '.Rdata')))
+    opt$cutoff, '.Rdata')))
     
 ## Subset to regions of interest
 coverageMatrix <- coverageMatrix[keepIndex, ]
