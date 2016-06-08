@@ -773,7 +773,7 @@ for(h in seq_len(length(highlight))) {
     
     message(paste(Sys.time(), 'calculating mean coverage'))
     regionCov <- getRegionCoverage(regions = regs, files = files,
-        totalMapped = pd$totalMapped)
+        totalMapped = pd$totalMapped, verbose = FALSE)
     meanC <- lapply(regionCov, function(x) {
     	sapply(tIndexes, function(ii) rowMeans(x[, ii]))
     })
