@@ -17,7 +17,6 @@ regions <- lapply(histones, function(histone) {
     return(res)
 })
 names(regions) <- histones
-regions
 
 ## Number of ERs
 print('Number of ERs')
