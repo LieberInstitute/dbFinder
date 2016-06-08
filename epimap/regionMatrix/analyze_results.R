@@ -111,6 +111,10 @@ message(paste(Sys.time(), 'subsetting the regions and coverage matrix'))
 #keepIndex <- width(fullRegions) >= 6
 keepIndex <- fullRegions$significantFWER == 'TRUE'
 regions <- fullRegions[keepIndex]
+print('Number of ERs, DERs and percent of ERs that are DERs')
+length(fullRegions)
+length(regions)
+round(length(regions) / length(fullRegions) * 100, 2)
 
 ## Subset to regions of interest
 coverageMatrix <- coverageMatrix[keepIndex, ]
@@ -764,6 +768,8 @@ for(h in seq_len(length(highlight))) {
     message(paste(Sys.time(), 'highlighting', names(highlight)[h]))
     ## Subset data
     regs <- regions[highlight[[h]]]
+    ## Add 100 bp padding to each side
+    regs <- resize(regs, width(regs) + 200, fix = 'center')
     
     message(paste(Sys.time(), 'calculating mean coverage'))
     regionCov <- getRegionCoverage(regions = regs, files = files,
@@ -867,10 +873,14 @@ print('Percent of background genes missing')
 round(sum(is.na(bg_universe)) / length(bg_universe) * 100, 2)
 bg_universe <- bg_universe[!is.na(bg_universe)]
 
+
+genes.knownGene <- annotateTranscripts(txdb = TxDb.Hsapiens.UCSC.hg19.knownGene::TxDb.Hsapiens.UCSC.hg19.knownGene)
+
 message(paste(Sys.time(), 'performing GO analysis'))
 goByCovariate <- lapply(regSets, function(ii) {
     regs <- regions[ii]
-    regs_names <- unlist(strsplit(regs$annotation, ' '))
+    annotation.knownGene <- matchGenes(x = regs, subject = genes.knownGene)
+    regs_names <- unlist(strsplit(annotation.knownGene$annotation, ' '))
     ## Clean up
     regs_names <- regs_names[!is.na(regs_names)]
     go <- tryCatch(dogo(regs_names, bg_universe), error = function(e) return(NULL))
