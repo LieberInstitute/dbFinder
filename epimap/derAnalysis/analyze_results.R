@@ -64,6 +64,11 @@ load(file.path(maindir, 'fullRegions.Rdata'))
 keepIndex <- fullRegions$significantFWER == 'TRUE'
 regions <- fullRegions[keepIndex]
 
+print('Number of candidate DERs, DERs and percent of DERs')
+length(fullRegions)
+length(regions)
+round(length(regions) / length(fullRegions) * 100, 2)
+
 ## Phenotype information
 message(paste(Sys.time(), 'loading phenotype information'))
 load('/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/annotated_phenotype_EpiMap_ChIPseq.rda')
