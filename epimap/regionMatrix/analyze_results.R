@@ -542,7 +542,7 @@ covClassList <- lapply(c('BrainRegion', 'CellType', 'AgeDeath'), function(covari
 names(covClassList) <- c('BrainRegion', 'CellType', 'AgeDeath')
 print('Percent of regions exclusive by main covariate')
 round(sapply(covClassList, length) / nrow(y) * 100, 2)
-covClassList <- covClassList[sapply(covClassList, length) > 0]
+covClassList <- covClassList[sapply(covClassList, length) > 1]
 
 
 pcListCov <- lapply(covClassList, function(ii) {
