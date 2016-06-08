@@ -1,0 +1,368 @@
+**** Job starts ****
+Wed Jun  8 01:13:03 EDT 2016
+[1] 246507      3
+[1] "Annotation breakdown"
+    strictExonic   strictIntronic strictIntergenic       exonIntron              All 
+            3690           131766            72214            30501           246507 
+    strictExonic   strictIntronic strictIntergenic       exonIntron              All 
+        1.496915        53.453249        29.294908        12.373279       100.000000 
+[1] "Region width information"
+    0%    25%    50%    75%   100% 
+     1    278    640   1589 301876 
+     strictExonic strictIntronic strictIntergenic exonIntron    All
+0%           1.00              1                1          5      1
+25%        171.00            249              248        777    278
+50%        332.00            538              529       1833    640
+75%        687.75           1247             1231       4113   1589
+100%      8602.00         166512            36892     134558 301876
+null device 
+          1 
+[1] "annotation breakdown: all types"
+  exon intergenic intron Counts Percent
+1    0          0      0      0    0.00
+2    0          0      1 131766   53.45
+3    0          1      0  72214   29.29
+4    0          1      1      0    0.00
+5    1          0      0   3690    1.50
+6    1          0      1  30501   12.37
+7    1          1      0   2221    0.90
+8    1          1      1   6115    2.48
+null device 
+          1 
+null device 
+          1 
+[1] "annotation breakdown: by region width"
+  exon intergenic intron Counts Percent
+1    0          0      0   0.00    0.00
+2    0          0      1 146.60   37.91
+3    0          1      0  74.40   19.24
+4    0          1      1   0.00    0.00
+5    1          0      0   2.05    0.53
+6    1          0      1 111.63   28.87
+7    1          1      0   5.26    1.36
+8    1          1      1  46.79   12.10
+[1] "Percent fold change: number / bp"
+  exon intergenic intron Fold Change #/bp
+1    0          0      0              NaN
+2    0          0      1             1.41
+3    0          1      0             1.52
+4    0          1      1              NaN
+5    1          0      0             2.83
+6    1          0      1             0.43
+7    1          1      0             0.66
+8    1          1      1             0.20
+[1] "Percent fold change: bp / number"
+  exon intergenic intron Fold Change bp/#
+1    0          0      0              NaN
+2    0          0      1             0.71
+3    0          1      0             0.66
+4    0          1      1              NaN
+5    1          0      0             0.35
+6    1          0      1             2.33
+7    1          1      0             1.51
+8    1          1      1             4.88
+null device 
+          1 
+.....null device 
+          1 
+null device 
+          1 
+[1] "Number of samples, height, weight and BMI by sex"
+
+Female   Male 
+    11     46 
+$Female
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  65.00   65.25   65.50   65.55   66.00   66.00 
+
+$Male
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  64.00   68.00   69.00   69.51   72.00   74.00 
+
+$Female
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  265.0   265.0   281.0   279.3   288.5   296.0 
+
+$Male
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  156.0   194.0   202.0   208.9   228.0   251.0 
+
+$Female
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  43.42   43.42   45.35   45.71   47.30   49.25 
+
+$Male
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  21.16   28.17   30.65   30.49   33.57   37.74 
+
+........................    user   system  elapsed 
+2934.438    8.755  369.742 
+null device 
+          1 
+........................    user   system  elapsed 
+3054.281   11.497  332.530 
+null device 
+          1 
+........................    user   system  elapsed 
+3818.487   13.304  448.400 
+   user  system elapsed 
+  0.403   0.031   0.434 
+[1] "Summary pTable_main"
+  BrainRegion          CellType            AgeDeath     
+ Min.   :0.000005   Min.   :0.000e+00   Min.   :0.0000  
+ 1st Qu.:0.525387   1st Qu.:0.000e+00   1st Qu.:0.3562  
+ Median :0.722828   Median :0.000e+00   Median :0.5832  
+ Mean   :0.678316   Mean   :1.620e-06   Mean   :0.5631  
+ 3rd Qu.:0.869022   3rd Qu.:0.000e+00   3rd Qu.:0.7875  
+ Max.   :0.999999   Max.   :1.719e-01   Max.   :1.0000  
+[1] "Summary pTable_main (Bonf adjusted)"
+  BrainRegion          CellType            AgeDeath     
+ Min.   :0.000015   Min.   :0.0000000   Min.   :0.0000  
+ 1st Qu.:1.000000   1st Qu.:0.0000000   1st Qu.:1.0000  
+ Median :1.000000   Median :0.0000000   Median :1.0000  
+ Mean   :0.964109   Mean   :0.0000049   Mean   :0.8991  
+ 3rd Qu.:1.000000   3rd Qu.:0.0000000   3rd Qu.:1.0000  
+ Max.   :1.000000   Max.   :0.5156345   Max.   :1.0000  
+[1] "Summary of -log10 pvalues (Bonferroni adjusted)"
+  BrainRegion          CellType           AgeDeath      
+ Min.   : 0.00000   Min.   :  0.6624   Min.   : 0.0000  
+ 1st Qu.: 0.00000   1st Qu.: 27.3376   1st Qu.: 0.0000  
+ Median : 0.00000   Median : 37.7941   Median : 0.0000  
+ Mean   : 0.05828   Mean   : 39.1744   Mean   : 0.1937  
+ 3rd Qu.: 0.00000   3rd Qu.: 49.0587   3rd Qu.: 0.0000  
+ Max.   :11.10452   Max.   :105.6298   Max.   :22.0333  
+[1] "Significant dbPeaks by modeled covariate"
+BrainRegion    CellType    AgeDeath 
+        280      246503        2259 
+BrainRegion    CellType    AgeDeath 
+       0.11      100.00        0.92 
+[1] "dbPeaks by main covariate"
+  Brain region Cell type Age at death Counts
+1            0         0            0      0
+2            0         0            1      4
+3            0         1            0 243971
+4            0         1            1   2252
+5            1         0            0      0
+6            1         0            1      0
+7            1         1            0    277
+8            1         1            1      3
+attr(,"class")
+[1] "VennCounts"
+null device 
+          1 
+[1] "Percent of regions exclusive by main covariate"
+BrainRegion    CellType    AgeDeath 
+       0.00       98.97        0.00 
+..null device 
+          1 
+null device 
+          1 
+........................     user    system   elapsed 
+17538.563    15.509  2032.276 
+   user  system elapsed 
+  0.679   0.167   0.845 
+[1] "Summary pTable_rest"
+   Hemisphere             PMI                  pH              Sex             Height               BMI         ChromatinAmount      totalMapped        Individual_ID   
+ Min.   :0.0000022   Min.   :0.0000337   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000106   Min.   :0.0000   Min.   :0.0000039   Min.   :0.0000000   Min.   :0.0000  
+ 1st Qu.:0.3408947   1st Qu.:0.3090137   1st Qu.:0.1097   1st Qu.:0.2759   1st Qu.:0.3268146   1st Qu.:0.3085   1st Qu.:0.2166134   1st Qu.:0.0000010   1st Qu.:0.0454  
+ Median :0.5867130   Median :0.5515213   Median :0.3165   Median :0.5172   Median :0.5686807   Median :0.5489   Median :0.4612314   Median :0.0001502   Median :0.1645  
+ Mean   :0.5640777   Mean   :0.5388929   Mean   :0.3807   Mean   :0.5150   Mean   :0.5515980   Mean   :0.5373   Mean   :0.4745041   Mean   :0.0252599   Mean   :0.2526  
+ 3rd Qu.:0.8032719   3rd Qu.:0.7782334   3rd Qu.:0.6235   3rd Qu.:0.7583   3rd Qu.:0.7895790   3rd Qu.:0.7757   3rd Qu.:0.7268048   3rd Qu.:0.0044183   3rd Qu.:0.3988  
+ Max.   :0.9999965   Max.   :0.9999981   Max.   :1.0000   Max.   :1.0000   Max.   :0.9999958   Max.   :1.0000   Max.   :0.9999975   Max.   :0.9998965   Max.   :1.0000  
+ FlowcellBatch      LibraryBatch    
+ Min.   :0.00000   Min.   :0.00000  
+ 1st Qu.:0.04413   1st Qu.:0.09571  
+ Median :0.20427   Median :0.29553  
+ Mean   :0.29579   Mean   :0.35792  
+ 3rd Qu.:0.49394   3rd Qu.:0.58353  
+ Max.   :1.00000   Max.   :0.99999  
+[1] "Summary pTable_rest (Bonf adjusted)"
+   Hemisphere            PMI                  pH                 Sex             Height               BMI         ChromatinAmount      totalMapped        Individual_ID   
+ Min.   :0.000024   Min.   :0.0003708   Min.   :0.0000003   Min.   :0.0000   Min.   :0.0001168   Min.   :0.0000   Min.   :0.0000425   Min.   :0.0000000   Min.   :0.0000  
+ 1st Qu.:1.000000   1st Qu.:1.0000000   1st Qu.:1.0000000   1st Qu.:1.0000   1st Qu.:1.0000000   1st Qu.:1.0000   1st Qu.:1.0000000   1st Qu.:0.0000111   1st Qu.:0.4994  
+ Median :1.000000   Median :1.0000000   Median :1.0000000   Median :1.0000   Median :1.0000000   Median :1.0000   Median :1.0000000   Median :0.0016521   Median :1.0000  
+ Mean   :0.978024   Mean   :0.9746416   Mean   :0.8778151   Mean   :0.9668   Mean   :0.9753445   Mean   :0.9732   Mean   :0.9446934   Mean   :0.1203078   Mean   :0.7649  
+ 3rd Qu.:1.000000   3rd Qu.:1.0000000   3rd Qu.:1.0000000   3rd Qu.:1.0000   3rd Qu.:1.0000000   3rd Qu.:1.0000   3rd Qu.:1.0000000   3rd Qu.:0.0486008   3rd Qu.:1.0000  
+ Max.   :1.000000   Max.   :1.0000000   Max.   :1.0000000   Max.   :1.0000   Max.   :1.0000000   Max.   :1.0000   Max.   :1.0000000   Max.   :1.0000000   Max.   :1.0000  
+ FlowcellBatch     LibraryBatch   
+ Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.4854   1st Qu.:1.0000  
+ Median :1.0000   Median :1.0000  
+ Mean   :0.7602   Mean   :0.8519  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000  
+[1] "Summary of -log10 pvalues (Bonferroni adjusted)"
+   Hemisphere            PMI                pH               Sex               Height             BMI          ChromatinAmount   totalMapped     Individual_ID    
+ Min.   : 0.00000   Min.   :0.00000   Min.   : 0.0000   Min.   : 0.00000   Min.   :0.00000   Min.   : 0.0000   Min.   : 0.000   Min.   : 0.000   Min.   : 0.0000  
+ 1st Qu.: 0.00000   1st Qu.:0.00000   1st Qu.: 0.0000   1st Qu.: 0.00000   1st Qu.:0.00000   1st Qu.: 0.0000   1st Qu.: 0.000   1st Qu.: 3.024   1st Qu.: 0.0000  
+ Median : 0.00000   Median :0.00000   Median : 0.0000   Median : 0.00000   Median :0.00000   Median : 0.0000   Median : 0.000   Median : 6.406   Median : 0.0000  
+ Mean   : 0.04094   Mean   :0.04605   Mean   : 0.2637   Mean   : 0.06735   Mean   :0.04639   Mean   : 0.0537   Mean   : 0.109   Mean   : 8.050   Mean   : 0.6345  
+ 3rd Qu.: 0.00000   3rd Qu.:0.00000   3rd Qu.: 0.0000   3rd Qu.: 0.00000   3rd Qu.:0.00000   3rd Qu.: 0.0000   3rd Qu.: 0.000   3rd Qu.:11.405   3rd Qu.: 0.6944  
+ Max.   :10.63765   Max.   :7.89979   Max.   :15.1387   Max.   :43.34168   Max.   :9.05481   Max.   :21.7752   Max.   :10.066   Max.   :49.527   Max.   :35.1546  
+ FlowcellBatch      LibraryBatch   
+ Min.   : 0.0000   Min.   : 0.000  
+ 1st Qu.: 0.0000   1st Qu.: 0.000  
+ Median : 0.0000   Median : 0.000  
+ Mean   : 0.8059   Mean   : 0.373  
+ 3rd Qu.: 0.7228   3rd Qu.: 0.000  
+ Max.   :19.8833   Max.   :17.490  
+[1] "Significant dbPeaks by un-modeled covariate"
+     Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped   Individual_ID   FlowcellBatch    LibraryBatch 
+            362             364            4100             701             457             580            1202          185400           15691           23839            8797 
+     Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped   Individual_ID   FlowcellBatch    LibraryBatch 
+           0.15            0.15            1.66            0.28            0.19            0.24            0.49           75.21            6.37            9.67            3.57 
+null device 
+          1 
+    Hemisphere PMI pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch Counts
+9            0   0  0   0      0   0               0           1             0             0            0 149288
+1            0   0  0   0      0   0               0           0             0             0            0  56453
+11           0   0  0   0      0   0               0           1             0             1            0  14254
+13           0   0  0   0      0   0               0           1             1             0            0   5660
+15           0   0  0   0      0   0               0           1             1             1            0   3601
+10           0   0  0   0      0   0               0           1             0             0            1   2667
+16           0   0  0   0      0   0               0           1             1             1            1   2539
+265          0   0  1   0      0   0               0           1             0             0            0   2043
+12           0   0  0   0      0   0               0           1             0             1            1   1463
+5            0   0  0   0      0   0               0           0             1             0            0   1339
+[1] "Number of regions per covariate set"
+    BrainRegion        CellType        AgeDeath      Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped 
+            280          246503            2259             362             364            4100             701             457             580            1202          185400 
+  Individual_ID   FlowcellBatch    LibraryBatch 
+          15691           23839            8797 
+[1] "Regions that are repeated in other sets"
+                BrainRegion CellType AgeDeath Hemisphere PMI   pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA      280        3          0   1    1   2      0   1               1         224             9            10            6
+CellType                280       NA     2255        362 363 4100 701    457 580            1202      185398         15688         23839         8797
+AgeDeath                  3     2255       NA          2   2   20   8      6  12               1        2088           414           279           45
+Hemisphere                0      362        2         NA   0   15  10      1   2               3         228            94            58           42
+PMI                       1      363        2          0  NA   39   3      4   1               7         177            86            80           24
+pH                        1     4100       20         15  39   NA   4     29   8              17        3304           996           614          472
+Sex                       2      701        8         10   3    4  NA    107 243               1         401           254           121           37
+Height                    0      457        6          1   4   29 107     NA 127               3         219           190            80           39
+BMI                       1      580       12          2   1    8 243    127  NA               6         231           219            50           24
+ChromatinAmount           1     1202        1          3   7   17   1      3   6              NA         914           221           339          216
+totalMapped             224   185398     2088        228 177 3304 401    219 231             914          NA         13877         22992         8064
+Individual_ID             9    15688      414         94  86  996 254    190 219             221       13877            NA          6857         3768
+FlowcellBatch            10    23839      279         58  80  614 121     80  50             339       22992          6857            NA         4512
+LibraryBatch              6     8797       45         42  24  472  37     39  24             216        8064          3768          4512           NA
+                BrainRegion CellType AgeDeath Hemisphere   PMI   pH  Sex Height  BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA     TRUE     TRUE      FALSE  TRUE TRUE TRUE  FALSE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+CellType               TRUE       NA     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+AgeDeath               TRUE     TRUE       NA       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+Hemisphere            FALSE     TRUE     TRUE         NA FALSE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+PMI                    TRUE     TRUE     TRUE      FALSE    NA TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+pH                     TRUE     TRUE     TRUE       TRUE  TRUE   NA TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+Sex                    TRUE     TRUE     TRUE       TRUE  TRUE TRUE   NA   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+Height                FALSE     TRUE     TRUE       TRUE  TRUE TRUE TRUE     NA TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+BMI                    TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE   NA            TRUE        TRUE          TRUE          TRUE         TRUE
+ChromatinAmount        TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE              NA        TRUE          TRUE          TRUE         TRUE
+totalMapped            TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE          NA          TRUE          TRUE         TRUE
+Individual_ID          TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE            NA          TRUE         TRUE
+FlowcellBatch          TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE            NA         TRUE
+LibraryBatch           TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE           NA
+[1] "Regions that are repeated in other sets: percent by row"
+                BrainRegion CellType AgeDeath Hemisphere  PMI    pH   Sex Height   BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA   100.00     1.07       0.00 0.36  0.36  0.71   0.00  0.36            0.36       80.00          3.21          3.57         2.14
+CellType               0.11       NA     0.91       0.15 0.15  1.66  0.28   0.19  0.24            0.49       75.21          6.36          9.67         3.57
+AgeDeath               0.13    99.82       NA       0.09 0.09  0.89  0.35   0.27  0.53            0.04       92.43         18.33         12.35         1.99
+Hemisphere             0.00   100.00     0.55         NA 0.00  4.14  2.76   0.28  0.55            0.83       62.98         25.97         16.02        11.60
+PMI                    0.27    99.73     0.55       0.00   NA 10.71  0.82   1.10  0.27            1.92       48.63         23.63         21.98         6.59
+pH                     0.02   100.00     0.49       0.37 0.95    NA  0.10   0.71  0.20            0.41       80.59         24.29         14.98        11.51
+Sex                    0.29   100.00     1.14       1.43 0.43  0.57    NA  15.26 34.66            0.14       57.20         36.23         17.26         5.28
+Height                 0.00   100.00     1.31       0.22 0.88  6.35 23.41     NA 27.79            0.66       47.92         41.58         17.51         8.53
+BMI                    0.17   100.00     2.07       0.34 0.17  1.38 41.90  21.90    NA            1.03       39.83         37.76          8.62         4.14
+ChromatinAmount        0.08   100.00     0.08       0.25 0.58  1.41  0.08   0.25  0.50              NA       76.04         18.39         28.20        17.97
+totalMapped            0.12   100.00     1.13       0.12 0.10  1.78  0.22   0.12  0.12            0.49          NA          7.48         12.40         4.35
+Individual_ID          0.06    99.98     2.64       0.60 0.55  6.35  1.62   1.21  1.40            1.41       88.44            NA         43.70        24.01
+FlowcellBatch          0.04   100.00     1.17       0.24 0.34  2.58  0.51   0.34  0.21            1.42       96.45         28.76            NA        18.93
+LibraryBatch           0.07   100.00     0.51       0.48 0.27  5.37  0.42   0.44  0.27            2.46       91.67         42.83         51.29           NA
+[1] "Regions that are repeated in other sets: percent by column"
+                BrainRegion CellType AgeDeath Hemisphere   PMI     pH    Sex Height    BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA     0.11     0.13       0.00  0.27   0.02   0.29   0.00   0.17            0.08        0.12          0.06          0.04         0.07
+CellType             100.00       NA    99.82     100.00 99.73 100.00 100.00 100.00 100.00          100.00      100.00         99.98        100.00       100.00
+AgeDeath               1.07     0.91       NA       0.55  0.55   0.49   1.14   1.31   2.07            0.08        1.13          2.64          1.17         0.51
+Hemisphere             0.00     0.15     0.09         NA  0.00   0.37   1.43   0.22   0.34            0.25        0.12          0.60          0.24         0.48
+PMI                    0.36     0.15     0.09       0.00    NA   0.95   0.43   0.88   0.17            0.58        0.10          0.55          0.34         0.27
+pH                     0.36     1.66     0.89       4.14 10.71     NA   0.57   6.35   1.38            1.41        1.78          6.35          2.58         5.37
+Sex                    0.71     0.28     0.35       2.76  0.82   0.10     NA  23.41  41.90            0.08        0.22          1.62          0.51         0.42
+Height                 0.00     0.19     0.27       0.28  1.10   0.71  15.26     NA  21.90            0.25        0.12          1.21          0.34         0.44
+BMI                    0.36     0.24     0.53       0.55  0.27   0.20  34.66  27.79     NA            0.50        0.12          1.40          0.21         0.27
+ChromatinAmount        0.36     0.49     0.04       0.83  1.92   0.41   0.14   0.66   1.03              NA        0.49          1.41          1.42         2.46
+totalMapped           80.00    75.21    92.43      62.98 48.63  80.59  57.20  47.92  39.83           76.04          NA         88.44         96.45        91.67
+Individual_ID          3.21     6.36    18.33      25.97 23.63  24.29  36.23  41.58  37.76           18.39        7.48            NA         28.76        42.83
+FlowcellBatch          3.57     9.67    12.35      16.02 21.98  14.98  17.26  17.51   8.62           28.20       12.40         43.70            NA        51.29
+LibraryBatch           2.14     3.57     1.99      11.60  6.59  11.51   5.28   8.53   4.14           17.97        4.35         24.01         18.93           NA
+[1] "Number of regions highlighted by covariate"
+    BrainRegion        CellType        AgeDeath      Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped 
+             50              50              50              50              50              50              50              50              50              50              50 
+  Individual_ID   FlowcellBatch    LibraryBatch 
+             50              50              50 
+[1] "Highlighted regions that are repeated in other sets"
+                BrainRegion CellType AgeDeath Hemisphere PMI pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA        0        0          0   0  0   0      0   0               0           0             0             0            0
+CellType                  0       NA        0          0   0  0   0      0   0               0           0             0             0            0
+AgeDeath                  0        0       NA          0   1  0   0      0   0               0           0             5             0            0
+Hemisphere                0        0        0         NA   0  1   0      0   0               0           0             0             0            1
+PMI                       0        0        1          0  NA  0   0      1   0               0           0             2             0            0
+pH                        0        0        0          1   0 NA   0      0   0               0           0             0             0            0
+Sex                       0        0        0          0   0  0  NA     25  43               0           0             3             0            0
+Height                    0        0        0          0   1  0  25     NA  26               0           0             1             0            0
+BMI                       0        0        0          0   0  0  43     26  NA               0           0             2             0            0
+ChromatinAmount           0        0        0          0   0  0   0      0   0              NA           0             0             0            0
+totalMapped               0        0        0          0   0  0   0      0   0               0          NA             0             0            0
+Individual_ID             0        0        5          0   2  0   3      1   2               0           0            NA             0            1
+FlowcellBatch             0        0        0          0   0  0   0      0   0               0           0             0            NA            4
+LibraryBatch              0        0        0          1   0  0   0      0   0               0           0             1             4           NA
+                BrainRegion CellType AgeDeath Hemisphere   PMI    pH   Sex Height   BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA    FALSE    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE           FALSE       FALSE         FALSE         FALSE        FALSE
+CellType              FALSE       NA    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE           FALSE       FALSE         FALSE         FALSE        FALSE
+AgeDeath              FALSE    FALSE       NA      FALSE  TRUE FALSE FALSE  FALSE FALSE           FALSE       FALSE          TRUE         FALSE        FALSE
+Hemisphere            FALSE    FALSE    FALSE         NA FALSE  TRUE FALSE  FALSE FALSE           FALSE       FALSE         FALSE         FALSE         TRUE
+PMI                   FALSE    FALSE     TRUE      FALSE    NA FALSE FALSE   TRUE FALSE           FALSE       FALSE          TRUE         FALSE        FALSE
+pH                    FALSE    FALSE    FALSE       TRUE FALSE    NA FALSE  FALSE FALSE           FALSE       FALSE         FALSE         FALSE        FALSE
+Sex                   FALSE    FALSE    FALSE      FALSE FALSE FALSE    NA   TRUE  TRUE           FALSE       FALSE          TRUE         FALSE        FALSE
+Height                FALSE    FALSE    FALSE      FALSE  TRUE FALSE  TRUE     NA  TRUE           FALSE       FALSE          TRUE         FALSE        FALSE
+BMI                   FALSE    FALSE    FALSE      FALSE FALSE FALSE  TRUE   TRUE    NA           FALSE       FALSE          TRUE         FALSE        FALSE
+ChromatinAmount       FALSE    FALSE    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE              NA       FALSE         FALSE         FALSE        FALSE
+totalMapped           FALSE    FALSE    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE           FALSE          NA         FALSE         FALSE        FALSE
+Individual_ID         FALSE    FALSE     TRUE      FALSE  TRUE FALSE  TRUE   TRUE  TRUE           FALSE       FALSE            NA         FALSE         TRUE
+FlowcellBatch         FALSE    FALSE    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE           FALSE       FALSE         FALSE            NA         TRUE
+LibraryBatch          FALSE    FALSE    FALSE       TRUE FALSE FALSE FALSE  FALSE FALSE           FALSE       FALSE          TRUE          TRUE           NA
+[1] "Highlighted regions that are repeated in other sets: percent by row"
+                BrainRegion CellType AgeDeath Hemisphere PMI pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA        0        0          0   0  0   0      0   0               0           0             0             0            0
+CellType                  0       NA        0          0   0  0   0      0   0               0           0             0             0            0
+AgeDeath                  0        0       NA          0   2  0   0      0   0               0           0            10             0            0
+Hemisphere                0        0        0         NA   0  2   0      0   0               0           0             0             0            2
+PMI                       0        0        2          0  NA  0   0      2   0               0           0             4             0            0
+pH                        0        0        0          2   0 NA   0      0   0               0           0             0             0            0
+Sex                       0        0        0          0   0  0  NA     50  86               0           0             6             0            0
+Height                    0        0        0          0   2  0  50     NA  52               0           0             2             0            0
+BMI                       0        0        0          0   0  0  86     52  NA               0           0             4             0            0
+ChromatinAmount           0        0        0          0   0  0   0      0   0              NA           0             0             0            0
+totalMapped               0        0        0          0   0  0   0      0   0               0          NA             0             0            0
+Individual_ID             0        0       10          0   4  0   6      2   4               0           0            NA             0            2
+FlowcellBatch             0        0        0          0   0  0   0      0   0               0           0             0            NA            8
+LibraryBatch              0        0        0          2   0  0   0      0   0               0           0             2             8           NA
+[1] "Highlighted regions that are repeated in other sets: percent by column"
+                BrainRegion CellType AgeDeath Hemisphere PMI pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA        0        0          0   0  0   0      0   0               0           0             0             0            0
+CellType                  0       NA        0          0   0  0   0      0   0               0           0             0             0            0
+AgeDeath                  0        0       NA          0   2  0   0      0   0               0           0            10             0            0
+Hemisphere                0        0        0         NA   0  2   0      0   0               0           0             0             0            2
+PMI                       0        0        2          0  NA  0   0      2   0               0           0             4             0            0
+pH                        0        0        0          2   0 NA   0      0   0               0           0             0             0            0
+Sex                       0        0        0          0   0  0  NA     50  86               0           0             6             0            0
+Height                    0        0        0          0   2  0  50     NA  52               0           0             2             0            0
+BMI                       0        0        0          0   0  0  86     52  NA               0           0             4             0            0
+ChromatinAmount           0        0        0          0   0  0   0      0   0              NA           0             0             0            0
+totalMapped               0        0        0          0   0  0   0      0   0               0          NA             0             0            0
+Individual_ID             0        0       10          0   4  0   6      2   4               0           0            NA             0            2
+FlowcellBatch             0        0        0          0   0  0   0      0   0               0           0             0            NA            8
+LibraryBatch              0        0        0          2   0  0   0      0   0               0           0             2             8           NA
+[1] "Percent of genes included in the background"
+[1] 62.63
+[1] "Percent of background genes missing"
+[1] 47.97
+**** Job ends ****
+Wed Jun  8 05:51:58 EDT 2016

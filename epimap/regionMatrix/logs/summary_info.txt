@@ -1,0 +1,146 @@
+Using the following user library: ~/R/x86_64-pc-linux-gnu-library/3.3.x
+Loading required package: colorout
+Loading required package: methods
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: ‘BiocGenerics’
+
+The following objects are masked from ‘package:parallel’:
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+
+The following objects are masked from ‘package:stats’:
+
+    IQR, mad, xtabs
+
+The following objects are masked from ‘package:base’:
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call,
+    duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect,
+    is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
+    paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
+    Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit
+
+Loading required package: S4Vectors
+
+Attaching package: ‘S4Vectors’
+
+The following objects are masked from ‘package:base’:
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+[1] "Number of ERs"
+   H3K4me3 H3K27ac
+5    41771  420940
+10   30803  270410
+[1] "Number of DERs"
+   H3K4me3 H3K27ac
+5    22627  246507
+10   14862  180262
+[1] "Percent DE"
+   H3K4me3 H3K27ac
+5    54.17   58.56
+10   48.25   66.66
+[1] "Overlap between different cutoffs for each histone mark"
+$H3K4me3
+$H3K4me3$counts
+$H3K4me3$counts$`5 versus 10`
+                   Sig cut 5
+Overlaps sig cut 10 FALSE  TRUE   Sum
+              FALSE 18462  9793 28255
+              TRUE    682 12834 13516
+              Sum   19144 22627 41771
+
+$H3K4me3$counts$`10 versus 5`
+                  Sig cut 10
+Overlaps sig cut 5 FALSE  TRUE   Sum
+             FALSE 15603   793 16396
+             TRUE    338 14069 14407
+             Sum   15941 14862 30803
+
+
+$H3K4me3$percent
+$H3K4me3$percent$`5 versus 10`
+                   Sig cut 5
+Overlaps sig cut 10  FALSE   TRUE    Sum
+              FALSE  44.20  23.44  67.64
+              TRUE    1.63  30.72  32.36
+              Sum    45.83  54.17 100.00
+
+$H3K4me3$percent$`10 versus 5`
+                  Sig cut 10
+Overlaps sig cut 5  FALSE   TRUE    Sum
+             FALSE  50.65   2.57  53.23
+             TRUE    1.10  45.67  46.77
+             Sum    51.75  48.25 100.00
+
+
+
+$H3K27ac
+$H3K27ac$counts
+$H3K27ac$counts$`5 versus 10`
+                   Sig cut 5
+Overlaps sig cut 10  FALSE   TRUE    Sum
+              FALSE 165086 157718 322804
+              TRUE    9347  88789  98136
+              Sum   174433 246507 420940
+
+$H3K27ac$counts$`10 versus 5`
+                  Sig cut 10
+Overlaps sig cut 5  FALSE   TRUE    Sum
+             FALSE  69044  14696  83740
+             TRUE   21104 165566 186670
+             Sum    90148 180262 270410
+
+
+$H3K27ac$percent
+$H3K27ac$percent$`5 versus 10`
+                   Sig cut 5
+Overlaps sig cut 10  FALSE   TRUE    Sum
+              FALSE  39.22  37.47  76.69
+              TRUE    2.22  21.09  23.31
+              Sum    41.44  58.56 100.00
+
+$H3K27ac$percent$`10 versus 5`
+                  Sig cut 10
+Overlaps sig cut 5  FALSE   TRUE    Sum
+             FALSE  25.53   5.43  30.97
+             TRUE    7.80  61.23  69.03
+             Sum    33.34  66.66 100.00
+
+
+
+   user  system elapsed 
+  7.970   0.560   8.562 
+2016-06-08 13:18:11
+Session info -----------------------------------------------------------------------------------------------------------
+ setting  value                                      
+ version  R version 3.3.0 Patched (2016-06-08 r70731)
+ system   x86_64, linux-gnu                          
+ ui       X11                                        
+ language (EN)                                       
+ collate  en_US.UTF-8                                
+ tz       <NA>                                       
+ date     2016-06-08                                 
+
+Packages ---------------------------------------------------------------------------------------------------------------
+ package       * version date       source                            
+ BiocGenerics  * 0.19.0  2016-05-08 Bioconductor                      
+ colorout      * 1.1-2   2016-05-08 Github (jalvesaq/colorout@6538970)
+ devtools        1.11.1  2016-04-21 CRAN (R 3.3.0)                    
+ digest          0.6.9   2016-01-08 CRAN (R 3.3.0)                    
+ GenomeInfoDb  * 1.9.1   2016-06-01 Bioconductor                      
+ GenomicRanges * 1.25.1  2016-06-06 Bioconductor                      
+ IRanges       * 2.7.2   2016-06-06 Bioconductor                      
+ memoise         1.0.0   2016-01-29 CRAN (R 3.3.0)                    
+ S4Vectors     * 0.11.3  2016-06-06 Bioconductor                      
+ withr           1.0.1   2016-02-04 CRAN (R 3.3.0)                    
+ XVector         0.13.0  2016-05-08 Bioconductor                      
+ zlibbioc        1.19.0  2016-05-08 Bioconductor                      

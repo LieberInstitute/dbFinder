@@ -91,19 +91,19 @@ The following object is masked from 'package:AnnotationDbi':
     makeGOGraph
 
 
-2016-05-24 11:14:41 loading fullRegions.Rdata
-2016-05-24 11:14:50 loading phenotype information
-2016-05-24 11:14:50 loading ENSEMBL genomic state
-2016-05-24 11:15:03 annotating with ENSEMBL v75
-2016-05-24 11:15:05 annotateRegions: counting
-2016-05-24 11:15:08 annotateRegions: annotating
-2016-05-24 11:15:36 loading coverageMatrix.Rdata
-2016-05-24 11:15:39 log2 transforming counts
-2016-05-24 11:15:45 performing PCA analysis
-2016-05-24 11:17:37 performing joint modeling
-2016-05-24 11:28:26 saving joint modeling results
-2016-05-24 11:28:43 performing joint modeling without CellType
-2016-05-24 11:38:32 saving joint modeling results (no cellType)
-2016-05-24 11:38:47
+2016-06-06 21:21:01 loading fullRegions.Rdata
+2016-06-06 21:21:53 loading phenotype information
+2016-06-06 21:21:54 loading ENSEMBL genomic state
+2016-06-06 21:22:03 annotating with ENSEMBL v75
+2016-06-06 21:22:07 annotateRegions: counting
+2016-06-06 21:22:26 annotateRegions: annotating
+2016-06-06 21:24:08 loading coverageMatrix.Rdata
+2016-06-06 21:24:34 log2 transforming counts
+2016-06-06 21:24:49 performing PCA analysis
+2016-06-06 21:29:03 performing joint modeling
+2016-06-06 22:31:47 saving joint modeling results
+2016-06-06 22:33:04 performing joint modeling without CellType
+2016-06-06 23:27:24 saving joint modeling results (no cellType)
+2016-06-06 23:28:43
 Session info -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Packages ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
