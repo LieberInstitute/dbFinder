@@ -19,7 +19,6 @@ library("GenomicFeatures")
 library('bumphunter')
 
 ## Define paths
-#mainPath <- '/dcl01/lieber/ajaffe/derRuns/derSupplement/'
 mainPath <- '/dcl01/lieber/ajaffe/derRuns/derChIP/epimap/'
 covPath <- file.path(mainPath, 'CoverageInfo/')
 resPath <- file.path(mainPath, 'derAnalysis/run1-v1.5.38-H3K4me3')
@@ -70,7 +69,7 @@ selected <- resize(s.cluster, width(s.cluster) + 2 * pad, fix = 'center')
 ## Load coverage and annotation
 chr <- as.character(seqnames(selected))
 chr
-cov <- loadCoverage(files = files, which = selected, chr = chr)
+cov <- loadCoverage(files = files, which = selected, chr = chr, protectWhich = 3e4, totalMapped = pd$totalMapped)
 load(file.path(resPath, chr, 'annotation.Rdata'))
 
 ## Bases
@@ -95,7 +94,7 @@ covDat <- as.data.frame(cov$coverage[pos, ])
 covDat.log <- as.data.frame(cov.log)
 ylim <- log2(c(0, ceiling(max(covDat[ind + 1, ]))) + scalefac)
 ylim[2] <- round(ylim[2] + 0.5)
-y.axis <- c(0, 0.5, 2^(0:9))
+y.axis <- c(0, 2^(0:8))
 
 group.pl <- brewer.pal(12, 'Paired')[5:12]
 
@@ -165,7 +164,7 @@ dev.off()
 
 
 ## coverage panel
-y.axis.sample <- c(y.axis, 2^c(10:12))
+y.axis.sample <- c(y.axis, 2^c(9:11))
 pdf(file.path(plotdir, 'fullCov_panel.pdf'), h= 6,w=14)
 
 sample.pl <- mapply(function(col, n) {
