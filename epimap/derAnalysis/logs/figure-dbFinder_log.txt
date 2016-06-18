@@ -1,6 +1,7 @@
 Loading required package: colorout
 Warning message:
 replacing previous import ‘ggplot2::Position’ by ‘BiocGenerics::Position’ when loading ‘ggbio’ 
+Loading required package: stats4
 Loading required package: BiocGenerics
 Loading required package: parallel
 
@@ -23,10 +24,9 @@ The following objects are masked from 'package:base':
     is.unsorted, lapply, lengths, Map, mapply, match, mget, order,
     paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind,
     Reduce, rownames, sapply, setdiff, sort, table, tapply, union,
-    unique, unsplit
+    unique, unsplit, which, which.max, which.min
 
 Loading required package: S4Vectors
-Loading required package: stats4
 
 Attaching package: 'S4Vectors'
 
@@ -36,6 +36,11 @@ The following objects are masked from 'package:base':
 
 Loading required package: IRanges
 Loading required package: GenomeInfoDb
+Warning messages:
+1: package 'GenomicRanges' was built under R version 3.3.1 
+2: package 'BiocGenerics' was built under R version 3.3.1 
+3: package 'S4Vectors' was built under R version 3.3.1 
+4: package 'IRanges' was built under R version 3.3.1 
 Loading required package: GenomicFeatures
 Loading required package: AnnotationDbi
 Loading required package: Biobase
@@ -49,76 +54,78 @@ Loading required package: foreach
 Loading required package: iterators
 Loading required package: locfit
 locfit 1.5-9.1 	 2013-03-22
-2016-05-17 13:17:52 loading results
-2016-05-17 13:17:58 loading phenotype information
+2016-06-18 11:24:00 loading results
+2016-06-18 11:24:08 loading phenotype information
 [1] "chr1"
-2016-05-17 13:18:01 loadCoverage: finding chromosome lengths
-2016-05-17 13:18:02 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_361_filter.bam
-2016-05-17 13:18:02 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_361_filter.bam
-2016-05-17 13:18:02 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_361_filter.bam
-2016-05-17 13:18:02 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_361_filter.bam
-2016-05-17 13:18:02 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_363_filter.bam
-2016-05-17 13:18:03 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_363_filter.bam
-2016-05-17 13:18:03 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_363_filter.bam
-2016-05-17 13:18:03 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_363_filter.bam
-2016-05-17 13:18:03 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_364_filter.bam
-2016-05-17 13:18:04 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_364_filter.bam
-2016-05-17 13:18:04 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_364_filter.bam
-2016-05-17 13:18:04 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_375_filter.bam
-2016-05-17 13:18:05 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_375_filter.bam
-2016-05-17 13:18:05 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_375_filter.bam
-2016-05-17 13:18:05 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_375_filter.bam
-2016-05-17 13:18:05 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_377_filter.bam
-2016-05-17 13:18:05 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_377_filter.bam
-2016-05-17 13:18:06 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_377_filter.bam
-2016-05-17 13:18:06 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_377_filter.bam
-2016-05-17 13:18:06 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_380_filter.bam
-2016-05-17 13:18:07 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_380_filter.bam
-2016-05-17 13:18:07 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_380_filter.bam
-2016-05-17 13:18:07 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_380_filter.bam
-2016-05-17 13:18:07 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_383_filter.bam
-2016-05-17 13:18:08 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_383_filter.bam
-2016-05-17 13:18:08 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_383_filter.bam
-2016-05-17 13:18:08 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_383_filter.bam
-2016-05-17 13:18:08 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_392_filter.bam
-2016-05-17 13:18:09 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_392_filter.bam
-2016-05-17 13:18:09 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_400_filter.bam
-2016-05-17 13:18:09 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_400_filter.bam
-2016-05-17 13:18:09 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_411_filter.bam
-2016-05-17 13:18:10 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_411_filter.bam
-2016-05-17 13:18:10 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_411_filter.bam
-2016-05-17 13:18:10 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_411_filter.bam
-2016-05-17 13:18:10 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_414_filter.bam
-2016-05-17 13:18:11 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_414_filter.bam
-2016-05-17 13:18:11 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_414_filter.bam
-2016-05-17 13:18:11 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_425_filter.bam
-2016-05-17 13:18:12 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_425_filter.bam
-2016-05-17 13:18:12 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_425_filter.bam
-2016-05-17 13:18:12 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_425_filter.bam
-2016-05-17 13:18:12 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_436_filter.bam
-2016-05-17 13:18:13 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_436_filter.bam
-2016-05-17 13:18:13 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_436_filter.bam
-2016-05-17 13:18:13 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_436_filter.bam
-2016-05-17 13:18:13 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_439_filter.bam
-2016-05-17 13:18:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_439_filter.bam
-2016-05-17 13:18:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_439_filter.bam
-2016-05-17 13:18:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_439_filter.bam
-2016-05-17 13:18:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_440_filter.bam
-2016-05-17 13:18:15 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_440_filter.bam
-2016-05-17 13:18:15 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_440_filter.bam
-2016-05-17 13:18:15 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_440_filter.bam
-2016-05-17 13:18:15 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_441_filter.bam
-2016-05-17 13:18:16 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_441_filter.bam
-2016-05-17 13:18:16 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_441_filter.bam
-2016-05-17 13:18:16 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_441_filter.bam
-2016-05-17 13:18:16 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_444_filter.bam
-2016-05-17 13:18:17 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_444_filter.bam
-2016-05-17 13:18:17 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_444_filter.bam
-2016-05-17 13:18:17 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_444_filter.bam
-2016-05-17 13:18:17 loadCoverage: applying the cutoff to the merged data
-2016-05-17 13:18:18 filterData: originally there were 249250621 rows, now there are 249250621 rows. Meaning that 0 percent was filtered.
-    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-  0.0084   2.3910   6.0690  48.2200  43.4800 388.9000 
+2016-06-18 11:24:13 loadCoverage: finding chromosome lengths
+2016-06-18 11:24:13 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_361_filter.bam
+2016-06-18 11:24:13 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_361_filter.bam
+2016-06-18 11:24:13 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_361_filter.bam
+2016-06-18 11:24:13 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_361_filter.bam
+2016-06-18 11:24:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_363_filter.bam
+2016-06-18 11:24:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_363_filter.bam
+2016-06-18 11:24:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_363_filter.bam
+2016-06-18 11:24:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_363_filter.bam
+2016-06-18 11:24:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_364_filter.bam
+2016-06-18 11:24:14 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_364_filter.bam
+2016-06-18 11:24:15 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_364_filter.bam
+2016-06-18 11:24:15 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_375_filter.bam
+2016-06-18 11:24:15 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_375_filter.bam
+2016-06-18 11:24:15 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_375_filter.bam
+2016-06-18 11:24:15 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_375_filter.bam
+2016-06-18 11:24:16 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_377_filter.bam
+2016-06-18 11:24:16 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_377_filter.bam
+2016-06-18 11:24:16 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_377_filter.bam
+2016-06-18 11:24:16 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_377_filter.bam
+2016-06-18 11:24:16 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_380_filter.bam
+2016-06-18 11:24:17 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_380_filter.bam
+2016-06-18 11:24:17 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_380_filter.bam
+2016-06-18 11:24:17 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_380_filter.bam
+2016-06-18 11:24:17 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_383_filter.bam
+2016-06-18 11:24:17 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_383_filter.bam
+2016-06-18 11:24:17 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_383_filter.bam
+2016-06-18 11:24:18 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_383_filter.bam
+2016-06-18 11:24:18 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_392_filter.bam
+2016-06-18 11:24:18 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_392_filter.bam
+2016-06-18 11:24:18 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_400_filter.bam
+2016-06-18 11:24:18 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_400_filter.bam
+2016-06-18 11:24:18 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_411_filter.bam
+2016-06-18 11:24:19 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_411_filter.bam
+2016-06-18 11:24:19 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_411_filter.bam
+2016-06-18 11:24:19 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_411_filter.bam
+2016-06-18 11:24:19 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_414_filter.bam
+2016-06-18 11:24:19 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_414_filter.bam
+2016-06-18 11:24:20 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_414_filter.bam
+2016-06-18 11:24:20 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_425_filter.bam
+2016-06-18 11:24:20 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_425_filter.bam
+2016-06-18 11:24:20 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_425_filter.bam
+2016-06-18 11:24:20 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_425_filter.bam
+2016-06-18 11:24:21 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_436_filter.bam
+2016-06-18 11:24:21 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_436_filter.bam
+2016-06-18 11:24:21 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_436_filter.bam
+2016-06-18 11:24:21 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_436_filter.bam
+2016-06-18 11:24:21 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_439_filter.bam
+2016-06-18 11:24:21 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_439_filter.bam
+2016-06-18 11:24:22 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_439_filter.bam
+2016-06-18 11:24:22 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_439_filter.bam
+2016-06-18 11:24:22 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_440_filter.bam
+2016-06-18 11:24:22 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_440_filter.bam
+2016-06-18 11:24:22 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_440_filter.bam
+2016-06-18 11:24:22 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_440_filter.bam
+2016-06-18 11:24:22 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_441_filter.bam
+2016-06-18 11:24:23 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_441_filter.bam
+2016-06-18 11:24:23 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_441_filter.bam
+2016-06-18 11:24:23 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_441_filter.bam
+2016-06-18 11:24:23 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_444_filter.bam
+2016-06-18 11:24:24 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_ACC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_444_filter.bam
+2016-06-18 11:24:24 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN-_HiSeq2500_CMC_HBCC_444_filter.bam
+2016-06-18 11:24:24 loadCoverage: loading BAM file /dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap/BAM_Filter/PEC_EpiMap_MSSM_DLPFC_Epigenomics_H3K4me3_NeuN+_HiSeq2500_CMC_HBCC_444_filter.bam
+2016-06-18 11:24:24 loadCoverage: applying the cutoff to the merged data
+2016-06-18 11:24:24 filterData: normalizing coverage
+2016-06-18 11:24:24 filterData: done normalizing coverage
+2016-06-18 11:24:24 filterData: originally there were 249250621 rows, now there are 249250621 rows. Meaning that 0 percent was filtered.
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+   0.0319    2.4380    7.4260  193.1000  103.9000 2475.0000 
 null device 
           1 
 [1] TRUE
@@ -126,33 +133,33 @@ null device
           1 
 null device 
           1 
-2016-05-17 13:18:32 annotateRegions: counting
-2016-05-17 13:18:33 annotateRegions: annotating
+2016-06-18 11:24:48 annotateRegions: counting
+2016-06-18 11:24:49 annotateRegions: annotating
 null device 
           1 
 null device 
           1 
 Session info -----------------------------------------------------------------------------------------------------------
  setting  value                                      
- version  R version 3.3.0 Patched (2016-05-12 r70617)
+ version  R version 3.3.0 Patched (2016-05-20 r70657)
  system   x86_64, linux-gnu                          
  ui       X11                                        
  language (EN)                                       
  collate  en_US.UTF-8                                
  tz       <NA>                                       
- date     2016-05-17                                 
+ date     2016-06-18                                 
 
 Packages ---------------------------------------------------------------------------------------------------------------
  package                           * version  date       source                            
  acepack                             1.3-3.3  2014-11-24 CRAN (R 3.3.0)                    
- AnnotationDbi                     * 1.34.0   2016-05-08 Bioconductor                      
- AnnotationHub                       2.4.0    2016-05-08 Bioconductor                      
+ AnnotationDbi                     * 1.35.3   2016-06-07 Bioconductor                      
+ AnnotationHub                       2.5.4    2016-06-13 Bioconductor                      
  Biobase                           * 2.32.0   2016-05-05 Bioconductor                      
- BiocGenerics                      * 0.18.0   2016-05-08 Bioconductor                      
- BiocInstaller                       1.22.1   2016-05-08 Bioconductor                      
- BiocParallel                        1.6.0    2016-05-08 Bioconductor                      
- biomaRt                             2.28.0   2016-05-08 Bioconductor                      
- Biostrings                          2.40.0   2016-05-08 Bioconductor                      
+ BiocGenerics                      * 0.19.1   2016-06-13 Bioconductor                      
+ BiocInstaller                       1.22.2   2016-06-08 Bioconductor                      
+ BiocParallel                        1.6.2    2016-06-08 Bioconductor                      
+ biomaRt                             2.29.2   2016-06-07 Bioconductor                      
+ Biostrings                          2.41.2   2016-06-13 Bioconductor                      
  biovizBase                          1.20.0   2016-05-08 Bioconductor                      
  bitops                              1.0-6    2013-08-17 CRAN (R 3.3.0)                    
  BSgenome                            1.40.0   2016-05-08 Bioconductor                      
@@ -163,25 +170,25 @@ Packages -----------------------------------------------------------------------
  colorout                          * 1.1-2    2016-05-08 Github (jalvesaq/colorout@6538970)
  colorspace                          1.2-6    2015-03-11 CRAN (R 3.3.0)                    
  data.table                          1.9.6    2015-09-19 CRAN (R 3.3.0)                    
- DBI                                 0.4      2016-05-02 CRAN (R 3.3.0)                    
- derfinder                         * 1.6.0    2016-05-08 Bioconductor                      
- derfinderHelper                   * 1.6.0    2016-05-08 Bioconductor                      
- derfinderPlot                     * 1.6.0    2016-05-08 Bioconductor                      
+ DBI                                 0.4-1    2016-05-08 CRAN (R 3.3.0)                    
+ derfinder                         * 1.6.4    2016-06-06 Bioconductor                      
+ derfinderHelper                   * 1.6.3    2016-06-06 Bioconductor                      
+ derfinderPlot                     * 1.6.3    2016-06-06 Bioconductor                      
  devtools                          * 1.11.1   2016-04-21 CRAN (R 3.3.0)                    
  dichromat                           2.0-0    2013-01-24 CRAN (R 3.3.0)                    
  digest                              0.6.9    2016-01-08 CRAN (R 3.3.0)                    
  doRNG                               1.6      2014-03-07 CRAN (R 3.3.0)                    
- ensembldb                           1.4.0    2016-05-08 Bioconductor                      
+ ensembldb                           1.5.8    2016-06-13 Bioconductor                      
  foreach                           * 1.4.3    2015-10-13 CRAN (R 3.3.0)                    
  foreign                             0.8-66   2015-08-19 CRAN (R 3.3.0)                    
  Formula                             1.2-1    2015-04-07 CRAN (R 3.3.0)                    
- GenomeInfoDb                      * 1.8.0    2016-05-08 Bioconductor                      
- GenomicAlignments                   1.8.0    2016-05-08 Bioconductor                      
- GenomicFeatures                   * 1.24.0   2016-05-08 Bioconductor                      
+ GenomeInfoDb                      * 1.8.1    2016-06-08 Bioconductor                      
+ GenomicAlignments                   1.9.3    2016-06-16 Bioconductor                      
+ GenomicFeatures                   * 1.25.12  2016-06-07 Bioconductor                      
  GenomicFiles                        1.8.0    2016-05-08 Bioconductor                      
- GenomicRanges                     * 1.24.0   2016-05-08 Bioconductor                      
- GGally                              1.0.1    2016-01-14 CRAN (R 3.3.0)                    
- ggbio                               1.20.0   2016-05-08 Bioconductor                      
+ GenomicRanges                     * 1.25.4   2016-06-13 Bioconductor                      
+ GGally                              1.1.0    2016-06-02 CRAN (R 3.3.0)                    
+ ggbio                               1.20.1   2016-06-08 Bioconductor                      
  ggplot2                             2.1.0    2016-03-01 CRAN (R 3.3.0)                    
  graph                               1.50.0   2016-05-05 Bioconductor                      
  gridExtra                           2.2.1    2016-02-29 CRAN (R 3.3.0)                    
@@ -189,13 +196,13 @@ Packages -----------------------------------------------------------------------
  Hmisc                               3.17-4   2016-05-02 CRAN (R 3.3.0)                    
  htmltools                           0.3.5    2016-03-21 CRAN (R 3.3.0)                    
  httpuv                              1.3.3    2015-08-04 CRAN (R 3.3.0)                    
- httr                                1.1.0    2016-01-28 CRAN (R 3.3.0)                    
- interactiveDisplayBase              1.10.0   2016-05-05 Bioconductor                      
- IRanges                           * 2.6.0    2016-05-08 Bioconductor                      
+ httr                                1.2.0    2016-06-15 CRAN (R 3.3.0)                    
+ interactiveDisplayBase              1.10.3   2016-05-24 Bioconductor                      
+ IRanges                           * 2.7.6    2016-06-13 Bioconductor                      
  iterators                         * 1.0.8    2015-10-13 CRAN (R 3.3.0)                    
  lattice                             0.20-33  2015-07-14 CRAN (R 3.3.0)                    
  latticeExtra                        0.6-28   2016-02-09 CRAN (R 3.3.0)                    
- limma                               3.28.2   2016-05-08 Bioconductor                      
+ limma                               3.29.9   2016-06-16 Bioconductor                      
  locfit                            * 1.5-9.1  2013-04-20 CRAN (R 3.3.0)                    
  magrittr                            1.5      2014-11-22 CRAN (R 3.3.0)                    
  Matrix                              1.2-6    2016-05-02 CRAN (R 3.3.0)                    
@@ -204,14 +211,14 @@ Packages -----------------------------------------------------------------------
  mime                                0.4      2015-09-03 CRAN (R 3.3.0)                    
  munsell                             0.4.3    2016-02-13 CRAN (R 3.3.0)                    
  nnet                                7.3-12   2016-02-02 CRAN (R 3.3.0)                    
- OrganismDbi                         1.14.0   2016-05-08 Bioconductor                      
+ OrganismDbi                         1.14.1   2016-06-08 Bioconductor                      
  pkgmaker                            0.22     2014-05-14 CRAN (R 3.3.0)                    
- plyr                                1.8.3    2015-06-12 CRAN (R 3.3.0)                    
- qvalue                              2.4.0    2016-05-05 Bioconductor                      
+ plyr                                1.8.4    2016-06-08 CRAN (R 3.3.1)                    
+ qvalue                              2.4.2    2016-05-24 Bioconductor                      
  R6                                  2.1.2    2016-01-26 CRAN (R 3.3.0)                    
- RBGL                                1.48.0   2016-05-05 Bioconductor                      
+ RBGL                                1.48.1   2016-05-24 Bioconductor                      
  RColorBrewer                      * 1.1-2    2014-12-07 CRAN (R 3.3.0)                    
- Rcpp                                0.12.4.5 2016-05-08 local                             
+ Rcpp                                0.12.5   2016-05-14 CRAN (R 3.3.0)                    
  RCurl                               1.95-4.8 2016-03-01 CRAN (R 3.3.0)                    
  registry                            0.3      2015-07-08 CRAN (R 3.3.0)                    
  reshape                             0.8.5    2014-04-23 CRAN (R 3.3.0)                    
@@ -220,21 +227,21 @@ Packages -----------------------------------------------------------------------
  rpart                               4.1-10   2015-06-29 CRAN (R 3.3.0)                    
  Rsamtools                           1.24.0   2016-05-08 Bioconductor                      
  RSQLite                             1.0.0    2014-10-25 CRAN (R 3.3.0)                    
- rtracklayer                         1.32.0   2016-05-08 Bioconductor                      
- S4Vectors                         * 0.10.0   2016-05-08 Bioconductor                      
+ rtracklayer                         1.33.5   2016-06-13 Bioconductor                      
+ S4Vectors                         * 0.11.4   2016-06-13 Bioconductor                      
  scales                            * 0.4.0    2016-02-26 CRAN (R 3.3.0)                    
  shiny                               0.13.2   2016-03-28 CRAN (R 3.3.0)                    
- stringi                             1.0-1    2015-10-22 CRAN (R 3.3.0)                    
+ stringi                             1.1.1    2016-05-27 CRAN (R 3.3.0)                    
  stringr                             1.0.0    2015-04-30 CRAN (R 3.3.0)                    
- SummarizedExperiment                1.2.0    2016-05-08 Bioconductor                      
- survival                            2.39-3   2016-05-05 CRAN (R 3.3.0)                    
+ SummarizedExperiment                1.3.4    2016-06-13 Bioconductor                      
+ survival                            2.39-4   2016-05-11 CRAN (R 3.3.0)                    
  TxDb.Hsapiens.UCSC.hg19.knownGene * 3.2.2    2016-03-28 Bioconductor                      
- VariantAnnotation                   1.18.0   2016-05-08 Bioconductor                      
+ VariantAnnotation                   1.18.1   2016-06-08 Bioconductor                      
  withr                               1.0.1    2016-02-04 CRAN (R 3.3.0)                    
  XML                                 3.98-1.4 2016-03-01 CRAN (R 3.3.0)                    
  xtable                              1.8-2    2016-02-05 CRAN (R 3.3.0)                    
  XVector                             0.12.0   2016-05-08 Bioconductor                      
  zlibbioc                            1.18.0   2016-05-05 Bioconductor                      
-[1] "2016-05-17 13:18:41 EDT"
+[1] "2016-06-18 11:25:00 EDT"
    user  system elapsed 
- 49.856   2.604  66.866 
+ 73.401   3.219  82.184 
