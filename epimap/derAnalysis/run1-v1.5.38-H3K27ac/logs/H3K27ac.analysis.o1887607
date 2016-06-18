@@ -131,12 +131,12 @@ null device
  Mean   : 0.1754   Mean   : 20.45   Mean   : 0.408  
  3rd Qu.: 0.0000   3rd Qu.: 26.79   3rd Qu.: 0.349  
  Max.   :10.9351   Max.   :100.89   Max.   :15.742  
-[1] "Significant dbPeaks by modeled covariate"
+[1] "Significant DBRs by modeled covariate"
 BrainRegion    CellType    AgeDeath 
        1470      199369        6014 
 BrainRegion    CellType    AgeDeath 
        0.72       97.72        2.95 
-[1] "dbPeaks by main covariate"
+[1] "DBRs by main covariate"
   Brain region Cell type Age at death Counts
 1            0         0            0   2833
 2            0         0            1   1359
@@ -206,7 +206,7 @@ null device
  Mean   : 0.502936   Mean   : 0.2563  
  3rd Qu.: 0.004213   3rd Qu.: 0.0000  
  Max.   :25.615163   Max.   :13.0177  
-[1] "Significant dbPeaks by un-modeled covariate"
+[1] "Significant DBRs by un-modeled covariate"
      Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped   Individual_ID   FlowcellBatch    LibraryBatch 
             536             649            1774             735             555             598            1872          102172            7913           11149            4559 
      Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped   Individual_ID   FlowcellBatch    LibraryBatch 

@@ -269,7 +269,7 @@ pdf(file.path(plotdir, paste0(opt$histone, '_ensemblVenn.pdf')), width = 10,
     height = 10)
 venn_col <- brewer.pal(7, "Dark2")[c(1, 3, 2, 4)]
 vennDiagram_custom(vennCounts(countTable > 0), 
-    main = 'dbPeaks overlap with Ensembl v75 features', cex.main = 2,
+    main = 'DBRs overlap with Ensembl v75 features', cex.main = 2,
     circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
     text.col = c('black', venn_col[3:2], 'black', venn_col[c(1, 4)], 'black',
         'black')#, oma = rep(0, 4), pty = 'm'
@@ -285,7 +285,7 @@ venn[, 4] <- round(venn[, 4]/ sum(venn[, 4]) * 100, 2)
 pdf(file.path(plotdir, paste0(opt$histone, '_ensemblVenn_percent.pdf')),
     width = 10, height = 10)
 vennDiagram_custom(venn, 
-    main = 'dbPeaks overlap with Ensembl v75 features (in %)', cex.main = 2,
+    main = 'DBRs overlap with Ensembl v75 features (in %)', cex.main = 2,
     circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
     text.col = c('black', venn_col[3:2], 'black', venn_col[c(1, 4)], 'black',
         'black')#, oma = rep(0, 4), pty = 'm'
@@ -306,7 +306,7 @@ for(i in which(venn_bp[, 4] > 0)) {
 pdf(file.path(plotdir, paste0(opt$histone, '_ensemblVenn_bp.pdf')), width = 10,
     height = 10)
 vennDiagram_custom(venn_bp, 
-    main = 'dbPeaks overlap with Ensembl v75 features (in Mb)', cex.main = 2,
+    main = 'DBRs overlap with Ensembl v75 features (in Mb)', cex.main = 2,
     circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
     text.col = c('black', venn_col[3:2], 'black', venn_col[c(1, 4)], 'black',
         'black')#, oma = rep(0, 4), pty = 'm'
@@ -326,7 +326,7 @@ cbind(venn_bp[, 1:3], 'Fold Change bp/#' = round(venn_bp[, 4] / venn[, 4], 2))
 pdf(file.path(plotdir, paste0(opt$histone, '_ensemblVenn_bp_percent.pdf')),
     width = 10, height = 10)
 vennDiagram_custom(venn_bp, 
-    main = 'dbPeaks overlap with Ensembl v75 features (bp %)', cex.main = 2,
+    main = 'DBRs overlap with Ensembl v75 features (bp %)', cex.main = 2,
     circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
     text.col = c('black', venn_col[3:2], 'black', venn_col[c(1, 4)], 'black',
         'black')#, oma = rep(0, 4), pty = 'm'
@@ -357,7 +357,7 @@ levels(groupSimple) <- gsub(paste0('\\[23,', ageCut, '\\)'), paste0(ageCut, '-')
 levels(groupSimple) <- gsub(paste0('\\[', ageCut, ',65\\]'), paste0(ageCut, '+'), levels(groupSimple))
 levels(groupSimple) <- gsub('_', ':', levels(groupSimple))
 
-pdf(file.path(plotdir, paste0(opt$histone, '_dbPeaks_PCA_byAnno.pdf')))
+pdf(file.path(plotdir, paste0(opt$histone, '_DBRs_PCA_byAnno.pdf')))
 palette(brewer.pal(4, 'Paired'))
 par(mar=c(5,6,2,2))
 for(i in 1:ncol(pc1Mat)) {
@@ -367,7 +367,7 @@ for(i in 1:ncol(pc1Mat)) {
 		xlab = paste0("PC1: ",pcVarMat[1,i],"% of Var Expl"),
 		ylab = paste0("PC2: ",pcVarMat[2,i],"% of Var Expl"),
 		cex.axis=2,cex.lab=2, cex.main=1.8,
-		main = paste0("PCA of dbPeaks (", name[i],")"),
+		main = paste0("PCA of DBRs (", name[i],")"),
         ylim = range(pc2Mat[, i]) * 1.2)
 	legend("bottomright", c('Neun-', 'Neun+'), 
 		pch=c(19,15), cex=1.5, ncol = 2, bty = 'n')
@@ -377,7 +377,7 @@ for(i in 1:ncol(pc1Mat)) {
 }
 dev.off()
 
-pdf(file.path(plotdir, paste0(opt$histone, '_dbPeaks_PCsbyGroup_byAnno.pdf')),
+pdf(file.path(plotdir, paste0(opt$histone, '_DBRs_PCsbyGroup_byAnno.pdf')),
     width = 11)
 palette(brewer.pal(4, 'Paired'))
 par(mar=c(14,6,2,2))
@@ -387,7 +387,7 @@ for(i in seq_len(ncol(pc1Mat))) {
 	boxplot(pc1Mat[, i] ~ groupSimple, las=3,
 		ylab = paste0("PC1: ", pcVarMat[1, i], "% of Var Expl"),
 		cex.axis=1.7, cex.lab=2, cex.main=1.8, xlab="", outline=FALSE,
-		main = paste0("PCA of dbPeaks (", name[i],")"))
+		main = paste0("PCA of DBRs (", name[i],")"))
 	points(pc1Mat[, i] ~ jitter(as.numeric(groupSimple), amount=0.2),
 		bg = as.numeric(group), cex=1.3,
 		pch = c(21,22)[as.numeric(cellgroup)])
@@ -519,19 +519,19 @@ summary(pTable_main_adj)
 print('Summary of -log10 pvalues (Bonferroni adjusted)')
 summary(-log(pTable_main_adj))
 pTable_main_sig <- pTable_main_adj < 0.05
-print('Significant dbPeaks by modeled covariate')
+print('Significant DBRs by modeled covariate')
 colSums(pTable_main_sig)
 round(colSums(pTable_main_sig) / nrow(pTable_main_sig) * 100, 2)
 
 venn_main <- vennCounts(pTable_main_sig)
 colnames(venn_main) <- c('Brain region', 'Cell type', 'Age at death', 'Counts')
-print('dbPeaks by main covariate')
+print('DBRs by main covariate')
 venn_main
 venn_col <- brewer.pal(4, "Set1")[2:4]
 pdf(file.path(plotdir, paste0(opt$histone, '_venn_mainCovariates.pdf')),
     width = 10, height = 10)
 vennDiagram_custom(venn_main, 
-    main = paste(opt$histone, 'dbPeaks by main covariates'), cex.main = 2,
+    main = paste(opt$histone, 'DBRs by main covariates'), cex.main = 2,
     circle.col = venn_col[1:3], lwd = 1.5, cex = 2, mar = c(0, 0, 2, 0),
     text.col = c('black', venn_col[3:2], 'black', venn_col[1], 'black', 'black',
         'black')#, oma = rep(0, 4), pty = 'm'
@@ -563,7 +563,7 @@ pc1MatCov <- sapply(pcListCov, function(x) x$x[,1])
 pc2MatCov <- sapply(pcListCov, function(x) x$x[,2])
 
 ## Plots by covariate
-pdf(file.path(plotdir, paste0(opt$histone, '_dbPeaks_PCA_byCovariate.pdf')))
+pdf(file.path(plotdir, paste0(opt$histone, '_DBRs_PCA_byCovariate.pdf')))
 palette(brewer.pal(4, 'Paired'))
 par(mar=c(5,6,2,2))
 for(i in seq_len(ncol(pc1MatCov))) {
@@ -573,7 +573,7 @@ for(i in seq_len(ncol(pc1MatCov))) {
 		xlab = paste0("PC1: ",pcVarMatCov[1,i],"% of Var Expl"),
 		ylab = paste0("PC2: ",pcVarMatCov[2,i],"% of Var Expl"),
 		cex.axis=2, cex.lab=2, cex.main=1.8,
-		main = paste0("PCA of dbPeaks (", colnames(venn_main)[i],")"),
+		main = paste0("PCA of DBRs (", colnames(venn_main)[i],")"),
         ylim = range(pc2MatCov[,i]) * 1.4)
 	legend("bottomright", c('Neun-', 'Neun+'), 
 		pch=c(19,15), cex=1.5, ncol = 2, bty = 'n')
@@ -585,7 +585,7 @@ dev.off()
 
 ## Plots by group and covariate
 pdf(file.path(plotdir, paste0(opt$histone,
-    '_dbPeaks_PCsbyGroup_byCovariate.pdf')), width = 11)
+    '_DBRs_PCsbyGroup_byCovariate.pdf')), width = 11)
 palette(brewer.pal(4, 'Paired'))
 par(mar=c(14,6,2,2))
 set.seed(20160516)
@@ -651,7 +651,7 @@ summary(pTable_rest_adj)
 print('Summary of -log10 pvalues (Bonferroni adjusted)')
 summary(-log(pTable_rest_adj))
 pTable_rest_sig <- pTable_rest_adj < 0.05
-print('Significant dbPeaks by un-modeled covariate')
+print('Significant DBRs by un-modeled covariate')
 colSums(pTable_rest_sig)
 round(colSums(pTable_rest_sig) / nrow(pTable_rest_sig) * 100, 2)
 
@@ -860,7 +860,7 @@ dogo <- function(names, Universe, goP = 0.01, cond = FALSE, ontology = 'BP'){
     return(tab)
 }
 
-## Define universe: genes with a dbPeak within 5kb
+## Define universe: genes with a DBR within 5kb
 bg_genes <- resize(ensGene, width(ensGene) + 1e4, fix = 'center')
 bg_genes <- bg_genes[countOverlaps(bg_genes, regions, ignore.strand = TRUE) > 0]
 print('Percent of genes included in the background')

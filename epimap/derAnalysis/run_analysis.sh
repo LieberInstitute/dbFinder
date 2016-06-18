@@ -17,7 +17,7 @@ for HISTONE in H3K27ac H3K4me3
 #!/bin/bash
 #$ -cwd
 #$ -m e
-#$ -l mem_free=20G,h_vmem=30G,h_fsize=100G
+#$ -l mem_free=7G,h_vmem=9G,h_fsize=100G
 #$ -pe local 10
 #$ -N ${sname}
 #$ -hold_jid ${HISTONE}.merge.process
