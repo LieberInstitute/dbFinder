@@ -1,0 +1,196 @@
+Warning message:
+replacing previous import ‘ggplot2::Position’ by ‘BiocGenerics::Position’ when loading ‘ggbio’ 
+Loading required package: stats4
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: 'BiocGenerics'
+
+The following objects are masked from 'package:parallel':
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ, clusterExport, clusterMap, parApply, parCapply, parLapply, parLapplyLB, parRapply, parSapply,
+    parSapplyLB
+
+The following objects are masked from 'package:stats':
+
+    IQR, mad, xtabs
+
+The following objects are masked from 'package:base':
+
+    anyDuplicated, append, as.data.frame, cbind, colnames, do.call, duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect, is.unsorted, lapply,
+    lengths, Map, mapply, match, mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort, table,
+    tapply, union, unique, unsplit, which, which.max, which.min
+
+Loading required package: S4Vectors
+
+Attaching package: 'S4Vectors'
+
+The following objects are masked from 'package:base':
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Warning messages:
+1: package 'GenomicRanges' was built under R version 3.3.1 
+2: package 'BiocGenerics' was built under R version 3.3.1 
+3: package 'S4Vectors' was built under R version 3.3.1 
+4: package 'IRanges' was built under R version 3.3.1 
+
+Attaching package: 'limma'
+
+The following object is masked from 'package:BiocGenerics':
+
+    plotMA
+
+Warning message:
+package 'limma' was built under R version 3.3.1 
+Loading required package: AnnotationDbi
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with 'browseVignettes()'. To cite Bioconductor, see 'citation("Biobase")', and for packages
+    'citation("pkgname")'.
+
+Loading required package: foreach
+Loading required package: iterators
+Loading required package: locfit
+locfit 1.5-9.1 	 2013-03-22
+Loading required package: lattice
+Loading required package: survival
+Loading required package: Formula
+Loading required package: ggplot2
+
+Attaching package: 'Hmisc'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    contents
+
+The following objects are masked from 'package:Biobase':
+
+    combine, contents
+
+The following object is masked from 'package:BiocGenerics':
+
+    combine
+
+The following objects are masked from 'package:base':
+
+    format.pval, round.POSIXt, trunc.POSIXt, units
+
+Loading required package: Category
+Loading required package: Matrix
+
+Attaching package: 'Matrix'
+
+The following object is masked from 'package:S4Vectors':
+
+    expand
+
+Loading required package: graph
+
+
+Attaching package: 'GOstats'
+
+The following object is masked from 'package:AnnotationDbi':
+
+    makeGOGraph
+
+
+2016-06-18 10:06:38 loading fullRegions.Rdata
+2016-06-18 10:06:39 loading coverageMatrix.Rdata
+2016-06-18 10:06:42 log2 transforming counts
+2016-06-18 10:06:45 performing DE analysis
+Warning message:
+In data.row.names(row.names, rowsi, i) :
+  some row.names duplicated: 37572,37573,37574,37575,37576,37577,37578,37579,37580,37581,37582,37583,37584,37585,37586,37587,37588,37589,37590,37591,37592,37593,37594,37595,37596,37597,37598,37599,37600,37601,37602,37603,37604,37605,37606,37607,37608,37609,37610,37611,37612,37613,37614,37615,37616,37617,37618,37619,37620,37621,37622,37623,37624,37625,37626,37627,37628,37629,37630,37631,37632,37633,37634,37635,37636,37637,37638,37639,37640,37641,37642,37643,37644,37645,37646,37647,37648,37649,37650,37651,37652,37653,37654,37655,37656,37657,37658,37659,37660,37661,37662,37663,37664,37665,37666,37667,37668,37669,37670,37671,37672,37673,37674,37675,37676,37677,37678,37679,37680,37681,37682,37683,37684,37685,37686,37687,37688,37689,37690,37691,37692,37693,37694,37695,37696,37697,37698,37699,37700,37701,37702,37703,37704,37705,37706,37707,37708,37709,37710,37711,37712,37713,37714,37715,37716,37717,37718,37719,37720,37721,37722,37723,37724,37725,37726,37727,37728,37729,37730,37731,37732,37733,3 [... truncated]
+2016-06-18 10:07:04 adjusting p-values
+2016-06-18 10:07:05 saving new fullRegions object
+2016-06-18 10:07:08 subsetting the regions and coverage matrix
+2016-06-18 10:07:09 loading phenotype information
+2016-06-18 10:07:09 loading ENSEMBL genomic state
+2016-06-18 10:07:15 annotating with ENSEMBL v75
+2016-06-18 10:07:16 annotateRegions: counting
+2016-06-18 10:07:17 annotateRegions: annotating
+2016-06-18 10:07:24 performing PCA analysis
+2016-06-18 10:07:43 performing joint modeling
+2016-06-18 10:11:44 saving joint modeling results
+2016-06-18 10:11:50 performing joint modeling without CellType
+2016-06-18 10:15:20 saving joint modeling results (no cellType)
+2016-06-18 10:15:26 ANOVA main 3 covariates
+2016-06-18 10:19:59 saving pTable_main.Rdata
+2016-06-18 10:20:28 ANOVA remaining covariates
+2016-06-18 10:45:29 saving pTable_rest.Rdata
+2016-06-18 10:45:48 saving regSets.Rdata
+2016-06-18 10:45:50 saving highlight.Rdata
+No annotationPackage supplied. Trying org.Hs.eg.db.
+Getting TSS and TSE.
+Getting CSS and CSE.
+Getting exons.
+Annotating genes.
+Warning message:
+  Calling species() on a TxDb object is *deprecated*.
+  Please use organism() instead. 
+2016-06-18 10:47:26 creating highlight region plots
+2016-06-18 10:47:26 highlighting BrainRegion
+2016-06-18 10:47:27 calculating mean coverage
+2016-06-18 11:02:10 highlighting CellType
+2016-06-18 11:02:10 calculating mean coverage
+2016-06-18 11:27:39 highlighting AgeDeath
+2016-06-18 11:27:39 calculating mean coverage
+2016-06-18 11:45:29 highlighting Hemisphere
+2016-06-18 11:45:29 calculating mean coverage
+2016-06-18 11:59:26 highlighting PMI
+2016-06-18 11:59:26 calculating mean coverage
+2016-06-18 12:15:46 highlighting pH
+2016-06-18 12:15:46 calculating mean coverage
+2016-06-18 12:30:37 highlighting Sex
+2016-06-18 12:30:37 calculating mean coverage
+2016-06-18 12:34:32 highlighting Height
+2016-06-18 12:34:32 calculating mean coverage
+2016-06-18 12:44:01 highlighting BMI
+2016-06-18 12:44:01 calculating mean coverage
+2016-06-18 12:46:26 highlighting ChromatinAmount
+2016-06-18 12:46:26 calculating mean coverage
+2016-06-18 13:01:24 highlighting totalMapped
+2016-06-18 13:01:24 calculating mean coverage
+2016-06-18 13:31:27 highlighting Individual_ID
+2016-06-18 13:31:27 calculating mean coverage
+2016-06-18 13:43:40 highlighting FlowcellBatch
+2016-06-18 13:43:40 calculating mean coverage
+2016-06-18 14:00:03 highlighting LibraryBatch
+2016-06-18 14:00:03 calculating mean coverage
+2016-06-18 14:18:21 creating highlight region plots (scatterplot)
+2016-06-18 14:18:21 highlighting BrainRegion (scatterplots)
+2016-06-18 14:18:37 highlighting CellType (scatterplots)
+2016-06-18 14:18:49 highlighting AgeDeath (scatterplots)
+2016-06-18 14:19:02 highlighting Hemisphere (scatterplots)
+2016-06-18 14:19:14 highlighting PMI (scatterplots)
+2016-06-18 14:19:26 highlighting pH (scatterplots)
+2016-06-18 14:19:38 highlighting Sex (scatterplots)
+2016-06-18 14:19:50 highlighting Height (scatterplots)
+2016-06-18 14:20:01 highlighting BMI (scatterplots)
+2016-06-18 14:20:15 highlighting ChromatinAmount (scatterplots)
+2016-06-18 14:20:28 highlighting totalMapped (scatterplots)
+2016-06-18 14:20:41 highlighting Individual_ID (scatterplots)
+2016-06-18 14:20:53 highlighting FlowcellBatch (scatterplots)
+2016-06-18 14:21:05 highlighting LibraryBatch (scatterplots)
+Warning message:
+In valid.GenomicRanges.seqinfo(x, suggest.trim = TRUE) :
+  GRanges object contains 1 out-of-bound range located on sequence chr17. Note that only ranges located on a non-circular sequence whose length is not NA can be
+  considered out-of-bound (use seqlengths() and isCircular() to get the lengths and circularity flags of the underlying sequences). You can use trim() to trim
+  these ranges. See ?`trim,GenomicRanges-method` for more information.
+No annotationPackage supplied. Trying org.Hs.eg.db.
+Getting TSS and TSE.
+Getting CSS and CSE.
+Getting exons.
+Annotating genes.
+Warning message:
+  Calling species() on a TxDb object is *deprecated*.
+  Please use organism() instead. 
+2016-06-18 14:21:51 performing GO analysis
+2016-06-18 23:14:34 saving goByCovariate.Rdata
+2016-06-18 23:16:01
+Session info -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Packages ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------

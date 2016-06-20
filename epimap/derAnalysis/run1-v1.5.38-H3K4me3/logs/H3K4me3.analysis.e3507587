@@ -1,5 +1,6 @@
 Warning message:
 replacing previous import ‘ggplot2::Position’ by ‘BiocGenerics::Position’ when loading ‘ggbio’ 
+Loading required package: stats4
 Loading required package: BiocGenerics
 Loading required package: parallel
 
@@ -18,10 +19,9 @@ The following objects are masked from 'package:base':
 
     anyDuplicated, append, as.data.frame, cbind, colnames, do.call, duplicated, eval, evalq, Filter, Find, get, grep, grepl, intersect, is.unsorted, lapply,
     lengths, Map, mapply, match, mget, order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank, rbind, Reduce, rownames, sapply, setdiff, sort, table,
-    tapply, union, unique, unsplit
+    tapply, union, unique, unsplit, which, which.max, which.min
 
 Loading required package: S4Vectors
-Loading required package: stats4
 
 Attaching package: 'S4Vectors'
 
@@ -31,6 +31,11 @@ The following objects are masked from 'package:base':
 
 Loading required package: IRanges
 Loading required package: GenomeInfoDb
+Warning messages:
+1: package 'GenomicRanges' was built under R version 3.3.1 
+2: package 'BiocGenerics' was built under R version 3.3.1 
+3: package 'S4Vectors' was built under R version 3.3.1 
+4: package 'IRanges' was built under R version 3.3.1 
 
 Attaching package: 'limma'
 
@@ -38,6 +43,8 @@ The following object is masked from 'package:BiocGenerics':
 
     plotMA
 
+Warning message:
+package 'limma' was built under R version 3.3.1 
 Loading required package: AnnotationDbi
 Loading required package: Biobase
 Welcome to Bioconductor
@@ -91,25 +98,25 @@ The following object is masked from 'package:AnnotationDbi':
     makeGOGraph
 
 
-2016-05-24 11:14:38 loading fullRegions.Rdata
-2016-05-24 11:15:20 loading phenotype information
-2016-05-24 11:15:20 loading ENSEMBL genomic state
-2016-05-24 11:15:28 annotating with ENSEMBL v75
-2016-05-24 11:15:30 annotateRegions: counting
-2016-05-24 11:15:31 annotateRegions: annotating
-2016-05-24 11:15:43 loading coverageMatrix.Rdata
-2016-05-24 11:16:02 log2 transforming counts
-2016-05-24 11:16:03 performing PCA analysis
-2016-05-24 11:16:22 performing joint modeling
-2016-05-24 11:20:43 saving joint modeling results
-2016-05-24 11:20:50 performing joint modeling without CellType
-2016-05-24 11:24:50 saving joint modeling results (no cellType)
-2016-05-24 11:24:56 ANOVA main 3 covariates
-2016-05-24 11:29:46 saving pTable_main.Rdata
-2016-05-24 11:30:14 ANOVA remaining covariates
-2016-05-24 12:29:11 saving pTable_rest.Rdata
-2016-05-24 12:29:50 saving regSets.Rdata
-2016-05-24 12:29:52 saving highlight.Rdata
+2016-06-18 10:09:10 loading fullRegions.Rdata
+2016-06-18 10:09:25 loading phenotype information
+2016-06-18 10:09:25 loading ENSEMBL genomic state
+2016-06-18 10:09:47 annotating with ENSEMBL v75
+2016-06-18 10:09:50 annotateRegions: counting
+2016-06-18 10:09:52 annotateRegions: annotating
+2016-06-18 10:09:57 loading coverageMatrix.Rdata
+2016-06-18 10:10:03 log2 transforming counts
+2016-06-18 10:10:04 performing PCA analysis
+2016-06-18 10:10:10 performing joint modeling
+2016-06-18 10:11:16 saving joint modeling results
+2016-06-18 10:11:18 performing joint modeling without CellType
+2016-06-18 10:12:33 saving joint modeling results (no cellType)
+2016-06-18 10:12:35 ANOVA main 3 covariates
+2016-06-18 10:15:14 saving pTable_main.Rdata
+2016-06-18 10:15:22 ANOVA remaining covariates
+2016-06-18 10:29:25 saving pTable_rest.Rdata
+2016-06-18 10:29:31 saving regSets.Rdata
+2016-06-18 10:29:32 saving highlight.Rdata
 No annotationPackage supplied. Trying org.Hs.eg.db.
 Getting TSS and TSE.
 Getting CSS and CSE.
@@ -118,45 +125,45 @@ Annotating genes.
 Warning message:
   Calling species() on a TxDb object is *deprecated*.
   Please use organism() instead. 
-2016-05-24 12:35:30 loading meanCoverage.Rdata
-2016-05-24 13:06:54 subsetting meanCoverage
-2016-05-24 13:06:57 creating highlight region plots
-2016-05-24 13:06:57 highlighting BrainRegion
-2016-05-24 13:10:58 highlighting CellType
-2016-05-24 13:15:36 highlighting AgeDeath
-2016-05-24 13:17:48 highlighting Hemisphere
-2016-05-24 13:20:20 highlighting PMI
-2016-05-24 13:22:20 highlighting pH
-2016-05-24 13:24:39 highlighting Sex
-2016-05-24 13:26:41 highlighting Height
-2016-05-24 13:28:33 highlighting BMI
-2016-05-24 13:30:32 highlighting ChromatinAmount
-2016-05-24 13:32:43 highlighting totalMapped
-2016-05-24 13:34:55 highlighting Individual_ID
-2016-05-24 13:36:53 highlighting FlowcellBatch
-2016-05-24 13:38:54 highlighting LibraryBatch
-2016-05-24 13:40:52 creating highlight region plots (scatterplot)
-2016-05-24 13:40:52 highlighting BrainRegion (scatterplots)
-2016-05-24 13:41:23 highlighting CellType (scatterplots)
-2016-05-24 13:41:39 highlighting AgeDeath (scatterplots)
-2016-05-24 13:41:58 highlighting Hemisphere (scatterplots)
-2016-05-24 13:42:13 highlighting PMI (scatterplots)
-2016-05-24 13:42:34 highlighting pH (scatterplots)
-2016-05-24 13:42:48 highlighting Sex (scatterplots)
-2016-05-24 13:43:02 highlighting Height (scatterplots)
-2016-05-24 13:43:20 highlighting BMI (scatterplots)
-2016-05-24 13:43:38 highlighting ChromatinAmount (scatterplots)
-2016-05-24 13:43:57 highlighting totalMapped (scatterplots)
-2016-05-24 13:44:13 highlighting Individual_ID (scatterplots)
-2016-05-24 13:44:28 highlighting FlowcellBatch (scatterplots)
-2016-05-24 13:44:40 highlighting LibraryBatch (scatterplots)
+2016-06-18 10:33:12 loading meanCoverage.Rdata
+2016-06-18 10:37:37 subsetting meanCoverage
+2016-06-18 10:37:37 creating highlight region plots
+2016-06-18 10:37:37 highlighting BrainRegion
+2016-06-18 10:40:39 highlighting CellType
+2016-06-18 10:44:00 highlighting AgeDeath
+2016-06-18 10:47:17 highlighting Hemisphere
+2016-06-18 10:50:22 highlighting PMI
+2016-06-18 10:53:26 highlighting pH
+2016-06-18 10:56:34 highlighting Sex
+2016-06-18 10:59:37 highlighting Height
+2016-06-18 11:01:03 highlighting BMI
+2016-06-18 11:03:34 highlighting ChromatinAmount
+2016-06-18 11:04:15 highlighting totalMapped
+2016-06-18 11:07:29 highlighting Individual_ID
+2016-06-18 11:10:43 highlighting FlowcellBatch
+2016-06-18 11:13:56 highlighting LibraryBatch
+2016-06-18 11:17:04 creating highlight region plots (scatterplot)
+2016-06-18 11:17:04 highlighting BrainRegion (scatterplots)
+2016-06-18 11:17:31 highlighting CellType (scatterplots)
+2016-06-18 11:18:02 highlighting AgeDeath (scatterplots)
+2016-06-18 11:18:30 highlighting Hemisphere (scatterplots)
+2016-06-18 11:18:55 highlighting PMI (scatterplots)
+2016-06-18 11:19:24 highlighting pH (scatterplots)
+2016-06-18 11:19:56 highlighting Sex (scatterplots)
+2016-06-18 11:20:24 highlighting Height (scatterplots)
+2016-06-18 11:20:41 highlighting BMI (scatterplots)
+2016-06-18 11:21:05 highlighting ChromatinAmount (scatterplots)
+2016-06-18 11:21:15 highlighting totalMapped (scatterplots)
+2016-06-18 11:21:43 highlighting Individual_ID (scatterplots)
+2016-06-18 11:22:10 highlighting FlowcellBatch (scatterplots)
+2016-06-18 11:22:37 highlighting LibraryBatch (scatterplots)
 Warning message:
 In valid.GenomicRanges.seqinfo(x, suggest.trim = TRUE) :
   GRanges object contains 1 out-of-bound range located on sequence chr17. Note that only ranges located on a non-circular sequence whose length is not NA can be
   considered out-of-bound (use seqlengths() and isCircular() to get the lengths and circularity flags of the underlying sequences). You can use trim() to trim
   these ranges. See ?`trim,GenomicRanges-method` for more information.
-2016-05-24 13:44:55 performing GO analysis
-2016-05-24 14:16:51 saving goByCovariate.Rdata
-2016-05-24 14:22:23
+2016-06-18 11:23:07 performing GO analysis
+2016-06-18 11:59:10 saving goByCovariate.Rdata
+2016-06-18 12:01:38
 Session info -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Packages ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------

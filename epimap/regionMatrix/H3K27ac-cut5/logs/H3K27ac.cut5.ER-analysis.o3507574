@@ -1,0 +1,793 @@
+**** Job starts ****
+Sat Jun 18 10:06:13 EDT 2016
+[1] "Number of ERs, DERs and percent of ERs that are DERs"
+[1] 420940
+[1] 246507
+[1] 58.56
+[1] 246507      3
+[1] "Annotation breakdown"
+    strictExonic   strictIntronic strictIntergenic       exonIntron              All 
+            3690           131766            72214            30501           246507 
+    strictExonic   strictIntronic strictIntergenic       exonIntron              All 
+        1.496915        53.453249        29.294908        12.373279       100.000000 
+[1] "Region width information"
+    0%    25%    50%    75%   100% 
+     1    278    640   1589 301876 
+     strictExonic strictIntronic strictIntergenic exonIntron    All
+0%           1.00              1                1          5      1
+25%        171.00            249              248        777    278
+50%        332.00            538              529       1833    640
+75%        687.75           1247             1231       4113   1589
+100%      8602.00         166512            36892     134558 301876
+null device 
+          1 
+[1] "annotation breakdown: all types"
+  exon intergenic intron Counts Percent
+1    0          0      0      0    0.00
+2    0          0      1 131766   53.45
+3    0          1      0  72214   29.29
+4    0          1      1      0    0.00
+5    1          0      0   3690    1.50
+6    1          0      1  30501   12.37
+7    1          1      0   2221    0.90
+8    1          1      1   6115    2.48
+null device 
+          1 
+null device 
+          1 
+[1] "annotation breakdown: by region width"
+  exon intergenic intron Counts Percent
+1    0          0      0   0.00    0.00
+2    0          0      1 146.60   37.91
+3    0          1      0  74.40   19.24
+4    0          1      1   0.00    0.00
+5    1          0      0   2.05    0.53
+6    1          0      1 111.63   28.87
+7    1          1      0   5.26    1.36
+8    1          1      1  46.79   12.10
+[1] "Percent fold change: number / bp"
+  exon intergenic intron Fold Change #/bp
+1    0          0      0              NaN
+2    0          0      1             1.41
+3    0          1      0             1.52
+4    0          1      1              NaN
+5    1          0      0             2.83
+6    1          0      1             0.43
+7    1          1      0             0.66
+8    1          1      1             0.20
+[1] "Percent fold change: bp / number"
+  exon intergenic intron Fold Change bp/#
+1    0          0      0              NaN
+2    0          0      1             0.71
+3    0          1      0             0.66
+4    0          1      1              NaN
+5    1          0      0             0.35
+6    1          0      1             2.33
+7    1          1      0             1.51
+8    1          1      1             4.88
+null device 
+          1 
+.....null device 
+          1 
+null device 
+          1 
+[1] "Number of samples, height, weight and BMI by sex"
+
+Female   Male 
+    11     46 
+$Female
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  65.00   65.25   65.50   65.55   66.00   66.00 
+
+$Male
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  64.00   68.00   69.00   69.51   72.00   74.00 
+
+$Female
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  265.0   265.0   281.0   279.3   288.5   296.0 
+
+$Male
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  156.0   194.0   202.0   208.9   228.0   251.0 
+
+$Female
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  43.42   43.42   45.35   45.71   47.30   49.25 
+
+$Male
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  21.16   28.17   30.65   30.49   33.57   37.74 
+
+........................    user   system  elapsed 
+1988.407    6.737  236.114 
+null device 
+          1 
+........................    user   system  elapsed 
+2029.996    8.669  204.516 
+null device 
+          1 
+........................    user   system  elapsed 
+2501.148   10.440  267.980 
+   user  system elapsed 
+   0.33    0.02    0.35 
+[1] "Summary pTable_main"
+  BrainRegion          CellType            AgeDeath     
+ Min.   :0.000005   Min.   :0.000e+00   Min.   :0.0000  
+ 1st Qu.:0.525387   1st Qu.:0.000e+00   1st Qu.:0.3562  
+ Median :0.722828   Median :0.000e+00   Median :0.5832  
+ Mean   :0.678316   Mean   :1.620e-06   Mean   :0.5631  
+ 3rd Qu.:0.869022   3rd Qu.:0.000e+00   3rd Qu.:0.7875  
+ Max.   :0.999999   Max.   :1.719e-01   Max.   :1.0000  
+[1] "Summary pTable_main (Bonf adjusted)"
+  BrainRegion          CellType            AgeDeath     
+ Min.   :0.000015   Min.   :0.0000000   Min.   :0.0000  
+ 1st Qu.:1.000000   1st Qu.:0.0000000   1st Qu.:1.0000  
+ Median :1.000000   Median :0.0000000   Median :1.0000  
+ Mean   :0.964109   Mean   :0.0000049   Mean   :0.8991  
+ 3rd Qu.:1.000000   3rd Qu.:0.0000000   3rd Qu.:1.0000  
+ Max.   :1.000000   Max.   :0.5156345   Max.   :1.0000  
+[1] "Summary of -log10 pvalues (Bonferroni adjusted)"
+  BrainRegion          CellType           AgeDeath      
+ Min.   : 0.00000   Min.   :  0.6624   Min.   : 0.0000  
+ 1st Qu.: 0.00000   1st Qu.: 27.3376   1st Qu.: 0.0000  
+ Median : 0.00000   Median : 37.7941   Median : 0.0000  
+ Mean   : 0.05828   Mean   : 39.1744   Mean   : 0.1937  
+ 3rd Qu.: 0.00000   3rd Qu.: 49.0587   3rd Qu.: 0.0000  
+ Max.   :11.10452   Max.   :105.6298   Max.   :22.0333  
+[1] "Significant DBRs by modeled covariate"
+BrainRegion    CellType    AgeDeath 
+        280      246503        2259 
+BrainRegion    CellType    AgeDeath 
+       0.11      100.00        0.92 
+[1] "DBRs by main covariate"
+  Brain region Cell type Age at death Counts
+1            0         0            0      0
+2            0         0            1      4
+3            0         1            0 243971
+4            0         1            1   2252
+5            1         0            0      0
+6            1         0            1      0
+7            1         1            0    277
+8            1         1            1      3
+attr(,"class")
+[1] "VennCounts"
+null device 
+          1 
+[1] "Percent of regions exclusive by main covariate"
+BrainRegion    CellType    AgeDeath 
+       0.00       98.97        0.00 
+..null device 
+          1 
+null device 
+          1 
+........................     user    system   elapsed 
+12827.237    13.239  1496.637 
+   user  system elapsed 
+  0.518   0.174   0.692 
+[1] "Summary pTable_rest"
+   Hemisphere             PMI                  pH              Sex             Height               BMI         ChromatinAmount      totalMapped        Individual_ID   
+ Min.   :0.0000022   Min.   :0.0000337   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000106   Min.   :0.0000   Min.   :0.0000039   Min.   :0.0000000   Min.   :0.0000  
+ 1st Qu.:0.3408947   1st Qu.:0.3090137   1st Qu.:0.1097   1st Qu.:0.2759   1st Qu.:0.3268146   1st Qu.:0.3085   1st Qu.:0.2166134   1st Qu.:0.0000010   1st Qu.:0.0454  
+ Median :0.5867130   Median :0.5515213   Median :0.3165   Median :0.5172   Median :0.5686807   Median :0.5489   Median :0.4612314   Median :0.0001502   Median :0.1645  
+ Mean   :0.5640777   Mean   :0.5388929   Mean   :0.3807   Mean   :0.5150   Mean   :0.5515980   Mean   :0.5373   Mean   :0.4745041   Mean   :0.0252599   Mean   :0.2526  
+ 3rd Qu.:0.8032719   3rd Qu.:0.7782334   3rd Qu.:0.6235   3rd Qu.:0.7583   3rd Qu.:0.7895790   3rd Qu.:0.7757   3rd Qu.:0.7268048   3rd Qu.:0.0044183   3rd Qu.:0.3988  
+ Max.   :0.9999965   Max.   :0.9999981   Max.   :1.0000   Max.   :1.0000   Max.   :0.9999958   Max.   :1.0000   Max.   :0.9999975   Max.   :0.9998965   Max.   :1.0000  
+ FlowcellBatch      LibraryBatch    
+ Min.   :0.00000   Min.   :0.00000  
+ 1st Qu.:0.04413   1st Qu.:0.09571  
+ Median :0.20427   Median :0.29553  
+ Mean   :0.29579   Mean   :0.35792  
+ 3rd Qu.:0.49394   3rd Qu.:0.58353  
+ Max.   :1.00000   Max.   :0.99999  
+[1] "Summary pTable_rest (Bonf adjusted)"
+   Hemisphere            PMI                  pH                 Sex             Height               BMI         ChromatinAmount      totalMapped        Individual_ID   
+ Min.   :0.000024   Min.   :0.0003708   Min.   :0.0000003   Min.   :0.0000   Min.   :0.0001168   Min.   :0.0000   Min.   :0.0000425   Min.   :0.0000000   Min.   :0.0000  
+ 1st Qu.:1.000000   1st Qu.:1.0000000   1st Qu.:1.0000000   1st Qu.:1.0000   1st Qu.:1.0000000   1st Qu.:1.0000   1st Qu.:1.0000000   1st Qu.:0.0000111   1st Qu.:0.4994  
+ Median :1.000000   Median :1.0000000   Median :1.0000000   Median :1.0000   Median :1.0000000   Median :1.0000   Median :1.0000000   Median :0.0016521   Median :1.0000  
+ Mean   :0.978024   Mean   :0.9746416   Mean   :0.8778151   Mean   :0.9668   Mean   :0.9753445   Mean   :0.9732   Mean   :0.9446934   Mean   :0.1203078   Mean   :0.7649  
+ 3rd Qu.:1.000000   3rd Qu.:1.0000000   3rd Qu.:1.0000000   3rd Qu.:1.0000   3rd Qu.:1.0000000   3rd Qu.:1.0000   3rd Qu.:1.0000000   3rd Qu.:0.0486008   3rd Qu.:1.0000  
+ Max.   :1.000000   Max.   :1.0000000   Max.   :1.0000000   Max.   :1.0000   Max.   :1.0000000   Max.   :1.0000   Max.   :1.0000000   Max.   :1.0000000   Max.   :1.0000  
+ FlowcellBatch     LibraryBatch   
+ Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.4854   1st Qu.:1.0000  
+ Median :1.0000   Median :1.0000  
+ Mean   :0.7602   Mean   :0.8519  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000  
+ Max.   :1.0000   Max.   :1.0000  
+[1] "Summary of -log10 pvalues (Bonferroni adjusted)"
+   Hemisphere            PMI                pH               Sex               Height             BMI          ChromatinAmount   totalMapped     Individual_ID    
+ Min.   : 0.00000   Min.   :0.00000   Min.   : 0.0000   Min.   : 0.00000   Min.   :0.00000   Min.   : 0.0000   Min.   : 0.000   Min.   : 0.000   Min.   : 0.0000  
+ 1st Qu.: 0.00000   1st Qu.:0.00000   1st Qu.: 0.0000   1st Qu.: 0.00000   1st Qu.:0.00000   1st Qu.: 0.0000   1st Qu.: 0.000   1st Qu.: 3.024   1st Qu.: 0.0000  
+ Median : 0.00000   Median :0.00000   Median : 0.0000   Median : 0.00000   Median :0.00000   Median : 0.0000   Median : 0.000   Median : 6.406   Median : 0.0000  
+ Mean   : 0.04094   Mean   :0.04605   Mean   : 0.2637   Mean   : 0.06735   Mean   :0.04639   Mean   : 0.0537   Mean   : 0.109   Mean   : 8.050   Mean   : 0.6345  
+ 3rd Qu.: 0.00000   3rd Qu.:0.00000   3rd Qu.: 0.0000   3rd Qu.: 0.00000   3rd Qu.:0.00000   3rd Qu.: 0.0000   3rd Qu.: 0.000   3rd Qu.:11.405   3rd Qu.: 0.6944  
+ Max.   :10.63765   Max.   :7.89979   Max.   :15.1387   Max.   :43.34168   Max.   :9.05481   Max.   :21.7752   Max.   :10.066   Max.   :49.527   Max.   :35.1546  
+ FlowcellBatch      LibraryBatch   
+ Min.   : 0.0000   Min.   : 0.000  
+ 1st Qu.: 0.0000   1st Qu.: 0.000  
+ Median : 0.0000   Median : 0.000  
+ Mean   : 0.8059   Mean   : 0.373  
+ 3rd Qu.: 0.7228   3rd Qu.: 0.000  
+ Max.   :19.8833   Max.   :17.490  
+[1] "Significant DBRs by un-modeled covariate"
+     Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped   Individual_ID   FlowcellBatch    LibraryBatch 
+            362             364            4100             701             457             580            1202          185400           15691           23839            8797 
+     Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped   Individual_ID   FlowcellBatch    LibraryBatch 
+           0.15            0.15            1.66            0.28            0.19            0.24            0.49           75.21            6.37            9.67            3.57 
+null device 
+          1 
+    Hemisphere PMI pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch Counts
+9            0   0  0   0      0   0               0           1             0             0            0 149288
+1            0   0  0   0      0   0               0           0             0             0            0  56453
+11           0   0  0   0      0   0               0           1             0             1            0  14254
+13           0   0  0   0      0   0               0           1             1             0            0   5660
+15           0   0  0   0      0   0               0           1             1             1            0   3601
+10           0   0  0   0      0   0               0           1             0             0            1   2667
+16           0   0  0   0      0   0               0           1             1             1            1   2539
+265          0   0  1   0      0   0               0           1             0             0            0   2043
+12           0   0  0   0      0   0               0           1             0             1            1   1463
+5            0   0  0   0      0   0               0           0             1             0            0   1339
+[1] "Number of regions per covariate set"
+    BrainRegion        CellType        AgeDeath      Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped 
+            280          246503            2259             362             364            4100             701             457             580            1202          185400 
+  Individual_ID   FlowcellBatch    LibraryBatch 
+          15691           23839            8797 
+[1] "Regions that are repeated in other sets"
+                BrainRegion CellType AgeDeath Hemisphere PMI   pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA      280        3          0   1    1   2      0   1               1         224             9            10            6
+CellType                280       NA     2255        362 363 4100 701    457 580            1202      185398         15688         23839         8797
+AgeDeath                  3     2255       NA          2   2   20   8      6  12               1        2088           414           279           45
+Hemisphere                0      362        2         NA   0   15  10      1   2               3         228            94            58           42
+PMI                       1      363        2          0  NA   39   3      4   1               7         177            86            80           24
+pH                        1     4100       20         15  39   NA   4     29   8              17        3304           996           614          472
+Sex                       2      701        8         10   3    4  NA    107 243               1         401           254           121           37
+Height                    0      457        6          1   4   29 107     NA 127               3         219           190            80           39
+BMI                       1      580       12          2   1    8 243    127  NA               6         231           219            50           24
+ChromatinAmount           1     1202        1          3   7   17   1      3   6              NA         914           221           339          216
+totalMapped             224   185398     2088        228 177 3304 401    219 231             914          NA         13877         22992         8064
+Individual_ID             9    15688      414         94  86  996 254    190 219             221       13877            NA          6857         3768
+FlowcellBatch            10    23839      279         58  80  614 121     80  50             339       22992          6857            NA         4512
+LibraryBatch              6     8797       45         42  24  472  37     39  24             216        8064          3768          4512           NA
+                BrainRegion CellType AgeDeath Hemisphere   PMI   pH  Sex Height  BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA     TRUE     TRUE      FALSE  TRUE TRUE TRUE  FALSE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+CellType               TRUE       NA     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+AgeDeath               TRUE     TRUE       NA       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+Hemisphere            FALSE     TRUE     TRUE         NA FALSE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+PMI                    TRUE     TRUE     TRUE      FALSE    NA TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+pH                     TRUE     TRUE     TRUE       TRUE  TRUE   NA TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+Sex                    TRUE     TRUE     TRUE       TRUE  TRUE TRUE   NA   TRUE TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+Height                FALSE     TRUE     TRUE       TRUE  TRUE TRUE TRUE     NA TRUE            TRUE        TRUE          TRUE          TRUE         TRUE
+BMI                    TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE   NA            TRUE        TRUE          TRUE          TRUE         TRUE
+ChromatinAmount        TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE              NA        TRUE          TRUE          TRUE         TRUE
+totalMapped            TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE          NA          TRUE          TRUE         TRUE
+Individual_ID          TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE            NA          TRUE         TRUE
+FlowcellBatch          TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE            NA         TRUE
+LibraryBatch           TRUE     TRUE     TRUE       TRUE  TRUE TRUE TRUE   TRUE TRUE            TRUE        TRUE          TRUE          TRUE           NA
+[1] "Regions that are repeated in other sets: percent by row"
+                BrainRegion CellType AgeDeath Hemisphere  PMI    pH   Sex Height   BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA   100.00     1.07       0.00 0.36  0.36  0.71   0.00  0.36            0.36       80.00          3.21          3.57         2.14
+CellType               0.11       NA     0.91       0.15 0.15  1.66  0.28   0.19  0.24            0.49       75.21          6.36          9.67         3.57
+AgeDeath               0.13    99.82       NA       0.09 0.09  0.89  0.35   0.27  0.53            0.04       92.43         18.33         12.35         1.99
+Hemisphere             0.00   100.00     0.55         NA 0.00  4.14  2.76   0.28  0.55            0.83       62.98         25.97         16.02        11.60
+PMI                    0.27    99.73     0.55       0.00   NA 10.71  0.82   1.10  0.27            1.92       48.63         23.63         21.98         6.59
+pH                     0.02   100.00     0.49       0.37 0.95    NA  0.10   0.71  0.20            0.41       80.59         24.29         14.98        11.51
+Sex                    0.29   100.00     1.14       1.43 0.43  0.57    NA  15.26 34.66            0.14       57.20         36.23         17.26         5.28
+Height                 0.00   100.00     1.31       0.22 0.88  6.35 23.41     NA 27.79            0.66       47.92         41.58         17.51         8.53
+BMI                    0.17   100.00     2.07       0.34 0.17  1.38 41.90  21.90    NA            1.03       39.83         37.76          8.62         4.14
+ChromatinAmount        0.08   100.00     0.08       0.25 0.58  1.41  0.08   0.25  0.50              NA       76.04         18.39         28.20        17.97
+totalMapped            0.12   100.00     1.13       0.12 0.10  1.78  0.22   0.12  0.12            0.49          NA          7.48         12.40         4.35
+Individual_ID          0.06    99.98     2.64       0.60 0.55  6.35  1.62   1.21  1.40            1.41       88.44            NA         43.70        24.01
+FlowcellBatch          0.04   100.00     1.17       0.24 0.34  2.58  0.51   0.34  0.21            1.42       96.45         28.76            NA        18.93
+LibraryBatch           0.07   100.00     0.51       0.48 0.27  5.37  0.42   0.44  0.27            2.46       91.67         42.83         51.29           NA
+[1] "Regions that are repeated in other sets: percent by column"
+                BrainRegion CellType AgeDeath Hemisphere   PMI     pH    Sex Height    BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA     0.11     0.13       0.00  0.27   0.02   0.29   0.00   0.17            0.08        0.12          0.06          0.04         0.07
+CellType             100.00       NA    99.82     100.00 99.73 100.00 100.00 100.00 100.00          100.00      100.00         99.98        100.00       100.00
+AgeDeath               1.07     0.91       NA       0.55  0.55   0.49   1.14   1.31   2.07            0.08        1.13          2.64          1.17         0.51
+Hemisphere             0.00     0.15     0.09         NA  0.00   0.37   1.43   0.22   0.34            0.25        0.12          0.60          0.24         0.48
+PMI                    0.36     0.15     0.09       0.00    NA   0.95   0.43   0.88   0.17            0.58        0.10          0.55          0.34         0.27
+pH                     0.36     1.66     0.89       4.14 10.71     NA   0.57   6.35   1.38            1.41        1.78          6.35          2.58         5.37
+Sex                    0.71     0.28     0.35       2.76  0.82   0.10     NA  23.41  41.90            0.08        0.22          1.62          0.51         0.42
+Height                 0.00     0.19     0.27       0.28  1.10   0.71  15.26     NA  21.90            0.25        0.12          1.21          0.34         0.44
+BMI                    0.36     0.24     0.53       0.55  0.27   0.20  34.66  27.79     NA            0.50        0.12          1.40          0.21         0.27
+ChromatinAmount        0.36     0.49     0.04       0.83  1.92   0.41   0.14   0.66   1.03              NA        0.49          1.41          1.42         2.46
+totalMapped           80.00    75.21    92.43      62.98 48.63  80.59  57.20  47.92  39.83           76.04          NA         88.44         96.45        91.67
+Individual_ID          3.21     6.36    18.33      25.97 23.63  24.29  36.23  41.58  37.76           18.39        7.48            NA         28.76        42.83
+FlowcellBatch          3.57     9.67    12.35      16.02 21.98  14.98  17.26  17.51   8.62           28.20       12.40         43.70            NA        51.29
+LibraryBatch           2.14     3.57     1.99      11.60  6.59  11.51   5.28   8.53   4.14           17.97        4.35         24.01         18.93           NA
+[1] "Number of regions highlighted by covariate"
+    BrainRegion        CellType        AgeDeath      Hemisphere             PMI              pH             Sex          Height             BMI ChromatinAmount     totalMapped 
+             50              50              50              50              50              50              50              50              50              50              50 
+  Individual_ID   FlowcellBatch    LibraryBatch 
+             50              50              50 
+[1] "Highlighted regions that are repeated in other sets"
+                BrainRegion CellType AgeDeath Hemisphere PMI pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA        0        0          0   0  0   0      0   0               0           0             0             0            0
+CellType                  0       NA        0          0   0  0   0      0   0               0           0             0             0            0
+AgeDeath                  0        0       NA          0   1  0   0      0   0               0           0             5             0            0
+Hemisphere                0        0        0         NA   0  1   0      0   0               0           0             0             0            1
+PMI                       0        0        1          0  NA  0   0      1   0               0           0             2             0            0
+pH                        0        0        0          1   0 NA   0      0   0               0           0             0             0            0
+Sex                       0        0        0          0   0  0  NA     25  43               0           0             3             0            0
+Height                    0        0        0          0   1  0  25     NA  26               0           0             1             0            0
+BMI                       0        0        0          0   0  0  43     26  NA               0           0             2             0            0
+ChromatinAmount           0        0        0          0   0  0   0      0   0              NA           0             0             0            0
+totalMapped               0        0        0          0   0  0   0      0   0               0          NA             0             0            0
+Individual_ID             0        0        5          0   2  0   3      1   2               0           0            NA             0            1
+FlowcellBatch             0        0        0          0   0  0   0      0   0               0           0             0            NA            4
+LibraryBatch              0        0        0          1   0  0   0      0   0               0           0             1             4           NA
+                BrainRegion CellType AgeDeath Hemisphere   PMI    pH   Sex Height   BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA    FALSE    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE           FALSE       FALSE         FALSE         FALSE        FALSE
+CellType              FALSE       NA    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE           FALSE       FALSE         FALSE         FALSE        FALSE
+AgeDeath              FALSE    FALSE       NA      FALSE  TRUE FALSE FALSE  FALSE FALSE           FALSE       FALSE          TRUE         FALSE        FALSE
+Hemisphere            FALSE    FALSE    FALSE         NA FALSE  TRUE FALSE  FALSE FALSE           FALSE       FALSE         FALSE         FALSE         TRUE
+PMI                   FALSE    FALSE     TRUE      FALSE    NA FALSE FALSE   TRUE FALSE           FALSE       FALSE          TRUE         FALSE        FALSE
+pH                    FALSE    FALSE    FALSE       TRUE FALSE    NA FALSE  FALSE FALSE           FALSE       FALSE         FALSE         FALSE        FALSE
+Sex                   FALSE    FALSE    FALSE      FALSE FALSE FALSE    NA   TRUE  TRUE           FALSE       FALSE          TRUE         FALSE        FALSE
+Height                FALSE    FALSE    FALSE      FALSE  TRUE FALSE  TRUE     NA  TRUE           FALSE       FALSE          TRUE         FALSE        FALSE
+BMI                   FALSE    FALSE    FALSE      FALSE FALSE FALSE  TRUE   TRUE    NA           FALSE       FALSE          TRUE         FALSE        FALSE
+ChromatinAmount       FALSE    FALSE    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE              NA       FALSE         FALSE         FALSE        FALSE
+totalMapped           FALSE    FALSE    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE           FALSE          NA         FALSE         FALSE        FALSE
+Individual_ID         FALSE    FALSE     TRUE      FALSE  TRUE FALSE  TRUE   TRUE  TRUE           FALSE       FALSE            NA         FALSE         TRUE
+FlowcellBatch         FALSE    FALSE    FALSE      FALSE FALSE FALSE FALSE  FALSE FALSE           FALSE       FALSE         FALSE            NA         TRUE
+LibraryBatch          FALSE    FALSE    FALSE       TRUE FALSE FALSE FALSE  FALSE FALSE           FALSE       FALSE          TRUE          TRUE           NA
+[1] "Highlighted regions that are repeated in other sets: percent by row"
+                BrainRegion CellType AgeDeath Hemisphere PMI pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA        0        0          0   0  0   0      0   0               0           0             0             0            0
+CellType                  0       NA        0          0   0  0   0      0   0               0           0             0             0            0
+AgeDeath                  0        0       NA          0   2  0   0      0   0               0           0            10             0            0
+Hemisphere                0        0        0         NA   0  2   0      0   0               0           0             0             0            2
+PMI                       0        0        2          0  NA  0   0      2   0               0           0             4             0            0
+pH                        0        0        0          2   0 NA   0      0   0               0           0             0             0            0
+Sex                       0        0        0          0   0  0  NA     50  86               0           0             6             0            0
+Height                    0        0        0          0   2  0  50     NA  52               0           0             2             0            0
+BMI                       0        0        0          0   0  0  86     52  NA               0           0             4             0            0
+ChromatinAmount           0        0        0          0   0  0   0      0   0              NA           0             0             0            0
+totalMapped               0        0        0          0   0  0   0      0   0               0          NA             0             0            0
+Individual_ID             0        0       10          0   4  0   6      2   4               0           0            NA             0            2
+FlowcellBatch             0        0        0          0   0  0   0      0   0               0           0             0            NA            8
+LibraryBatch              0        0        0          2   0  0   0      0   0               0           0             2             8           NA
+[1] "Highlighted regions that are repeated in other sets: percent by column"
+                BrainRegion CellType AgeDeath Hemisphere PMI pH Sex Height BMI ChromatinAmount totalMapped Individual_ID FlowcellBatch LibraryBatch
+BrainRegion              NA        0        0          0   0  0   0      0   0               0           0             0             0            0
+CellType                  0       NA        0          0   0  0   0      0   0               0           0             0             0            0
+AgeDeath                  0        0       NA          0   2  0   0      0   0               0           0            10             0            0
+Hemisphere                0        0        0         NA   0  2   0      0   0               0           0             0             0            2
+PMI                       0        0        2          0  NA  0   0      2   0               0           0             4             0            0
+pH                        0        0        0          2   0 NA   0      0   0               0           0             0             0            0
+Sex                       0        0        0          0   0  0  NA     50  86               0           0             6             0            0
+Height                    0        0        0          0   2  0  50     NA  52               0           0             2             0            0
+BMI                       0        0        0          0   0  0  86     52  NA               0           0             4             0            0
+ChromatinAmount           0        0        0          0   0  0   0      0   0              NA           0             0             0            0
+totalMapped               0        0        0          0   0  0   0      0   0               0          NA             0             0            0
+Individual_ID             0        0       10          0   4  0   6      2   4               0           0            NA             0            2
+FlowcellBatch             0        0        0          0   0  0   0      0   0               0           0             0            NA            8
+LibraryBatch              0        0        0          2   0  0   0      0   0               0           0             2             8           NA
+[1] "Percent of genes included in the background"
+[1] 62.63
+[1] "Percent of background genes missing"
+[1] 47.97
+...................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................[1] "Top GO results"
+[1] "BrainRegion"
+       GOBPID       Pvalue OddsRatio   ExpCount Count Size                                               Term
+1  GO:0007399 7.989876e-06  2.176426 27.9366707    51 2036                         nervous system development
+2  GO:0022603 8.521310e-06  2.840092 10.7438179    27  783   regulation of anatomical structure morphogenesis
+3  GO:0050793 1.703278e-05  2.175852 24.7807600    46 1806                regulation of developmental process
+4  GO:0048699 1.990856e-05  2.312376 18.9080217    38 1378                              generation of neurons
+5  GO:0022008 2.796250e-05  2.250482 19.9371230    39 1453                                       neurogenesis
+6  GO:0051960 3.196887e-05  2.849594  8.9874849    23  655           regulation of nervous system development
+7  GO:0048468 3.288986e-05  2.110461 25.4256634    46 1853                                   cell development
+8  GO:0044700 3.395594e-05  1.836488 68.2362786    95 4973                          single organism signaling
+9  GO:0007154 3.502717e-05  1.833855 69.2379373    96 5046                                 cell communication
+10 GO:2000026 3.523703e-05  2.268006 18.6610374    37 1360 regulation of multicellular organismal development
+11 GO:0023052 3.553180e-05  1.833490 68.3048854    95 4978                                          signaling
+12 GO:0048731 4.445099e-05  1.859698 50.1652593    75 3656                                 system development
+13 GO:0051271 4.501108e-05  4.433974  2.9775332    12  217 negative regulation of cellular component movement
+14 GO:0060284 5.224577e-05  2.690933  9.9205368    24  723                     regulation of cell development
+15 GO:0030182 5.320892e-05  2.265733 17.5496080    35 1279                             neuron differentiation
+16 GO:0071869 5.855611e-05 14.185137  0.4253619     5   31                          response to catecholamine
+17 GO:0044707 5.959469e-05  1.799150 69.1007238    95 5036              single-multicellular organism process
+18 GO:0071867 7.999574e-05 13.169895  0.4528046     5   33                              response to monoamine
+19 GO:0044849 9.028520e-05 20.975923  0.2469843     4   18                                      estrous cycle
+20 GO:0000904 9.899316e-05  2.433129 12.3629373    27  901     cell morphogenesis involved in differentiation
+[1] "CellType"
+       GOBPID       Pvalue OddsRatio  ExpCount Count  Size                                               Term
+1  GO:0009653 1.072768e-14  1.836781 2210.6512  2314  2484                 anatomical structure morphogenesis
+2  GO:0048513 5.604161e-14  1.747276 2461.6189  2567  2766                           animal organ development
+3  GO:0007275 1.096123e-13  1.569967 3905.1278  4029  4388                 multicellular organism development
+4  GO:0044707 2.845385e-13  1.512455 4795.0841  4924  5388              single-multicellular organism process
+5  GO:0044767 2.387482e-12  1.496159 4528.9871  4651  5089              single-organism developmental process
+6  GO:0032501 3.923336e-12  1.464215 5347.7469  5473  6009                   multicellular organismal process
+7  GO:0032989 4.361878e-12  2.060570 1267.2976  1339  1424                   cellular component morphogenesis
+8  GO:0032502 4.999352e-12  1.484218 4590.3941  4711  5158                              developmental process
+9  GO:0048869 5.984814e-12  1.566668 3195.8327  3303  3591                     cellular developmental process
+10 GO:0048856 6.035897e-12  1.503863 4095.5785  4212  4602                   anatomical structure development
+11 GO:0000902 1.705543e-11  2.051107 1205.8907  1274  1355                                 cell morphogenesis
+12 GO:0048731 3.368602e-11  1.516357 3481.5087  3588  3912                                 system development
+13 GO:0030154 1.462542e-10  1.532916 2987.5830  3085  3357                               cell differentiation
+14 GO:0009792 3.267347e-10  3.310265  480.5764   520   540 embryo development ending in birth or egg hatching
+15 GO:0009790 4.105311e-10  2.355697  774.2619   825   870                                 embryo development
+16 GO:0043009 4.941831e-10  3.277079  476.1266   515   535                     chordate embryonic development
+17 GO:0048468 2.512585e-09  1.655922 1769.2329  1842  1988                                   cell development
+18 GO:0044763 2.667751e-09  1.421490 9533.2109  9629 10712                   single-organism cellular process
+19 GO:0000904 3.364094e-09  2.117198  855.2479   906   961     cell morphogenesis involved in differentiation
+20 GO:0065007 4.115462e-09  1.383741 8572.0582  8674  9632                              biological regulation
+[1] "AgeDeath"
+       GOBPID       Pvalue OddsRatio  ExpCount Count Size                                                  Term
+1  GO:0048666 4.120644e-11  1.839529 107.94609   174 1078                                    neuron development
+2  GO:0030182 4.979099e-10  1.715535 128.47387   195 1283                                neuron differentiation
+3  GO:0031175 1.001424e-09  1.807380  96.93119   155  968                         neuron projection development
+4  GO:0048699 1.395588e-09  1.668177 138.38729   205 1382                                 generation of neurons
+5  GO:0022008 6.503568e-09  1.618723 145.99759   211 1458                                          neurogenesis
+6  GO:0030030 1.355132e-08  1.630725 132.87984   194 1327                          cell projection organization
+7  GO:0048812 9.689483e-08  1.777764  75.90273   121  758                       neuron projection morphogenesis
+8  GO:0007399 1.481985e-07  1.472086 204.37660   271 2041                            nervous system development
+9  GO:0048667 2.679275e-07  1.762918  72.49812   115  724 cell morphogenesis involved in neuron differentiation
+10 GO:0043547 1.202602e-06  1.918055  45.46153    78  454                positive regulation of GTPase activity
+11 GO:0048858 1.229937e-06  1.608074  97.73227   143  976                         cell projection morphogenesis
+12 GO:0016192 2.225427e-06  1.536694 118.26005   166 1181                            vesicle-mediated transport
+13 GO:0032990 3.260612e-06  1.573503  99.43457   143  993                               cell part morphogenesis
+14 GO:0043087 3.641268e-06  1.822054  49.86749    82  498                         regulation of GTPase activity
+15 GO:0048468 4.811041e-06  1.417497 185.75139   241 1855                                      cell development
+16 GO:0000904 5.977994e-06  1.582256  90.42238   131  903        cell morphogenesis involved in differentiation
+17 GO:0016043 9.947745e-06  1.285632 522.00647   595 5213                       cellular component organization
+18 GO:0000902 1.354265e-05  1.465836 128.87442   174 1287                                    cell morphogenesis
+19 GO:0071840 1.399913e-05  1.279198 532.12016   604 5314         cellular component organization or biogenesis
+20 GO:0010975 2.066734e-05  1.892893  35.74838    61  357           regulation of neuron projection development
+[1] "Hemisphere"
+       GOBPID       Pvalue OddsRatio   ExpCount Count Size                                                                        Term
+1  GO:0007155 2.078679e-07  2.463395 23.5318411    50 1244                                                               cell adhesion
+2  GO:0022610 2.409681e-07  2.449834 23.6453388    50 1250                                                         biological adhesion
+3  GO:0098742 2.196045e-04  3.706247  3.5184264    12  186                   cell-cell adhesion via plasma-membrane adhesion molecules
+4  GO:0045624 2.450447e-04 16.200561  0.3215766     4   17                        positive regulation of T-helper cell differentiation
+5  GO:0046638 4.750445e-04  8.799458  0.6620695     5   35                    positive regulation of alpha-beta T cell differentiation
+6  GO:0045625 5.163749e-04 26.233871  0.1702464     3    9                               regulation of T-helper 1 cell differentiation
+7  GO:0043372 6.991650e-04 11.695906  0.4161580     4   22      positive regulation of CD4-positive, alpha-beta T cell differentiation
+8  GO:0042093 7.013930e-04  7.997660  0.7188183     5   38                                               T-helper cell differentiation
+9  GO:0002287 7.922726e-04  7.761836  0.7377346     5   39                    alpha-beta T cell activation involved in immune response
+10 GO:0002293 7.922726e-04  7.761836  0.7377346     5   39               alpha-beta T cell differentiation involved in immune response
+11 GO:0002294 7.922726e-04  7.761836  0.7377346     5   39 CD4-positive, alpha-beta T cell differentiation involved in immune response
+12 GO:0098609 9.684939e-04  2.052780 14.1682870    27  749                                                          cell-cell adhesion
+13 GO:0045622 9.859200e-04 10.524696  0.4539905     4   24                                 regulation of T-helper cell differentiation
+14 GO:0045628 9.862280e-04 19.672379  0.2080790     3   11                               regulation of T-helper 2 cell differentiation
+15 GO:0007156 1.059965e-03  3.805195  2.5536966     9  135             homophilic cell adhesion via plasma membrane adhesion molecules
+16 GO:2000516 1.156436e-03 10.022749  0.4729068     4   25           positive regulation of CD4-positive, alpha-beta T cell activation
+17 GO:0007399 1.239846e-03  1.636966 38.5513603    57 2038                                                  nervous system development
+18 GO:0002292 1.245720e-03  6.942662  0.8133997     5   43                          T cell differentiation involved in immune response
+19 GO:0046637 1.245720e-03  6.942662  0.8133997     5   43                             regulation of alpha-beta T cell differentiation
+20 GO:2000008 1.346591e-03  9.566434  0.4918230     4   26                          regulation of protein localization to cell surface
+[1] "PMI"
+       GOBPID       Pvalue OddsRatio   ExpCount Count Size                                               Term
+1  GO:0044708 5.381818e-06  3.283326   7.413575    22  384                           single-organism behavior
+2  GO:0007399 1.861226e-05  1.902689  39.346003    65 2038                         nervous system development
+3  GO:0003008 5.493504e-05  1.985570  27.067270    48 1402                                     system process
+4  GO:0030182 1.083457e-04  1.976064  24.711916    44 1280                             neuron differentiation
+5  GO:0007605 1.166238e-04  4.721673   2.336048    10  121                        sensory perception of sound
+6  GO:0060284 1.473782e-04  2.269511  13.939065    29  722                     regulation of cell development
+7  GO:0048699 1.495862e-04  1.917858  26.623228    46 1379                              generation of neurons
+8  GO:0032501 1.729629e-04  1.584326 107.323077   136 5559                   multicellular organismal process
+9  GO:0030534 1.858579e-04  4.439162   2.471192    10  128                                     adult behavior
+10 GO:2000026 2.077408e-04  1.898965  26.217798    45 1358 regulation of multicellular organismal development
+11 GO:0044707 2.300477e-04  1.572455  97.225943   125 5036              single-multicellular organism process
+12 GO:0050877 2.595065e-04  2.130149  15.850377    31  821                        neurological system process
+13 GO:0007610 2.633324e-04  2.288946  12.317345    26  638                                           behavior
+14 GO:0050954 2.700844e-04  4.222397   2.587029    10  134          sensory perception of mechanical stimulus
+15 GO:0050905 3.423499e-04  5.083399   1.737557     8   90                              neuromuscular process
+16 GO:0051960 3.944452e-04  2.224027  12.645551    26  655           regulation of nervous system development
+17 GO:0050794 4.104382e-04  1.590055 157.152338   183 8140                     regulation of cellular process
+18 GO:0010648 4.112773e-04  1.962165  20.020513    36 1037          negative regulation of cell communication
+19 GO:0006796 4.822518e-04  1.633575  49.906486    72 2585    phosphate-containing compound metabolic process
+20 GO:0022008 4.944022e-04  1.804031  28.071192    46 1454                                       neurogenesis
+[1] "pH"
+       GOBPID       Pvalue OddsRatio  ExpCount Count Size                                     Term
+1  GO:0007399 5.905615e-11  1.512980 297.86944   396 2051               nervous system development
+2  GO:0007610 9.523201e-11  1.913544  93.23851   153  642                                 behavior
+3  GO:0032501 2.480307e-09  1.336361 814.45725   933 5608         multicellular organismal process
+4  GO:0048731 2.735076e-08  1.338738 535.17742   636 3685                       system development
+5  GO:0007275 3.737775e-08  1.324069 600.09582   703 4132       multicellular organism development
+6  GO:0044707 5.754092e-08  1.304856 737.04896   843 5075    single-multicellular organism process
+7  GO:0007417 8.660239e-08  1.642337 115.60413   169  796       central nervous system development
+8  GO:0048699 1.376961e-07  1.475243 201.43584   268 1387                    generation of neurons
+9  GO:0044708 1.733386e-07  1.933430  56.20452    94  387                 single-organism behavior
+10 GO:0022008 2.336759e-07  1.453241 212.32819   279 1462                             neurogenesis
+11 GO:0044767 2.847825e-07  1.288614 696.09373   795 4793    single-organism developmental process
+12 GO:0048856 3.567950e-07  1.292110 631.03009   727 4345         anatomical structure development
+13 GO:0007155 4.891209e-07  1.473468 181.39392   242 1249                            cell adhesion
+14 GO:0030182 5.482926e-07  1.464169 186.91271   248 1287                   neuron differentiation
+15 GO:0022610 7.255558e-07  1.463896 182.26531   242 1255                      biological adhesion
+16 GO:0003008 1.258399e-06  1.426341 205.64755   267 1416                           system process
+17 GO:0045595 1.377838e-06  1.448193 183.71762   242 1265       regulation of cell differentiation
+18 GO:0032502 1.496020e-06  1.266883 705.38853   798 4857                    developmental process
+19 GO:0051960 1.714522e-06  1.620766  95.56221   139  658 regulation of nervous system development
+20 GO:0048468 1.725758e-06  1.369472 271.29211   339 1868                         cell development
+[1] "Sex"
+       GOBPID       Pvalue OddsRatio    ExpCount Count Size                                           Term
+1  GO:0048736 3.889277e-05  3.963048   3.9313460    14  136                          appendage development
+2  GO:0060173 3.889277e-05  3.963048   3.9313460    14  136                               limb development
+3  GO:0050808 4.150507e-05  3.238002   6.0993677    18  211                           synapse organization
+4  GO:0035107 4.287083e-05  4.189460   3.4688347    13  120                        appendage morphogenesis
+5  GO:0035108 4.287083e-05  4.189460   3.4688347    13  120                             limb morphogenesis
+6  GO:0070498 4.648391e-05 17.005277   0.4336043     5   15       interleukin-1-mediated signaling pathway
+7  GO:0032501 4.775892e-05  1.506907 161.0695574   199 5572               multicellular organismal process
+8  GO:0097090 6.601526e-05 15.458143   0.4625113     5   16              presynaptic membrane organization
+9  GO:0044707 1.316189e-04  1.471631 145.9223126   181 5048          single-multicellular organism process
+10 GO:0007416 1.818092e-04  3.820789   3.4688347    12  120                               synapse assembly
+11 GO:0097105 1.930676e-04 19.387970   0.3179765     4   11                  presynaptic membrane assembly
+12 GO:0051239 2.190211e-04  1.577034  63.2195122    90 2187 regulation of multicellular organismal process
+13 GO:0003008 2.678579e-04  1.687500  40.6720867    63 1407                                 system process
+14 GO:0008015 2.777130e-04  2.269553  12.3143631    26  426                              blood circulation
+15 GO:0048699 2.864985e-04  1.689159  39.9494128    62 1382                          generation of neurons
+16 GO:0048812 3.077203e-04  1.923634  21.8247516    39  755                neuron projection morphogenesis
+17 GO:0003013 3.095526e-04  2.252117  12.4010840    26  429                     circulatory system process
+18 GO:0007275 3.623263e-04  1.447691 118.7786811   150 4109             multicellular organism development
+19 GO:0048589 3.704477e-04  2.122918  14.6558266    29  507                           developmental growth
+20 GO:0071347 4.873766e-04  4.879939   1.8500452     8   64             cellular response to interleukin-1
+[1] "Height"
+       GOBPID       Pvalue OddsRatio    ExpCount Count  Size                                             Term
+1  GO:0098609 2.374334e-05  2.350559  15.9334036    34   750                               cell-cell adhesion
+2  GO:0007155 6.892739e-05  1.968948  26.4494501    47  1245                                    cell adhesion
+3  GO:0022610 7.747186e-05  1.958140  26.5769173    47  1251                              biological adhesion
+4  GO:0016477 8.201457e-05  2.062344  21.3295163    40  1004                                   cell migration
+5  GO:0048870 1.176342e-04  1.990333  23.1990357    42  1092                                    cell motility
+6  GO:0051674 1.176342e-04  1.990333  23.1990357    42  1092                             localization of cell
+7  GO:0071625 1.225532e-04 20.756195   0.2761790     4    13                            vocalization behavior
+8  GO:0044700 2.023874e-04  1.546804 105.6915775   135  4975                        single organism signaling
+9  GO:0023052 2.129169e-04  1.544260 105.7978002   135  4980                                        signaling
+10 GO:0048731 2.219400e-04  1.575966  77.7125207   105  3658                               system development
+11 GO:0048856 2.238950e-04  1.553895  91.6489378   120  4314                 anatomical structure development
+12 GO:0007399 2.250040e-04  1.705477  43.3388579    66  2040                       nervous system development
+13 GO:0044763 2.723754e-04  1.738479 213.9324996   238 10070                 single-organism cellular process
+14 GO:0044767 3.360554e-04  1.524792 101.0177791   129  4755            single-organism developmental process
+15 GO:0007167 3.381362e-04  1.911537  22.8166340    40  1074 enzyme linked receptor protein signaling pathway
+16 GO:0060348 3.578622e-04  3.753298   3.1866807    11   150                                 bone development
+17 GO:0002021 3.814520e-04 14.365246   0.3611571     4    17                       response to dietary excess
+18 GO:0032502 4.052006e-04  1.514449 102.3774296   130  4819                            developmental process
+19 GO:0007154 4.167122e-04  1.510175 107.2424288   135  5048                               cell communication
+20 GO:0007165 5.038804e-04  1.507513  97.1300286   124  4572                              signal transduction
+[1] "BMI"
+       GOBPID       Pvalue OddsRatio     ExpCount Count Size                                                                 Term
+1  GO:0007158 0.0000278140 19.013235   0.38956640     5   15                                            neuron cell-cell adhesion
+2  GO:0032501 0.0000966201  1.511680 144.55510388   179 5566                                     multicellular organismal process
+3  GO:0021952 0.0002099685 11.178201   0.57136405     5   22                central nervous system projection neuron axonogenesis
+4  GO:0044707 0.0002282034  1.479032 130.97222222   163 5043                                single-multicellular organism process
+5  GO:0021954 0.0002650547  5.364985   1.68812105     8   65                            central nervous system neuron development
+6  GO:0006357 0.0003050531  1.711260  37.68405601    59 1451          regulation of transcription from RNA polymerase II promoter
+7  GO:0021953 0.0003980749  3.469755   3.76580849    12  145                        central nervous system neuron differentiation
+8  GO:2000369 0.0004863703 13.786190   0.38956640     4   15                          regulation of clathrin-mediated endocytosis
+9  GO:0031290 0.0006352943 12.636364   0.41553749     4   16                                  retinal ganglion cell axon guidance
+10 GO:0042489 0.0006725932       Inf   0.05194219     2    2      negative regulation of odontogenesis of dentin-containing tooth
+11 GO:0006366 0.0006885025  1.624823  42.25496838    63 1627                        transcription from RNA polymerase II promoter
+12 GO:0021955 0.0006895268  8.258312   0.72719061     5   28                           central nervous system neuron axonogenesis
+13 GO:0090287 0.0009872211  2.808063   5.35004517    14  206            regulation of cellular response to growth factor stimulus
+14 GO:0098742 0.0010940795  2.906469   4.80465221    13  185            cell-cell adhesion via plasma-membrane adhesion molecules
+15 GO:0003008 0.0012318862  1.628084  36.48938573    55 1405                                                       system process
+16 GO:0007340 0.0015579463  9.474340   0.51942186     4   20                                                    acrosome reaction
+17 GO:0048731 0.0017196867  1.416045  95.05420054   120 3660                                                   system development
+18 GO:0000122 0.0021911355  1.895833  15.68654020    28  604 negative regulation of transcription from RNA polymerase II promoter
+19 GO:0007399 0.0022255549  1.497047  52.98102981    73 2040                                           nervous system development
+20 GO:0048699 0.0023431369  1.586955  35.86607949    53 1381                                                generation of neurons
+[1] "ChromatinAmount"
+       GOBPID       Pvalue OddsRatio   ExpCount Count Size                                           Term
+1  GO:0050896 1.863740e-06  1.428634 372.682780   434 6725                           response to stimulus
+2  GO:0016358 2.130152e-06  3.084377   9.975152    27  180                           dendrite development
+3  GO:0007399 2.384123e-06  1.561281 113.107146   159 2041                     nervous system development
+4  GO:0048468 2.801917e-06  1.579236 103.021158   147 1859                               cell development
+5  GO:0021872 3.651185e-06  5.268758   3.325051    14   60                forebrain generation of neurons
+6  GO:0044767 4.757083e-06  1.411975 263.842783   321 4761          single-organism developmental process
+7  GO:0009653 5.148283e-06  1.510751 128.679467   175 2322             anatomical structure morphogenesis
+8  GO:0048731 6.259698e-06  1.431043 202.938935   256 3662                             system development
+9  GO:0007275 6.843457e-06  1.416049 227.599729   282 4107             multicellular organism development
+10 GO:0030900 8.433088e-06  2.350367  17.844439    38  322                          forebrain development
+11 GO:0000904 8.945525e-06  1.765942  49.986597    81  902 cell morphogenesis involved in differentiation
+12 GO:0051716 9.109653e-06  1.388998 314.328138   371 5672                  cellular response to stimulus
+13 GO:0048666 9.597467e-06  1.697437  59.740080    93 1078                             neuron development
+14 GO:0048518 1.052410e-05  1.395943 254.477223   309 4592      positive regulation of biological process
+15 GO:0032502 1.216922e-05  1.389049 267.389504   322 4825                          developmental process
+16 GO:0009893 1.515018e-05  1.434912 167.194639   215 3017       positive regulation of metabolic process
+17 GO:0048856 1.581370e-05  1.391092 239.348242   292 4319               anatomical structure development
+18 GO:0048699 1.894802e-05  1.593479  76.587004   112 1382                          generation of neurons
+19 GO:0040011 1.945725e-05  1.564142  85.121301   122 1536                                     locomotion
+20 GO:0044700 2.248345e-05  1.372463 275.923801   329 4979                      single organism signaling
+[1] "totalMapped"
+       GOBPID       Pvalue OddsRatio  ExpCount Count Size                                               Term
+1  GO:0009653 1.154203e-14  1.718003 2121.6149  2236 2463                 anatomical structure morphogenesis
+2  GO:0032989 2.510135e-14  2.044048 1220.5962  1308 1417                   cellular component morphogenesis
+3  GO:0000902 1.480215e-13  2.030975 1161.1599  1244 1348                                 cell morphogenesis
+4  GO:0007275 6.559765e-12  1.453155 3742.7596  3869 4345                 multicellular organism development
+5  GO:0044767 3.029524e-11  1.410878 4339.7061  4467 5038              single-organism developmental process
+6  GO:0048856 4.341203e-11  1.421881 3927.0981  4050 4559                   anatomical structure development
+7  GO:0032502 1.196136e-10  1.393295 4398.2809  4522 5106                              developmental process
+8  GO:0000904 2.134343e-10  2.052700  823.4933   884  956     cell morphogenesis involved in differentiation
+9  GO:0009792 3.067159e-10  2.788988  461.7075   506  536 embryo development ending in birth or egg hatching
+10 GO:0048869 3.157877e-10  1.442458 3064.8421  3173 3558                     cellular developmental process
+11 GO:0009790 3.959865e-10  2.117341  743.3836   800  863                                 embryo development
+12 GO:0030030 4.002233e-10  1.773051 1190.4474  1262 1382                       cell projection organization
+13 GO:0032990 4.792320e-10  1.958510  886.3751   948 1029                            cell part morphogenesis
+14 GO:0043009 4.963297e-10  2.760235  457.4005   501  531                     chordate embryonic development
+15 GO:0048731 5.306508e-10  1.418463 3337.0428  3447 3874                                 system development
+16 GO:0044707 7.938132e-10  1.366141 4593.8175  4713 5333              single-multicellular organism process
+17 GO:0048858 8.510466e-10  1.947769  871.7314   932 1012                      cell projection morphogenesis
+18 GO:0022603 3.271244e-09  2.040991  720.1259   773  836   regulation of anatomical structure morphogenesis
+19 GO:0048468 4.383833e-09  1.556732 1698.6702  1778 1972                                   cell development
+20 GO:0006464 4.833270e-09  1.408435 2980.4254  3080 3460              cellular protein modification process
+[1] "Individual_ID"
+       GOBPID       Pvalue OddsRatio  ExpCount Count Size                                          Term
+1  GO:0019222 8.012118e-16  1.323548 2574.3889  2802 5512               regulation of metabolic process
+2  GO:0006464 8.653116e-16  1.374637 1567.8925  1768 3357         cellular protein modification process
+3  GO:0036211 8.653116e-16  1.374637 1567.8925  1768 3357                  protein modification process
+4  GO:0043412 3.778772e-13  1.326818 1633.2797  1816 3497                    macromolecule modification
+5  GO:0031323 2.571242e-12  1.283087 2240.9140  2433 4798      regulation of cellular metabolic process
+6  GO:0009653 3.955093e-12  1.365222 1102.7090  1254 2361            anatomical structure morphogenesis
+7  GO:0060255 4.700314e-12  1.280290 2204.0169  2393 4719 regulation of macromolecule metabolic process
+8  GO:0080090 1.017692e-11  1.275176 2202.1487  2388 4715       regulation of primary metabolic process
+9  GO:0031175 2.057815e-11  1.556865  455.3754   555  975                 neuron projection development
+10 GO:0044260 5.812279e-11  1.250019 3234.7999  3422 6926      cellular macromolecule metabolic process
+11 GO:0008152 1.707568e-10  1.275879 4559.8256  4723 9763                             metabolic process
+12 GO:0048666 1.963926e-10  1.489563  508.6193   608 1089                            neuron development
+13 GO:0030182 2.191717e-10  1.442436  607.6342   715 1301                        neuron differentiation
+14 GO:0007275 2.857973e-10  1.260817 1952.2760  2119 4180            multicellular organism development
+15 GO:0048812 6.956050e-10  1.577971  356.3604   438  763               neuron projection morphogenesis
+16 GO:0044767 1.050022e-09  1.241028 2262.8654  2430 4845         single-organism developmental process
+17 GO:0048518 1.056942e-09  1.243305 2178.3290  2344 4664     positive regulation of biological process
+18 GO:0009893 1.073882e-09  1.280204 1431.9805  1578 3066      positive regulation of metabolic process
+19 GO:0032502 1.262611e-09  1.238924 2293.2238  2460 4910                         developmental process
+20 GO:0030030 1.388996e-09  1.411901  623.5140   727 1335                  cell projection organization
+[1] "FlowcellBatch"
+       GOBPID       Pvalue OddsRatio ExpCount Count Size                                                      Term
+1  GO:0006464 4.292789e-29  1.564813 1702.957  1982 3353                     cellular protein modification process
+2  GO:0036211 4.292789e-29  1.564813 1702.957  1982 3353                              protein modification process
+3  GO:0044260 1.798014e-28  1.464413 3507.999  3827 6907                  cellular macromolecule metabolic process
+4  GO:0019222 3.297461e-27  1.460387 2789.842  3096 5493                           regulation of metabolic process
+5  GO:0043412 3.399177e-25  1.504253 1775.077  2037 3495                                macromolecule modification
+6  GO:0060255 1.027008e-22  1.424894 2388.609  2658 4703             regulation of macromolecule metabolic process
+7  GO:0043170 2.468399e-22  1.399530 3776.673  4055 7436                           macromolecule metabolic process
+8  GO:0044237 9.072251e-22  1.405840 4272.882  4540 8413                                cellular metabolic process
+9  GO:0006996 4.716979e-21  1.466842 1603.410  1833 3157                                    organelle organization
+10 GO:0044238 8.123157e-21  1.394579 4281.516  4542 8430                                 primary metabolic process
+11 GO:0008152 1.416805e-20  1.430254 4941.774  5181 9730                                         metabolic process
+12 GO:0031323 1.912156e-20  1.395030 2427.716  2683 4780                  regulation of cellular metabolic process
+13 GO:0080090 5.000781e-20  1.391595 2386.577  2638 4699                   regulation of primary metabolic process
+14 GO:0044267 1.588426e-18  1.382783 2172.755  2408 4278                        cellular protein metabolic process
+15 GO:0051252 2.016801e-18  1.443870 1467.295  1674 2889                       regulation of RNA metabolic process
+16 GO:0097659 2.031173e-18  1.440800 1490.151  1698 2934                      nucleic acid-templated transcription
+17 GO:2000112 3.761145e-18  1.426662 1570.905  1781 3093 regulation of cellular macromolecule biosynthetic process
+18 GO:1903506 4.177963e-18  1.445939 1414.983  1617 2786        regulation of nucleic acid-templated transcription
+19 GO:0010556 5.151247e-18  1.419313 1617.631  1829 3185          regulation of macromolecule biosynthetic process
+20 GO:0006351 5.271919e-18  1.434933 1484.056  1689 2922                              transcription, DNA-templated
+[1] "LibraryBatch"
+       GOBPID       Pvalue OddsRatio  ExpCount Count Size                                                         Term
+1  GO:0006464 6.578098e-17  1.432161  950.5030  1140 3329                        cellular protein modification process
+2  GO:0036211 6.578098e-17  1.432161  950.5030  1140 3329                                 protein modification process
+3  GO:0043412 1.075850e-14  1.388421  990.7616  1168 3470                                   macromolecule modification
+4  GO:0044767 5.001442e-14  1.342891 1371.0771  1559 4802                        single-organism developmental process
+5  GO:0032502 8.473410e-14  1.338245 1389.3505  1576 4866                                        developmental process
+6  GO:0019222 1.847726e-13  1.326052 1558.3796  1746 5458                              regulation of metabolic process
+7  GO:0048856 2.069516e-13  1.340964 1242.8776  1422 4353                             anatomical structure development
+8  GO:0007399 5.825557e-13  1.443099  587.3189   724 2057                                   nervous system development
+9  GO:0007275 8.645418e-12  1.317485 1182.9180  1347 4143                           multicellular organism development
+10 GO:0048731 1.269010e-11  1.325802 1054.4331  1212 3693                                           system development
+11 GO:0044260 1.502342e-11  1.291629 1958.1105  2132 6858                     cellular macromolecule metabolic process
+12 GO:0044267 3.458140e-11  1.304473 1212.8978  1373 4248                           cellular protein metabolic process
+13 GO:0070647 7.113201e-11  1.607586  250.4029   336  877 protein modification by small protein conjugation or removal
+14 GO:0009653 8.039657e-11  1.370663  666.9796   796 2336                           anatomical structure morphogenesis
+15 GO:0009893 1.247825e-10  1.328792  868.5582  1009 3042                     positive regulation of metabolic process
+16 GO:0032990 3.619020e-10  1.539567  284.9510   372  998                                      cell part morphogenesis
+17 GO:0019538 4.164538e-10  1.277195 1343.6669  1498 4706                                    protein metabolic process
+18 GO:0032989 4.638369e-10  1.455617  388.0245   487 1359                             cellular component morphogenesis
+19 GO:0006996 5.396567e-10  1.311705  896.2538  1033 3139                                       organelle organization
+20 GO:0048666 7.592265e-10  1.503848  310.3625   399 1087                                           neuron development
+     user    system   elapsed 
+60778.268   693.961 47387.207 
+ setting  value                                      
+ version  R version 3.3.0 Patched (2016-05-20 r70657)
+ system   x86_64, linux-gnu                          
+ ui       X11                                        
+ language (EN)                                       
+ collate  en_US.UTF-8                                
+ tz       <NA>                                       
+ date     2016-06-18                                 
+
+ package                           * version  date       source        
+ acepack                             1.3-3.3  2014-11-24 CRAN (R 3.3.0)
+ annotate                            1.50.0   2016-05-08 Bioconductor  
+ AnnotationDbi                     * 1.35.3   2016-06-07 Bioconductor  
+ AnnotationForge                     1.15.4   2016-06-07 Bioconductor  
+ AnnotationHub                       2.5.4    2016-06-13 Bioconductor  
+ Biobase                           * 2.32.0   2016-05-05 Bioconductor  
+ BiocGenerics                      * 0.19.1   2016-06-13 Bioconductor  
+ BiocInstaller                       1.22.2   2016-06-08 Bioconductor  
+ BiocParallel                        1.6.2    2016-06-08 Bioconductor  
+ biomaRt                           * 2.29.2   2016-06-07 Bioconductor  
+ Biostrings                          2.41.2   2016-06-13 Bioconductor  
+ biovizBase                          1.20.0   2016-05-08 Bioconductor  
+ bitops                              1.0-6    2013-08-17 CRAN (R 3.3.0)
+ BSgenome                            1.40.0   2016-05-08 Bioconductor  
+ bumphunter                        * 1.12.0   2016-05-08 Bioconductor  
+ Category                          * 2.38.0   2016-05-05 Bioconductor  
+ chron                               2.3-47   2015-06-24 CRAN (R 3.3.0)
+ cluster                             2.0.4    2016-04-18 CRAN (R 3.3.0)
+ codetools                           0.2-14   2015-07-15 CRAN (R 3.3.0)
+ colorspace                          1.2-6    2015-03-11 CRAN (R 3.3.0)
+ data.table                          1.9.6    2015-09-19 CRAN (R 3.3.0)
+ DBI                                 0.4-1    2016-05-08 CRAN (R 3.3.0)
+ derfinder                         * 1.6.4    2016-06-06 Bioconductor  
+ derfinderHelper                     1.6.3    2016-06-06 Bioconductor  
+ derfinderPlot                     * 1.6.3    2016-06-06 Bioconductor  
+ devtools                          * 1.11.1   2016-04-21 CRAN (R 3.3.0)
+ dichromat                           2.0-0    2013-01-24 CRAN (R 3.3.0)
+ digest                              0.6.9    2016-01-08 CRAN (R 3.3.0)
+ doRNG                               1.6      2014-03-07 CRAN (R 3.3.0)
+ ensembldb                           1.5.8    2016-06-13 Bioconductor  
+ foreach                           * 1.4.3    2015-10-13 CRAN (R 3.3.0)
+ foreign                             0.8-66   2015-08-19 CRAN (R 3.3.0)
+ Formula                           * 1.2-1    2015-04-07 CRAN (R 3.3.0)
+ genefilter                          1.54.2   2016-06-08 Bioconductor  
+ GenomeInfoDb                      * 1.8.1    2016-06-08 Bioconductor  
+ GenomicAlignments                   1.9.3    2016-06-16 Bioconductor  
+ GenomicFeatures                   * 1.25.12  2016-06-07 Bioconductor  
+ GenomicFiles                        1.8.0    2016-05-08 Bioconductor  
+ GenomicRanges                     * 1.25.4   2016-06-13 Bioconductor  
+ getopt                            * 1.20.0   2013-08-30 CRAN (R 3.3.0)
+ GGally                              1.1.0    2016-06-02 CRAN (R 3.3.0)
+ ggbio                               1.20.1   2016-06-08 Bioconductor  
+ ggplot2                           * 2.1.0    2016-03-01 CRAN (R 3.3.0)
+ GO.db                             * 3.3.0    2016-05-08 Bioconductor  
+ GOstats                           * 2.38.0   2016-05-05 Bioconductor  
+ graph                             * 1.50.0   2016-05-05 Bioconductor  
+ gridExtra                           2.2.1    2016-02-29 CRAN (R 3.3.0)
+ GSEABase                            1.34.0   2016-05-08 Bioconductor  
+ gtable                              0.2.0    2016-02-26 CRAN (R 3.3.0)
+ Hmisc                             * 3.17-4   2016-05-02 CRAN (R 3.3.0)
+ htmltools                           0.3.5    2016-03-21 CRAN (R 3.3.0)
+ httpuv                              1.3.3    2015-08-04 CRAN (R 3.3.0)
+ httr                                1.2.0    2016-06-15 CRAN (R 3.3.0)
+ interactiveDisplayBase              1.10.3   2016-05-24 Bioconductor  
+ IRanges                           * 2.7.6    2016-06-13 Bioconductor  
+ iterators                         * 1.0.8    2015-10-13 CRAN (R 3.3.0)
+ labeling                            0.3      2014-08-23 CRAN (R 3.3.0)
+ lattice                           * 0.20-33  2015-07-14 CRAN (R 3.3.0)
+ latticeExtra                        0.6-28   2016-02-09 CRAN (R 3.3.0)
+ limma                             * 3.29.9   2016-06-16 Bioconductor  
+ locfit                            * 1.5-9.1  2013-04-20 CRAN (R 3.3.0)
+ magrittr                            1.5      2014-11-22 CRAN (R 3.3.0)
+ Matrix                            * 1.2-6    2016-05-02 CRAN (R 3.3.0)
+ matrixStats                         0.50.2   2016-04-24 CRAN (R 3.3.0)
+ memoise                             1.0.0    2016-01-29 CRAN (R 3.3.0)
+ mime                                0.4      2015-09-03 CRAN (R 3.3.0)
+ munsell                             0.4.3    2016-02-13 CRAN (R 3.3.0)
+ nnet                                7.3-12   2016-02-02 CRAN (R 3.3.0)
+ OrganismDbi                         1.14.1   2016-06-08 Bioconductor  
+ org.Hs.eg.db                      * 3.3.0    2016-05-08 Bioconductor  
+ pkgmaker                            0.22     2014-05-14 CRAN (R 3.3.0)
+ plyr                                1.8.4    2016-06-08 CRAN (R 3.3.1)
+ qvalue                              2.4.2    2016-05-24 Bioconductor  
+ R6                                  2.1.2    2016-01-26 CRAN (R 3.3.0)
+ RBGL                                1.48.1   2016-05-24 Bioconductor  
+ RColorBrewer                      * 1.1-2    2014-12-07 CRAN (R 3.3.0)
+ Rcpp                                0.12.5   2016-05-14 CRAN (R 3.3.0)
+ RCurl                               1.95-4.8 2016-03-01 CRAN (R 3.3.0)
+ registry                            0.3      2015-07-08 CRAN (R 3.3.0)
+ reshape                             0.8.5    2014-04-23 CRAN (R 3.3.0)
+ reshape2                            1.4.1    2014-12-06 CRAN (R 3.3.0)
+ rngtools                            1.2.4    2014-03-06 CRAN (R 3.3.0)
+ rpart                               4.1-10   2015-06-29 CRAN (R 3.3.0)
+ Rsamtools                           1.24.0   2016-05-08 Bioconductor  
+ RSQLite                             1.0.0    2014-10-25 CRAN (R 3.3.0)
+ rtracklayer                         1.33.5   2016-06-13 Bioconductor  
+ S4Vectors                         * 0.11.4   2016-06-13 Bioconductor  
+ scales                              0.4.0    2016-02-26 CRAN (R 3.3.0)
+ shiny                               0.13.2   2016-03-28 CRAN (R 3.3.0)
+ stringi                             1.1.1    2016-05-27 CRAN (R 3.3.0)
+ stringr                             1.0.0    2015-04-30 CRAN (R 3.3.0)
+ SummarizedExperiment                1.3.4    2016-06-13 Bioconductor  
+ survival                          * 2.39-4   2016-05-11 CRAN (R 3.3.0)
+ TxDb.Hsapiens.UCSC.hg19.knownGene   3.2.2    2016-03-28 Bioconductor  
+ VariantAnnotation                   1.18.1   2016-06-08 Bioconductor  
+ withr                               1.0.1    2016-02-04 CRAN (R 3.3.0)
+ XML                                 3.98-1.4 2016-03-01 CRAN (R 3.3.0)
+ xtable                              1.8-2    2016-02-05 CRAN (R 3.3.0)
+ XVector                             0.12.0   2016-05-08 Bioconductor  
+ zlibbioc                            1.18.0   2016-05-05 Bioconductor  
+**** Job ends ****
+Sat Jun 18 23:16:04 EDT 2016

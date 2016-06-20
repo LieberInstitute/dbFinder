@@ -1,5 +1,5 @@
 **** Job starts ****
-Wed Jun  8 01:15:10 EDT 2016
+Sat Jun 18 10:06:13 EDT 2016
 [1] 268449      3
 [1] "Annotation breakdown"
     strictExonic   strictIntronic strictIntergenic       exonIntron              All 
@@ -96,15 +96,15 @@ $Male
   21.16   28.17   30.65   30.49   33.57   37.74 
 
 ..........................    user   system  elapsed 
-4225.952   16.696  736.577 
+2765.073    7.864  356.311 
 null device 
           1 
 ..........................    user   system  elapsed 
-4261.474   19.829  667.449 
+2877.140   11.696  287.140 
 null device 
           1 
     user   system  elapsed 
-8719.028   45.768 1694.231 
+5758.251   22.565  767.840 
  setting  value                                      
  version  R version 3.3.0 Patched (2016-05-20 r70657)
  system   x86_64, linux-gnu                          
@@ -112,20 +112,20 @@ null device
  language (EN)                                       
  collate  en_US.UTF-8                                
  tz       <NA>                                       
- date     2016-06-08                                 
+ date     2016-06-18                                 
 
  package                * version  date       source        
  acepack                  1.3-3.3  2014-11-24 CRAN (R 3.3.0)
  annotate                 1.50.0   2016-05-08 Bioconductor  
  AnnotationDbi          * 1.35.3   2016-06-07 Bioconductor  
  AnnotationForge          1.15.4   2016-06-07 Bioconductor  
- AnnotationHub            2.5.3    2016-06-07 Bioconductor  
+ AnnotationHub            2.5.4    2016-06-13 Bioconductor  
  Biobase                * 2.32.0   2016-05-05 Bioconductor  
- BiocGenerics           * 0.18.0   2016-05-08 Bioconductor  
- BiocInstaller            1.23.4   2016-06-07 Bioconductor  
- BiocParallel             1.6.0    2016-05-08 Bioconductor  
+ BiocGenerics           * 0.19.1   2016-06-13 Bioconductor  
+ BiocInstaller            1.22.2   2016-06-08 Bioconductor  
+ BiocParallel             1.6.2    2016-06-08 Bioconductor  
  biomaRt                * 2.29.2   2016-06-07 Bioconductor  
- Biostrings               2.41.1   2016-06-07 Bioconductor  
+ Biostrings               2.41.2   2016-06-13 Bioconductor  
  biovizBase               1.20.0   2016-05-08 Bioconductor  
  bitops                   1.0-6    2013-08-17 CRAN (R 3.3.0)
  BSgenome                 1.40.0   2016-05-08 Bioconductor  
@@ -144,19 +144,19 @@ null device
  dichromat                2.0-0    2013-01-24 CRAN (R 3.3.0)
  digest                   0.6.9    2016-01-08 CRAN (R 3.3.0)
  doRNG                    1.6      2014-03-07 CRAN (R 3.3.0)
- ensembldb                1.5.7    2016-06-07 Bioconductor  
+ ensembldb                1.5.8    2016-06-13 Bioconductor  
  foreach                * 1.4.3    2015-10-13 CRAN (R 3.3.0)
  foreign                  0.8-66   2015-08-19 CRAN (R 3.3.0)
  Formula                * 1.2-1    2015-04-07 CRAN (R 3.3.0)
- genefilter               1.54.0   2016-05-08 Bioconductor  
- GenomeInfoDb           * 1.8.0    2016-05-08 Bioconductor  
- GenomicAlignments        1.9.1    2016-06-07 Bioconductor  
+ genefilter               1.54.2   2016-06-08 Bioconductor  
+ GenomeInfoDb           * 1.8.1    2016-06-08 Bioconductor  
+ GenomicAlignments        1.9.3    2016-06-16 Bioconductor  
  GenomicFeatures        * 1.25.12  2016-06-07 Bioconductor  
  GenomicFiles             1.8.0    2016-05-08 Bioconductor  
- GenomicRanges          * 1.25.1   2016-06-07 Bioconductor  
+ GenomicRanges          * 1.25.4   2016-06-13 Bioconductor  
  getopt                 * 1.20.0   2013-08-30 CRAN (R 3.3.0)
- GGally                   1.0.1    2016-01-14 CRAN (R 3.3.0)
- ggbio                    1.20.0   2016-05-08 Bioconductor  
+ GGally                   1.1.0    2016-06-02 CRAN (R 3.3.0)
+ ggbio                    1.20.1   2016-06-08 Bioconductor  
  ggplot2                * 2.1.0    2016-03-01 CRAN (R 3.3.0)
  GO.db                    3.3.0    2016-05-08 Bioconductor  
  GOstats                * 2.38.0   2016-05-05 Bioconductor  
@@ -167,13 +167,13 @@ null device
  Hmisc                  * 3.17-4   2016-05-02 CRAN (R 3.3.0)
  htmltools                0.3.5    2016-03-21 CRAN (R 3.3.0)
  httpuv                   1.3.3    2015-08-04 CRAN (R 3.3.0)
- httr                     1.1.0    2016-01-28 CRAN (R 3.3.0)
+ httr                     1.2.0    2016-06-15 CRAN (R 3.3.0)
  interactiveDisplayBase   1.10.3   2016-05-24 Bioconductor  
- IRanges                * 2.7.2    2016-06-07 Bioconductor  
+ IRanges                * 2.7.6    2016-06-13 Bioconductor  
  iterators              * 1.0.8    2015-10-13 CRAN (R 3.3.0)
  lattice                * 0.20-33  2015-07-14 CRAN (R 3.3.0)
  latticeExtra             0.6-28   2016-02-09 CRAN (R 3.3.0)
- limma                  * 3.29.6   2016-06-07 Bioconductor  
+ limma                  * 3.29.9   2016-06-16 Bioconductor  
  locfit                 * 1.5-9.1  2013-04-20 CRAN (R 3.3.0)
  magrittr                 1.5      2014-11-22 CRAN (R 3.3.0)
  Matrix                 * 1.2-6    2016-05-02 CRAN (R 3.3.0)
@@ -182,15 +182,15 @@ null device
  mime                     0.4      2015-09-03 CRAN (R 3.3.0)
  munsell                  0.4.3    2016-02-13 CRAN (R 3.3.0)
  nnet                     7.3-12   2016-02-02 CRAN (R 3.3.0)
- OrganismDbi              1.14.0   2016-05-08 Bioconductor  
+ OrganismDbi              1.14.1   2016-06-08 Bioconductor  
  org.Hs.eg.db           * 3.3.0    2016-05-08 Bioconductor  
  pkgmaker                 0.22     2014-05-14 CRAN (R 3.3.0)
- plyr                     1.8.3    2015-06-12 CRAN (R 3.3.0)
+ plyr                     1.8.4    2016-06-08 CRAN (R 3.3.1)
  qvalue                   2.4.2    2016-05-24 Bioconductor  
  R6                       2.1.2    2016-01-26 CRAN (R 3.3.0)
  RBGL                     1.48.1   2016-05-24 Bioconductor  
  RColorBrewer           * 1.1-2    2014-12-07 CRAN (R 3.3.0)
- Rcpp                     0.12.4.5 2016-05-08 local         
+ Rcpp                     0.12.5   2016-05-14 CRAN (R 3.3.0)
  RCurl                    1.95-4.8 2016-03-01 CRAN (R 3.3.0)
  registry                 0.3      2015-07-08 CRAN (R 3.3.0)
  reshape                  0.8.5    2014-04-23 CRAN (R 3.3.0)
@@ -199,19 +199,19 @@ null device
  rpart                    4.1-10   2015-06-29 CRAN (R 3.3.0)
  Rsamtools                1.24.0   2016-05-08 Bioconductor  
  RSQLite                  1.0.0    2014-10-25 CRAN (R 3.3.0)
- rtracklayer              1.33.4   2016-06-07 Bioconductor  
- S4Vectors              * 0.11.3   2016-06-07 Bioconductor  
+ rtracklayer              1.33.5   2016-06-13 Bioconductor  
+ S4Vectors              * 0.11.4   2016-06-13 Bioconductor  
  scales                   0.4.0    2016-02-26 CRAN (R 3.3.0)
  shiny                    0.13.2   2016-03-28 CRAN (R 3.3.0)
  stringi                  1.1.1    2016-05-27 CRAN (R 3.3.0)
  stringr                  1.0.0    2015-04-30 CRAN (R 3.3.0)
- SummarizedExperiment     1.3.3    2016-06-07 Bioconductor  
+ SummarizedExperiment     1.3.4    2016-06-13 Bioconductor  
  survival               * 2.39-4   2016-05-11 CRAN (R 3.3.0)
- VariantAnnotation        1.18.0   2016-05-08 Bioconductor  
+ VariantAnnotation        1.18.1   2016-06-08 Bioconductor  
  withr                    1.0.1    2016-02-04 CRAN (R 3.3.0)
  XML                      3.98-1.4 2016-03-01 CRAN (R 3.3.0)
  xtable                   1.8-2    2016-02-05 CRAN (R 3.3.0)
  XVector                  0.12.0   2016-05-08 Bioconductor  
  zlibbioc                 1.18.0   2016-05-05 Bioconductor  
 **** Job ends ****
-Wed Jun  8 01:43:37 EDT 2016
+Sat Jun 18 10:19:02 EDT 2016
