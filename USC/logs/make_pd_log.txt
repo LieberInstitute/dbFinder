@@ -1,0 +1,79 @@
+Loading required package: colorout
+2016-09-14 13:13:46 loading data
+2016-09-14 13:13:46 merging data
+[1] "Samples whose file names don't exactly match"
+[1] PEC_CNON_USC_ON_Epigenomics_H3K27Ac_ChIPseq_HiSeq2500_SEP023
+[2] PEC_CNON_USC_ON_Epigenomics_H3K4me1_ChIPseq_HiSeq2500_SEP023
+[3] PEC_CNON_USC_ON_Epigenomics_ChIPseq_HiSeq2500_SEP071        
+[4] PEC_CNON_USC_ON_Epigenomics_H3K27Ac_ChIPseq_HiSeq2500_SEP109
+[5] PEC_CNON_USC_ON_Epigenomics_H3K4me1_ChIPseq_HiSeq2500_SEP109
+65 Levels: PEC_CNON_USC_ON_Epigenomics_ChIPseq_HiSeq2500_SEP026 ...
+[1] "PEC_CNON_USC_ON_RNA_H3K27Ac_HiSeq2500_SEP023"
+[2] "PEC_CNON_USC_ON_RNA_H3K27Ac_HiSeq2500_SEP109"
+[3] "PEC_CNON_USC_ON_RNA_H3K4me1_HiSeq2500_SEP023"
+[4] "PEC_CNON_USC_ON_RNA_H3K4me1_HiSeq2500_SEP109"
+[1] "Missing sample"
+   Individual_ID    Assay           Sample_ID
+27        SEP071 ChIP-seq USC820_SEP071_Input
+                                              File_Name
+27 PEC_CNON_USC_ON_Epigenomics_ChIPseq_HiSeq2500_SEP071
+                  TissueType CellType       Tissue.State TargetMark
+27 Olfactory Neuroepithelium     CNON Cultured monolayer      Input
+   TargetAntibody ChromatinAmount AntibodyAmount LibraryBatch
+27           <NA>           100ng           <NA>       150805
+            LibraryKit    RunType ReadLength                   FlowcellBatch
+27 Kapa Hyper Prep Kit single-end         76 H3THJBCXX, H3TLCBCXX, H3TLCBCXX
+   SequencingPlatform TotalReads UniquelyMappedReads Notes.x       Grant
+27          HiSeq2500   20617608            16836946      NA U01MH103346
+   StudyName     Organism Sex Ethnicity Diagnosis Smoker AgeBiopsy
+27      CNON Homo sapiens   M      CAUC   Control     NO     47.94
+   smellTestScore Notes.y
+27             37      NA
+[1] "Number of mapped reads in millions"
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  20.39   24.48   27.35   32.90   33.87   84.40       1 
+[1] "Number of unmapped reads in millions"
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.      NA's 
+-27.15000   0.17330   0.21690  -0.01938   0.32160   4.64100         1 
+[1] "Weirdly annotated sample: probably an error in TotalReads"
+   Individual_ID    Assay             Sample_ID
+3         SEP023 ChIP-seq USC607_SEP023_H3K4me3
+NA          <NA>     <NA>                  <NA>
+                                                      File_Name
+3  PEC_CNON_USC_ON_Epigenomics_H3K4me3_ChIPseq_HiSeq2500_SEP023
+NA                                                         <NA>
+                  TissueType CellType       Tissue.State TargetMark
+3  Olfactory Neuroepithelium     CNON Cultured monolayer    H3K4me3
+NA                      <NA>     <NA>               <NA>       <NA>
+                 TargetAntibody ChromatinAmount AntibodyAmount LibraryBatch
+3  Cell Signaling 9751S (lot#7)            10ug           10ul       141212
+NA                         <NA>            <NA>           <NA>           NA
+            LibraryKit    RunType ReadLength FlowcellBatch SequencingPlatform
+3  Kapa Hyper Prep Kit single-end        101     C556GACXX          HiSeq2500
+NA                <NA>       <NA>         NA          <NA>               <NA>
+   TotalReads UniquelyMappedReads Notes.x       Grant StudyName     Organism
+3    18955185            39196595      NA U01MH103346      CNON Homo sapiens
+NA         NA                  NA      NA        <NA>      <NA>         <NA>
+    Sex Ethnicity Diagnosis Smoker AgeBiopsy smellTestScore Notes.y TotalMapped
+3     M      CAUC   Control    YES     34.63             39      NA    46106281
+NA <NA>      <NA>      <NA>   <NA>        NA             NA      NA          NA
+2016-09-14 13:13:46 saving pd.Rdata object
+   user  system elapsed 
+  0.716   0.099   0.838 
+Session info -----------------------------------------------------------------------------------------------------------
+ setting  value                                      
+ version  R version 3.3.0 Patched (2016-05-20 r70657)
+ system   x86_64, linux-gnu                          
+ ui       X11                                        
+ language (EN)                                       
+ collate  en_US.UTF-8                                
+ tz       <NA>                                       
+ date     2016-09-14                                 
+
+Packages ---------------------------------------------------------------------------------------------------------------
+ package  * version date       source                            
+ colorout * 1.1-2   2016-07-22 Github (jalvesaq/colorout@6d84420)
+ devtools * 1.12.0  2016-06-24 CRAN (R 3.3.0)                    
+ digest     0.6.10  2016-08-02 CRAN (R 3.3.0)                    
+ memoise    1.0.0   2016-01-29 CRAN (R 3.3.0)                    
+ withr      1.0.2   2016-06-20 CRAN (R 3.3.0)                    
