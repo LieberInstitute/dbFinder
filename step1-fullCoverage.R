@@ -44,6 +44,14 @@ if(opt$datadir == '/dcs01/ajaffe/ChIPseq/Shulha2013/BED') {
     names(files) <- pd$Sample_ID
     opt$totalMapped <- pd$totalMapped
     print(summary(pd$totalMapped) / 1e6)
+} else if (opt$datadir == '/dcl01/lieber/ajaffe/psychENCODE_Data/USC_U01MH103346') {
+    load('/dcl01/lieber/ajaffe/derRuns/derChIP/USC/pd.Rdata')
+    pd <- pd[!is.na(pd$bamFile), ]
+    files <- pd$bamFile
+    names(files) <- pd$Sample_ID
+    opt$totalMapped <- pd$totalMapped
+    print(summary(pd$totalMapped) / 1e6)
+} else if (opt$datadir == '') {
 }
 
 

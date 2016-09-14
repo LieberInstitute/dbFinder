@@ -4,6 +4,7 @@
 ## Usage
 # sh step1-fullCoverage.sh shulha
 # sh step1-fullCoverage.sh epimap
+# sh step1-fullCoverage.sh USC
 
 
 # Define variables
@@ -24,6 +25,11 @@ then
 elif [[ "${EXPERIMENT}" == 'epimap' ]]
 then
     DATADIR=/dcl01/lieber/ajaffe/psychENCODE_Data/EpiMap
+    PATTERN=''
+    CUTOFF=10
+elif [[ "${EXPERIMENT}" == 'USC' ]]
+then
+    DATADIR=/dcl01/lieber/ajaffe/psychENCODE_Data/USC_U01MH103346
     PATTERN=''
     CUTOFF=10
 else
