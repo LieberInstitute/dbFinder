@@ -49,8 +49,8 @@ if(opt$datadir == '/dcs01/ajaffe/ChIPseq/Shulha2013/BED') {
     pd <- pd[!is.na(pd$bamFile), ]
     files <- pd$bamFile
     names(files) <- pd$Sample_ID
-    opt$totalMapped <- pd$totalMapped
-    print(summary(pd$totalMapped) / 1e6)
+    opt$totalMapped <- pd$TotalMapped
+    print(summary(pd$TotalMapped) / 1e6)
 } else if (opt$datadir == '') {
 }
 

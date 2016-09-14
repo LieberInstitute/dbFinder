@@ -33,7 +33,7 @@ then
     PATTERN=''
     CUTOFF=10
 else
-    echo "Specify a valid experiment: shulha, epimap"
+    echo "Specify a valid experiment: shulha, epimap, USC"
 fi
 
 
