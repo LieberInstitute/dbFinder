@@ -53,6 +53,10 @@ summary(unmapped / 1e6)
 print('Weirdly annotated sample: probably an error in TotalReads')
 pd[unmapped < 0, ]
 
+## Add paths to BAM and bw files
+pd$bamFile <- logs[rep(c(TRUE, FALSE), length(logs) / 2)][map]
+pd$bwFile <- gsub('bam', 'bw', gsub('BAM', 'bw', pd$bamFile))
+
 ## Save data
 message(paste(Sys.time(), 'saving pd.Rdata object'))
 save(pd, file = 'pd.Rdata')
