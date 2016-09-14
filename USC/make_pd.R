@@ -1,5 +1,7 @@
 ## Usage:
 # Rscript make_pd.R
+# mkdir -p logs
+# Rscript make_pd.R > logs/make_pd_log.txt 2>&1
 
 ## Libraries needed
 library('devtools')
