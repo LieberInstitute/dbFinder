@@ -84,8 +84,8 @@ getF <- function(fit, fit0, theData) {
 	df0 = ncol(fit0$coef)
 
 	fstat = ((rss0-rss1)/(df1-df0))/(rss1/(ncol(theData)-df1))
-	f_pval = pf(fstat, df1-1, ncol(theData)-df1,lower.tail=FALSE)
-	fout = cbind(fstat,df1-1,ncol(theData)-df1,f_pval)
+	f_pval = pf(fstat, df1-df0, ncol(theData)-df1,lower.tail=FALSE)
+	fout = cbind(fstat,df1-df0,ncol(theData)-df1,f_pval)
 	colnames(fout)[2:3] = c("df1","df0")
 	fout = data.frame(fout)
 	return(fout)
