@@ -94,7 +94,6 @@ getF <- function(fit, fit0, theData) {
 ## Determine which ERs are DERs
 message(paste(Sys.time(), 'performing DE analysis'))
 fit <- lmFit(y, models$mod)
-eb <- ebayes(fit)
 fit0 <- lmFit(y, models$mod0)
 ff <- getF(fit, fit0, y)
 
