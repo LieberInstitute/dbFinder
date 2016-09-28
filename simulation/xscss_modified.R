@@ -35,6 +35,7 @@ writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', pos, max, alpha,
         cur_pos <- cur_pos - width / 2 + round(width * rbeta(length(i), alpha, beta))
         stopifnot(all(cur_pos <= max | cur_pos >= 1))
     } else if (type == 'bg') {
+        message(paste(Sys.time(), 'calculating bg positions'))
         cur_pos <- round(runif(length(i)) * width, 0) + width * (i - 1) + 1
     }
     
@@ -52,13 +53,15 @@ writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', pos, max, alpha,
         'seq' = paste(rep('N', rlen), collapse = ''),
         'qual' = paste(rep('h', rlen), collapse = '')
     )
+    message(paste(Sys.time(), 'writing to file'))
     write.table(file = fname, df, append = TRUE, quote = FALSE, row.names = FALSE, sep = '\t', col.names = FALSE)
 }
 
 
 ## Functions modified:
 
-peakFile <- function(fname, chrs, pos, mus, disp, sizes, width=1000, rlen=10, tf = FALSE, append=FALSE, alpha=2, beta=2) 
+peakFile <- function(fname, chrs, pos, mus, disp, sizes, fraglen = 100,
+    width = 1000, rlen = 10, tf = FALSE, append = FALSE, alpha = 2, beta = 2) 
 # Spiking in peaks more manually.
 {
 	if (!append) { .addHeader(fname, sizes) }
@@ -94,6 +97,7 @@ addBackground <- function(fnames, sizes, rlen=10, width=2000, back.mu=c(10, 50),
 		bmu <- runif(nbins, back.mu[1], back.mu[2])
 		bdisp <- dispersion * prior.df / rchisq(nbins, df = prior.df)
 		for (fname in fnames) {
+            message(paste(Sys.time(), 'adding background to', fname))
 			back.y <- as.integer(rnbinom(nbins, mu=bmu, size=1/bdisp)+0.5)
             out <- writeSAM(fname = fname, chr = chr, y = back.y,
                 width = width, rlen = rlen, type = 'bg')
@@ -195,32 +199,6 @@ assessChIP <- function(observed, known, tol=200, checkfc=TRUE)
 	found<-length(obranges)
 
     return(list(overlap=overlapped, found=found, recall=recall));
-}
-
-crunch2BAM<-function(sam.files, dir=".")
-# This crunches a set of SAM files to sorted & indexed BAM files using the samtools command. 
-# We avoid calling Rsamtools because of strange errors with 'invalid cross-device link'. I 
-# think it's putting things in /tmp when that might be full, and I can't see any option to 
-# change the temporary directory. 
-#
-# written by Aaron Lun
-{
-	out<-NULL
-    for (sam.file in sam.files) {
-        prefix<-file.path(dir, sub("\\.sam$", "", basename(sam.file)))
-        temp<-tempfile(tmpdir=dir, fileext=".bam")
-        if (system(paste("samtools view -bS -h", sam.file, "-o", temp), ignore.stderr=TRUE)) {
-			stop("failed to compress to BAM")
-		}
-		if (system(paste("samtools sort", temp, prefix), ignore.stderr=TRUE)) { 
-			stop("failed to sort BAM file")
-		}
-		bam.file<-paste0(prefix, ".bam")
-        indexBam(bam.file)
-        unlink(temp)
-		out<-append(out, bam.file)
-    }
-    return(out);
 }
 
 runMACS2 <- function(file, outprefix, macs.path="macs2", threshold=NULL,
