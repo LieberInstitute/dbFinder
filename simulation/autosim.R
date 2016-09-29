@@ -1,425 +1,377 @@
+## The original version of this file is available from 
+## http://bioinf.wehi.edu.au/csaw/
+## and the simulation results are described in
+## csaw: a Bioconductor package for differential binding analysis of ChIP-seq 
+## data using sliding windows by Aaron Lun and Gordon K. Smyth
+## Nucleic Acids Research 44, e45 (2015).
+##
+## Summary of modifications:
+## 
+
 # This simulation generates a mixture of complex peak structures.
 # This is done by treating each peak as a mixture of three subpeaks.
 # For DB peaks, one or more of those subpeaks are randomly chosen and eliminated.
 
-require(xscss)
-require(csaw)
-require(edgeR)
+library('csaw')
+library('edgeR')
+library('DiffBind')
+library('derfinder')
+library('devtools')
+library('Rsamtools')
+source('xscss_modified.R')
+
+## For passing arguments
+library('getopt')
+
+## Specify parameters
+spec <- matrix(c(
+	'type', 't', 1, 'character', 'Either tf or hist',
+    'clean', 'c', 2, 'logical', 'Whether to clean up',
+	'help' , 'h', 0, 'logical', 'Display help'
+), byrow=TRUE, ncol=5)
+opt <- getopt(spec)
+
+## if help was asked for print a friendly message
+## and exit with a non-zero error code
+if (!is.null(opt$help)) {
+	cat(getopt(spec, usage=TRUE))
+	q(status=1)
+}
+
+## Default values
+if (is.null(opt$clean)) opt$clean <- FALSE
+
+if(FALSE) {
+    ## For testing
+    opt <- list(type = 'hist', clean = FALSE)
+    it <- 1
+    bam.files <- dir(pattern = 'bam$')
+}
+
+stopifnot(opt$type %in% c('tf', 'hist'))
+is.tf <- opt$type == 'tf'
+
 fraglen <- 100
-iters <- 10
+iters <- 1
 npeaks <- 20000
 nde <- 500
 
 prior.df <- 20
-dispersion <- 1/prior.df # For the sake of possible flexibility later; right now, it just cancels out.
-grouping <- c("A","A","B","B")
-true.width <- 500
+dispersion <- 1 / prior.df # For the sake of possible flexibility later; right now, it just cancels out.
+grouping <- rep(c('A', 'B'), each = 5)
+true.widths <- c(300, 500, 700)
+width.n <- length(true.widths)
 base.mu <- 30
 
 if (is.tf) { 
-	all.fix <- "tf"
 	radius <- fraglen
-	if (is.homo) { 
-		prior.df <- 1e8 
-		all.fix <- "tfx"
-		base.mu <- 10
-		up.mu <- 20
-		down.mu <- 0
-	} else {
-		up.mu <- 45
-		down.mu <- 15
-	}
+	up.mu <- 45
+	down.mu <- 15
 } else {
-	is.homo <- FALSE
-	all.fix <- "hist"
-	radius <- true.width/2L
+	
+    radiuses <- true.widths / 2L
 }
 
-####################################################################################################
+################################################################################
 
-design<-model.matrix(~factor(grouping))
-ofile <- paste0(all.fix, "_out.tsv")
-fdr.thresholds<-c(0.01, 0.05, 0.1, 0.15, 0.2)
+design <- model.matrix(~factor(grouping))
+fdr.thresholds <- c(0.01, 0.05, 0.1, 0.15, 0.2)
 
-result.file <- paste0(all.fix, "_result.tsv")
+result.file <- paste0(all.fix, '_result.tsv')
 unlink(result.file)
 dump2file <- function(id, cutoff, result) {
-	write.table(file=result.file, data.frame(id, cutoff, 1-result$overlap/result$found, result$recall), 
-		sep="\t", row.names=FALSE, col.names=FALSE, quote=FALSE, append=TRUE)
+	write.table(file = result.file, 
+        data.frame(id, cutoff, 1 - result$overlap/result$found, result$recall), 
+		sep = '\t', row.names = FALSE, col.names = FALSE, quote = FALSE,
+        append = TRUE)
 }
+set.seed(20160927)
 
-set.seed(21347234)
+################################################################################
 
-####################################################################################################
-
-for (it in 1:iters) {
+for (it in seq_len(iters)) {
+    ofile <- paste0(all.fix, '_it', it, '_out.tsv')
+    
 	### Generating simulated data for histone mark data.
-	up.pk <- 1:nde
-	down.pk <- 1:nde + nde
-	disp <- prior.df*dispersion/rchisq(npeaks, df=prior.df)
+	up.pk <- seq_len(nde)
+	down.pk <- seq_len(nde) + nde
+	disp <- prior.df * dispersion / rchisq(npeaks * width.n, df=prior.df)
+    disp <- split(disp, rep(seq_len(width.n), each = npeaks))
+    names(disp) <- true.widths
 
-	if (!is.tf) { 
-		type.A.1 <- type.A.2 <- type.A.3 <- !logical(npeaks)
-		chosen.drop.A <- sample(1:6, nde, replace=TRUE)
-		type.A.1[up.pk] <- bitwAnd(chosen.drop.A, 0x1) > 0L
-		type.A.2[up.pk] <- bitwAnd(chosen.drop.A, 0x2) > 0L
-		type.A.3[up.pk] <- bitwAnd(chosen.drop.A, 0x4) > 0L
 
-		type.B.1 <- type.B.2 <- type.B.3 <- !logical(npeaks)
-		chosen.drop.B <- sample(1:6, nde, replace=TRUE)
-		type.B.1[down.pk] <- bitwAnd(chosen.drop.B, 0x1) > 0L
-		type.B.2[down.pk] <- bitwAnd(chosen.drop.B, 0x2) > 0L
-		type.B.3[down.pk] <- bitwAnd(chosen.drop.B, 0x4) > 0L
-	}
-
+	type.A <- type.B <- lapply(seq_len(width.n), function(x) {
+        lapply(seq_len(3), function(y) { !logical(npeaks) })})
+    pos <- lapply(seq_len(width.n), function(x) { list() })
+    names(pos) <- names(type.A) <- names(type.B) <- true.widths
+    
 	# Single chromosome, for convenience.
-	distances<-round(runif(npeaks, 10000, 20000))
-	pos.1 <- cumsum(distances)	
-	if (!is.tf) { 
-		pos.2 <- pos.1 + true.width/2
-		pos.3 <- pos.1 + true.width
-		sizes <- c(chrA=max(pos.3) + 10000)
-	} else {
-		sizes <- c(chrA=max(pos.1) + 10000)
-	}
-	chrs <- rep("chrA", npeaks)
+	distances <- round(runif(npeaks * width.n, 3000, 6000))
+    
+    for(width.i in seq_len(width.n)) {
+    	chosen.drop.A <- sample(seq_len(6), nde, replace=TRUE)
+        chosen.drop.B <- sample(seq_len(6), nde, replace=TRUE)
+        
+        for(section in seq_len(3)) {
+            type.A[[width.i]][[section]][up.pk] <- bitwAnd(chosen.drop.A,
+                c(0x1, 0x2, 0x4)[section]) > 0L
+            type.B[[width.i]][[section]][down.pk] <- bitwAnd(chosen.drop.B,
+                c(0x1, 0x2, 0x4)[section]) > 0L
+        }
+        
+    	pos[[width.i]][[1]] <- cumsum(distances)[
+            seq_len(npeaks) + (width.i - 1) * npeaks]
+        if(!is.tf) {
+        	pos[[width.i]][[2]] <- pos[[width.i]][[1]] +
+                true.widths[width.i] / 2
+        	pos[[width.i]][[3]] <- pos[[width.i]][[1]] + true.widths[width.i]
+            sizes <- c(chr1 = max(sapply(pos, '[[', 3)) + 10000)
+        } else {
+            sizes <- c(chr1 = max(sapply(pos, '[[', 1)) + 10000)
+        }
+    	
+    }
+	chrs <- rep('chr1', npeaks)
 
-	fnames<-list()
-	for (lib in 1:length(grouping)) {
-		fname <- paste0(all.fix, "_out_", lib, ".sam")
-		if (!is.tf) {
-			# Simulating complex histone marks.
-			if (grouping[lib]=="A") {
- 				drop.1 <- type.A.1
-				drop.2 <- type.A.2
-				drop.3 <- type.A.3
-			} else {
- 				drop.1 <- type.B.1
-				drop.2 <- type.B.2
-				drop.3 <- type.B.3
-			}
-			peakFile(fname, chrs=chrs[drop.1], pos=pos.1[drop.1], mu=base.mu, disp=disp[drop.1],
-				sizes=sizes, fraglen=fraglen, width=true.width, tf=FALSE)
-			peakFile(fname, chrs=chrs[drop.2], pos=pos.2[drop.2], mu=base.mu, disp=disp[drop.2],
-				sizes=sizes, fraglen=fraglen, width=true.width, tf=FALSE, append=TRUE)
-			peakFile(fname, chrs=chrs[drop.3], pos=pos.3[drop.3], mu=base.mu, disp=disp[drop.3],
-				sizes=sizes, fraglen=fraglen, width=true.width, tf=FALSE, append=TRUE)
-
-		} else {
-			# Simulating simple TF changes.
-			cur.mu <- rep(base.mu, npeaks)
-			if (grouping[lib]=="A") { 
-				cur.mu[down.pk] <- down.mu
-				cur.mu[up.pk] <- up.mu
-			} else {
-				cur.mu[up.pk] <- down.mu
-				cur.mu[down.pk] <- up.mu
-			}
-			peakFile(fname, chrs=chrs, pos=pos.1, mu=cur.mu, disp=disp,
-				sizes=sizes, fraglen=fraglen, width=true.width, tf=TRUE)
+	fnames <- list()
+	for (lib in seq_len(length(grouping))) {
+		fname <- paste0(all.fix, '_it', it, '_out_', lib, '.sam')
+        message(paste(Sys.time(), 'creating', fname))
+		for(width.i in seq_len(width.n)) {
+            if(!is.tf) {
+    			# Simulating complex histone marks.
+    			if (grouping[lib] == 'A') {
+     				drop <- type.A[[width.i]]
+    			} else {
+     				drop <- type.B[[width.i]]
+    			}
+                for(section in seq_len(3)) {
+        			peakFile(fname, chrs = chrs[drop[[section]]],
+                        pos = pos[[width.i]][[section]][drop[[section]]],
+                        mu = base.mu, disp = disp[[width.i]][drop[[section]]],
+        				sizes = sizes, fraglen = fraglen,
+                        width = true.widths[width.i],
+                        append = width.i != 1 | section != 1)
+                }
+            } else {
+                # Simulating simple TF changes.
+                cur.mu <- rep(base.mu, npeaks)
+                cur.mu <- rep(base.mu, npeaks)
+    			if (grouping[lib]== 'A') { 
+    				cur.mu[down.pk] <- down.mu
+    				cur.mu[up.pk] <- up.mu
+    			} else {
+    				cur.mu[up.pk] <- down.mu
+    				cur.mu[down.pk] <- up.mu
+    			}
+    			peakFile(fname, chrs = chrs, pos = pos[[width.i]][[1]],
+                    mu = cur.mu, disp = disp, sizes = sizes, fraglen = fraglen,
+                    width = true.widths[width.i], tf = TRUE)
+                }
+            }
 		}
-		fnames[[lib]]<-fname
+		fnames[[lib]] <- fname
 	}
 	
-	fnames<-unlist(fnames)
-	addBackground(fnames, sizes=sizes, width=2000, rlen=10,
-		dispersion=dispersion, prior.df=prior.df, append=TRUE)
-	bam.files<-crunch2BAM(fnames)
-	unlink(fnames)
+	fnames <- unlist(fnames)
+	addBackground(fnames, sizes = sizes, width = 2000 * 3, rlen = 10,
+		dispersion = dispersion, prior.df = prior.df, append = TRUE)
+    
+    bam.files <- sapply(fnames, function(fname) {
+        prefix <- sub("\\.sam$", "", basename(fname))
+        bam <- paste0(prefix, '.bam')
+        message(paste(Sys.time(), 'creating', bam))
+        asBam(fname, prefix)
+        return(bam)
+    })
+	if(opt$clean) unlink(fnames)
 
-    lfile <- paste0(all.fix, "_log.txt")
-	if (is.tf) { 
-		write.table(file=lfile, data.frame(chr=chrs[up.pk], start=pos.1[up.pk]-radius, end=pos.1[up.pk]+radius, logFC=1),
-			row.names=FALSE, sep="\t", quote=FALSE)
-		write.table(file=lfile, data.frame(chrs[down.pk], pos.1[down.pk]-radius, pos.1[down.pk]+radius, logFC=-1),
-			row.names=FALSE, sep="\t",  quote=FALSE, append=TRUE, col.names=FALSE)
-	} else {
-		write.table(file=lfile, data.frame(chr=chrs[!type.A.1], start=pos.1[!type.A.1]-radius, end=pos.1[!type.A.1]+radius, logFC=-1, 
-			name=which(!type.A.1)), row.names=FALSE, sep="\t", quote=FALSE)
-		write.table(file=lfile, data.frame(chr=chrs[!type.A.2], start=pos.2[!type.A.2]-radius, end=pos.2[!type.A.2]+radius, logFC=-1, 
-			name=which(!type.A.2)), row.names=FALSE, sep="\t", quote=FALSE, append=TRUE, col.names=FALSE)
-		write.table(file=lfile, data.frame(chr=chrs[!type.A.3], start=pos.3[!type.A.3]-radius, end=pos.3[!type.A.3]+radius, logFC=-1, 
-			name=which(!type.A.3)), row.names=FALSE, sep="\t", quote=FALSE, append=TRUE, col.names=FALSE)
-		write.table(file=lfile, data.frame(chr=chrs[!type.B.1], start=pos.1[!type.B.1]-radius, end=pos.1[!type.B.1]+radius, logFC=1, 
-			name=which(!type.B.1)), row.names=FALSE, sep="\t", quote=FALSE, append=TRUE, col.names=FALSE)
-		write.table(file=lfile, data.frame(chr=chrs[!type.B.2], start=pos.2[!type.B.2]-radius, end=pos.2[!type.B.2]+radius, logFC=1, 
-			name=which(!type.B.2)), row.names=FALSE, sep="\t", quote=FALSE, append=TRUE, col.names=FALSE)
-		write.table(file=lfile, data.frame(chr=chrs[!type.B.3], start=pos.3[!type.B.3]-radius, end=pos.3[!type.B.3]+radius, logFC=1, 
-			name=which(!type.B.3)), row.names=FALSE, sep="\t", quote=FALSE, append=TRUE, col.names=FALSE)
+    lfile <- paste0(all.fix, '_it', it, '_log.txt')
+    message(paste(Sys.time(), 'creating', lfile))
+	for(width.i in seq_len(width.n)) {
+        if(is.tf) {
+            write.table(file = lfile,
+                data.frame(chr = chrs[up.pk],
+                    start = pos[[width.i]][[1]][up.pk] - radius,
+                    end = pos[[width.i]][[1]][up.pk] + radius,
+                    logFC = 1, truewidth = true.widths[width.i]),
+    			row.names = FALSE, sep = '\t', quote = FALSE,
+                append = width.i != 1)
+            write.table(file = lfile,
+                data.frame(chr = chrs[down.pk],
+                    start = pos[[width.i]][[1]][down.pk] - radius,
+                    end = pos[[width.i]][[1]][down.pk] + radius,
+                    logFC = 1, truewidth = true.widths[width.i]),
+    			row.names = FALSE, sep = '\t', quote = FALSE, append = TRUE,
+                col.names = FALSE)
+        } else {
+            for(section in seq_len(3)) {
+                ## Type A
+                write.table(file = lfile, 
+                    data.frame(chr = chrs[!type.A[[width.i]][[section]]],
+                        start = pos[[width.i]][[section]][
+                            !type.A[[width.i]][[section]]] - radiuses[width.i],
+                        end = pos[[width.i]][[section]][
+                            !type.A[[width.i]][[section]]] + radiuses[width.i],
+                        logFC = -1, name = which(!type.A[[width.i]][[section]]),
+                        truewidth = true.widths[width.i]),
+                    row.names = FALSE, sep= '\t', quote = FALSE,
+                    append = width.i != 1 | section != 1,
+                    col.names = width.i == 1 & section == 1)
+            
+                ## Type B
+                write.table(file = lfile, 
+                    data.frame(chr = chrs[!type.B[[width.i]][[section]]],
+                        start = pos[[width.i]][[section]][
+                            !type.B[[width.i]][[section]]] - radiuses[width.i],
+                        end = pos[[width.i]][[section]][
+                            !type.B[[width.i]][[section]]] + radiuses[width.i],
+                        logFC = 1, name = which(!type.B[[width.i]][[section]]),
+                        truewidth = true.widths[width.i]),
+                    row.names = FALSE, sep= '\t', quote = FALSE,
+                    append = TRUE, col.names = FALSE)
+            }
+        }
+        
 	}
 
 	#############################################################
-	### Running HOMER or MACS with DiffBind.
+	### Running MACS with DiffBind.
 	#############################################################
 	
-	peakdir <- paste0(all.fix, "_peaks")
+	peakdir <- paste0(all.fix, '_peaks_it', it)
 	dir.create(peakdir, showWarnings=FALSE)
-	prefix <- sub("\\.bam$", "", basename(bam.files))
+	prefix <- sub('\\.bam$', '', basename(bam.files))
 	gsize <- sum(as.numeric(sizes))
 	
-	for (peakcaller in c("HOMER", "MACS", "SICER")) {
-		all.peakfiles <- list()
-
-		if (peakcaller=="HOMER") {
-			pktype <- "bed"
-			hpdir <- file.path(peakdir, "homerpool")
-			dir.create(hpdir)
-			for (x in 1:length(bam.files)) { 
-				pooldir <- file.path(hpdir, prefix[x]) 
-				dir.create(pooldir)
-				system(paste("makeTagDirectory", pooldir, bam.files[x], "-format sam -keepAll"))
-
-				outers <- file.path(peakdir, paste0("homer_", prefix[x], ".txt"))
-				system(paste("findPeaks", pooldir, "-style", ifelse(is.tf, "factor", "histone"), "-o", outers, "-gsize", gsize, "-fragLength", fraglen, "-tbp", 0))
-
-				# Converting to proper BED format.
-				blah <- read.table(outers)
-				write.table(file=outers, blah[,c(2,3,4,1,8)], row.names=FALSE, quote=FALSE, sep="\t", col.names=FALSE)
-				all.peakfiles[[x]] <- outers
+	for (peakcaller in c('MACS')) {
+		if (peakcaller=='MACS') {
+			pktype <- 'macs'
+ 		    for (x in seq_len(length(bam.files))) { 
+				oprefix <- file.path(peakdir, paste0('macs_', prefix[x]))
+                message(paste(Sys.time(), 'running Macs2 for', bam.files[x]))
+				runMACS2(bam.files[x], oprefix, fraglen = fraglen,
+                    gsize = gsize, format = 'BAM')
+				
 			}
-			unlink(hpdir, recursive=TRUE)
-
-		} else if (peakcaller=="MACS") {
-			pktype <- "macs"
- 		    for (x in 1:length(bam.files)) { 
-				oprefix <- file.path(peakdir, paste0("macs_", prefix[x]))
-				runMACS2(bam.files[x], oprefix, fraglen=fraglen, gsize=gsize, format="BAM")
-				all.peakfiles[[x]] <- paste0(oprefix, "_peaks.xls")
-			}
-			macs.peakfiles <- all.peakfiles # For use with DBChIP.
-
-		} else if (peakcaller=="SICER") {
-			if (is.tf || it > 1L) { next } # Only doing it for histone mark data, and just once, for demonstration.
-			pktype <- "bed"
-			scdir <- file.path(peakdir, "sicerbed")
-			dir.create(scdir)
-			if (!file.exists("~/tmp")) { dir.create("~/tmp") } 
-			win <- 200
-			gap <- win*2L
-			eval <- 1
-
-			all.peakfiles <- list()
-			for (x in 1:length(bam.files)) {
-				cur.bed <- "out.bed"
- 	 	   		convertBamToBed(bam.files[x], file.path(scdir, cur.bed))
-				system(paste("methods/SICER_V1.1/SICER/SICER-rb.sh", scdir, cur.bed, scdir, "Simulated", 
-						2147483647, win, fraglen, 1, gap, eval))
-				newname <- file.path(peakdir, paste0("sicer_", x, ".bed"))
-				blah <- read.table(file.path(scdir, sprintf("out-W%i-G%i-E%i.scoreisland", win, gap, eval)))
-				write.table(data.frame(blah[,1:3], paste0("peak-", 1:nrow(blah)), blah[,4]), file=newname, 
-					sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
-				all.peakfiles[[x]] <- newname
-			}
-
-			unlink("chr.list")
-			unlink(scdir, recursive=TRUE)
 		}
-
+        
+        all.peakfiles <-  dir(peakdir, pattern = 'peaks.xls', full.names = TRUE)
+        
 		# Running DiffBind.
-		require(DiffBind)
-		current <- dba(sampleSheet=data.frame(SampleID=prefix, Condition=grouping, 
-			bamReads=bam.files, Peaks=unlist(all.peakfiles), PeakCaller=pktype), minOverlap=2)
-		current <- dba.count(current, fragmentSize=fraglen, bRemoveDuplicates=FALSE)
-		current <- dba.contrast(current, group1=current$masks$A, group2=current$masks$B, name1="A", name2="B", minMembers=2)
-		current <- dba.analyze(current, method=DBA_EDGER, bTagwise=!is.homo) # Avoiding tagwise.dispersion when data is homoskedastic.
-		out <- dba.report(current, th=1)
+        message(paste(Sys.time(), 'running DiffBind'))
+		current <- dba(sampleSheet = data.frame(SampleID = prefix,
+            Condition = grouping, bamReads = bam.files,
+            Peaks = all.peakfiles, PeakCaller = pktype), minOverlap = 2)
+		current <- dba.count(current, fragmentSize = fraglen,
+            bRemoveDuplicates = FALSE)
+		current <- dba.contrast(current, group1 = current$masks$A,
+            group2 = current$masks$B, name1 = 'A', name2 = 'B', minMembers = 2)
+		current <- dba.analyze(current, method = DBA_EDGER,
+            bTagwise = TRUE) # Avoiding tagwise.dispersion when data is homoskedastic.
+		out <- dba.report(current, th = 1, method = DBA_EDGER)
 		
-		curtab <- as.data.frame(elementMetadata(out))
-		names(curtab)[names(curtab)=="Fold"] <- "logFC"
-		for (cutoff in fdr.thresholds) { 
-			resultDump(out, curtab, cutoff, out=ofile)
-			result<-assessChIP(ofile, lfile, tol=NA, checkfc=FALSE) # Don't bother checking fold change, as it isn't well defined for complex events.
-			dump2file(paste("DiffBind +", peakcaller), cutoff, result)
+		curtab <- as.data.frame(mcols(out))
+		names(curtab)[names(curtab)=='Fold'] <- 'logFC'
+		for (cutoff in fdr.thresholds) {
+			resultDump(out, curtab, cutoff, out = ofile)
+			result <- assessChIP(ofile, lfile, tol = NA, checkfc = FALSE) # Don't bother checking fold change, as it isn't well defined for complex events.
+			dump2file(paste('DiffBind +', peakcaller), cutoff, result)
 		}
 	}
-
-	#############################################################
-	# Running MACS with DBChIP.
-	#############################################################
-
-	if (is.tf) {
-		all.bed <- list()
-		for (x in 1:length(bam.files)) {
-			curbed <- file.path(peakdir, sub("\\.bam$", ".bed", basename(bam.files[x])))
-			convertBamToBed(bam.files[x], curbed)
-			all.bed[[x]] <- curbed		   
-		}
-		all.bed <- unlist(all.bed)
-		conds <- factor(as.character(grouping))
-		
-#		# Re-running MACS on pooled reads for each condition.
-#		pool.1 <- file.path(peakdir, "pooledA.bed")
-#		system(paste(c("cat", all.bed[grouping=="A"], ">", pool.1), collapse=" "))
-#		opref.1 <- file.path(peakdir, "macs_A")
-#		runMACS2(pool.1, opref.1, fraglen=fraglen, gsize=gsize)
-#
-#		pool.2 <- file.path(peakdir, "pooledB.bed")
-#		system(paste(c("cat", all.bed[grouping=="B"], ">", pool.2), collapse=" "))
-#		opref.2 <- file.path(peakdir, "macs_B")
-#		runMACS2(pool.2, opref.2, fraglen=fraglen, gsize=gsize)
-#
-#		binding.site.list <- list()
-#		binding.site.list[["A"]] <- read.table(paste0(opref.1, "_peaks.xls"), header=TRUE)[,c("chr", "abs_summit", "X.log10.pvalue.")]
-#		binding.site.list[["B"]] <- read.table(paste0(opref.2, "_peaks.xls"), header=TRUE)[,c("chr", "abs_summit", "X.log10.pvalue.")]
-#		colnames(binding.site.list$A) <- colnames(binding.site.list$B) <- c("chr", "pos", "weight")
-
-		# Loading the peaks, using the first peak set for each condition.
-		binding.site.list <- list()
-		for (x in unique(grouping)) { 
-			binding.site.list[[x]] <- read.table(macs.peakfiles[[which(grouping==x)[1]]], header=TRUE)[,c("chr", "abs_summit", "X.log10.pvalue.")]
-			colnames(binding.site.list[[x]]) <- c("chr", "pos", "weight")
-		}
-
-		# Running DBCHIP.
-		require(DBChIP)
-		bs.list <- read.binding.site.list(binding.site.list)
-		consensus.site <- site.merge(bs.list)
-		chip.data.list <- as.list(all.bed)
-		names(chip.data.list) <- names(conds) <- paste0("x", 1:length(conds)) # Just to avoid confusion.
-		dat <- load.data(chip.data.list=chip.data.list, conds=conds, consensus.site=consensus.site, data.type="BED", 
-			chr.vec=names(sizes), chr.len.vec=sizes, frag.len=fraglen)
-		dat <- get.site.count(dat)
-		dat <- test.diff.binding(dat) # Default uses common dispersion, exactTest; no need for special behaviour when is.homo=TRUE.
-		rept <- report.peak(dat, n=Inf)
-
-		out <- GRanges(rept$chr, IRanges(rept$pos, rept$pos))
-		curtab <- data.frame(logFC=log2(rept$FC.B), PValue=rept$pval, FDR=rept$FDR)
-		for (cutoff in fdr.thresholds) { 
-			resultDump(out, curtab, cutoff, out=ofile)
-			result<-assessChIP(ofile, lfile, tol=NA, checkfc=FALSE)
-			dump2file("DBChIP + MACS", cutoff, result)
-		}
-
-		unlink(all.bed)
-	}
-
-	#############################################################
-	# Running PePr.
-	#############################################################
-
-	outname <- file.path(peakdir, "pepr") 
-	first.set <- paste(bam.files[grouping=="A"], collapse=",")
-	second.set <- paste(bam.files[grouping=="B"], collapse=",")
-	system(sprintf("python methods/PePr-master/PePr/PePr.py -c %s --chip2 %s -n %s -f BAM --peaktype=%s --diff -s %i", 
-		first.set, second.set, outname, ifelse(is.tf, "sharp", "broad"), fraglen/2L))
-
-	collected.up <- read.table(paste0(outname, "__PePr_up_peaks.bed"))
-	collected.down <- read.table(paste0(outname, "__PePr_down_peaks.bed"))
-	all.collected <- c(GRanges(collected.up[,1], IRanges(collected.up[,2], collected.up[,3])),
-			GRanges(collected.down[,1], IRanges(collected.down[,2], collected.down[,3])))
-	curtab <- rbind(collected.up[,5:6], collected.down[,5:6])
-	curtab <- cbind(c(rep(1, nrow(collected.up)), rep(-1, nrow(collected.down))), curtab)
-	colnames(curtab) <- c("logFC", "PValue", "FDR")
-	
-	for (cutoff in fdr.thresholds) { 
-		# We can't turn up the default window threshold (otherwise everything gets aggregated into a peak).
-		# We'll have to work with the FDRs that are reported, most of which are below 0.05. As such, 
-		# results will be conservative for most of the cut-offs.
-		resultDump(all.collected, curtab, cutoff, out=ofile)
-		result<-assessChIP(ofile, lfile, tol=NA, checkfc=FALSE)
-		dump2file("PePr", cutoff, result)
-	}
-
-	unlink(list.files(pattern="debug\\.log$"))
-
-	#############################################################
-	# Running multiGPS, but only once for each data set.
-	#############################################################
-	
-	if (is.tf && it==1L) { 
-		gpsdir <- file.path(peakdir, "multigps") 
-		dir.create(gpsdir)
-		file.spec <- paste0('--expt', grouping, "-", as.integer(duplicated(grouping))+1, " ", bam.files)
-		gdata <- file.path(gpsdir, "gdata.data")
-		write.table(data.frame("chrA", gsize), file=gdata, sep="\t", col.names=FALSE, row.names=FALSE, quote=FALSE)
-
-		system(sprintf("java -Xmx4G -jar methods/multigps_v0.5.jar --geninfo %s %s --out %s", 
-			gdata, paste(file.spec, collapse=" "), gpsdir))
-
-		file.copy(file.path(gpsdir, "multigps_A.events"), file.path(peakdir, "multigps_A.events"))
-		file.copy(file.path(gpsdir, "multigps_B.events"), file.path(peakdir, "multigps_B.events"))
-		null <- data.frame(character(0), matrix(0, ncol=8, nrow=0))
-		collected.up <- tryCatch({
-			read.table(file.path(peakdir, "multigps_A.events"), stringsAsFactors=FALSE)
-		}, error=function(w) {
-			null
-		})
-		collected.down <- tryCatch({
-			read.table(file.path(peakdir, "multigps_B.events"), stringsAsFactors=FALSE)
-		}, error=function(w) { 
-			null
-		})
-
-		cur.str <- c(collected.up[,1], collected.down[,1])
-		cur.pos <- as.integer(sub(".*:", "", cur.str))
-		cur.chr <- sub(":.*", "", cur.str)
-		granges <- GRanges(cur.chr, IRanges(cur.pos, cur.pos))
-		curtab <- data.frame(logCPM=c(collected.up[,6], collected.down[,6]), 
-			logFC=c(collected.up[,7], -collected.down[,7]),
-			FDR=2^c(collected.up[,8], collected.down[,8])) 
-			# Assuming already BH-adjusted (see setting of DEPVal in EdgeRDifferentialEnrichment.java,
-			# ultimately used in setInterCondP to set interCondP for final printing to *.events via
-			# writeBindingEventFiles in DifferentialTester.java.
-
-		for (cutoff in fdr.thresholds) { 
-			resultDump(granges, curtab, cutoff, out=ofile)
-			result<-assessChIP(ofile, lfile, tol=NA, checkfc=FALSE) 
-			dump2file("multiGPS", cutoff, result)
-		}
-
-		unlink(gdata)
-		unlink(gpsdir, recursive=TRUE)
-	}
-
-#	regs <- read.table(outers, sep="\t")
-#	regions <- GRanges(regs[,2], IRanges(regs[,3], regs[,4]))
-#	data<-regionCounts(bam.files, regions, ext=1L, param=readParam(dedup=FALSE))
-#	keep<-rowSums(assay(data))>=filter
-#	counts<-assay(data)[keep,,drop=FALSE]
-#	tabhom<-analyzeQLCounts(counts, design, totals=data$totals)
-#	unlink(pooldir, recursive=TRUE)
 
 	#############################################################
 	### csaw, with its combined window methodology.
-	############################################################
+	#############################################################
 
 	xparam <- readParam(dedup=FALSE)
 
-	if (is.tf) { 
-		test.widths <- 10
-		names <- c("csaw")
-	} else {
-		test.widths <- c(50, 150, 250)
-		names <- c("csaw.short", "csaw", "csaw.long")
-	}
+	
+	test.widths <- c(50, 150, 250)
+	names <- c('csaw.short', 'csaw', 'csaw.long')
 
-	for (w in seq_along(test.widths)) { 
-		data <- windowCounts(bam.files, width=test.widths[w], ext=fraglen, param=xparam, filter=20)
-		binned <- windowCounts(bam.files, width=2000, bin=TRUE, param=xparam)
+	for (w in seq_along(test.widths)) {
+        message(paste(Sys.time(), 'running csaw with width', test.widths[w]))
+		data <- windowCounts(bam.files, width = test.widths[w], ext = fraglen,
+            param = xparam, filter = 20)
+		binned <- windowCounts(bam.files, width = 2000, bin = TRUE,
+            param = xparam)
 
-		bin.ab <- scaledAverage(asDGEList(binned), scale=median(getWidths(binned))/median(getWidths(data)))
+		bin.ab <- scaledAverage(asDGEList(binned),
+            scale = median(getWidths(binned)) / median(getWidths(data)))
 		threshold <- median(bin.ab) + log2(2)
-		keep <- aveLogCPM(asDGEList(data)) >  threshold
+		keep <- aveLogCPM(asDGEList(data)) > threshold
 
-		data <- data[keep,]
-		tabres <- analyzeQLCounts(assay(data), design, totals=data$totals)
+		data <- data[keep, ]
+		tabres <- analyzeQLCounts(assay(data), design, totals = data$totals)
 		merged <- mergeWindows(rowRanges(data), tol=100, max.width=5000)
 		tabneg <- combineTests(merged$id, tabres)
 
 		for (cutoff in fdr.thresholds) { 
-			resultDump(merged$region, tabneg, cutoff, out=ofile)
-			result<-assessChIP(ofile, lfile, tol=NA, checkfc=FALSE) 
+			resultDump(merged$region, tabneg, cutoff, out = ofile)
+			result <- assessChIP(ofile, lfile, tol=NA, checkfc=FALSE) 
 			dump2file(names[w], cutoff, result)
 		}
 	}
+    
+	#############################################################
+	### derfinder with smoothing of binding signal
+	#############################################################
+
+    names(bam.files) <- gsub('.bam', '', bam.files)
+    fullCov <- fullCoverage(files = bam.files, chrs = unique(chrs),
+        chrlens = sizes, mc.cores = 1)
+    names <- c('dbfinder.short', 'dbfinder', 'dbfinder.long')
+    for(k in seq_along(test.widths)) {
+        message(paste(Sys.time(), 'running derfinder with k =',
+            test.widths[k] - 1))
+        
+        
+        cuts <- seq(0.75, 2, by = 0.25)
+        
+            
+
+        for(cut in cuts) {
+            message(paste(Sys.time(), 'using cutoff', cut))
+            regionMat <- regionMatrix(fullCov, maxClusterGap = 3000L, L = 10,
+                cutoff = cut, returnBP = FALSE, smoothMean = TRUE, 
+                smoothFun = bumphunter::runmedByCluster, k = test.widths[k] - 1,
+                mc.cores = 1)
+            
+            regFile <- paste0('regionMatrix_', allfix, '_width', test.widths[k]-1, '_cut', cut, '.Rdata')
+            message(paste(Sys.time(), 'saving', regFile))
+            save(regionMat, file = regFile)
+            
+            message(paste(Sys.time(), 'running edgeR analysis'))
+            keep <- width(regionMat$chr1$regions) > 10
+            counts <- round(regionMat$chr1$coverageMatrix[keep, ], 0)
+            tabres <- analyzeQLCounts(counts, design)
+            for (cutoff in fdr.thresholds) {
+                resultDump(regionMat$chr1$regions[keep], tabres, cutoff,
+                    out = ofile)
+                result <- assessChIP(ofile, lfile, tol = NA, checkfc = FALSE)
+                dump2file(paste(names[k], cut), cutoff, result)
+            }
+        }
+        
+    }
+    
+    
+################################################################################
+    # Cleaning up.
+    
+    if(opt$clean) {
+        unlink(bam.files)
+        unlink(paste0(bam.files, '.bai'))
+        unlink(lfile)
+        unlink(ofile)
+    }
+    
 }
 
-####################################################################################################
-# Cleaning up.
+################################################################################
 
-unlink(bam.files)
-unlink(paste0(bam.files, ".bai"))
-unlink(lfile)
-unlink(ofile)
-
-####################################################################################################
+## Reproducibility info
+proc.time()
+options(width = 120)
+session_info()

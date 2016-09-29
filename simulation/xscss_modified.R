@@ -14,7 +14,8 @@ library('GenomeInfoDb')
 
 ## New functions:
 
-writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', pos, max, alpha, beta) {
+writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', fraglen,
+    pos, max, alpha, beta) {
     ## Check that the file already exists
     stopifnot(file.exists(fname))
     
@@ -37,8 +38,25 @@ writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', pos, max, alpha,
     } else if (type == 'bg') {
         message(paste(Sys.time(), 'calculating bg positions'))
         cur_pos <- round(runif(length(i)) * width, 0) + width * (i - 1) + 1
+    } else if (type == 'tf') {
+        stopifnot(!missing(fraglen))
+        stopifnot(!missing(pos))
+        stopifnot(!missing(max))
+        stopifnot(!missing(alpha))
+        stopifnot(!missing(beta))
+        cur_pos <- cur_pos + round(rbeta(length(i), alpha, beta) * fraglen, 0)
+        ## The following code matches the original C code that had the following
+        ## comment:
+        # "Need to record the 5'-most end, not the 5' end of the read."
+        ## We are not really simulating TFBS, just peaks with the beta shape.
+        ## which is why we are not using the original code.
+        # cur_pos <- cur_pos + ifelse(strand, -1, 1) * round(
+        #     rbeta(length(i), alpha, beta) * fraglen, 0)
+        # cur_pos[!strand] <- cur_pos[!strand] - rlen + 1
+    } else {
+        stop("Invalid 'type'", type)
     }
-    
+
     ## Write file
     df <- data.frame(
         'qname' = paste0('r.', chr, '.', j, '.', i),
@@ -73,9 +91,16 @@ peakFile <- function(fname, chrs, pos, mus, disp, sizes, fraglen = 100,
 
 	for (chr in unique(chrs)) {
 		chosen <- chrs == chr
-        out <- writeSAM(fname = fname, chr = chr, y = y[chosen], width = width,
-            rlen = rlen, type = 'hist', pos = pos[chosen], max = sizes[[chr]],
-            alpha = alpha, beta = beta)
+        if(tf) {
+            out <- writeSAM(fname = fname, chr = chr, y = y[chosen],
+                fraglen = fraglen, rlen = rlen, type = 'tf', pos = pos[chosen],
+                max = sizes[[chr]], alpha = alpha, beta = beta)
+        } else {
+            out <- writeSAM(fname = fname, chr = chr, y = y[chosen],
+                width = width, rlen = rlen, type = 'hist', pos = pos[chosen],
+                max = sizes[[chr]], alpha = alpha, beta = beta)
+        }
+        
 	}
 	return(invisible(NULL))
 }
