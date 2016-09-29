@@ -1,3 +1,13 @@
+## The original version of this file is available from 
+## http://bioinf.wehi.edu.au/csaw/
+## and the simulation results are described in
+## csaw: a Bioconductor package for differential binding analysis of ChIP-seq 
+## data using sliding windows by Aaron Lun and Gordon K. Smyth
+## Nucleic Acids Research 44, e45 (2015).
+##
+## Summary of modifications:
+## 
+
 # This plots the specificity and sensitivity values relevant to a given *.tsv file.
 
 cutoff <- 0.05

@@ -77,7 +77,7 @@ if (is.tf) {
 design <- model.matrix(~factor(grouping))
 fdr.thresholds <- c(0.01, 0.05, 0.1, 0.15, 0.2)
 
-result.file <- paste0(all.fix, '_result.tsv')
+result.file <- paste0(opt$type, '_result.tsv')
 unlink(result.file)
 dump2file <- function(id, cutoff, result) {
 	write.table(file = result.file, 
@@ -90,7 +90,7 @@ set.seed(20160927)
 ################################################################################
 
 for (it in seq_len(iters)) {
-    ofile <- paste0(all.fix, '_it', it, '_out.tsv')
+    ofile <- paste0(opt$type, '_it', it, '_out.tsv')
     
 	### Generating simulated data for histone mark data.
 	up.pk <- seq_len(nde)
@@ -135,7 +135,7 @@ for (it in seq_len(iters)) {
 
 	fnames <- list()
 	for (lib in seq_len(length(grouping))) {
-		fname <- paste0(all.fix, '_it', it, '_out_', lib, '.sam')
+		fname <- paste0(opt$type, '_it', it, '_out_', lib, '.sam')
         message(paste(Sys.time(), 'creating', fname))
 		for(width.i in seq_len(width.n)) {
             if(!is.tf) {
@@ -186,7 +186,7 @@ for (it in seq_len(iters)) {
     })
 	if(opt$clean) unlink(fnames)
 
-    lfile <- paste0(all.fix, '_it', it, '_log.txt')
+    lfile <- paste0(opt$type, '_it', it, '_log.txt')
     message(paste(Sys.time(), 'creating', lfile))
 	for(width.i in seq_len(width.n)) {
         if(is.tf) {
@@ -239,7 +239,7 @@ for (it in seq_len(iters)) {
 	### Running MACS with DiffBind.
 	#############################################################
 	
-	peakdir <- paste0(all.fix, '_peaks_it', it)
+	peakdir <- paste0(opt$type, '_peaks_it', it)
 	dir.create(peakdir, showWarnings=FALSE)
 	prefix <- sub('\\.bam$', '', basename(bam.files))
 	gsize <- sum(as.numeric(sizes))
