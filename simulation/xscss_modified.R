@@ -53,7 +53,7 @@ writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', pos, max, alpha,
         'seq' = paste(rep('N', rlen), collapse = ''),
         'qual' = paste(rep('h', rlen), collapse = '')
     )
-    message(paste(Sys.time(), 'writing to file'))
+    message(paste(Sys.time(), 'writing to file', fname))
     write.table(file = fname, df, append = TRUE, quote = FALSE, row.names = FALSE, sep = '\t', col.names = FALSE)
 }
 
