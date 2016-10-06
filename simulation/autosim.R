@@ -167,8 +167,8 @@ for (it in seq_len(iters)) {
     				cur.mu[down.pk] <- up.mu
     			}
     			peakFile(fname, chrs = chrs, pos = pos[[width.i]][[1]],
-                    mu = cur.mu, disp = disp, sizes = sizes, fraglen = fraglen,
-                    width = true.widths[width.i], tf = TRUE)
+                    mu = cur.mu, disp = disp[[width.i]], sizes = sizes,
+                    fraglen = fraglen, width = true.widths[width.i], tf = TRUE)
                 }
             }
 		}
