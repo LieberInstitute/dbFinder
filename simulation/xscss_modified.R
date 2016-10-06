@@ -44,6 +44,7 @@ writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', fraglen,
         stopifnot(!missing(max))
         stopifnot(!missing(alpha))
         stopifnot(!missing(beta))
+        cur_pos <- rep(pos, y)
         cur_pos <- cur_pos + round(rbeta(length(i), alpha, beta) * fraglen, 0)
         ## The following code matches the original C code that had the following
         ## comment:
