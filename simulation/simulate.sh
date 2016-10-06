@@ -13,7 +13,7 @@ SHORT="sim-${EXPERIMENT}"
 WDIR=/dcl01/lieber/ajaffe/derRuns/derChIP/simulation
 
 # Construct shell file
-echo 'Creating script for loading the Coverage data'
+echo "Creating script for simulating ${EXPERIMENT} data"
 cat > ${WDIR}/.${SHORT}.sh <<EOF
 #!/bin/bash
 #$ -cwd
