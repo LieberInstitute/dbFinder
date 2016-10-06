@@ -46,6 +46,9 @@ if(FALSE) {
     opt <- list(type = 'hist', clean = FALSE)
     it <- 1
     bam.files <- dir(pattern = 'bam$')
+    
+    ## Testing tf
+    opt <- list(type = 'tf', clean = FALSE)
 }
 
 stopifnot(opt$type %in% c('tf', 'hist'))
@@ -125,11 +128,10 @@ for (it in seq_len(iters)) {
         	pos[[width.i]][[2]] <- pos[[width.i]][[1]] +
                 true.widths[width.i] / 2
         	pos[[width.i]][[3]] <- pos[[width.i]][[1]] + true.widths[width.i]
-            sizes <- c(chr1 = max(sapply(pos, '[[', 3)) + 10000)
+            sizes <- c(chr1 = max(sapply(pos[[width.i]], '[[', 3)) + 10000)
         } else {
-            sizes <- c(chr1 = max(sapply(pos, '[[', 1)) + 10000)
+            sizes <- c(chr1 = max(pos[[width.i]][[1]]) + 10000)
         }
-    	
     }
 	chrs <- rep('chr1', npeaks)
 
