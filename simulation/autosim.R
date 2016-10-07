@@ -169,10 +169,9 @@ for (it in seq_len(iters)) {
     			peakFile(fname, chrs = chrs, pos = pos[[width.i]][[1]],
                     mu = cur.mu, disp = disp[[width.i]], sizes = sizes,
                     fraglen = fraglen, width = true.widths[width.i], tf = TRUE)
-                }
             }
-		}
-		fnames[[lib]] <- fname
+        }
+        fnames[[lib]] <- fname
 	}
 	
 	fnames <- unlist(fnames)
@@ -198,7 +197,7 @@ for (it in seq_len(iters)) {
                     end = pos[[width.i]][[1]][up.pk] + radius,
                     logFC = 1, truewidth = true.widths[width.i]),
     			row.names = FALSE, sep = '\t', quote = FALSE,
-                append = width.i != 1)
+                append = width.i != 1, col.names = width.i == 1)
             write.table(file = lfile,
                 data.frame(chr = chrs[down.pk],
                     start = pos[[width.i]][[1]][down.pk] - radius,
