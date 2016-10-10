@@ -78,7 +78,7 @@ if (is.tf) {
 ################################################################################
 
 design <- model.matrix(~factor(grouping))
-fdr.thresholds <- c(0.01, 0.05, 0.1, 0.15, 0.2)
+fdr.thresholds <- c(0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5)
 
 result.file <- paste0(opt$type, '_result.tsv')
 unlink(result.file)
@@ -339,7 +339,8 @@ for (it in seq_len(iters)) {
                 smoothFun = bumphunter::runmedByCluster, k = test.widths[k] - 1,
                 mc.cores = 1)
             
-            regFile <- paste0('regionMatrix_', allfix, '_width', test.widths[k]-1, '_cut', cut, '.Rdata')
+            regFile <- paste0('regionMatrix_', opt$type, '_width',
+                test.widths[k]-1, '_cut', cut, '.Rdata')
             message(paste(Sys.time(), 'saving', regFile))
             save(regionMat, file = regFile)
             
