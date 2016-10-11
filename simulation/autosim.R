@@ -346,6 +346,10 @@ for (it in seq_len(iters)) {
             
             message(paste(Sys.time(), 'running edgeR analysis'))
             keep <- width(regionMat$chr1$regions) > 10
+            if(length(keep) == 0) {
+                message(paste(Sys.time(), 'no ERs of width 10 or greater left'))
+                next
+            }
             counts <- round(regionMat$chr1$coverageMatrix[keep, ], 0)
             tabres <- analyzeQLCounts(counts, design)
             for (cutoff in fdr.thresholds) {
