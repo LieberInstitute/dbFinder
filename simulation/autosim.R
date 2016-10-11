@@ -70,8 +70,6 @@ if (is.tf) {
 	down.mu <- 15
 }
 
-radiuses <- true.widths / 2L
-
 ################################################################################
 
 design <- model.matrix(~factor(grouping))
@@ -193,15 +191,16 @@ for (it in seq_len(iters)) {
         if(is.tf) {
             write.table(file = lfile,
                 data.frame(chr = chrs[up.pk],
-                    start = pos[[width.i]][[1]][up.pk] - radiuses[width.i],
-                    end = pos[[width.i]][[1]][up.pk] + radiuses[width.i],
+                    start = pos[[width.i]][[1]][up.pk],
+                    end = pos[[width.i]][[1]][up.pk] + true.widths[width.i] - 1,
                     logFC = 1, truewidth = true.widths[width.i]),
     			row.names = FALSE, sep = '\t', quote = FALSE,
                 append = width.i != 1, col.names = width.i == 1)
             write.table(file = lfile,
                 data.frame(chr = chrs[down.pk],
-                    start = pos[[width.i]][[1]][down.pk] - radiuses[width.i],
-                    end = pos[[width.i]][[1]][down.pk] + radiuses[width.i],
+                    start = pos[[width.i]][[1]][down.pk],
+                    end = pos[[width.i]][[1]][down.pk] +
+                    true.widths[width.i] - 1,
                     logFC = 1, truewidth = true.widths[width.i]),
     			row.names = FALSE, sep = '\t', quote = FALSE, append = TRUE,
                 col.names = FALSE)
@@ -211,9 +210,10 @@ for (it in seq_len(iters)) {
                 write.table(file = lfile, 
                     data.frame(chr = chrs[!type.A[[width.i]][[section]]],
                         start = pos[[width.i]][[section]][
-                            !type.A[[width.i]][[section]]] - radiuses[width.i],
+                            !type.A[[width.i]][[section]]],
                         end = pos[[width.i]][[section]][
-                            !type.A[[width.i]][[section]]] + radiuses[width.i],
+                            !type.A[[width.i]][[section]]] +
+                            true.widths[width.i] - 1,
                         logFC = -1, name = which(!type.A[[width.i]][[section]]),
                         truewidth = true.widths[width.i]),
                     row.names = FALSE, sep= '\t', quote = FALSE,
@@ -224,9 +224,10 @@ for (it in seq_len(iters)) {
                 write.table(file = lfile, 
                     data.frame(chr = chrs[!type.B[[width.i]][[section]]],
                         start = pos[[width.i]][[section]][
-                            !type.B[[width.i]][[section]]] - radiuses[width.i],
+                            !type.B[[width.i]][[section]]],
                         end = pos[[width.i]][[section]][
-                            !type.B[[width.i]][[section]]] + radiuses[width.i],
+                            !type.B[[width.i]][[section]]] +
+                            true.widths[width.i] - 1,
                         logFC = 1, name = which(!type.B[[width.i]][[section]]),
                         truewidth = true.widths[width.i]),
                     row.names = FALSE, sep= '\t', quote = FALSE,
@@ -299,7 +300,7 @@ for (it in seq_len(iters)) {
 		data <- windowCounts(bam.files, width = test.widths[w], ext = NA,
             param = xparam, filter = 20)
 		binned <- windowCounts(bam.files, width = 2000, bin = TRUE,
-            param = xparam)
+            param = xparam, ext = NA)
 
 		bin.ab <- scaledAverage(asDGEList(binned),
             scale = median(getWidths(binned)) / median(getWidths(data)))
