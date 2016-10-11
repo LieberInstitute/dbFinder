@@ -39,7 +39,6 @@ writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', fraglen,
         message(paste(Sys.time(), 'calculating bg positions'))
         cur_pos <- round(runif(length(i)) * width, 0) + width * (i - 1) + 1
     } else if (type == 'tf') {
-        stopifnot(!missing(fraglen))
         stopifnot(!missing(pos))
         stopifnot(!missing(max))
         stopifnot(!missing(alpha))
