@@ -178,7 +178,7 @@ resultDump <- function(regions, tab, cutoff=0.05, out="out.tsv")
 		file=out, row.names=FALSE, quote=FALSE, sep="\t")
 }
 
-assessChIP <- function(observed, known, tol=200, checkfc=TRUE) 
+assessChIP <- function(observed, known, tol=200, checkfc=TRUE, width = 'all') 
 # We read in any tab-delimited file where the first three columns are 'chr', 'start', and 'end' of
 # each predicted enriched region. We just check that the enriched sites fall within the specified
 # range. The number of true positives, false positives and false negatives are reported. Both
@@ -202,7 +202,11 @@ assessChIP <- function(observed, known, tol=200, checkfc=TRUE)
 	}
     
 	# Reading in the known sites. Should have a 'logFC' field.
-	kx<-read.table(known, header=TRUE);
+	kx<-read.table(known, header=TRUE)
+    if(width != 'all') {
+        kx <- subset(kx, 'truewidth' == width)
+    }
+    
 	if (checkfc) {
 		up.t<-kx$logFC > 0
 		if (is.null(up.t)) { stop("need a log-FC field in the table of known sites") }

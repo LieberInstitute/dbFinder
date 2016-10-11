@@ -82,18 +82,22 @@ fdr.thresholds <- c(0.01, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5)
 
 result.file <- paste0(opt$type, '_result.tsv')
 unlink(result.file)
-dump2file <- function(id, cutoff, result) {
+dump2file <- function(id, cutoff, result, iteration, width) {
+    appendFlag <- file.exists(result.file)
 	write.table(file = result.file, 
-        data.frame(id, cutoff, 1 - result$overlap/result$found, result$recall), 
-		sep = '\t', row.names = FALSE, col.names = FALSE, quote = FALSE,
-        append = TRUE)
+        data.frame(program = id, FDR = cutoff,
+            observedFDR = 1 - result$overlap/result$found,
+            recall = result$recall, iteration = iteration, truewidth = width), 
+		sep = '\t', row.names = FALSE, col.names = !appendFlag, quote = FALSE,
+        append = appendFlag)
 }
 set.seed(20160927)
 
 ################################################################################
 
 for (it in seq_len(iters)) {
-    ofile <- paste0(opt$type, '_it', it, '_out.tsv')
+    odir <- paste0(opt$type, '_it', it)
+    dir.create(odir, showWarnings = FALSE)
     
 	### Generating simulated data for histone mark data.
 	up.pk <- seq_len(nde)
@@ -275,9 +279,14 @@ for (it in seq_len(iters)) {
 		curtab <- as.data.frame(mcols(out))
 		names(curtab)[names(curtab)=='Fold'] <- 'logFC'
 		for (cutoff in fdr.thresholds) {
+            ofile <- file.path(odir, paste0('diffbind-fdr', cutoff, '.tsv'))
 			resultDump(out, curtab, cutoff, out = ofile)
-			result <- assessChIP(ofile, lfile, tol = NA, checkfc = FALSE) # Don't bother checking fold change, as it isn't well defined for complex events.
-			dump2file(paste('DiffBind +', peakcaller), cutoff, result)
+            for(truewidth in c('all', true.widths)) {
+    			result <- assessChIP(ofile, lfile, tol=NA, checkfc=FALSE,
+                    width = truewidth) 
+    			dump2file(paste0('DiffBind_', peakcaller), cutoff, result, it,
+                    truewidth)
+            }
 		}
 	}
 
@@ -309,9 +318,13 @@ for (it in seq_len(iters)) {
 		tabneg <- combineTests(merged$id, tabres)
 
 		for (cutoff in fdr.thresholds) { 
+            ofile <- file.path(odir, paste0(names[w], '-fdr', cutoff, '.tsv'))
 			resultDump(merged$region, tabneg, cutoff, out = ofile)
-			result <- assessChIP(ofile, lfile, tol=NA, checkfc=FALSE) 
-			dump2file(names[w], cutoff, result)
+            for(truewidth in c('all', true.widths)) {
+    			result <- assessChIP(ofile, lfile, tol=NA, checkfc=FALSE,
+                    width = truewidth) 
+    			dump2file(names[w], cutoff, result, it, truewidth)
+            }
 		}
 	}
     
@@ -328,7 +341,7 @@ for (it in seq_len(iters)) {
             test.widths[k] - 1))
         
         
-        cuts <- seq(0.75, 2, by = 0.25)
+        cuts <- seq(0.5, 1.5, by = 0.25)
         
             
 
@@ -353,10 +366,16 @@ for (it in seq_len(iters)) {
             counts <- round(regionMat$chr1$coverageMatrix[keep, ], 0)
             tabres <- analyzeQLCounts(counts, design)
             for (cutoff in fdr.thresholds) {
+                ofile <- file.path(odir, paste0(names[w], '_cut', cut, '-fdr',
+                    cutoff, '.tsv'))
                 resultDump(regionMat$chr1$regions[keep], tabres, cutoff,
                     out = ofile)
-                result <- assessChIP(ofile, lfile, tol = NA, checkfc = FALSE)
-                dump2file(paste(names[k], cut), cutoff, result)
+                for(truewidth in c('all', true.widths)) {
+        			result <- assessChIP(ofile, lfile, tol=NA, checkfc=FALSE,
+                        width = truewidth) 
+        			dump2file(paste0(names[k], '_', cut), cutoff, result, it,
+                        truewidth)
+                }
             }
         }
         
@@ -370,7 +389,6 @@ for (it in seq_len(iters)) {
         unlink(bam.files)
         unlink(paste0(bam.files, '.bai'))
         unlink(lfile)
-        unlink(ofile)
     }
     
 }
