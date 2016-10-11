@@ -54,7 +54,6 @@ if(FALSE) {
 stopifnot(opt$type %in% c('tf', 'hist'))
 is.tf <- opt$type == 'tf'
 
-fraglen <- 100
 iters <- 1
 npeaks <- 20000
 nde <- 500
@@ -66,14 +65,12 @@ true.widths <- c(300, 500, 700)
 width.n <- length(true.widths)
 base.mu <- 30
 
-if (is.tf) { 
-	radius <- fraglen
+if (is.tf) {
 	up.mu <- 45
 	down.mu <- 15
-} else {
-	
-    radiuses <- true.widths / 2L
 }
+
+radiuses <- true.widths / 2L
 
 ################################################################################
 
@@ -155,8 +152,7 @@ for (it in seq_len(iters)) {
         			peakFile(fname, chrs = chrs[drop[[section]]],
                         pos = pos[[width.i]][[section]][drop[[section]]],
                         mu = base.mu, disp = disp[[width.i]][drop[[section]]],
-        				sizes = sizes, fraglen = fraglen,
-                        width = true.widths[width.i],
+        				sizes = sizes, width = true.widths[width.i],
                         append = width.i != 1 | section != 1)
                 }
             } else {
@@ -172,7 +168,7 @@ for (it in seq_len(iters)) {
     			}
     			peakFile(fname, chrs = chrs, pos = pos[[width.i]][[1]],
                     mu = cur.mu, disp = disp[[width.i]], sizes = sizes,
-                    fraglen = fraglen, width = true.widths[width.i], tf = TRUE)
+                    width = true.widths[width.i], tf = TRUE)
             }
         }
         fnames[[lib]] <- fname
@@ -197,15 +193,15 @@ for (it in seq_len(iters)) {
         if(is.tf) {
             write.table(file = lfile,
                 data.frame(chr = chrs[up.pk],
-                    start = pos[[width.i]][[1]][up.pk] - radius,
-                    end = pos[[width.i]][[1]][up.pk] + radius,
+                    start = pos[[width.i]][[1]][up.pk] - radiuses[width.i],
+                    end = pos[[width.i]][[1]][up.pk] + radiuses[width.i],
                     logFC = 1, truewidth = true.widths[width.i]),
     			row.names = FALSE, sep = '\t', quote = FALSE,
                 append = width.i != 1, col.names = width.i == 1)
             write.table(file = lfile,
                 data.frame(chr = chrs[down.pk],
-                    start = pos[[width.i]][[1]][down.pk] - radius,
-                    end = pos[[width.i]][[1]][down.pk] + radius,
+                    start = pos[[width.i]][[1]][down.pk] - radiuses[width.i],
+                    end = pos[[width.i]][[1]][down.pk] + radiuses[width.i],
                     logFC = 1, truewidth = true.widths[width.i]),
     			row.names = FALSE, sep = '\t', quote = FALSE, append = TRUE,
                 col.names = FALSE)
@@ -255,8 +251,7 @@ for (it in seq_len(iters)) {
  		    for (x in seq_len(length(bam.files))) { 
 				oprefix <- file.path(peakdir, paste0('macs_', prefix[x]))
                 message(paste(Sys.time(), 'running Macs2 for', bam.files[x]))
-				runMACS2(bam.files[x], oprefix, fraglen = fraglen,
-                    gsize = gsize, format = 'BAM')
+				runMACS2(bam.files[x], oprefix, gsize = gsize, format = 'BAM')
 				
 			}
 		}
@@ -268,8 +263,7 @@ for (it in seq_len(iters)) {
 		current <- dba(sampleSheet = data.frame(SampleID = prefix,
             Condition = grouping, bamReads = bam.files,
             Peaks = all.peakfiles, PeakCaller = pktype), minOverlap = 2)
-		current <- dba.count(current, fragmentSize = fraglen,
-            bRemoveDuplicates = FALSE)
+		current <- dba.count(current, bRemoveDuplicates = FALSE)
 		current <- dba.contrast(current, group1 = current$masks$A,
             group2 = current$masks$B, name1 = 'A', name2 = 'B', minMembers = 2)
 		current <- dba.analyze(current, method = DBA_EDGER,
@@ -302,7 +296,7 @@ for (it in seq_len(iters)) {
 
 	for (w in seq_along(test.widths)) {
         message(paste(Sys.time(), 'running csaw with width', test.widths[w]))
-		data <- windowCounts(bam.files, width = test.widths[w], ext = fraglen,
+		data <- windowCounts(bam.files, width = test.widths[w], ext = NA,
             param = xparam, filter = 20)
 		binned <- windowCounts(bam.files, width = 2000, bin = TRUE,
             param = xparam)

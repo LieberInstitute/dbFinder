@@ -45,7 +45,7 @@ writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', fraglen,
         stopifnot(!missing(alpha))
         stopifnot(!missing(beta))
         cur_pos <- rep(pos, y)
-        cur_pos <- cur_pos + round(rbeta(length(i), alpha, beta) * fraglen, 0)
+        cur_pos <- cur_pos + round(rbeta(length(i), alpha, beta) * width, 0)
         ## The following code matches the original C code that had the following
         ## comment:
         # "Need to record the 5'-most end, not the 5' end of the read."
@@ -94,7 +94,7 @@ peakFile <- function(fname, chrs, pos, mus, disp, sizes, fraglen = 100,
 		chosen <- chrs == chr
         if(tf) {
             out <- writeSAM(fname = fname, chr = chr, y = y[chosen],
-                fraglen = fraglen, rlen = rlen, type = 'tf', pos = pos[chosen],
+                width = width, rlen = rlen, type = 'tf', pos = pos[chosen],
                 max = sizes[[chr]], alpha = alpha, beta = beta)
         } else {
             out <- writeSAM(fname = fname, chr = chr, y = y[chosen],
@@ -202,9 +202,9 @@ assessChIP <- function(observed, known, tol=200, checkfc=TRUE, width = 'all')
 	}
     
 	# Reading in the known sites. Should have a 'logFC' field.
-	kx<-read.table(known, header=TRUE)
+	kx <-read.table(known, header=TRUE)
     if(width != 'all') {
-        kx <- subset(kx, 'truewidth' == width)
+        kx <- subset(kx, truewidth == width)
     }
     
 	if (checkfc) {
