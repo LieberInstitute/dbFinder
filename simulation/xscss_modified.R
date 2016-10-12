@@ -33,7 +33,9 @@ writeSAM <- function(fname, chr, y, width, rlen, type = 'hist', fraglen,
         stopifnot(!missing(alpha))
         stopifnot(!missing(beta))
         cur_pos <- rep(pos, y)
-        cur_pos <- cur_pos - width / 2 + round(width * rbeta(length(i), alpha, beta))
+        ## For when you use radius (as originally written):
+        # cur_pos <- cur_pos - width / 2 + round(width * rbeta(length(i), alpha, beta))
+        cur_pos <- cur_pos + round(width * rbeta(length(i), alpha, beta))
         stopifnot(all(cur_pos <= max | cur_pos >= 1))
     } else if (type == 'bg') {
         message(paste(Sys.time(), 'calculating bg positions'))
@@ -221,9 +223,10 @@ assessChIP <- function(observed, known, tol=200, checkfc=TRUE, width = 'all')
 	# Pulling out some states
 	known.up <- kranges[up.t]
 	known.down <- kranges[!up.t]
-	u.olap<-findOverlaps(known.up, obranges[up.o])
-	d.olap<-findOverlaps(known.down, obranges[!up.o])
-	recall<-length(unique(known.up$name[queryHits(u.olap)]))+length(unique(known.down$name[queryHits(d.olap)]))
+	u.olap <- findOverlaps(known.up, obranges[up.o])
+	d.olap <- findOverlaps(known.down, obranges[!up.o])
+	recall <- length(unique(queryHits(u.olap))) +
+        length(unique(queryHits(d.olap)))
 	overlapped<-length(unique(subjectHits(u.olap)))+length(unique(subjectHits(d.olap)))
 	found<-length(obranges)
 

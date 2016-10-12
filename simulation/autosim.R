@@ -192,15 +192,14 @@ for (it in seq_len(iters)) {
             write.table(file = lfile,
                 data.frame(chr = chrs[up.pk],
                     start = pos[[width.i]][[1]][up.pk],
-                    end = pos[[width.i]][[1]][up.pk] + true.widths[width.i] - 1,
+                    end = pos[[width.i]][[1]][up.pk] + true.widths[width.i],
                     logFC = 1, truewidth = true.widths[width.i]),
     			row.names = FALSE, sep = '\t', quote = FALSE,
                 append = width.i != 1, col.names = width.i == 1)
             write.table(file = lfile,
                 data.frame(chr = chrs[down.pk],
                     start = pos[[width.i]][[1]][down.pk],
-                    end = pos[[width.i]][[1]][down.pk] +
-                    true.widths[width.i] - 1,
+                    end = pos[[width.i]][[1]][down.pk] + true.widths[width.i],
                     logFC = 1, truewidth = true.widths[width.i]),
     			row.names = FALSE, sep = '\t', quote = FALSE, append = TRUE,
                 col.names = FALSE)
@@ -213,7 +212,7 @@ for (it in seq_len(iters)) {
                             !type.A[[width.i]][[section]]],
                         end = pos[[width.i]][[section]][
                             !type.A[[width.i]][[section]]] +
-                            true.widths[width.i] - 1,
+                            true.widths[width.i],
                         logFC = -1, name = which(!type.A[[width.i]][[section]]),
                         truewidth = true.widths[width.i]),
                     row.names = FALSE, sep= '\t', quote = FALSE,
@@ -227,7 +226,7 @@ for (it in seq_len(iters)) {
                             !type.B[[width.i]][[section]]],
                         end = pos[[width.i]][[section]][
                             !type.B[[width.i]][[section]]] +
-                            true.widths[width.i] - 1,
+                            true.widths[width.i],
                         logFC = 1, name = which(!type.B[[width.i]][[section]]),
                         truewidth = true.widths[width.i]),
                     row.names = FALSE, sep= '\t', quote = FALSE,
@@ -348,20 +347,26 @@ for (it in seq_len(iters)) {
                 mc.cores = 1)
             
             regFile <- paste0('regionMatrix_', opt$type, '_width',
-                test.widths[k]-1, '_cut', cut, '.Rdata')
+                test.widths[k] - 1, '_cut', cut, '.Rdata')
             message(paste(Sys.time(), 'saving', regFile))
             save(regionMat, file = regFile)
             
             message(paste(Sys.time(), 'running edgeR analysis'))
             keep <- width(regionMat$chr1$regions) > 10
-            if(length(keep) == 0) {
+            counts <- round(regionMat$chr1$coverageMatrix[keep, ,
+                drop = FALSE], 0)
+            if(nrow(counts) == 0) {
                 message(paste(Sys.time(), 'no ERs of width 10 or greater left'))
                 next
             }
-            counts <- round(regionMat$chr1$coverageMatrix[keep, ], 0)
-            tabres <- analyzeQLCounts(counts, design)
+            tabres <- tryCatch(analyzeQLCounts(counts, design),
+                error = function(e) { return(NULL)})
+            if(is.null(tabres)) {
+                message(paste(Sys.time(), 'Could not run edgeR analysis, skipping'))
+                next
+            }
             for (cutoff in fdr.thresholds) {
-                ofile <- file.path(odir, paste0(names[w], '_cut', cut, '-fdr',
+                ofile <- file.path(odir, paste0(names[k], '_cut', cut, '-fdr',
                     cutoff, '.tsv'))
                 resultDump(regionMat$chr1$regions[keep], tabres, cutoff,
                     out = ofile)
